@@ -1,0 +1,83 @@
+{
+  "module": "M11",
+  "schema": {
+    "name": "m11_schema_v1.2",
+    "file": "data/llm_outputs/prompts/m11_extraction_schema.md",
+    "sha256_16": "4c4ad171242d4a99",
+    "note": "v1.1 adds one sentence on requests addressed to the CFPB; v1.2 adds seven clarifications from the October 2026 label review; prompt m11_extract_v2 was written from v1",
+    "json_schema": "data/llm_outputs/prompts/m11_extract_schema.json",
+    "json_schema_sha256_16": "9080f19c92458690"
+  },
+  "prompts": {
+    "m11_extract_v1": {
+      "file": "data/llm_outputs/prompts/m11_extract_v1_prompt.md",
+      "sha256_16": "1ed028c3b73670cb"
+    },
+    "m11_extract_v2": {
+      "file": "data/llm_outputs/prompts/m11_extract_v2_prompt.md",
+      "sha256_16": "c99e9f82263b8368"
+    }
+  },
+  "artifacts": [
+    {
+      "file": "data/llm_outputs/m11_extract_v1_gemini.jsonl",
+      "kind": "real_model_output",
+      "prompt_version": "m11_extract_v1",
+      "model_requested": "gemini-3.5-flash-lite",
+      "model_version": [
+        "gemini-3.5-flash-lite"
+      ],
+      "temperature": 0.0,
+      "created_utc": [
+        "2026-10-14T02:34:11Z",
+        "2026-10-14T02:53:33Z"
+      ],
+      "rows": 60,
+      "rows_parsed": 60,
+      "errors": 0,
+      "median_latency_ms": 947.5,
+      "input_tokens": 20798,
+      "output_tokens": 7642,
+      "sha256_16": "4f9f8432bbc50f0a"
+    },
+    {
+      "file": "data/llm_outputs/m11_extract_v2_gemini.jsonl",
+      "kind": "real_model_output",
+      "prompt_version": "m11_extract_v2",
+      "model_requested": "gemini-3.5-flash-lite",
+      "model_version": [
+        "gemini-3.5-flash-lite"
+      ],
+      "temperature": 0.0,
+      "created_utc": [
+        "2026-10-14T02:34:11Z",
+        "2026-10-14T02:52:29Z"
+      ],
+      "rows": 60,
+      "rows_parsed": 60,
+      "errors": 0,
+      "median_latency_ms": 960.5,
+      "input_tokens": 108938,
+      "output_tokens": 5935,
+      "sha256_16": "21faa350d8db7bb4"
+    },
+    {
+      "file": "data/llm_outputs/prompts/m11_extract_v2_prompt.md (Examples A-C)",
+      "kind": "authored_fixture",
+      "rows": 3,
+      "note": "three made-up complaints and answers written as prompt examples; not model outputs; not in any cache file"
+    },
+    {
+      "file": "data/reviewed/m11_reviewed_dev.csv",
+      "kind": "reviewed_labels_draft",
+      "rows": 60,
+      "sha256_16": "9bcd7a89dfc1ed7e",
+      "note": "draft labels written with AI assistance and reviewed by the instructor, read against m11_schema_v1.2; checked in the October 2026 label review (second and third readings and written rules); 20 rows marked lab_sample"
+    },
+    {
+      "file": "notebook M11 step 1.9 rule_extract",
+      "kind": "rule_output",
+      "note": "regular expressions; computed when the notebook runs; no model"
+    }
+  ]
+}

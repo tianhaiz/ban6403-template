@@ -1,0 +1,161 @@
+run_id,question_id,k,context_ids,context,question
+Q01_k3,Q01,3,KB01-2;KB03-1;KB01-1,"[KB01-2] Disputing a credit card charge | effective 2026-01-15 | status: current
+You have 120 days from the date the charge posted to your account to dispute a credit card charge. File the dispute in the Fernhollow app under Card > Dispute a charge, or call Card Services. Before you file, we suggest you contact the merchant, but this is not required.
+
+[KB03-1] Card dispute questions and answers | effective 2021-03-01 | status: current
+How long do I have to dispute a credit card charge? You have 60 days from the transaction date to dispute a credit card charge with Fernhollow. Disputes filed after 60 days cannot be accepted.
+
+[KB01-1] Disputing a credit card charge | effective 2026-01-15 | status: current
+You can dispute a charge on your Fernhollow credit card when a merchant did not deliver what you paid for, charged the wrong amount, charged you twice, or did not credit a return. If you did not make the purchase at all, report it as fraud instead (see Reporting unauthorized card transactions).",How long do I have to dispute a charge on my Fernhollow credit card?
+Q02_k3,Q02,3,KB02-1;KB05-2;KB02-2,"[KB02-1] Disputing a debit card purchase | effective 2026-01-15 | status: current
+For a problem with a debit card purchase you made, such as an item that never arrived or a wrong amount, first contact the merchant and ask for a refund. If the merchant does not fix it within 10 days, you can file a dispute with Fernhollow in the app or by phone.
+
+[KB05-2] Reporting unauthorized card transactions | effective 2026-02-01 | status: current
+You are not responsible for unauthorized transactions on your Fernhollow debit or credit card when you report them within 60 days after the statement that first shows them. When you report fraud, we close the card and send a new one. Replacement cards for fraud are sent by express mail at no cost and usually arrive in 2 business days.
+
+[KB02-2] Disputing a debit card purchase | effective 2026-01-15 | status: current
+Debit card disputes must be filed within 60 days after the date of the first statement that shows the purchase. Unlike credit card disputes, a debit card dispute is about money that has already left your checking account, so the temporary credit rules in our fraud claim process apply.",I see two debit card purchases on my account that I never made. What should I do right now?
+Q03_k3,Q03,3,KB06-1;KB06-2;KB09-2,"[KB06-1] What happens after you report fraud | effective 2026-02-01 | status: current
+After you report an unauthorized debit card or account transaction, we investigate and give you a decision within 10 business days. If we need more time, we add a temporary credit for the amount to your account by the 10th business day, and we may take up to 45 days in total to finish.
+
+[KB06-2] What happens after you report fraud | effective 2026-02-01 | status: current
+We may ask you to sign a fraud statement confirming that you did not make or allow the transactions. If we find that the transactions were not unauthorized, we remove any temporary credit, give you 5 business days notice before removing it, and send you a letter explaining the decision.
+
+[KB09-2] Identity theft and accounts opened in your name | effective 2026-02-01 | status: current
+While we review an identity theft claim, we will not report the disputed account as late and will not send it to collections. Most identity theft reviews are completed within 30 days, and we send the result in writing.",I reported fraud on my checking account. How long until I get my money back?
+Q04_k3,Q04,3,KB08-1;KB08-2;KB07-2,"[KB08-1] QuickSend person-to-person payments | effective 2026-02-01 | status: current
+QuickSend lets you send money from your Fernhollow checking account to another person using their email address or mobile number. Payments to someone already enrolled usually arrive within minutes. The daily sending limit is $2,500.
+
+[KB08-2] QuickSend person-to-person payments | effective 2026-02-01 | status: current
+A QuickSend payment cannot be canceled once the recipient is enrolled and the money has been sent. If you sent money to the wrong person, contact the recipient and ask them to return it. You can also ask us to request a return from the recipient's bank, but the recipient's bank is not required to return the money.
+
+[KB07-2] Scams and payments you authorized | effective 2026-02-01 | status: current
+If you were scammed, contact us as soon as possible. We will try to recover the money from the receiving bank, but we cannot guarantee that any money will be returned. We also recommend reporting the scam to the Federal Trade Commission at ReportFraud.ftc.gov and to local police.",I was tricked into sending $800 with QuickSend to a fake landlord. Will Fernhollow refund it?
+Q05_k3,Q05,3,KB11-1;KB10-1;KB11-2,"[KB11-1] Overdraft fees (archived) | effective 2024-07-01 | status: archived
+The overdraft fee is $35 per item that we pay when your checking account does not have enough money. We charge at most 4 overdraft fees per day, for a maximum of $140 per day.
+
+[KB10-1] Overdraft fees | effective 2026-04-01 | status: current
+Starting April 1, 2026, the overdraft fee is $25 per item that we pay when your checking account does not have enough money. We charge at most 2 overdraft fees per day. We do not charge an overdraft fee if your account is overdrawn by $10 or less at the end of the day.
+
+[KB11-2] Overdraft fees (archived) | effective 2024-07-01 | status: archived
+This fee schedule applied until March 31, 2026. It is kept here for customers who have questions about fees charged before that date.",How much is the overdraft fee now?
+Q06_k3,Q06,3,KB13-1;KB11-1;KB10-1,"[KB13-1] Asking for a fee refund | effective 2026-01-01 | status: current
+If you were charged an overdraft or monthly maintenance fee, you can ask for a courtesy refund through chat or by phone. We can usually refund one overdraft fee and one maintenance fee per account in any 12-month period. Refunds beyond that are reviewed case by case.
+
+[KB11-1] Overdraft fees (archived) | effective 2024-07-01 | status: archived
+The overdraft fee is $35 per item that we pay when your checking account does not have enough money. We charge at most 4 overdraft fees per day, for a maximum of $140 per day.
+
+[KB10-1] Overdraft fees | effective 2026-04-01 | status: current
+Starting April 1, 2026, the overdraft fee is $25 per item that we pay when your checking account does not have enough money. We charge at most 2 overdraft fees per day. We do not charge an overdraft fee if your account is overdrawn by $10 or less at the end of the day.",Can you refund the overdraft fee I was charged last week?
+Q07_k3,Q07,3,KB12-1;KB10-1;KB18-1,"[KB12-1] Monthly maintenance fees | effective 2026-01-01 | status: current
+Everyday Checking has a monthly maintenance fee of $12. The fee is waived for any month in which you keep a daily balance of at least $1,500, or receive direct deposits totaling at least $500, or are under 24 years old.
+
+[KB10-1] Overdraft fees | effective 2026-04-01 | status: current
+Starting April 1, 2026, the overdraft fee is $25 per item that we pay when your checking account does not have enough money. We charge at most 2 overdraft fees per day. We do not charge an overdraft fee if your account is overdrawn by $10 or less at the end of the day.
+
+[KB18-1] Closing your account | effective 2026-03-01 | status: current
+You can close a checking or savings account in a branch, by phone, or by secure message. Before closing, stop automatic payments and move direct deposits. We cannot close an account that has a negative balance or pending transactions.","Why am I paying $12 a month on my checking account, and how do I stop it?"
+Q08_k3,Q08,3,KB16-1;KB20-2;KB16-2,"[KB16-1] Locked out of online banking | effective 2026-03-01 | status: current
+After 5 failed sign-in attempts, online banking and the app lock your profile for 30 minutes. After 30 minutes you can try again, or select Forgot password to reset it right away using a code sent to your phone or email on file.
+
+[KB20-2] Security codes and phone calls from Fernhollow | effective 2026-03-01 | status: current
+One-time codes expire after 10 minutes. If you did not request a code you received, someone may be trying to sign in to your account. Change your password and contact the Fraud Line.
+
+[KB16-2] Locked out of online banking | effective 2026-03-01 | status: current
+If you no longer have access to the phone number or email on file, call Customer Support. We will verify your identity with questions about your account and may ask you to visit a branch with a photo ID before we update your contact details.",I typed the wrong password too many times and now the app will not let me in. How long is the lock?
+Q09_k3,Q09,3,KB16-2;KB17-1;KB16-1,"[KB16-2] Locked out of online banking | effective 2026-03-01 | status: current
+If you no longer have access to the phone number or email on file, call Customer Support. We will verify your identity with questions about your account and may ask you to visit a branch with a photo ID before we update your contact details.
+
+[KB17-1] Frozen or restricted accounts | effective 2026-03-01 | status: current
+We may restrict or freeze an account when we see activity that may be fraud, when we need to verify your identity, or when we receive a legal order such as a garnishment or tax levy. We tell you about the restriction and how to contact us, unless the law does not allow us to.
+
+[KB16-1] Locked out of online banking | effective 2026-03-01 | status: current
+After 5 failed sign-in attempts, online banking and the app lock your profile for 30 minutes. After 30 minutes you can try again, or select Forgot password to reset it right away using a code sent to your phone or email on file.",My account was frozen without warning and I need to pay rent. What can I do?
+Q10_k3,Q10,3,KB19-1;KB19-2;KB17-2,"[KB19-1] When deposited funds are available | effective 2026-03-01 | status: current
+For most check deposits, the first $225 is available on the next business day and the rest within 2 business days. Mobile check deposits made before 8 p.m. Central Time count as deposited that business day.
+
+[KB19-2] When deposited funds are available | effective 2026-03-01 | status: current
+We may hold a deposit longer, up to 7 business days, for new accounts open less than 30 days, deposits over $5,525, accounts overdrawn repeatedly, or checks we have reason to doubt. If we place a longer hold, we tell you the date the money will be available.
+
+[KB17-2] Frozen or restricted accounts | effective 2026-03-01 | status: current
+To ask about a restricted account, call the Account Review team. Most reviews are finished within 3 to 10 business days after we receive any documents we asked for. During a review, you may not be able to withdraw money, but scheduled deposits are still accepted.",A check I deposited is on hold. When will I get the money?
+Q11_k3,Q11,3,KB21-2;KB22-1;KB22-2,"[KB21-2] How Fernhollow reports to credit bureaus | effective 2026-01-10 | status: current
+A payment is reported as late only when it is 30 or more days past the due date. Paying the past-due amount does not remove a late payment that was reported correctly, but the account will show as current from the next monthly report.
+
+[KB22-1] Disputing information Fernhollow reported | effective 2026-01-10 | status: current
+If you think information we reported about your Fernhollow account is wrong, you can dispute it with us directly or with the credit bureau. To dispute with us, use the credit reporting dispute form in online banking or mail a letter to Credit Reporting Disputes.
+
+[KB22-2] Disputing information Fernhollow reported | effective 2026-01-10 | status: current
+Include your name, account number, the item you believe is wrong, why it is wrong, and any proof, such as a bank statement showing an on-time payment. We investigate within 30 days. If the information is wrong, we correct it and tell every bureau we reported it to.","Fernhollow reported a late payment on my credit report, but I paid on time. How do I fix this?"
+Q12_k3,Q12,3,KB25-1;KB26-2;KB26-1,"[KB25-1] Asking us to validate a debt | effective 2026-02-15 | status: current
+When Fernhollow Recovery Services first contacts you about a debt, we send a validation notice. It shows the amount owed, the original account number, the date of charge-off, and an itemized list of interest, fees, payments and credits since then.
+
+[KB26-2] If your account was sold to another company | effective 2026-02-15 | status: current
+After a sale, your credit report will show the Fernhollow account with a zero balance and a note that it was sold. The buyer may report its own collection account. Questions about the balance after the sale go to the buyer.
+
+[KB26-1] If your account was sold to another company | effective 2026-02-15 | status: current
+Fernhollow sometimes sells charged-off accounts to debt buyers. When this happens, we send you a letter with the buyer's name and contact details within 15 days of the sale. After the sale, Fernhollow can no longer accept payments or settle the account.","A collector from Fernhollow Recovery Services says I owe $2,300, but I do not recognize this debt. What can I do?"
+Q13_k3,Q13,3,KB26-1;KB26-2;KB24-1,"[KB26-1] If your account was sold to another company | effective 2026-02-15 | status: current
+Fernhollow sometimes sells charged-off accounts to debt buyers. When this happens, we send you a letter with the buyer's name and contact details within 15 days of the sale. After the sale, Fernhollow can no longer accept payments or settle the account.
+
+[KB26-2] If your account was sold to another company | effective 2026-02-15 | status: current
+After a sale, your credit report will show the Fernhollow account with a zero balance and a note that it was sold. The buyer may report its own collection account. Questions about the balance after the sale go to the buyer.
+
+[KB24-1] Fernhollow Recovery Services | effective 2026-02-15 | status: current
+Fernhollow Recovery Services is the Fernhollow team that collects on credit card and personal loan accounts that are more than 180 days past due and have been charged off. A charged-off account is still owed; charge-off is an accounting step, not forgiveness of the debt.",I got a letter saying my old Fernhollow credit card debt was sold. Can I still pay Fernhollow directly?
+Q14_k3,Q14,3,KB29-1;KB31-1;KB29-2,"[KB29-1] Escrow shortages and surpluses | effective 2026-01-20 | status: current
+A shortage happens when your taxes or insurance cost more than we collected, for example after a property tax increase. You can pay the shortage in one payment, or we spread it over the next 12 monthly payments. This is the most common reason a mortgage payment goes up.
+
+[KB31-1] Mortgage payments and late charges | effective 2026-01-20 | status: current
+Your mortgage payment is due on the 1st of each month. If we receive the full payment by the 15th, no late charge applies. After the 15th, we charge a late charge of 5% of the principal and interest part of the payment.
+
+[KB29-2] Escrow shortages and surpluses | effective 2026-01-20 | status: current
+A surplus happens when we collected more than needed. If the surplus is $50 or more and your loan is current, we mail you a refund check within 30 days of the escrow analysis. A surplus under $50 is applied to next year's escrow payments.",Why did my monthly mortgage payment go up by $180 this year?
+Q15_k3,Q15,3,KB29-2;KB28-1;KB28-2,"[KB29-2] Escrow shortages and surpluses | effective 2026-01-20 | status: current
+A surplus happens when we collected more than needed. If the surplus is $50 or more and your loan is current, we mail you a refund check within 30 days of the escrow analysis. A surplus under $50 is applied to next year's escrow payments.
+
+[KB28-1] How your escrow account works | effective 2026-01-20 | status: current
+If your Fernhollow mortgage has an escrow account, part of each monthly payment goes into escrow, and we use that money to pay your property taxes and homeowners insurance when they are due. Your monthly payment is principal and interest plus the escrow amount.
+
+[KB28-2] How your escrow account works | effective 2026-01-20 | status: current
+Once a year we do an escrow analysis. We compare what we paid for taxes and insurance with what we collected, estimate next year's bills, and send you an escrow statement. Your monthly payment can go up or down after each analysis.",My escrow account has more money than it needs. Do I get the extra back?
+Q16_k3,Q16,3,KB30-1;KB30-2;KB28-1,"[KB30-1] Homeowners insurance and lender-placed insurance | effective 2026-01-20 | status: current
+Your mortgage requires homeowners insurance at all times. If your policy is canceled or expires and we do not receive proof of new coverage, we send two letters, at least 45 days apart. If we still have no proof, we buy lender-placed insurance and charge its cost to your escrow account.
+
+[KB30-2] Homeowners insurance and lender-placed insurance | effective 2026-01-20 | status: current
+Lender-placed insurance usually costs more than a policy you buy yourself and protects only the lender's interest. Send us proof of your own coverage, and we will cancel the lender-placed policy and refund any charge for days when you had your own coverage.
+
+[KB28-1] How your escrow account works | effective 2026-01-20 | status: current
+If your Fernhollow mortgage has an escrow account, part of each monthly payment goes into escrow, and we use that money to pay your property taxes and homeowners insurance when they are due. Your monthly payment is principal and interest plus the escrow amount.","You charged my escrow for insurance, but I already have homeowners insurance. Why?"
+Q17_k3,Q17,3,KB18-2;KB18-1;KB26-1,"[KB18-2] Closing your account | effective 2026-03-01 | status: current
+Fernhollow may also close an account, for example after long inactivity or misuse. We give at least 30 days notice when we can. When an account is closed, we mail the remaining balance by check to your address on file within 10 business days.
+
+[KB18-1] Closing your account | effective 2026-03-01 | status: current
+You can close a checking or savings account in a branch, by phone, or by secure message. Before closing, stop automatic payments and move direct deposits. We cannot close an account that has a negative balance or pending transactions.
+
+[KB26-1] If your account was sold to another company | effective 2026-02-15 | status: current
+Fernhollow sometimes sells charged-off accounts to debt buyers. When this happens, we send you a letter with the buyer's name and contact details within 15 days of the sale. After the sale, Fernhollow can no longer accept payments or settle the account.",My father passed away. How do I close his Fernhollow checking account and get the money?
+Q18_k3,Q18,3,KB32-1;KB32-2;KB31-1,"[KB32-1] Help if you are struggling to pay your mortgage | effective 2026-01-20 | status: current
+If you are having trouble paying your Fernhollow mortgage, contact our Homeowner Assistance team before you miss a payment if possible. Options may include a repayment plan, a loan modification that changes your loan terms, or a short-term reduced payment.
+
+[KB32-2] Help if you are struggling to pay your mortgage | effective 2026-01-20 | status: current
+To be reviewed, send a complete hardship application with proof of income and a hardship letter. We tell you within 5 business days if anything is missing, and we make a decision within 30 days after the application is complete.
+
+[KB31-1] Mortgage payments and late charges | effective 2026-01-20 | status: current
+Your mortgage payment is due on the 1st of each month. If we receive the full payment by the 15th, no late charge applies. After the 15th, we charge a late charge of 5% of the principal and interest part of the payment.",Can I skip this month's auto loan payment because a hurricane damaged my home?
+Q19_k3,Q19,3,KB16-2;KB07-2;KB09-1,"[KB16-2] Locked out of online banking | effective 2026-03-01 | status: current
+If you no longer have access to the phone number or email on file, call Customer Support. We will verify your identity with questions about your account and may ask you to visit a branch with a photo ID before we update your contact details.
+
+[KB07-2] Scams and payments you authorized | effective 2026-02-01 | status: current
+If you were scammed, contact us as soon as possible. We will try to recover the money from the receiving bank, but we cannot guarantee that any money will be returned. We also recommend reporting the scam to the Federal Trade Commission at ReportFraud.ftc.gov and to local police.
+
+[KB09-1] Identity theft and accounts opened in your name | effective 2026-02-01 | status: current
+If someone opened a Fernhollow account or card in your name, call the Fraud Line. We will close the account, stop collection on it, and ask the credit bureaus to remove it from your reports. It helps to file an identity theft report at IdentityTheft.gov and send us a copy.",I sent an international wire to the wrong account number. Can you get it back?
+Q20_k3,Q20,3,KB34-2;KB34-1;KB24-2,"[KB34-2] How to make a complaint to Fernhollow | effective 2026-01-05 | status: current
+We confirm that we received your complaint within 2 business days and send a full response within 15 business days. If we need more time, we tell you why and give a new date. You can also submit a complaint to the Consumer Financial Protection Bureau.
+
+[KB34-1] How to make a complaint to Fernhollow | effective 2026-01-05 | status: current
+If you are not satisfied with how we handled a problem, you can file a complaint by phone, secure message, or letter to the Customer Advocacy Office. Please include what happened, the account involved, and what you would like us to do.
+
+[KB24-2] Fernhollow Recovery Services | effective 2026-02-15 | status: current
+Our collectors call only between 8 a.m. and 9 p.m. in your time zone. You can ask us in writing to contact you only by mail, and we will follow that request.",How long does Fernhollow take to respond to a complaint?

@@ -1,0 +1,12 @@
+sentence_id,text,note
+S01,The tablet will not start.,anchor
+S02,My tablet won't turn on.,same meaning; few shared words
+S03,The device won't power up.,same meaning; no shared content words
+S04,The tablet will start.,opposite meaning; most words shared
+S05,The tablet starts now. Thank you.,problem solved
+S06,This debt is not mine.,anchor
+S07,I do not owe this money.,same meaning; no shared content words
+S08,This debt is mine.,opposite meaning; most words shared
+S09,I was charged twice for one order.,anchor
+S10,I see two payments for the same purchase.,same meaning; no shared content words
+S11,The battery will not charge.,shares the word charge; different meaning

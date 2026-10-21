@@ -1,0 +1,10 @@
+row,query_id,n_tokens,truncated
+0,TQ01,8,False
+1,TQ02,5,False
+2,TQ03,7,False
+3,TQ04,6,False
+4,CQ01,12,False
+5,CQ02,18,False
+6,CQ03,11,False
+7,CQ04,12,False
+8,CQ05,13,False

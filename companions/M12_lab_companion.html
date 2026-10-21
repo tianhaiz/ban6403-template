@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Lab 12 Companion - BAN 6403</title><style>
+:root { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.62; }
+* { box-sizing: border-box; }
+body { margin:0; background:#fff; color:#111; }
+a { color:#0645ad; text-decoration-thickness:.12em; }
+a:focus, button:focus, summary:focus, pre:focus, .table-wrap:focus, select:focus, input:focus { outline:3px solid currentColor; outline-offset:3px; }
+.skip-link { position:absolute; left:-9999px; }
+.skip-link:focus { left:1rem; top:1rem; background:#fff; padding:.75rem; z-index:1000; border:2px solid #111; }
+header { border-bottom:2px solid #111; padding:1.5rem max(1rem, calc((100vw - 1060px)/2)); }
+header h1 { margin:0 0 .35rem; }
+.subtitle { margin:.2rem 0 0; font-size:1.08rem; }
+main { max-width:1060px; margin:0 auto; padding:1.5rem 1rem 4rem; }
+h2 { margin-top:2.6rem; padding-top:.55rem; border-top:1px solid #bbb; }
+h3 { margin-top:1.7rem; }
+.accessibility-summary, .toc, .note-box, .result-box, .try-box, .assignment-box, .summary-box, .listen-panel, .solution-box { border:1px solid #555; border-radius:.45rem; padding:1rem 1.1rem; margin:1.15rem 0; }
+.note-box { border-left:6px solid #1f4e79; background:#f4f8fc; position:relative; }
+.note-label { display:inline-block; font-size:.78rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; border:2px solid #1f4e79; border-radius:.25rem; padding:.22rem .45rem; margin:0 0 .55rem; background:#fff; }
+.note-box h3 { margin-top:.15rem; }
+.content-key { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:.8rem; margin:1rem 0; }
+.key-item { border:1px solid #777; border-radius:.4rem; padding:.8rem .9rem; }
+.key-label { font-weight:800; display:block; margin-bottom:.25rem; }
+.try-box { border-left:5px solid #111; }
+.result-box { background:#fafafa; }
+.solution-box summary { cursor:pointer; font-weight:700; }
+.solution-box[open] summary { margin-bottom:.8rem; }
+.controls { display:flex; gap:.6rem; flex-wrap:wrap; margin:1rem 0; }
+button { font:inherit; padding:.55rem .8rem; border:2px solid #111; background:#fff; border-radius:.3rem; cursor:pointer; }
+pre { overflow:auto; border:1px solid #777; padding:1rem; background:#f6f6f6; white-space:pre; }
+code { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.code-step { margin:1rem 0 1.55rem; }
+.code-purpose { margin-bottom:.4rem; }
+.table-wrap { overflow-x:auto; margin:.8rem 0; }
+table { border-collapse:collapse; width:100%; min-width:620px; }
+th, td { border:1px solid #666; padding:.5rem; text-align:left; vertical-align:top; }
+th { font-weight:700; }
+caption { font-weight:700; text-align:left; margin-bottom:.45rem; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.speech-options { display:grid; grid-template-columns:max-content minmax(180px,1fr); gap:.65rem .9rem; align-items:center; max-width:800px; }
+.speech-options select, .speech-options input[type="range"] { width:100%; font:inherit; }
+#speech-status { min-height:1.5em; }
+.section-read-controls { margin:.25rem 0 1rem; display:flex; align-items:center; gap:.5rem; }
+.section-read-controls button { font-size:.9rem; padding:.4rem .7rem; }
+.section-read-controls .read-hint { color:#555; font-size:.88rem; }
+.kicker { font-weight:700; }
+.muted { color:#555; }
+.footer-note { margin-top:3rem; border-top:2px solid #111; padding-top:1rem; }
+.inline-code-list li { margin:.25rem 0; }
+@media (max-width:700px) { table { min-width:760px; } .speech-options { grid-template-columns:1fr; } .section-read-controls { flex-direction:column; align-items:flex-start; } }
+@media print { .controls,.skip-link,.speak-section,.listen-panel,.jump-controls { display:none !important; } main { max-width:none; } a { color:inherit; text-decoration:none; } details { display:block; } details > * { display:block !important; } }
+
+.read-aloud-intro { border:2px solid #111; background:#fbfbfb; }
+.read-aloud-intro h3 { margin-top:.15rem; }
+.speak-section { font-weight:700; }
+.sticky-audio-controls { position:fixed; left:50%; bottom:1rem; transform:translateX(-50%); width:min(960px,calc(100vw - 2rem)); z-index:2000; background:#fff; border:3px solid #111; border-radius:.55rem; padding:.65rem .8rem; box-shadow:0 4px 20px rgba(0,0,0,.18); }
+.sticky-audio-inner { display:flex; align-items:center; gap:.65rem; flex-wrap:wrap; }
+.sticky-audio-label { font-weight:800; margin-right:auto; }
+.sticky-audio-status { flex:1 1 260px; min-width:180px; }
+.sticky-audio-controls button { padding:.42rem .68rem; }
+.sticky-audio-controls[hidden] { display:none !important; }
+@media (max-width:700px) { .sticky-audio-inner { align-items:stretch; } .sticky-audio-label, .sticky-audio-status { flex-basis:100%; } .sticky-audio-controls button { flex:1 1 auto; } }
+@media print { .sticky-audio-controls { display:none !important; } }
+
+.back-to-contents { margin: 1.6rem 0 .6rem; padding-top: .7rem; border-top: 1px dashed #aaa; font-size: .95rem; }
+.back-to-contents a { font-weight: 700; }
+
+/* code-output-tint v1: calm colours that separate code, output and instructor notes */
+.code-step pre { background:#f0f2f4; border:1px solid #a3abb5; border-left:4px solid #6b7785; }
+.result-box { background:#fbf8ef; border:1px solid #b9ae92; border-left:4px solid #8a7a52; }
+.result-box pre { background:#fffdf7; border:1px solid #cfc6ae; }
+.note-box { border:2px solid #1f4e79; border-left:8px solid #1f4e79; background:#e8f1fb; }
+.result-box > h3:first-child { margin-top:.1rem; }
+@media (forced-colors: active) { .code-step pre, .result-box, .result-box pre, .note-box { border-color:CanvasText; } }
+</style><style>/* Added for BAN 6403: let long inline paths wrap on narrow screens. */ p code, li code, td code, th code, summary code { overflow-wrap:anywhere; }</style></head>
+<body><a class="skip-link" href="#main-content">Skip to lab content</a>
+<header><h1>Lab 12 Companion</h1><p class="subtitle"><strong>BAN 6403: Text Analytics for Business</strong></p><p>Module 12: Retrieval-Augmented Generation</p></header>
+<div aria-label="Active read-aloud controls" class="sticky-audio-controls" hidden="" id="sticky-audio-controls" role="region"><div class="sticky-audio-inner"><span class="sticky-audio-label">Read Aloud</span><span aria-live="polite" class="sticky-audio-status" id="sticky-speech-status">Ready.</span><button id="sticky-pause" type="button">Pause</button><button id="sticky-resume" type="button">Resume</button><button id="sticky-stop" type="button">Stop</button></div></div><main id="main-content">
+<section aria-labelledby="how-to-use" class="accessibility-summary">
+<h2 id="how-to-use">How to use this companion</h2>
+<p>Open the <strong>Module 12 notebook and this companion at the same time</strong>. Work through the companion from top to bottom and run the matching notebook cells as you go. The notebook is the authoritative source for the lab sequence, code and required work. This companion explains what each step means, what to notice in the output and why the step matters.</p><div aria-labelledby="listen-title" class="listen-panel read-aloud-intro">
+<h3 id="listen-title">Read aloud: controls and directions</h3>
+<p><strong>Before you start:</strong> choose a reading mode, speed, and voice below. Select <strong>Read Aloud from Beginning</strong> to hear the full companion, or use <strong>Read Aloud from This Section</strong> beside any major section to continue from that point. While audio is playing, a floating control bar remains visible at the bottom of the page. Use <strong>Pause</strong> to pause temporarily, <strong>Resume</strong> to continue, and <strong>Stop</strong> to end the current reading.</p><p><strong>Study mode</strong> reads explanations, results, tables, and notes while skipping exact Python code. <strong>Full mode</strong> also reads Python code and verbalizes common programming symbols.</p>
+<div aria-label="Read aloud controls" class="controls">
+<button id="speak" type="button">Read Aloud from Beginning</button><button id="pause" type="button">Pause</button><button id="resume" type="button">Resume</button><button id="stop" type="button">Stop</button>
+</div>
+<div class="speech-options">
+<label for="reading-mode"><strong>Reading mode:</strong></label><select id="reading-mode"><option selected="" value="study">Study mode - explanations and results</option><option value="full">Full mode - include Python code</option></select>
+<label for="speech-rate"><strong>Speed:</strong> <span id="rate-value">1.0×</span></label><input aria-describedby="rate-help" id="speech-rate" max="2" min="0.5" step="0.1" type="range" value="1"/><span class="sr-only" id="rate-help">Adjust text-to-speech speed from one half to two times normal speed.</span>
+<label for="voice-select"><strong>Voice:</strong></label><select id="voice-select"><option value="">Browser default</option></select>
+<label for="section-select"><strong>Jump to section:</strong></label><select id="section-select"><option value="">Choose a section</option></select>
+</div>
+<div class="controls jump-controls"><button id="jump-section" type="button">Jump</button><button id="read-section" type="button">Read Aloud from Selected Section</button></div>
+<p aria-live="polite" id="speech-status" role="status"><small>Ready to read.</small></p>
+<p><small>The read-aloud feature uses your browser's speech engine. A screen reader can access the page independently of these controls.</small></p>
+</div>
+<h3>What is in the notebook, and what this companion adds</h3>
+<ul>
+<li><strong>Notebook:</strong> the exact Python code, the written questions, the Practice exercises, the checkpoint and the Submit steps.</li>
+<li><strong>Companion:</strong> plain-language explanations, the results you should expect (taken from real runs of the notebook), common mistakes and how to fix them.</li>
+<li><strong>If anything ever seems inconsistent:</strong> follow the current notebook.</li>
+</ul>
+<div aria-label="Content key" class="content-key">
+<div class="key-item"><span class="key-label">Notebook content</span>Code, official prompts, required tasks and the lab sequence come from the notebook. Each code block shows its notebook cell number.</div>
+<div class="key-item"><span class="key-label">Companion-added instructor note</span>These clearly labeled notes are explanations, cautions or study advice added by this companion. They are not extra required notebook steps unless the note says so.</div>
+</div>
+<p>This companion is designed for keyboard and screen-reader access, but it is <strong>not a separate version for students who need accessibility features</strong>. It is the same learning guide for everyone. You can read it visually, use a screen reader, or use the built-in read-aloud controls while you work in the notebook.</p>
+</section>
+<nav aria-labelledby="toc-title" class="toc"><p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="toc-title" tabindex="-1">Lab contents</h2><ol><li><a href="#how-to-use">How to use this companion</a></li><li><a href="#learning-goals">Module 12 Learning Goals</a></li><li><a href="#setup">Before You Start: Setup</a></li><li><a href="#part-1a">Part 1A: Help Center, Search and Context Pack (Steps 1.1–1.8)</a></li><li><a href="#part-1b">Part 1B: Cached Answers and Three Cases (Steps 1.9–1.12)</a></li><li><a href="#part-1c">Part 1C: Claim Audit, Failure Types and Escalation (Steps 1.13–1.17)</a></li><li><a href="#checkpoint">Checkpoint</a></li><li><a href="#part-2">Part 2: Practice on 20 Support Questions (Steps 2.1–2.6)</a></li><li><a href="#exercises">Practice Exercises and Interpretation</a></li><li><a href="#submit">Submit</a></li><li><a href="#challenge">Part 3 Challenge (Optional)</a></li><li><a href="#problems">Common Problems</a></li><li><a href="#wrap-up">Lab Wrap-Up</a></li><li><a href="#source-note">Notebook and accessibility note</a></li></ol></nav>
+<section aria-labelledby="learning-goals" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="learning-goals">Module 12 Learning Goals</h2>
+<p>In this lab you answer support questions from a small help center. A search finds passages. A cached LLM answer uses them and cites them. You check each claim against its source. By the end of the lab you should be able to:</p>
+<ul><li><strong>Assemble</strong> a bounded <strong>context pack</strong>: the top passages from a search, each with a stable <strong>source ID</strong>.</li><li><strong>Compare</strong> a cached ungrounded answer (question only) with a grounded answer (question plus context pack) for the same question.</li><li><strong>Audit</strong> individual claims and citations against the source passages: supported, unsupported or contradicted.</li><li><strong>Design</strong> an abstention or escalation rule for answers without enough evidence.</li></ul>
+<p>The main idea: <strong>every claim must point back to a source passage.</strong></p>
+<p>Plan about 35 minutes for the guided part and 75–90 minutes for Practice; Exercise 2 means auditing ten claims against their passages.</p>
+</section><section aria-labelledby="setup" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="setup">Before You Start: Setup</h2>
+<p>The main route is your own computer:</p>
+<ol><li>Open <strong>GitHub Desktop</strong> and select your course repository (<code>ban6403-</code> plus your GitHub username). Your copy already contains this notebook, the help center in <code>data/rag/</code>, the vectors <code>data/embeddings/m12_passages_minilm.npy</code> and <code>m12_questions_minilm.npy</code>, and the four answer caches <code>data/llm_outputs/m12_*_gemini.jsonl</code>.</li><li>Open the repository folder in <strong>Visual Studio Code</strong> and open <code>notebooks/M12_Retrieval_Augmented_Generation.ipynb</code>.</li><li>Click the kernel picker at the top right of the notebook and choose <strong>ban6403</strong>. This lab needs numpy, pandas and scikit-learn.</li><li>Open <code>data/llm_outputs/prompts/m12_grounded_v1_prompt.md</code> in a second tab. You will read it in step 1.8.</li><li>Run the cells in order from the top. If you restart the kernel, run from the top again.</li></ol>
+<p><strong>Optional:</strong> where your network allows it, you can open the repository in GitHub Codespaces instead. Keep the folder structure unchanged so the file paths work.</p>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>You do not call an LLM</h3><p>The 20 questions were sent to <code>gemini-3.5-flash-lite</code> in four conditions, at temperature 0, and every answer was saved. You read those saved answers, which is called a <strong>cache</strong>. No API key is needed. If the prompts were run again today, some answers could differ.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>The company is made up</h3><p>Fernhollow Financial and its help center were written for this course. Its fees and deadlines are invented. The question themes come from real complaints, but no real complaint is quoted.</p></aside>
+</section><section aria-labelledby="part-1a" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1a">Part 1A: Help Center, Search and Context Pack (Steps 1.1–1.8)</h2>
+<h3>1.1 Import the libraries</h3>
+<section aria-label="Import the libraries for this lab" class="code-step" data-cell="1">
+<pre aria-label="Import the libraries for this lab (notebook cell 1)" tabindex="0"><code># Path builds file paths that work on Windows, Mac and Linux; json reads the saved model answers.
+from pathlib import Path
+import json
+import numpy as np
+import pandas as pd
+# TF-IDF for lexical search, as in Modules 4 and 6.
+from sklearn.feature_extraction.text import TfidfVectorizer</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>No output. A comment after each import says what the library is for. An error here usually means the kernel is wrong; see Common problems.</p></aside>
+<h3>1.2 Set the data and output folders</h3>
+<section aria-label="Name the data folders and the output folder" class="code-step" data-cell="3">
+<pre aria-label="Name the data folders and the output folder (notebook cell 3)" tabindex="0"><code># &quot;..&quot; means one folder up; the / operator joins folder and file names.
+DATA = Path(&quot;../data&quot;)
+RAG = DATA / &quot;rag&quot;
+EMB = DATA / &quot;embeddings&quot;
+LLM = DATA / &quot;llm_outputs&quot;
+OUTPUT_DIR = Path(&quot;../outputs/m12&quot;)
+# parents=True also creates the outputs folder if needed; exist_ok=True means no error if the folder exists.
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>No output. The lab reads from three data folders: the help center in <code>rag</code>, the vectors in <code>embeddings</code> and the saved LLM answers in <code>llm_outputs</code>. Your saved files go to <code>outputs/m12</code>.</p></aside>
+<h3>1.3 The help center</h3>
+<p>A <strong>knowledge base</strong> is the set of articles a support team answers from. Each article is split into short <strong>passages</strong>, and each passage has a stable <strong>source ID</strong> such as <code>KB10-1</code> (article KB10, passage 1).</p>
+<section aria-label="Load articles and passages; show two passages" class="code-step" data-cell="5">
+<pre aria-label="Load articles and passages; show two passages (notebook cell 5)" tabindex="0"><code>articles = pd.read_csv(RAG / &quot;m12_kb_articles.csv&quot;)
+passages = pd.read_csv(RAG / &quot;m12_kb_passages.csv&quot;)
+print(&quot;articles:&quot;, len(articles), &quot;| passages:&quot;, len(passages), &quot;| words per passage:&quot;, passages[&quot;n_words&quot;].min(), &quot;to&quot;, passages[&quot;n_words&quot;].max())
+print(passages[&quot;status&quot;].value_counts().to_string())
+# Two passages side by side: the current fee schedule (KB10) and the old one (KB11).
+passages.loc[passages[&quot;passage_id&quot;].isin([&quot;KB10-1&quot;, &quot;KB11-1&quot;]), [&quot;passage_id&quot;, &quot;title&quot;, &quot;effective_date&quot;, &quot;status&quot;, &quot;text&quot;]]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Two overdraft passages</caption><thead><tr><th scope="col">passage_id</th><th scope="col">title</th><th scope="col">effective_date</th><th scope="col">status</th><th scope="col">text (start)</th></tr></thead><tbody><tr><td>KB10-1</td><td>Overdraft fees</td><td>2026-04-01</td><td>current</td><td>Starting April 1, 2026, the overdraft fee is $25 per item…</td></tr><tr><td>KB11-1</td><td>Overdraft fees (archived)</td><td>2024-07-01</td><td>archived</td><td>The overdraft fee is $35 per item…</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.3" tabindex="0"><code>articles: 35 | passages: 70 | words per passage: 23 to 60
+status
+current     68
+archived     2</code></pre><p>KB11 is the old fee schedule, kept for history. An answer about today's fee must use KB10.</p></aside>
+<h3>1.4 The support questions</h3>
+<p>For each question, <code>expected_source_ids</code> lists the passages that answer it, and <code>expected_behavior</code> says what a good answer does: answer, abstain, or flag a conflict. Both were written before any search was run.</p>
+<section aria-label="Load the 20 questions and count their types" class="code-step" data-cell="7">
+<pre aria-label="Load the 20 questions and count their types (notebook cell 7)" tabindex="0"><code># keep_default_na=False keeps empty cells as empty text (the unanswerable questions have no expected sources).
+questions = pd.read_csv(RAG / &quot;m12_questions.csv&quot;, keep_default_na=False)
+# A lookup from question ID to question text: question_text[&quot;Q16&quot;] gives the text of Q16.
+question_text = questions.set_index(&quot;question_id&quot;)[&quot;question&quot;]
+print(questions[&quot;question_type&quot;].value_counts().to_string())
+questions.loc[questions[&quot;question_id&quot;].isin([&quot;Q12&quot;, &quot;Q16&quot;, &quot;Q17&quot;]), [&quot;question_id&quot;, &quot;question&quot;, &quot;question_type&quot;, &quot;expected_source_ids&quot;, &quot;expected_behavior&quot;]]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Three questions used in Part 1</caption><thead><tr><th scope="col">question_id</th><th scope="col">question (start)</th><th scope="col">question_type</th><th scope="col">expected_source_ids</th><th scope="col">expected_behavior</th></tr></thead><tbody><tr><td>Q12</td><td>A collector from Fernhollow Recovery Services says I owe $2,300…</td><td>answerable</td><td>KB25-2</td><td>answer</td></tr><tr><td>Q16</td><td>You charged my escrow for insurance, but I already have homeowners insurance…</td><td>answerable</td><td>KB30-1;KB30-2</td><td>answer</td></tr><tr><td>Q17</td><td>My father passed away. How do I close his Fernhollow checking account…</td><td>unanswerable</td><td></td><td>abstain</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.4" tabindex="0"><code>question_type
+answerable      13
+unanswerable     3
+partial          2
+conflict         1
+outdated         1</code></pre></aside>
+<h3>1.5 Load the vectors</h3>
+<p>The passage and question vectors were made with the same model as in Modules 5 and 6 (all-MiniLM-L6-v2). Row 1 of each vector file belongs to row 1 of its table: one vector per passage and one per question.</p>
+<section aria-label="Load the passage and question vectors" class="code-step" data-cell="9">
+<pre aria-label="Load the passage and question vectors (notebook cell 9)" tabindex="0"><code># One row per passage and one row per question, in the same order as the two tables.
+passage_vectors = np.load(EMB / &quot;m12_passages_minilm.npy&quot;).astype(&quot;float32&quot;)
+question_vectors = np.load(EMB / &quot;m12_questions_minilm.npy&quot;).astype(&quot;float32&quot;)
+print(&quot;passage vectors:&quot;, passage_vectors.shape, &quot;question vectors:&quot;, question_vectors.shape)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.5" tabindex="0"><code>passage vectors: (70, 384) question vectors: (20, 384)</code></pre></aside>
+<h3>1.6 Search the help center</h3>
+<p><strong>Dense</strong> search ranks passages by the cosine between vectors. <strong>Lexical</strong> search uses TF-IDF with words and two-word phrases. Both search <code>search_text</code>: the article title plus the passage. The saved vectors have length 1, so the cosine is a plain dot product.</p>
+<section aria-label="Define search (dense and lexical) and search for Q16" class="code-step" data-cell="11">
+<pre aria-label="Define search (dense and lexical) and search for Q16 (notebook cell 11)" tabindex="0"><code># Same TF-IDF setup as Module 6: words and two-word phrases (ngram_range=(1, 2)).
+tfidf = TfidfVectorizer(ngram_range=(1, 2))
+X_passages = tfidf.fit_transform(passages[&quot;search_text&quot;])
+# A lookup from question ID to its row in question_vectors.
+question_row = pd.Series(range(len(questions)), index=questions[&quot;question_id&quot;])
+
+def search(question_id, method=&quot;dense&quot;, k=10):
+    &quot;&quot;&quot;Take a question ID and &quot;dense&quot; or &quot;lexical&quot;; return the top k passages with rank and score.&quot;&quot;&quot;
+    if method == &quot;lexical&quot;:
+        # transform turns the question into a TF-IDF row with the vocabulary of the passages.
+        query_tfidf = tfidf.transform([question_text[question_id]])
+        # One cosine per passage; .ravel() turns the one-column result into a flat list.
+        scores = (X_passages @ query_tfidf.T).toarray().ravel()
+    else:
+        # The saved vectors have length 1, so one dot product per passage is the cosine, as in Module 5.
+        scores = passage_vectors @ question_vectors[question_row[question_id]]
+    found = passages[[&quot;passage_id&quot;, &quot;title&quot;, &quot;status&quot;, &quot;effective_date&quot;, &quot;text&quot;]].copy()
+    found[&quot;score&quot;] = scores
+    # Sort from the highest score down; kind=&quot;stable&quot; keeps tied scores in file order.
+    found = found.sort_values(&quot;score&quot;, ascending=False, kind=&quot;stable&quot;).head(k)
+    # Number the results 1, 2, 3, ... in a new first column.
+    found.insert(0, &quot;rank&quot;, range(1, len(found) + 1))
+    return found.reset_index(drop=True)
+
+print(question_text[&quot;Q16&quot;])
+# Four columns of the top 5, with scores rounded to 3 decimals.
+search(&quot;Q16&quot;, k=5)[[&quot;rank&quot;, &quot;passage_id&quot;, &quot;title&quot;, &quot;score&quot;]].round(3)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Top 5 dense results for Q16</caption><thead><tr><th scope="col">rank</th><th scope="col">passage_id</th><th scope="col">title</th><th scope="col">score</th></tr></thead><tbody><tr><td>1</td><td>KB30-1</td><td>Homeowners insurance and lender-placed insurance</td><td>0.645</td></tr><tr><td>2</td><td>KB30-2</td><td>Homeowners insurance and lender-placed insurance</td><td>0.618</td></tr><tr><td>3</td><td>KB28-1</td><td>How your escrow account works</td><td>0.489</td></tr><tr><td>4</td><td>KB28-2</td><td>How your escrow account works</td><td>0.408</td></tr><tr><td>5</td><td>KB29-1</td><td>Escrow shortages and surpluses</td><td>0.400</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.6" tabindex="0"><code>You charged my escrow for insurance, but I already have homeowners insurance. Why?</code></pre><p>Both expected sources for Q16 (KB30-1 and KB30-2) are at the top.</p></aside>
+<h3>1.7 Build a context pack</h3>
+<p>A <strong>context pack</strong> is the bounded set of passages the model may use: here the top 3 from dense search, in rank order. Each block starts with <code>[source ID] title | effective date | status</code>.</p>
+<section aria-label="Join the top 3 passages into a pack and compare with the cached input" class="code-step" data-cell="13">
+<pre aria-label="Join the top 3 passages into a pack and compare with the cached input (notebook cell 13)" tabindex="0"><code>def pack_text(found):
+    &quot;&quot;&quot;Take a table of found passages; return the context pack as one text.&quot;&quot;&quot;
+    blocks = []
+    # itertuples gives one row at a time; row.passage_id reads one column of that row.
+    for row in found.itertuples():
+        # A header line ([source ID] title | effective date | status), then the passage on the next line.
+        blocks.append(f&quot;[{row.passage_id}] {row.title} | effective {row.effective_date} | status: {row.status}\n{row.text}&quot;)
+    # &quot;\n\n&quot; puts an empty line between the blocks.
+    return &quot;\n\n&quot;.join(blocks)
+
+found_q16 = search(&quot;Q16&quot;, k=3)
+pack_q16 = pack_text(found_q16)
+print(pack_q16)
+print()
+print(&quot;source IDs:&quot;, found_q16[&quot;passage_id&quot;].tolist(), &quot;| words:&quot;, len(pack_q16.split()))
+# The inputs I sent to the model for k = 3, one row per question.
+inputs_k3 = pd.read_csv(LLM / &quot;prompts/m12_input_grounded_k3.csv&quot;).set_index(&quot;question_id&quot;)
+print(&quot;same as the cached input:&quot;, pack_q16 == inputs_k3.loc[&quot;Q16&quot;, &quot;context&quot;])</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.7" tabindex="0"><code>[KB30-1] Homeowners insurance and lender-placed insurance | effective 2026-01-20 | status: current
+Your mortgage requires homeowners insurance at all times. If your policy is canceled or expires and we do not receive proof of new coverage, we send two letters, at least 45 days apart. If we still have no proof, we buy lender-placed insurance and charge its cost to your escrow account.
+
+[KB30-2] Homeowners insurance and lender-placed insurance | effective 2026-01-20 | status: current
+Lender-placed insurance usually costs more than a policy you buy yourself and protects only the lender&#x27;s interest. Send us proof of your own coverage, and we will cancel the lender-placed policy and refund any charge for days when you had your own coverage.
+
+[KB28-1] How your escrow account works | effective 2026-01-20 | status: current
+If your Fernhollow mortgage has an escrow account, part of each monthly payment goes into escrow, and we use that money to pay your property taxes and homeowners insurance when they are due. Your monthly payment is principal and interest plus the escrow amount.
+
+source IDs: [&#x27;KB30-1&#x27;, &#x27;KB30-2&#x27;, &#x27;KB28-1&#x27;] | words: 174
+same as the cached input: True</code></pre><p><code>True</code> on the last line means you rebuilt exactly the context the model saw. If you see <code>False</code>, you changed <code>search</code> or <code>pack_text</code>.</p></aside>
+<h3>1.8 The grounded prompt</h3>
+<p>The <strong>grounded</strong> prompt: use only the passages, list each claim with its source IDs, and answer “not enough information” when the passages do not answer. The <strong>ungrounded</strong> prompt (<code>m12_ungrounded_v1_prompt.md</code>) sends the question alone.</p>
+<section aria-label="Print the prompt and fill it with the Q16 pack" class="code-step" data-cell="15">
+<pre aria-label="Print the prompt and fill it with the Q16 pack (notebook cell 15)" tabindex="0"><code>grounded_prompt = (LLM / &quot;prompts/m12_grounded_v1_prompt.md&quot;).read_text()
+# Line 1 holds the prompt version: split(&quot;\n&quot;, 1) cuts at the first line break, and [1] keeps the rest.
+template = grounded_prompt.split(&quot;\n&quot;, 1)[1].strip()
+# format fills the {context} and {question} slots of the template.
+filled_q16 = template.format(context=pack_q16, question=question_text[&quot;Q16&quot;])
+print(grounded_prompt.splitlines()[0])
+# The whole filled prompt: instructions, the three passages and the question.
+print(filled_q16)
+print(&quot;words in the filled prompt:&quot;, len(filled_q16.split()))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.8" tabindex="0"><code># prompt_version: m12_grounded_v1
+You are a customer support assistant for Fernhollow Financial. Answer the customer&#x27;s question using ONLY the help-center passages below.
+
+Rules:
+1. Use only facts stated in the passages. Do not use outside knowledge or guess.
+2. List every factual statement in your answer as a separate claim. For each claim, give the source IDs (for example KB05-1) of the passages that state it.
+3. If the passages do not answer the question, set status to &quot;not_enough_information&quot; and answer: &quot;I do not have enough information to answer this. I will pass your question to a support specialist.&quot; Leave the claims list empty.
+4. If the passages answer only part of the question, set status to &quot;partly_answered&quot;, answer the supported part, and say what you cannot answer.
+5. Otherwise set status to &quot;answered&quot;.
+6. Write at most 5 short, polite sentences in plain language.
+
+Help-center passages:
+&lt;&lt;&lt;
+[KB30-1] Homeowners insurance and lender-placed insurance | effective 2026-01-20 | status: current
+Your mortgage requires homeowners insurance at all times. If your policy is canceled or expires and we do not receive proof of new coverage, we send two letters, at least 45 days apart. If we still have no proof, we buy lender-placed insurance and charge its cost to your escrow account.
+
+[KB30-2] Homeowners insurance and lender-placed insurance | effective 2026-01-20 | status: current
+Lender-placed insurance usually costs more than a policy you buy yourself and protects only the lender&#x27;s interest. Send us proof of your own coverage, and we will cancel the lender-placed policy and refund any charge for days when you had your own coverage.
+
+[KB28-1] How your escrow account works | effective 2026-01-20 | status: current
+If your Fernhollow mortgage has an escrow account, part of each monthly payment goes into escrow, and we use that money to pay your property taxes and homeowners insurance when they are due. Your monthly payment is principal and interest plus the escrow amount.
+&gt;&gt;&gt;
+
+Customer question:
+You charged my escrow for insurance, but I already have homeowners insurance. Why?
+words in the filled prompt: 335</code></pre></aside>
+</section><section aria-labelledby="part-1b" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1b">Part 1B: Cached Answers and Three Cases (Steps 1.9–1.12)</h2>
+<h3>1.9 Load the cached answers</h3>
+<p>Four conditions: <code>ungrounded</code> (question only), and <code>k1</code>, <code>k3</code>, <code>k8</code> (the top 1, 3 or 8 passages). <code>k3</code> is the main condition; <code>k1</code> and <code>k8</code> change only the number of passages. This is a <strong>top-k ablation</strong>.</p>
+<section aria-label="Read the four caches and print where each came from" class="code-step" data-cell="17">
+<pre aria-label="Read the four caches and print where each came from (notebook cell 17)" tabindex="0"><code>def load_answers(condition):
+    &quot;&quot;&quot;Take a condition (&quot;ungrounded&quot;, &quot;k1&quot;, &quot;k3&quot; or &quot;k8&quot;); return its saved records and a table of its answers.&quot;&quot;&quot;
+    if condition == &quot;ungrounded&quot;:
+        name = &quot;ungrounded&quot;
+    else:
+        name = &quot;grounded_&quot; + condition
+    # One JSON record per line.
+    records = []
+    for line in (LLM / f&quot;m12_{name}_gemini.jsonl&quot;).read_text().splitlines():
+        records.append(json.loads(line))
+
+    rows = []
+    for record in records:
+        answer = record[&quot;parsed&quot;]
+        # Every source ID cited by any claim, without repeats, in sorted order.
+        # A set keeps each value once: .add puts in an ID, and repeats are ignored.
+        cited = set()
+        for claim in answer[&quot;claims&quot;]:
+            for source_id in claim.get(&quot;source_ids&quot;, []):
+                cited.add(source_id)
+        rows.append({&quot;run_id&quot;: record[&quot;id&quot;],
+                     &quot;question_id&quot;: record[&quot;id&quot;].split(&quot;_&quot;)[0],  # &quot;Q16_k3&quot; -&gt; &quot;Q16&quot;
+                     &quot;condition&quot;: condition,
+                     &quot;status&quot;: answer[&quot;status&quot;], &quot;answer&quot;: answer[&quot;answer&quot;], &quot;claims&quot;: answer[&quot;claims&quot;],
+                     &quot;cited&quot;: sorted(cited),
+                     &quot;input_tokens&quot;: record[&quot;input_tokens&quot;], &quot;latency_ms&quot;: record[&quot;latency_ms&quot;]})
+    out = pd.DataFrame(rows)
+
+    # Add the IDs of the passages in the context pack: an empty list for ungrounded answers.
+    if condition == &quot;ungrounded&quot;:
+        empty_lists = []
+        for _ in range(len(out)):
+            empty_lists.append([])
+        out[&quot;context_ids&quot;] = empty_lists
+    else:
+        inputs = pd.read_csv(LLM / f&quot;prompts/m12_input_{name}.csv&quot;)
+        out = out.merge(inputs[[&quot;run_id&quot;, &quot;context_ids&quot;]], on=&quot;run_id&quot;)
+        # The file stores the IDs as text such as &quot;KB13-1;KB13-2&quot;; split(&quot;;&quot;) makes a list.
+        out[&quot;context_ids&quot;] = out[&quot;context_ids&quot;].str.split(&quot;;&quot;)
+    return records, out
+
+caches = {}
+for condition in [&quot;ungrounded&quot;, &quot;k1&quot;, &quot;k3&quot;, &quot;k8&quot;]:
+    caches[condition] = load_answers(condition)
+
+# Rows and total input tokens per condition: more passages mean a longer prompt.
+for condition in caches:
+    records, out = caches[condition]
+    print(f&quot;{condition:&gt;10} | rows {len(out)} | input tokens&quot;, out[&quot;input_tokens&quot;].sum())
+
+# One table with the answers of all four conditions; ignore_index numbers the rows again.
+answer_tables = []
+for records, out in caches.values():
+    answer_tables.append(out)
+answers = pd.concat(answer_tables, ignore_index=True)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.9" tabindex="0"><code>ungrounded | rows 20 | input tokens 6173
+        k1 | rows 20 | input tokens 10359
+        k3 | rows 20 | input tokens 13813
+        k8 | rows 20 | input tokens 22496</code></pre><p>All four runs used model gemini-3.5-flash-lite at temperature 0 on October 14, 2026, and no call failed; each saved record stores these details. The cell prints the number of answers and the input tokens of each condition. More passages mean more input tokens.</p></aside>
+<h3>1.10 Optional: try one context pack yourself (not graded)</h3>
+<p>If you want, copy the printed prompt for <strong>Q19</strong> (a wire sent to the wrong account) into Google AI Studio or UTSA Copilot Chat. The pack and question are made up, so they are safe to paste. Note whether the tool stays with the passages or adds outside knowledge or web links. If you skip this, the end of the output is the captured equivalent.</p>
+<section aria-label="Print the filled prompt for Q19 and the captured answer" class="code-step" data-cell="19">
+<pre aria-label="Print the filled prompt for Q19 and the captured answer (notebook cell 19)" tabindex="0"><code>pack_q19 = pack_text(search(&quot;Q19&quot;, k=3))
+print(template.format(context=pack_q19, question=question_text[&quot;Q19&quot;]))
+print()
+print(&quot;----- captured equivalent (cached Q19_k3) -----&quot;)
+# The saved answer of run Q19_k3; .iloc[0] takes the one matching row.
+q19 = answers[answers[&quot;run_id&quot;].eq(&quot;Q19_k3&quot;)].iloc[0]
+print(q19[&quot;status&quot;], &quot;|&quot;, q19[&quot;answer&quot;])</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.10" tabindex="0"><code>You are a customer support assistant for Fernhollow Financial. Answer the customer&#x27;s question using ONLY the help-center passages below.
+
+Rules:
+1. Use only facts stated in the passages. Do not use outside knowledge or guess.
+2. List every factual statement in your answer as a separate claim. For each claim, give the source IDs (for example KB05-1) of the passages that state it.
+3. If the passages do not answer the question, set status to &quot;not_enough_information&quot; and answer: &quot;I do not have enough information to answer this. I will pass your question to a support specialist.&quot; Leave the claims list empty.
+4. If the passages answer only part of the question, set status to &quot;partly_answered&quot;, answer the supported part, and say what you cannot answer.
+5. Otherwise set status to &quot;answered&quot;.
+6. Write at most 5 short, polite sentences in plain language.
+
+Help-center passages:
+&lt;&lt;&lt;
+[KB16-2] Locked out of online banking | effective 2026-03-01 | status: current
+If you no longer have access to the phone number or email on file, call Customer Support. We will verify your identity with questions about your account and may ask you to visit a branch with a photo ID before we update your contact details.
+
+[KB07-2] Scams and payments you authorized | effective 2026-02-01 | status: current
+If you were scammed, contact us as soon as possible. We will try to recover the money from the receiving bank, but we cannot guarantee that any money will be returned. We also recommend reporting the scam to the Federal Trade Commission at ReportFraud.ftc.gov and to local police.
+
+[KB09-1] Identity theft and accounts opened in your name | effective 2026-02-01 | status: current
+If someone opened a Fernhollow account or card in your name, call the Fraud Line. We will close the account, stop collection on it, and ask the credit bureaus to remove it from your reports. It helps to file an identity theft report at IdentityTheft.gov and send us a copy.
+&gt;&gt;&gt;
+
+Customer question:
+I sent an international wire to the wrong account number. Can you get it back?
+
+----- captured equivalent (cached Q19_k3) -----
+not_enough_information | I do not have enough information to answer this. I will pass your question to a support specialist.</code></pre><p>None of the three passages is about wires, and the cached answer abstains.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Your chat answer may differ</h3><p>Chat tools add their own instructions, may use another model version, and may search the web. A web link is not evidence from our help center. Treat your trial as an illustration; the graded work uses the cached files. Record the tool in the AI-use line.</p></aside>
+<h3>1.11 Case 1: the same question with and without context</h3>
+<section aria-label="Show the ungrounded and grounded answers to Q16" class="code-step" data-cell="21">
+<pre aria-label="Show the ungrounded and grounded answers to Q16 (notebook cell 21)" tabindex="0"><code>def show(run_id):
+    &quot;&quot;&quot;Take a run ID such as &quot;Q16_k3&quot;; print its status, context IDs, cited IDs and answer.&quot;&quot;&quot;
+    row = answers[answers[&quot;run_id&quot;].eq(run_id)].iloc[0]
+    print(f&quot;{run_id} | status: {row[&#x27;status&#x27;]} | context: {row[&#x27;context_ids&#x27;]} | cited: {row[&#x27;cited&#x27;]}&quot;)
+    print(&quot;   &quot;, row[&quot;answer&quot;])
+
+print(question_text[&quot;Q16&quot;])
+show(&quot;Q16_ungrounded&quot;)
+show(&quot;Q16_k3&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.11" tabindex="0"><code>You charged my escrow for insurance, but I already have homeowners insurance. Why?
+Q16_ungrounded | status: not_enough_information | context: [] | cited: []
+    I do not have access to your specific mortgage account details to explain why your escrow was charged for insurance. Please contact our customer support team directly so we can review your homeowners insurance policy and resolve this issue.
+Q16_k3 | status: answered | context: [&#x27;KB30-1&#x27;, &#x27;KB30-2&#x27;, &#x27;KB28-1&#x27;] | cited: [&#x27;KB30-1&#x27;, &#x27;KB30-2&#x27;]
+    We charge your escrow for lender-placed insurance if your policy is canceled or expires and we do not receive proof of new coverage after sending two letters. Lender-placed insurance protects only the lender&#x27;s interest and usually costs more than a policy you buy yourself. If you send us proof of your own coverage, we will cancel the lender-placed policy and refund any charge for days when you had your own coverage.</code></pre><p>Without context, the model declined. With the pack, it explained the policy and cited KB30-1 and KB30-2.</p></aside>
+<h3>1.12 Case 2: a question the help center cannot answer</h3>
+<section aria-label="Show both answers to Q17" class="code-step" data-cell="23">
+<pre aria-label="Show both answers to Q17 (notebook cell 23)" tabindex="0"><code>print(question_text[&quot;Q17&quot;])
+# The answer without context, then the answer with the k = 3 pack.
+show(&quot;Q17_ungrounded&quot;)
+show(&quot;Q17_k3&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.12" tabindex="0"><code>My father passed away. How do I close his Fernhollow checking account and get the money?
+Q17_ungrounded | status: answered | context: [] | cited: []
+    We are so sorry for your loss. To close your father&#x27;s checking account and transfer the funds, please contact our customer support team or visit a local branch. You will need to provide a certified copy of the death certificate and official documentation showing you are the authorized executor or administrator of the estate.
+Q17_k3 | status: not_enough_information | context: [&#x27;KB18-2&#x27;, &#x27;KB18-1&#x27;, &#x27;KB26-1&#x27;] | cited: []
+    I do not have enough information to answer this. I will pass your question to a support specialist.</code></pre><p>The ungrounded answer gives procedures that the help center never mentions. The grounded answer <strong>abstains</strong>, although its pack held three on-topic passages.</p></aside>
+</section><section aria-labelledby="part-1c" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1c">Part 1C: Claim Audit, Failure Types and Escalation (Steps 1.13–1.17)</h2>
+<h3>1.13 Audit claims against their sources</h3>
+<p>There are four verdicts, judged against the current help center. <strong>supported</strong>: a current passage states it, or several current passages do together. <strong>contradicted</strong>: a current passage says otherwise; the newer effective date wins. <strong>unsupported</strong>: no passage states it, including an inference no passage states. <strong>not_a_claim</strong>: an apology, a bare referral, or a remark about the answer. For grounded answers, <code>citation_ok</code> asks whether the cited passage itself states the claim.</p>
+<section aria-label="Put each Q16_k3 claim next to its cited passage" class="code-step" data-cell="25">
+<pre aria-label="Put each Q16_k3 claim next to its cited passage (notebook cell 25)" tabindex="0"><code># Lookups from passage ID to its full text, its effective date and its status.
+passage_text = passages.set_index(&quot;passage_id&quot;)[&quot;text&quot;]
+passage_date = passages.set_index(&quot;passage_id&quot;)[&quot;effective_date&quot;]
+passage_status = passages.set_index(&quot;passage_id&quot;)[&quot;status&quot;]
+
+def claim_table(run_id):
+    &quot;&quot;&quot;Take a run ID; return one row per claim with its cited IDs, whether they were in the pack, and their full text, date and status.&quot;&quot;&quot;
+    row = answers[answers[&quot;run_id&quot;].eq(run_id)].iloc[0]
+    rows = []
+    # enumerate(..., 1) numbers the claims 1, 2, 3, ...
+    for i, claim in enumerate(row[&quot;claims&quot;], 1):
+        cited = claim.get(&quot;source_ids&quot;, [])
+        # Were all cited IDs in the context pack? Empty (None) when the claim cites nothing.
+        if cited:
+            cited_in_pack = True
+            for source_id in cited:
+                if source_id not in row[&quot;context_ids&quot;]:
+                    cited_in_pack = False
+        else:
+            cited_in_pack = None
+        # Each cited passage that exists in the help center: its date and status, and its full text.
+        cited_sources = []
+        cited_texts = []
+        for source_id in cited:
+            if source_id in passage_text:
+                cited_sources.append(f&quot;{source_id} (effective {passage_date[source_id]}, {passage_status[source_id]})&quot;)
+                cited_texts.append(passage_text[source_id])
+        rows.append({&quot;run_id&quot;: run_id, &quot;claim_no&quot;: i, &quot;claim&quot;: claim[&quot;claim&quot;], &quot;cited_ids&quot;: &quot;;&quot;.join(cited),
+                     &quot;cited_in_pack&quot;: cited_in_pack, &quot;cited_sources&quot;: &quot;; &quot;.join(cited_sources),
+                     &quot;cited_text&quot;: &quot; | &quot;.join(cited_texts)})
+    return pd.DataFrame(rows)
+
+def print_claims(table):
+    &quot;&quot;&quot;Take a claim table; print each claim with its cited passages in full.&quot;&quot;&quot;
+    for row in table.itertuples():
+        print(f&quot;claim {row.claim_no}: {row.claim}&quot;)
+        print(f&quot;   cited: {row.cited_sources} | in pack: {row.cited_in_pack}&quot;)
+        print(f&quot;   text: {row.cited_text}&quot;)
+
+print_claims(claim_table(&quot;Q16_k3&quot;))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.13" tabindex="0"><code>claim 1: We charge your escrow for lender-placed insurance if your policy is canceled or expires and we do not receive proof of new coverage after sending two letters.
+   cited: KB30-1 (effective 2026-01-20, current) | in pack: True
+   text: Your mortgage requires homeowners insurance at all times. If your policy is canceled or expires and we do not receive proof of new coverage, we send two letters, at least 45 days apart. If we still have no proof, we buy lender-placed insurance and charge its cost to your escrow account.
+claim 2: Lender-placed insurance protects only the lender&#x27;s interest and usually costs more than a policy you buy yourself.
+   cited: KB30-2 (effective 2026-01-20, current) | in pack: True
+   text: Lender-placed insurance usually costs more than a policy you buy yourself and protects only the lender&#x27;s interest. Send us proof of your own coverage, and we will cancel the lender-placed policy and refund any charge for days when you had your own coverage.
+claim 3: If you send us proof of your own coverage, we will cancel the lender-placed policy and refund any charge for days when you had your own coverage.
+   cited: KB30-2 (effective 2026-01-20, current) | in pack: True
+   text: Lender-placed insurance usually costs more than a policy you buy yourself and protects only the lender&#x27;s interest. Send us proof of your own coverage, and we will cancel the lender-placed policy and refund any charge for days when you had your own coverage.</code></pre><p>The cell prints every claim with its cited passage in full, with the passage's effective date and status. Every cited ID was in the pack. That code check cannot tell whether the passage really states the claim; reading the passage does.</p></aside>
+<section aria-label="Load the drafted claim verdicts and show two answers" class="code-step" data-cell="27">
+<pre aria-label="Load the drafted claim verdicts and show two answers (notebook cell 27)" tabindex="0"><code># keep_default_na=False keeps the blank verdicts (yours to judge) as empty text.
+audit = pd.read_csv(RAG / &quot;m12_claim_audit_draft.csv&quot;, keep_default_na=False)
+audit.loc[audit[&quot;run_id&quot;].isin([&quot;Q16_k3&quot;, &quot;Q17_ungrounded&quot;]), [&quot;run_id&quot;, &quot;claim_no&quot;, &quot;claim&quot;, &quot;verdict&quot;, &quot;citation_ok&quot;, &quot;note&quot;]]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Drafted verdicts for Q17_ungrounded and Q16_k3</caption><thead><tr><th scope="col">run_id</th><th scope="col">claim_no</th><th scope="col">verdict</th><th scope="col">citation_ok</th><th scope="col">note (start)</th></tr></thead><tbody><tr><td>Q17_ungrounded</td><td>1</td><td>unsupported</td><td></td><td>No article covers accounts of a customer who has died…</td></tr><tr><td>Q17_ungrounded</td><td>2</td><td>unsupported</td><td></td><td>No passage mentions a death certificate.</td></tr><tr><td>Q17_ungrounded</td><td>3</td><td>unsupported</td><td></td><td>No passage mentions executors or estates.</td></tr><tr><td>Q16_k3</td><td>1</td><td>supported</td><td>yes</td><td>Stated in the cited passage.</td></tr><tr><td>Q16_k3</td><td>2</td><td>supported</td><td>yes</td><td>Stated in the cited passage.</td></tr><tr><td>Q16_k3</td><td>3</td><td>supported</td><td>yes</td><td>Stated in the cited passage.</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>These are draft judgments. Read the passage and compare your reasoning with the <code>note</code> column, which gives each reason. A few rows are left blank for you in Practice.</p></aside>
+<h3>1.14 Case 3: retrieval failure or generation failure?</h3>
+<p>A <strong>retrieval failure</strong>: the passage that answers is not in the pack. A <strong>generation failure</strong>: the passage is in the pack, but the answer ignores it, adds an unsupported claim, or gives the wrong status.</p>
+<section aria-label="Find the rank of KB25-2 for Q12 and show the k = 3 answer" class="code-step" data-cell="29">
+<pre aria-label="Find the rank of KB25-2 for Q12 and show the k = 3 answer (notebook cell 29)" tabindex="0"><code>print(question_text[&quot;Q12&quot;])
+expected_q12 = questions.set_index(&quot;question_id&quot;).loc[&quot;Q12&quot;, &quot;expected_source_ids&quot;]
+for method in [&quot;dense&quot;, &quot;lexical&quot;]:
+    found = search(&quot;Q12&quot;, method)
+    top3 = found[&quot;passage_id&quot;].head(3).tolist()
+    # The rank of the expected passage, as a list (empty when it is not in the top 10).
+    expected_rank = found.loc[found[&quot;passage_id&quot;].eq(expected_q12), &quot;rank&quot;].tolist()
+    print(f&quot;{method:&gt;8} top 3: {top3} | rank of {expected_q12}:&quot;, expected_rank)
+show(&quot;Q12_k3&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.14" tabindex="0"><code>A collector from Fernhollow Recovery Services says I owe $2,300, but I do not recognize this debt. What can I do?
+   dense top 3: [&#x27;KB25-1&#x27;, &#x27;KB26-2&#x27;, &#x27;KB26-1&#x27;] | rank of KB25-2: [7]
+ lexical top 3: [&#x27;KB24-1&#x27;, &#x27;KB25-2&#x27;, &#x27;KB25-1&#x27;] | rank of KB25-2: [2]
+Q12_k3 | status: answered | context: [&#x27;KB25-1&#x27;, &#x27;KB26-2&#x27;, &#x27;KB26-1&#x27;] | cited: [&#x27;KB25-1&#x27;]
+    When Fernhollow Recovery Services first contacts you about a debt, we send a validation notice showing the amount owed, the original account number, the date of charge-off, and an itemized list of interest, fees, payments, and credits since then.</code></pre><p>KB25-2 (how to dispute the debt) was ranked 7th by dense search, so it was not in the pack. The answer never says how to dispute. This is a <strong>retrieval failure</strong>, and the status <code>answered</code> did not warn us.</p></aside>
+<h3>1.15 One top-k comparison</h3>
+<section aria-label="Compare the Q12 answers with 1, 3 and 8 passages" class="code-step" data-cell="31">
+<pre aria-label="Compare the Q12 answers with 1, 3 and 8 passages (notebook cell 31)" tabindex="0"><code># The Q12 answers of the three grounded conditions.
+is_q12 = answers[&quot;question_id&quot;].eq(&quot;Q12&quot;)
+is_grounded = answers[&quot;condition&quot;].isin([&quot;k1&quot;, &quot;k3&quot;, &quot;k8&quot;])
+q12 = answers[is_q12 &amp; is_grounded].copy()
+# For each context pack (a list of IDs): is the expected passage in it?
+in_pack = []
+for ids in q12[&quot;context_ids&quot;]:
+    in_pack.append(expected_q12 in ids)
+q12[&quot;expected_in_pack&quot;] = in_pack
+q12[[&quot;condition&quot;, &quot;context_ids&quot;, &quot;expected_in_pack&quot;, &quot;status&quot;, &quot;cited&quot;, &quot;input_tokens&quot;]]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Q12 in three conditions</caption><thead><tr><th scope="col">condition</th><th scope="col">expected_in_pack</th><th scope="col">status</th><th scope="col">cited</th><th scope="col">input_tokens</th></tr></thead><tbody><tr><td>k1</td><td>False</td><td>partly_answered</td><td>[KB25-1]</td><td>529</td></tr><tr><td>k3</td><td>False</td><td>answered</td><td>[KB25-1]</td><td>701</td></tr><tr><td>k8</td><td>True</td><td>answered</td><td>[KB25-2]</td><td>1148</td></tr></tbody></table></div>
+<section aria-label="Show the k = 8 answer" class="code-step" data-cell="32">
+<pre aria-label="Show the k = 8 answer (notebook cell 32)" tabindex="0"><code># The k = 8 answer to Q12: its pack now holds KB25-2.
+show(&quot;Q12_k8&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output" tabindex="0"><code>Q12_k8 | status: answered | context: [&#x27;KB25-1&#x27;, &#x27;KB26-2&#x27;, &#x27;KB26-1&#x27;, &#x27;KB24-1&#x27;, &#x27;KB22-1&#x27;, &#x27;KB01-1&#x27;, &#x27;KB25-2&#x27;, &#x27;KB27-1&#x27;] | cited: [&#x27;KB25-2&#x27;]
+    If you do not recognize a debt, you can send a written dispute within 30 days of receiving the validation notice. We will then stop collection on the disputed amount until we mail you proof of the debt. Disputes received later are still reviewed, but collection may continue during the review.</code></pre><p>With 8 passages, KB25-2 is in the pack and the answer explains the 30-day written dispute. The prompt is longer: 1,148 input tokens instead of 701.</p></aside>
+<h3>1.16 A first escalation rule</h3>
+<p>An <strong>escalation rule</strong> decides when an answer goes to a person. This first rule uses only what is known when the answer is made: the status, the citations and the context IDs.</p>
+<section aria-label="Define needs_escalation and apply it to the three cases" class="code-step" data-cell="34">
+<pre aria-label="Define needs_escalation and apply it to the three cases (notebook cell 34)" tabindex="0"><code>def needs_escalation(row):
+    &quot;&quot;&quot;Take one answer row; return True when the answer should go to a person.&quot;&quot;&quot;
+    if row[&quot;status&quot;] != &quot;answered&quot;:
+        return True  # the model says it cannot fully answer
+    if len(row[&quot;cited&quot;]) == 0:
+        return True  # no source for any claim
+    # For two sets, a &lt;= b means &quot;every item of a is also in b&quot;.
+    if not set(row[&quot;cited&quot;]) &lt;= set(row[&quot;context_ids&quot;]):
+        return True  # cites a passage it was not given
+    return False
+
+cases = answers[answers[&quot;run_id&quot;].isin([&quot;Q16_k3&quot;, &quot;Q17_k3&quot;, &quot;Q12_k3&quot;])].copy()
+# apply(..., axis=1) runs the function once for each row.
+cases[&quot;escalate&quot;] = cases.apply(needs_escalation, axis=1)
+cases[[&quot;run_id&quot;, &quot;status&quot;, &quot;cited&quot;, &quot;escalate&quot;]]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>First rule on three cases</caption><thead><tr><th scope="col">run_id</th><th scope="col">status</th><th scope="col">cited</th><th scope="col">escalate</th></tr></thead><tbody><tr><td>Q12_k3</td><td>answered</td><td>[KB25-1]</td><td>False</td></tr><tr><td>Q16_k3</td><td>answered</td><td>[KB30-1, KB30-2]</td><td>False</td></tr><tr><td>Q17_k3</td><td>not_enough_information</td><td>[]</td><td>True</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Q17 goes to a person and Q16 does not, as it should. Q12 slips through. You revise the rule in Exercise 3.</p></aside>
+<h3>1.17 Save your outputs</h3>
+<section aria-label="Save the pack, the case claims and the rule results" class="code-step" data-cell="36">
+<pre aria-label="Save the pack, the case claims and the rule results (notebook cell 36)" tabindex="0"><code># The Q16 pack with its settings, source IDs and scores, saved as JSON.
+pack_record = {&quot;question_id&quot;: &quot;Q16&quot;, &quot;question&quot;: question_text[&quot;Q16&quot;], &quot;retriever&quot;: &quot;dense, all-MiniLM-L6-v2&quot;, &quot;k&quot;: 3,
+               &quot;source_ids&quot;: found_q16[&quot;passage_id&quot;].tolist(), &quot;scores&quot;: found_q16[&quot;score&quot;].round(4).tolist(), &quot;context&quot;: pack_q16}
+(OUTPUT_DIR / &quot;context_pack_Q16.json&quot;).write_text(json.dumps(pack_record, indent=2))
+
+# The claim tables of four answers, stacked into one table.
+case_tables = []
+for run_id in [&quot;Q16_k3&quot;, &quot;Q16_ungrounded&quot;, &quot;Q17_ungrounded&quot;, &quot;Q12_k3&quot;]:
+    case_tables.append(claim_table(run_id))
+pd.concat(case_tables).to_csv(OUTPUT_DIR / &quot;case_claims.csv&quot;, index=False)
+cases[[&quot;run_id&quot;, &quot;status&quot;, &quot;escalate&quot;]].to_csv(OUTPUT_DIR / &quot;case_escalation.csv&quot;, index=False)
+print(&quot;saved in outputs/m12: context_pack_Q16.json, case_claims.csv, case_escalation.csv&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.17" tabindex="0"><code>saved in outputs/m12: context_pack_Q16.json, case_claims.csv, case_escalation.csv</code></pre><p>The cell names the three files it saved in <code>outputs/m12</code>. The data files are not changed.</p></aside>
+</section><section aria-labelledby="checkpoint" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="checkpoint">Checkpoint</h2>
+<div class="assignment-box"><h3>Complete independently</h3><p>Answer the two questions in the notebook in 2–3 sentences in total. This companion does not answer them.</p><ol><li>In Case 3 (Q12, k = 3), was the problem a retrieval failure or a generation failure? Use the pack IDs and the rank of the expected source.</li><li>The rule in step 1.16 did not escalate Q12_k3. Name one signal, available when the answer is made, that could have caught it.</li></ol><p><strong>What to check:</strong> your first answer names the pack IDs and a rank from step 1.14. Your second answer uses information a live system would have; the expected source IDs are not known when a real customer asks.</p></div>
+</section><section aria-labelledby="part-2" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-2">Part 2: Practice on 20 Support Questions (Steps 2.1–2.6)</h2>
+<p>Now you use all 20 questions and all four conditions. The questions are made up, but their themes come from the course complaint data.</p>
+<h3>2.1 Which questions matter most?</h3>
+<section aria-label="Count training complaints per question theme" class="code-step" data-cell="39">
+<pre aria-label="Count training complaints per question theme (notebook cell 39)" tabindex="0"><code>complaints = pd.read_csv(DATA / &quot;course/cfpb_complaints.csv&quot;)
+# Number of train complaints for each issue label.
+train_issues = complaints.loc[complaints[&quot;split&quot;].eq(&quot;train&quot;), &quot;issue&quot;].value_counts()
+themes = questions[[&quot;question_id&quot;, &quot;question_type&quot;, &quot;complaint_theme&quot;]].copy()
+# map looks up each theme in train_issues; a theme with no complaints gets NaN, which fillna(0) makes 0.
+themes[&quot;train_complaints&quot;] = themes[&quot;complaint_theme&quot;].map(train_issues).fillna(0).astype(int)
+themes.sort_values(&quot;train_complaints&quot;, ascending=False).head(8)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Top question themes by training complaints</caption><thead><tr><th scope="col">question_id</th><th scope="col">question_type</th><th scope="col">complaint_theme</th><th scope="col">train_complaints</th></tr></thead><tbody><tr><td>Q11</td><td>answerable</td><td>Incorrect information on your report</td><td>955</td></tr><tr><td>Q12</td><td>answerable</td><td>Attempts to collect debt not owed</td><td>530</td></tr><tr><td>Q07</td><td>answerable</td><td>Managing an account</td><td>513</td></tr><tr><td>Q08</td><td>answerable</td><td>Managing an account</td><td>513</td></tr><tr><td>Q09</td><td>partial</td><td>Managing an account</td><td>513</td></tr><tr><td>Q16</td><td>answerable</td><td>Trouble during payment process</td><td>348</td></tr><tr><td>Q15</td><td>answerable</td><td>Trouble during payment process</td><td>348</td></tr><tr><td>Q14</td><td>answerable</td><td>Trouble during payment process</td><td>348</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Q12, the retrieval failure from Part 1, matches the second most common theme. A miss there would affect many customers.</p></aside>
+<h3>2.2 Did retrieval find the expected sources?</h3>
+<p>This is <strong>recall at k</strong>: for one question, the share of its needed passages that appear in the top k. <code>all_found</code> counts questions with recall at k of 1, and <code>any_found</code> counts questions with recall above 0. Module 6 used precision at 5 (the share of the top 5 that is relevant) and reciprocal rank. For a context pack the question is whether the evidence got into the pack at all.</p>
+<section aria-label="Count questions with all or any expected sources in the top k" class="code-step" data-cell="41">
+<pre aria-label="Count questions with all or any expected sources in the top k (notebook cell 41)" tabindex="0"><code># The expected source IDs of each answerable question, as a list (questions without sources are skipped).
+expected = {}
+for qid, sources in zip(questions[&quot;question_id&quot;], questions[&quot;expected_source_ids&quot;]):
+    if sources:
+        expected[qid] = sources.split(&quot;;&quot;)
+
+def retrieval_check(method, k):
+    &quot;&quot;&quot;Take a method and k; return how many questions have all, or any, of their expected sources in the top k.&quot;&quot;&quot;
+    rows = []
+    for qid, sources in expected.items():
+        top = search(qid, method, k)[&quot;passage_id&quot;].tolist()
+        n_found = 0
+        for source_id in sources:
+            if source_id in top:
+                n_found += 1
+        rows.append({&quot;question_id&quot;: qid, &quot;found&quot;: n_found, &quot;needed&quot;: len(sources)})
+    results = pd.DataFrame(rows)
+    return {&quot;method&quot;: method, &quot;k&quot;: k,
+            &quot;all_found&quot;: int((results[&quot;found&quot;] == results[&quot;needed&quot;]).sum()),
+            &quot;any_found&quot;: int((results[&quot;found&quot;] &gt; 0).sum()),
+            &quot;questions&quot;: len(results)}
+
+checks = []
+for method, k in [(&quot;dense&quot;, 1), (&quot;dense&quot;, 3), (&quot;dense&quot;, 8), (&quot;lexical&quot;, 3)]:
+    checks.append(retrieval_check(method, k))
+pd.DataFrame(checks)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Retrieval check on 17 questions with expected sources</caption><thead><tr><th scope="col">method</th><th scope="col">k</th><th scope="col">all_found</th><th scope="col">any_found</th><th scope="col">questions</th></tr></thead><tbody><tr><td>dense</td><td>1</td><td>8</td><td>11</td><td>17</td></tr><tr><td>dense</td><td>3</td><td>12</td><td>16</td><td>17</td></tr><tr><td>dense</td><td>8</td><td>14</td><td>17</td><td>17</td></tr><tr><td>lexical</td><td>3</td><td>11</td><td>14</td><td>17</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>More passages find more expected sources. At k = 3, dense and lexical search are close.</p></aside>
+<h3>2.3 What did each condition answer?</h3>
+<section aria-label="Count the status of each answer" class="code-step" data-cell="43">
+<pre aria-label="Count the status of each answer (notebook cell 43)" tabindex="0"><code>print(pd.crosstab(answers[&quot;condition&quot;], answers[&quot;status&quot;]))
+unanswerable = questions.loc[questions[&quot;question_type&quot;].eq(&quot;unanswerable&quot;), &quot;question_id&quot;]
+# pivot: one row per question, one column per condition, the status in the cells.
+answers[answers[&quot;question_id&quot;].isin(unanswerable)].pivot(index=&quot;question_id&quot;, columns=&quot;condition&quot;, values=&quot;status&quot;)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Unanswerable questions</caption><thead><tr><th scope="col">question_id</th><th scope="col">k1</th><th scope="col">k3</th><th scope="col">k8</th><th scope="col">ungrounded</th></tr></thead><tbody><tr><td>Q17</td><td>not_enough_information</td><td>not_enough_information</td><td>not_enough_information</td><td>answered</td></tr><tr><td>Q18</td><td>not_enough_information</td><td>not_enough_information</td><td>not_enough_information</td><td>not_enough_information</td></tr><tr><td>Q19</td><td>not_enough_information</td><td>not_enough_information</td><td>not_enough_information</td><td>answered</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.3" tabindex="0"><code>status      answered  not_enough_information  partly_answered
+condition
+k1                10                       8                2
+k3                14                       3                3
+k8                14                       3                3
+ungrounded         8                      12                0</code></pre><p>The ungrounded model declined most often, yet it answered two of the three unanswerable questions. The grounded model abstained on exactly those three at k = 3 and k = 8.</p></aside>
+<h3>2.4 Drafted claim verdicts by condition</h3>
+<section aria-label="Count verdicts by condition" class="code-step" data-cell="45">
+<pre aria-label="Count verdicts by condition (notebook cell 45)" tabindex="0"><code># The empty verdicts (the rows for you to judge) become &quot;to_judge&quot;.
+verdicts = audit[&quot;verdict&quot;].replace(&quot;&quot;, &quot;to_judge&quot;)
+pd.crosstab(audit[&quot;condition&quot;], verdicts)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.4" tabindex="0"><code>verdict     contradicted  not_a_claim  supported  to_judge  unsupported
+condition
+k1                     0            0         28         0            0
+k3                     1            0         38         3            0
+k8                     1            1         42         0            0
+ungrounded             1           23          7         7           10</code></pre><p><code>to_judge</code> marks the 10 claims you judge in Exercise 2. Among judged claims, unsupported claims appear only in the ungrounded answers.</p></aside>
+<h3>2.5 Retrieval failure or generation failure, for every k = 3 answer</h3>
+<section aria-label="Diagnose each k = 3 answer" class="code-step" data-cell="47">
+<pre aria-label="Diagnose each k = 3 answer (notebook cell 47)" tabindex="0"><code># For each run ID, the list of its unsupported or contradicted verdicts.
+bad_claims = audit[audit[&quot;verdict&quot;].isin([&quot;unsupported&quot;, &quot;contradicted&quot;])]
+bad = bad_claims.groupby(&quot;run_id&quot;)[&quot;verdict&quot;].apply(list)
+# Runs that still have claims without a verdict (yours to judge in Exercise 2).
+unjudged = audit.loc[audit[&quot;verdict&quot;].eq(&quot;&quot;), &quot;run_id&quot;].unique().tolist()
+# Runs whose contradicted claim I checked by reading: it repeats an older passage from the pack
+# (KB03-1, 2021: 60 days) that a newer current passage (KB01-2, 2026: 120 days) replaces.
+STALE_CHECKED = [&quot;Q01_k3&quot;, &quot;Q01_k8&quot;]
+
+def diagnose(row):
+    &quot;&quot;&quot;Take one answer row; return its diagnosis: the first rule in the list above that applies.&quot;&quot;&quot;
+    sources = expected.get(row[&quot;question_id&quot;], [])  # an empty list for an unanswerable question
+    # How many expected sources are in the context pack.
+    in_pack = 0
+    for source_id in sources:
+        if source_id in row[&quot;context_ids&quot;]:
+            in_pack += 1
+    problems = bad.get(row[&quot;run_id&quot;], [])
+    if not sources:
+        if row[&quot;status&quot;] == &quot;not_enough_information&quot;:
+            return &quot;correct abstention&quot;
+        return &quot;should abstain&quot;
+    if in_pack == 0:
+        return &quot;retrieval failure&quot;
+    if &quot;contradicted&quot; in problems and row[&quot;run_id&quot;] in STALE_CHECKED:
+        return &quot;stale source&quot;
+    if problems or (row[&quot;status&quot;] == &quot;not_enough_information&quot; and in_pack == len(sources)):
+        return &quot;generation failure&quot;
+    if in_pack &lt; len(sources):
+        return &quot;partial retrieval&quot;
+    return &quot;ok&quot;
+
+k3 = answers[answers[&quot;condition&quot;].eq(&quot;k3&quot;)].copy()
+k3[&quot;diagnosis&quot;] = k3.apply(diagnose, axis=1)
+print(k3[&quot;diagnosis&quot;].value_counts().to_string())
+# A diagnosis can change once the missing verdicts are filled in.
+k3_unjudged = []
+for run_id in k3[&quot;run_id&quot;]:
+    if run_id in unjudged:
+        k3_unjudged.append(run_id)
+print(&quot;audit incomplete (claims still to judge):&quot;, k3_unjudged)
+# ~ means &quot;not&quot;: show the answers whose diagnosis is neither ok nor a correct abstention.
+k3.loc[~k3[&quot;diagnosis&quot;].isin([&quot;ok&quot;, &quot;correct abstention&quot;]), [&quot;question_id&quot;, &quot;status&quot;, &quot;context_ids&quot;, &quot;cited&quot;, &quot;diagnosis&quot;]]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>k = 3 answers that are not ok or correct abstentions</caption><thead><tr><th scope="col">question_id</th><th scope="col">status</th><th scope="col">context_ids</th><th scope="col">cited</th><th scope="col">diagnosis</th></tr></thead><tbody><tr><td>Q01</td><td>partly_answered</td><td>[KB01-2, KB03-1, KB01-1]</td><td>[KB01-2, KB03-1]</td><td>stale source</td></tr><tr><td>Q02</td><td>answered</td><td>[KB02-1, KB05-2, KB02-2]</td><td>[KB05-2]</td><td>partial retrieval</td></tr><tr><td>Q04</td><td>answered</td><td>[KB08-1, KB08-2, KB07-2]</td><td>[KB07-2]</td><td>partial retrieval</td></tr><tr><td>Q09</td><td>partly_answered</td><td>[KB16-2, KB17-1, KB16-1]</td><td>[KB17-1]</td><td>partial retrieval</td></tr><tr><td>Q12</td><td>answered</td><td>[KB25-1, KB26-2, KB26-1]</td><td>[KB25-1]</td><td>retrieval failure</td></tr><tr><td>Q14</td><td>partly_answered</td><td>[KB29-1, KB31-1, KB29-2]</td><td>[KB29-1]</td><td>partial retrieval</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.5" tabindex="0"><code>diagnosis
+ok                    11
+partial retrieval      4
+correct abstention     3
+stale source           1
+retrieval failure      1
+audit incomplete (claims still to judge): [&#x27;Q04_k3&#x27;]</code></pre><p>No k = 3 answer is a generation failure by this definition. Stale source needs a person's check, listed in <code>STALE_CHECKED</code>: Q01 flagged the conflict but repeated the 60 days from the outdated Q&amp;A page (KB03-1, 2021), which KB01-2 (2026) replaced. A contradiction alone does not show a stale source, because a model can also invent a number. The line <code>audit incomplete</code> lists answers with claims still to judge: Q04_k3 until you finish Exercise 2. Then rerun steps 2.4 to 2.6.</p></aside>
+<h3>2.6 The top-k ablation for all 20 questions</h3>
+<section aria-label="Diagnose k = 1, 3 and 8 and add the cost" class="code-step" data-cell="49">
+<pre aria-label="Diagnose k = 1, 3 and 8 and add the cost (notebook cell 49)" tabindex="0"><code>rows = []
+for condition in [&quot;k1&quot;, &quot;k3&quot;, &quot;k8&quot;]:
+    out = answers[answers[&quot;condition&quot;].eq(condition)].copy()
+    # Count the diagnoses in this condition, then add the median cost.
+    diagnosis_counts = out.apply(diagnose, axis=1).value_counts()
+    row = {&quot;condition&quot;: condition}
+    row.update(diagnosis_counts.to_dict())
+    row[&quot;median_input_tokens&quot;] = int(out[&quot;input_tokens&quot;].median())
+    row[&quot;median_latency_ms&quot;] = int(out[&quot;latency_ms&quot;].median())
+    rows.append(row)
+cols = [&quot;ok&quot;, &quot;partial retrieval&quot;, &quot;retrieval failure&quot;, &quot;stale source&quot;, &quot;generation failure&quot;, &quot;correct abstention&quot;, &quot;should abstain&quot;, &quot;median_input_tokens&quot;, &quot;median_latency_ms&quot;]
+# reindex puts the columns in this order and adds a missing one as NaN; fillna(0) makes it 0.
+pd.DataFrame(rows).set_index(&quot;condition&quot;).reindex(columns=cols).fillna(0).astype(int)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Diagnosis and cost by number of passages</caption><thead><tr><th scope="col">condition</th><th scope="col">ok</th><th scope="col">partial retrieval</th><th scope="col">retrieval failure</th><th scope="col">stale source</th><th scope="col">generation failure</th><th scope="col">correct abstention</th><th scope="col">should abstain</th><th scope="col">median_input_tokens</th><th scope="col">median_latency_ms</th></tr></thead><tbody><tr><td>k1</td><td>8</td><td>3</td><td>6</td><td>0</td><td>0</td><td>3</td><td>0</td><td>517</td><td>1009</td></tr><tr><td>k3</td><td>11</td><td>4</td><td>1</td><td>1</td><td>0</td><td>3</td><td>0</td><td>692</td><td>1164</td></tr><tr><td>k8</td><td>13</td><td>3</td><td>0</td><td>1</td><td>0</td><td>3</td><td>0</td><td>1121</td><td>1149</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>More passages removed retrieval failures in this run. The median prompt grew from 517 to 1,121 input tokens; the time per call stayed just over one second.</p></aside>
+</section><section aria-labelledby="exercises" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="exercises">Practice Exercises and Interpretation</h2>
+<div class="assignment-box"><h3>Complete independently</h3><p>The exercises are intentionally not solved in this companion. Use the exact instructions in the notebook. Each exercise cell starts with <code># Exercise N: your code here</code>.</p><h3>Exercise 1: build and bound a context pack</h3><p>Build the k = 3 dense pack for Q05 and Q01, then a second pack that keeps only passages with <code>status == "current"</code>. Save both Q05 packs to <code>outputs/m12/context_pack_Q05.json</code> and report which IDs the filter removed.</p><p><strong>What to check:</strong> each pack has exactly 3 passages in rank order. Your Q05 plain pack matches <code>inputs_k3.loc["Q05", "context_ids"]</code>. Look at the dates in <code>articles</code> before you answer the Q01 question.</p><h3>Exercise 2: audit claims, grounded and ungrounded</h3><p>Judge the 10 claims marked <code>student</code> (Q04_k3, Q04_ungrounded, Q15_ungrounded), add <code>citation_ok</code> for Q04_k3, recount verdicts for <code>k3</code> and <code>ungrounded</code>, and save <code>outputs/m12/claim_audit.csv</code>. Then rerun steps 2.4 to 2.6, so the diagnoses use your verdicts.</p><p><strong>What to check:</strong> every verdict is one of the four words in step 1.13. The notebook shows how to fill them in: a dictionary from <code>(run_id, claim_no)</code> to a verdict, a True/False mask on those two columns, and <code>audit.loc[mask, "verdict"]</code>. Your table still has 162 rows. After the rerun, step 2.5 no longer lists Q04_k3 as incomplete. Judge the ungrounded claims against the whole help center, not against a pack. There is no <code>partly supported</code> verdict. If a claim drops a condition or overstates a passage, ask whether it would mislead a customer as written. Choose the closest verdict and give your reason in a comment. Reasoned alternatives are accepted.</p><h3>Exercise 3: revise the escalation rule</h3><p>Write <code>needs_escalation_v2(row)</code> using only signals known when the answer is made. Then:</p><ol><li>Apply both rules to the 20 k = 3 answers.</li><li>Make a table with <code>question_id</code>, <code>diagnosis</code> (from step 2.5), <code>rule_v1</code> and <code>rule_v2</code>.</li><li>For each rule, count how many answers it escalates. Also count how many answers with a diagnosis other than <code>ok</code> it lets through.</li><li>Save the table as <code>outputs/m12/escalation_k3.csv</code>.</li></ol><p><p>You design and check the rule on the same 20 answers, so its counts are optimistic. A fair check needs new questions the rule has not seen (Module 9: choose on validation, test once).</p><p><strong>What to check:</strong> the first rule escalates 6 of 20 and lets 3 problem answers through. A problem answer has any diagnosis from step 2.5 except <code>ok</code> and <code>correct abstention</code>. The first rule leaves no correct abstention unescalated. Report these numbers for your rule, and how many ok answers it sends to a person. Do not use <code>expected_source_ids</code> inside the rule.</p></div>
+<h3>Practice interpretation</h3>
+<p>Write 3–5 sentences that use your own outputs. Answer the three questions in the notebook:</p>
+<ul><li>Using steps 2.3 and 2.4 and Exercise 2, how did grounding change the answers? Give counts of unsupported or contradicted claims for <code>ungrounded</code> and <code>k3</code>.</li><li>Using steps 2.2, 2.5 and 2.6, were the remaining k = 3 problems mostly retrieval failures or generation failures? What did k = 1 and k = 8 change, and at what token cost?</li><li>State your escalation rule from Exercise 3 in one or two plain sentences. How many answers does it send to a person, and which problem does it still miss? Why might it do worse on new questions?</li></ul>
+</section><section aria-labelledby="submit" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="submit">Submit</h2>
+<ol><li>Run the whole notebook from the top (<strong>Restart</strong>, then <strong>Run All</strong>) and confirm there are no errors.</li><li>Check that every <strong>Your answer</strong> cell is filled.</li><li>Add the one-line AI-use note in the Submit cell if you used an AI tool, including for the optional trial in step 1.10.</li><li>Save the notebook, so the outputs are saved in the file.</li><li>In GitHub Desktop, write a short summary such as "Lab 12 complete", click <strong>Commit to main</strong>, then <strong>Push origin</strong>.</li><li>Push before the deadline. You upload nothing to Canvas: the instructor grades the saved notebook, with its outputs, in your repository as it is at the deadline.</li></ol>
+<p>Lab notebook 12 is graded with the course Lab Notebook rubric in Canvas (the same rubric for every lab).</p>
+</section><section aria-labelledby="challenge" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="challenge">Part 3 Challenge (Optional)</h2>
+<p>These parts are optional. Do them after the required work.</p>
+<h3>A. Hybrid retrieval for the context pack</h3>
+<section aria-label="Optional: Your own reciprocal rank fusion packs" class="code-step" data-cell="59">
+<pre aria-label="Optional: Your own reciprocal rank fusion packs (notebook cell 59)" tabindex="0"><code># Challenge A: your code here
+# TODO: for each question, combine the dense and lexical top lists with RRF: 1 / (60 + rank) from each list.
+# TODO: take the hybrid top 3 and repeat the all_found and any_found counts of step 2.2.</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Combine the dense and lexical lists with <code>1 / (60 + rank)</code>, as in Module 6, and repeat the counts from step 2.2. Check whether KB25-2 enters the Q12 pack. There are no cached answers for hybrid packs.</p></aside>
+<h3>B. A quick automatic support check</h3>
+<section aria-label="Optional: TF-IDF cosine between each claim and its cited passage" class="code-step" data-cell="61">
+<pre aria-label="Optional: TF-IDF cosine between each claim and its cited passage (notebook cell 61)" tabindex="0"><code># Challenge B: your code here
+# TODO: for each grounded claim with a drafted verdict, compute the TF-IDF cosine between the claim and its cited passage.
+# TODO: compare the scores of supported and contradicted claims.</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Compare the scores of supported and contradicted claims. Think about what a word-overlap score cannot see, such as a stale date or a changed number.</p></aside>
+<h3>C. Beyond one help center</h3>
+<p>A design exercise with no code: pick agents, knowledge graphs, long-document pipelines or GraphRAG, and describe the new failure type it adds and how you would audit it.</p>
+</section><section aria-labelledby="problems" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="problems">Common Problems</h2>
+<p>If a cell fails, read the last line of the error message first. Then find it below.</p>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>FileNotFoundError: data/rag/… or data/llm_outputs/m12_…</h3><p>This file has been in your repository since Week 1, so it was moved or deleted. Open the notebook from the <code>notebooks</code> folder of your repository. If GitHub Desktop lists the file under <strong>Changes</strong>, right-click it and choose <strong>Discard changes</strong>. Otherwise download it again from the course template on GitHub and put it back in the same folder.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>ModuleNotFoundError: No module named 'sklearn'</h3><p>The kernel is wrong. Choose the <strong>ban6403</strong> kernel and run from the top.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Step 1.7 prints “same as the cached input: False”</h3><p>You changed <code>search</code> or <code>pack_text</code>. Restore them from the notebook text. The pack must follow the exact format, including the line breaks.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>KeyError: 'Q05' or a question ID</h3><p>Question IDs are text with a capital Q and two digits, for example <code>"Q05"</code>.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>NameError: name 'k3' is not defined</h3><p>Run step 2.5 before the exercises. If you restarted the kernel, run the notebook from the top.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>My numbers differ from this page</h3><p>Check that you did not change the helpers. Restart the kernel and run from the top. The vectors and caches give the same results on every computer; scores may differ in the last decimal place.</p></aside>
+<p>Still stuck? Post the error message and the cell number in the course Q&amp;A discussion. Do not post your full answers.</p>
+</section><section aria-labelledby="wrap-up" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="wrap-up">Lab Wrap-Up</h2>
+<p>In this lab you followed one pattern from question to decision:</p>
+<ul class="inline-code-list"><li><strong>Retrieve:</strong> search the help center and build a bounded context pack with stable source IDs.</li><li><strong>Compare:</strong> read the same question with and without context.</li><li><strong>Audit:</strong> check each claim and citation against the passages; watch for stale sources.</li><li><strong>Decide:</strong> separate retrieval failures from generation failures, and escalate answers without enough evidence.</li></ul>
+<p>Module 13 evaluates an LLM workflow on held-out cases and asks what evidence would justify using it in a business process.</p>
+</section>
+<section aria-labelledby="source-note" class="footer-note"><p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="source-note">Notebook and accessibility note</h2><p>The current Module 12 notebook is authoritative for Python code, sequence, prompts and required work. This companion adds explanation and accessible presentation without changing those requirements. Expected results come from running the notebook on the current course data.</p><p>The page is designed for keyboard navigation, screen readers, browser text-to-speech and ordinary visual reading. Important instructional information is presented as text rather than depending on a visual demonstration.</p></section>
+</main><script>
+(function() {
+  const synth = window.speechSynthesis;
+  const speakBtn = document.getElementById('speak');
+  const pauseBtn = document.getElementById('pause');
+  const resumeBtn = document.getElementById('resume');
+  const stopBtn = document.getElementById('stop');
+  const rate = document.getElementById('speech-rate');
+  const rateValue = document.getElementById('rate-value');
+  const mode = document.getElementById('reading-mode');
+  const voiceSelect = document.getElementById('voice-select');
+  const sectionSelect = document.getElementById('section-select');
+  const jumpSection = document.getElementById('jump-section');
+  const readSection = document.getElementById('read-section');
+  const status = document.getElementById('speech-status');
+  const stickyControls = document.getElementById('sticky-audio-controls');
+  const stickyPause = document.getElementById('sticky-pause');
+  const stickyResume = document.getElementById('sticky-resume');
+  const stickyStop = document.getElementById('sticky-stop');
+  const stickyStatus = document.getElementById('sticky-speech-status');
+  let chunks = [], index = 0, stopped = true, voices = [];
+  function setStatus(t){ status.innerHTML='<small>'+t+'</small>'; if(stickyStatus) stickyStatus.textContent=t; }
+  function populateVoices(){ if(!synth)return; voices=synth.getVoices(); const cur=voiceSelect.value; voiceSelect.innerHTML='<option value="">Browser default</option>'; voices.forEach((v,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=v.name+' ('+v.lang+')';voiceSelect.appendChild(o);}); if([...voiceSelect.options].some(o=>o.value===cur))voiceSelect.value=cur; }
+  function codeToSpeech(text){ return text
+    .replace(/\\/g,' backslash ').replace(/_/g,' underscore ')
+    .replace(/==/g,' equals equals ').replace(/!=/g,' not equals ').replace(/>=/g,' greater than or equal to ').replace(/<=/g,' less than or equal to ')
+    .replace(/&/g,' and ').replace(/\|/g,' or ').replace(/>/g,' greater than ').replace(/</g,' less than ').replace(/=/g,' equals ')
+    .replace(/\(/g,' open parenthesis ').replace(/\)/g,' close parenthesis ').replace(/\[/g,' open bracket ').replace(/\]/g,' close bracket ').replace(/\{/g,' open brace ').replace(/\}/g,' close brace ')
+    .replace(/\./g,' dot ').replace(/,/g,' comma ').replace(/:/g,' colon ').replace(/;/g,' semicolon ').replace(/\+/g,' plus ').replace(/-/g,' minus ').replace(/\*/g,' star ').replace(/\//g,' slash ').replace(/%/g,' percent ')
+    .replace(/"/g,' quote ').replace(/'/g,' single quote ').replace(/\s+/g,' ').trim(); }
+  function tableToSpeech(table){ const cap=table.querySelector('caption'); const rows=[...table.querySelectorAll('tr')]; const out=[]; if(cap)out.push(cap.innerText.trim()+'.'); rows.forEach((row,r)=>{const cells=[...row.querySelectorAll('th,td')].map(c=>c.innerText.trim()); if(!cells.length)return; if(r===0)out.push('Columns: '+cells.join(', ')+'.'); else out.push('Row '+r+': '+cells.join(', ')+'.');}); return out.join(' '); }
+  function buildChunks(startElement){ const includeCode=mode.value==='full'; const main=document.getElementById('main-content'); const items=[]; let started=!startElement; main.querySelectorAll('h2,h3,h4,p,li,table,pre').forEach(el=>{ if(!started){if(el===startElement)started=true;else return;} if(el.closest('.listen-panel')||el.closest('nav')||el.closest('.controls')||el.closest('.section-read-controls')||el.closest('.back-to-contents'))return; if(el.closest('details:not([open])'))return; if(el.matches('pre')){if(!includeCode)return; const c=el.innerText.trim(); if(c)items.push({text:'Python code. '+codeToSpeech(c),el}); return;} if(el.matches('table')){const t=tableToSpeech(el);if(t)items.push({text:t,el});return;} const t=el.innerText.replace(/\s+/g,' ').trim(); if(t)items.push({text:t,el}); }); return items; }
+  function speakNext(){ if(!synth||stopped)return; if(index>=chunks.length){stopped=true;setStatus('Finished reading the companion.');if(stickyControls) stickyControls.hidden=true;return;} const cur=chunks[index]; const u=new SpeechSynthesisUtterance(cur.text);u.rate=parseFloat(rate.value); if(voiceSelect.value!==''&&voices[Number(voiceSelect.value)])u.voice=voices[Number(voiceSelect.value)];u.onstart=()=>setStatus('Reading item '+(index+1)+' of '+chunks.length+' at '+rate.value+'×.');u.onend=()=>{index++;speakNext();};u.onerror=e=>{if(e.error!=='canceled'&&e.error!=='interrupted'){setStatus('Speech stopped because the browser reported: '+e.error+'.');stopped=true;}}; synth.speak(u); }
+  function startReading(el,label){if(!synth){setStatus('This browser does not provide the Web Speech API.');return;}synth.cancel();chunks=buildChunks(el||null);index=0;stopped=false;if(stickyControls) stickyControls.hidden=false;setStatus(label?'Starting from '+label+'.':'Starting from the beginning.');setTimeout(speakNext,50);}
+  function setupSections(){ const hs=[...document.querySelectorAll('#main-content h2[id]')].filter(h=>!h.closest('.listen-panel')&&!h.closest('nav')); hs.forEach(h=>{const sectionName=h.innerText.trim();const o=document.createElement('option');o.value=h.id;o.textContent=sectionName;sectionSelect.appendChild(o);const d=document.createElement('div');d.className='section-read-controls';d.setAttribute('aria-label','Read-aloud controls for '+sectionName);const b=document.createElement('button');b.type='button';b.className='speak-section';b.textContent='Read Aloud from This Section';b.setAttribute('aria-label','Read aloud from this section: '+sectionName);b.addEventListener('click',()=>startReading(h,sectionName));const hint=document.createElement('span');hint.className='read-hint';hint.textContent='Reads continuously from this section to the end.';d.appendChild(b);d.appendChild(hint);h.insertAdjacentElement('afterend',d);}); }
+  speakBtn.addEventListener('click',()=>startReading(null,'the beginning'));
+  function pauseReading(){if(synth&&synth.speaking&&!synth.paused){synth.pause();setStatus('Paused.');}}
+  function resumeReading(){if(synth&&synth.paused){synth.resume();setStatus('Resumed. Speed changes apply to the next reading item.');}}
+  function stopReading(){stopped=true;if(synth)synth.cancel();setStatus('Stopped.');if(stickyControls) stickyControls.hidden=true;}
+  pauseBtn.addEventListener('click',pauseReading);
+  resumeBtn.addEventListener('click',resumeReading);
+  stopBtn.addEventListener('click',stopReading);
+  if(stickyPause) stickyPause.addEventListener('click',pauseReading);
+  if(stickyResume) stickyResume.addEventListener('click',resumeReading);
+  if(stickyStop) stickyStop.addEventListener('click',stopReading);
+  rate.addEventListener('input',()=>{rateValue.textContent=Number(rate.value).toFixed(1)+'×';if(synth&&synth.speaking)setStatus('Speed set to '+rateValue.textContent+'. It will apply to the next reading item.');});
+  mode.addEventListener('change',()=>setStatus(mode.value==='full'?'Full mode selected. Python code will be read aloud.':'Study mode selected. Exact Python code will be skipped.'));
+  jumpSection.addEventListener('click',()=>{const h=document.getElementById(sectionSelect.value);if(h){h.scrollIntoView({behavior:'smooth',block:'start'});h.setAttribute('tabindex','-1');h.focus();}});
+  readSection.addEventListener('click',()=>{const h=document.getElementById(sectionSelect.value);if(h)startReading(h,h.innerText.trim());});
+  setupSections(); populateVoices(); if(synth&&'onvoiceschanged' in synth)synth.onvoiceschanged=populateVoices;
+})();
+</script></body></html>

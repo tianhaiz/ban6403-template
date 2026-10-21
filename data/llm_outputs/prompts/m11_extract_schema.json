@@ -1,0 +1,17 @@
+{
+  "type": "OBJECT",
+  "properties": {
+    "disputed_amount": {"type": "NUMBER", "nullable": true},
+    "amount_evidence": {"type": "STRING"},
+    "requested_remedy": {
+      "type": "STRING",
+      "enum": ["refund", "correct_report", "stop_or_validate_debt", "account_action", "review_or_explain", "other", "not_stated"]
+    },
+    "remedy_evidence": {"type": "STRING"},
+    "time_reference": {"type": "STRING", "nullable": true},
+    "contacted_company": {"type": "STRING", "enum": ["yes", "no", "not_stated"]},
+    "contact_evidence": {"type": "STRING"}
+  },
+  "required": ["disputed_amount", "amount_evidence", "requested_remedy", "remedy_evidence", "time_reference", "contacted_company", "contact_evidence"],
+  "propertyOrdering": ["disputed_amount", "amount_evidence", "requested_remedy", "remedy_evidence", "time_reference", "contacted_company", "contact_evidence"]
+}

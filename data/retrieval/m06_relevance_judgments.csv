@@ -1,0 +1,214 @@
+query_id,doc_id,relevant,judged_by,note
+TQ01,FB001,0,course draft,Different topic
+TQ01,FB002,0,course draft,Different topic
+TQ01,FB003,1,course draft,Product stopped working; asks for a refund
+TQ01,FB004,0,course draft,Different topic
+TQ01,FB005,0,course draft,"Refund arrived, but no product failure is mentioned"
+TQ01,FB006,0,course draft,Different topic
+TQ01,FB007,0,course draft,Different topic
+TQ01,FB008,0,course draft,Different topic
+TQ01,FB009,0,course draft,Different topic
+TQ01,FB010,0,course draft,Different topic
+TQ01,FB011,1,course draft,Thanks for a replacement; it works now
+TQ01,FB012,0,course draft,Different topic
+TQ01,FB013,0,course draft,Different topic
+TQ01,FB014,0,course draft,Different topic
+TQ01,FB015,0,course draft,Different topic
+TQ01,FB016,1,course draft,Old unit failed; new unit works
+TQ01,FB017,0,course draft,Asks about returning an unopened product; nothing failed
+TQ01,FB018,0,course draft,Different topic
+TQ01,FB019,0,course draft,Different topic
+TQ01,FB020,0,course draft,"Refund arrived, but no product failure is mentioned"
+TQ01,FB021,0,course draft,Different topic
+TQ01,FB023,0,course draft,Different topic
+TQ01,FB024,0,course draft,Different topic
+TQ02,FB001,1,course draft,Charger is missing
+TQ02,FB002,0,course draft,Different topic
+TQ02,FB003,0,course draft,Different topic
+TQ02,FB004,0,course draft,Different topic
+TQ02,FB005,0,course draft,Different topic
+TQ02,FB006,0,course draft,Different topic
+TQ02,FB007,0,course draft,Different topic
+TQ02,FB008,0,course draft,Different topic
+TQ02,FB009,0,course draft,Different topic
+TQ02,FB010,0,course draft,Different topic
+TQ02,FB011,0,course draft,Different topic
+TQ02,FB012,0,course draft,Different topic
+TQ02,FB013,0,course draft,Different topic
+TQ02,FB014,0,course draft,Different topic
+TQ02,FB015,0,course draft,Different topic
+TQ02,FB016,0,course draft,Different topic
+TQ02,FB017,0,course draft,Different topic
+TQ02,FB018,1,course draft,Asks for the missing charging cable
+TQ02,FB019,0,course draft,Different topic
+TQ02,FB020,0,course draft,Different topic
+TQ02,FB021,0,course draft,Different topic
+TQ02,FB023,0,course draft,Different topic
+TQ02,FB024,0,course draft,The cable has arrived; case closed
+TQ03,FB001,0,course draft,Different topic
+TQ03,FB002,0,course draft,Different topic
+TQ03,FB003,1,course draft,Headset stopped working
+TQ03,FB004,0,course draft,Different topic
+TQ03,FB005,0,course draft,Different topic
+TQ03,FB006,1,course draft,Tablet will not start
+TQ03,FB007,0,course draft,Different topic
+TQ03,FB008,0,course draft,Different topic
+TQ03,FB009,0,course draft,Different topic
+TQ03,FB010,0,course draft,Different topic
+TQ03,FB011,0,course draft,Different topic
+TQ03,FB012,0,course draft,Different topic
+TQ03,FB013,0,course draft,Different topic
+TQ03,FB014,0,course draft,Different topic
+TQ03,FB015,0,course draft,One side has no sound; the device does turn on
+TQ03,FB016,0,course draft,Problem solved: the new unit works
+TQ03,FB017,0,course draft,Different topic
+TQ03,FB018,0,course draft,Different topic
+TQ03,FB019,0,course draft,Different topic
+TQ03,FB020,0,course draft,Different topic
+TQ03,FB021,0,course draft,Problem solved: it starts now
+TQ03,FB023,0,course draft,Different topic
+TQ03,FB024,0,course draft,Different topic
+TQ04,FB001,0,course draft,Different topic
+TQ04,FB002,0,course draft,Delivery was late but has arrived; fixed
+TQ04,FB003,0,course draft,Different topic
+TQ04,FB004,0,course draft,Different topic
+TQ04,FB005,0,course draft,Different topic
+TQ04,FB006,0,course draft,Different topic
+TQ04,FB007,0,course draft,Different topic
+TQ04,FB008,0,course draft,Different topic
+TQ04,FB009,0,course draft,Different topic
+TQ04,FB010,0,course draft,Different topic
+TQ04,FB011,0,course draft,Different topic
+TQ04,FB012,0,course draft,Does not say what the customer is waiting for
+TQ04,FB013,0,course draft,Different topic
+TQ04,FB014,1,course draft,Package shows delivered but not received
+TQ04,FB015,0,course draft,Different topic
+TQ04,FB016,0,course draft,Different topic
+TQ04,FB017,0,course draft,Different topic
+TQ04,FB018,0,course draft,Different topic
+TQ04,FB019,0,course draft,Different topic
+TQ04,FB020,0,course draft,Different topic
+TQ04,FB021,0,course draft,Different topic
+TQ04,FB023,0,course draft,Different topic
+TQ04,FB024,0,course draft,Different topic
+CQ01,18087506,1,course draft,Bank closed the account; remaining balance not received
+CQ01,15007259,1,course draft,Money transfer company closed the account; remaining balance not refunded
+CQ01,15723079,1,course draft,Account closed; told the balance would not be returned
+CQ01,17389540,0,course draft,Credit card closed while the consumer still owed money; no funds held
+CQ01,16880511,1,course draft,Account closed; asks how to recover remaining funds
+CQ01,15539572,1,course draft,Account suspended; bank will not release the money
+CQ01,16860441,1,course draft,Bank closed the account and is withholding funds
+CQ01,18397494,1,course draft,Payment account deactivated; balance held
+CQ01,18272874,1,course draft,Account closed after review; remaining balance withheld
+CQ01,14601826,1,course draft,Account closed; funds withheld
+CQ01,17264055,1,course draft,Account closed; balance not returned
+CQ01,16316445,1,course draft,Account held and closed; paycheck money not returned
+CQ01,14387418,0,course draft,Consumer wants to close an account with a negative balance; no money held
+CQ01,15239880,1,course draft,Accounts closed; no funds received
+CQ01,15074746,0,course draft,Wants an app account reopened; no balance held
+CQ01,15756451,0,course draft,Money withdrawn after the consumer closed accounts; not a held balance
+CQ01,14943523,1,course draft,Account closed; money not paid out
+CQ01,15385624,1,course draft,Balance from closed account not returned
+CQ01,17360194,1,course draft,Account closed; promised balance check not received
+CQ01,17868980,1,course draft,Account scheduled for closure; consumer locked out of funds
+CQ01,15556776,0,course draft,Credit card payment holds; not a closed account with money held
+CQ02,14624220,0,course draft,Identity verification problem in an app; no scam
+CQ02,15720265,0,course draft,"Tricked by impostors into sending money, but the bank has not yet answered; no refusal stated"
+CQ02,16205754,0,course draft,"Merchant did not deliver goods; a purchase dispute, not a payment the consumer was tricked into"
+CQ02,17119752,0,course draft,App will not transfer the consumer's own money; no scam
+CQ02,15081928,1,course draft,Scammed into paying for a car; claim denied
+CQ02,16552085,0,course draft,"Borderline: coerced payment is mentioned, but the main point is the account closure after disputes"
+CQ02,15054098,1,course draft,Fake seller; dispute denied because payments are final
+CQ02,17856024,0,course draft,Mortgage payment problem; no scam
+CQ02,17413664,0,course draft,Payment to a closed account; no scam
+CQ02,18146847,0,course draft,App account closures; no scam
+CQ02,16527498,1,course draft,Paid a person who did not deliver; refund denied
+CQ02,17838933,0,course draft,Someone got into the account; the consumer did not send the money
+CQ02,16452803,1,course draft,Scammed out of money; app refused to return it
+CQ02,17622827,1,course draft,Fake support agent had the consumer send payments; not refunded
+CQ02,15917281,0,course draft,Check deposit reversal; no scam
+CQ02,15538722,0,course draft,"Scam payment, but the bank returned the money; no clear refusal"
+CQ02,15493933,0,course draft,Sent money to the wrong person by mistake; no scam
+CQ02,16697918,0,course draft,"Stolen phone; the thief sent the money, not the consumer"
+CQ02,14904289,0,course draft,Mistaken payment to the wrong user; no scam
+CQ02,15750708,0,course draft,Unauthorized card added to the account; the consumer did not send the money
+CQ02,16939881,0,course draft,Account restricted; no scam
+CQ02,17274544,0,course draft,Account frozen; no payment sent
+CQ02,15672155,0,course draft,Merchant account funds held; no scam
+CQ02,14455075,1,course draft,Phishing scam; bank refused to help
+CQ02,17808787,0,course draft,Sent money to the wrong person by mistake; no scam
+CQ02,16024694,1,course draft,Paid a mechanic who disappeared; app and bank would not refund
+CQ02,16260765,1,course draft,Scammer posing as a colleague; dispute dismissed
+CQ02,17113897,1,course draft,Fake check scam; transfers cannot be reversed
+CQ02,15746915,1,course draft,Paid a seller who never delivered and calls it a scam; the bank refused and the app cannot promise a refund
+CQ02,18335300,0,course draft,Money sent to an old account; no scam
+CQ02,15271152,0,course draft,Unauthorized subscription charge; no scam payment
+CQ02,17719330,0,course draft,Paid a credit-repair company for a service; not a payment sent to a scammer
+CQ03,17316935,1,course draft,Paid on time by phone; still charged a late fee
+CQ03,16113363,1,course draft,Payment made; billed as late and warned of a late fee
+CQ03,15067813,0,course draft,The late fee was already removed after a call; the complaint is about interest
+CQ03,16195188,,student,
+CQ03,14529598,0,course draft,Late payment on a credit report; no fee
+CQ03,15921307,0,course draft,Late payment on a credit report; no fee
+CQ03,18296868,0,course draft,Consumer could not pay on time; fee not disputed as on-time
+CQ03,16228836,,student,
+CQ03,15397025,0,course draft,Late payments on a credit report; no fee
+CQ03,16266485,0,course draft,Autopay was not set up; payments were late
+CQ03,15861895,,student,
+CQ03,15410235,1,course draft,Paid days early; posted late; late fee charged
+CQ03,15372854,0,course draft,Consumer expected to pay late
+CQ03,16309569,0,course draft,Late because no notice was received; not paid on time
+CQ03,16326997,0,course draft,Late fee while the payment amount was in dispute; no on-time payment
+CQ03,18389942,0,course draft,"Annual fee, not a late fee"
+CQ03,14896247,0,course draft,Admits a missed payment; disputes interest
+CQ03,18394478,1,course draft,Late fees despite timely payments; system delay
+CQ03,16110556,0,course draft,Late payment notations; no fee
+CQ03,15147291,0,course draft,Admits the payment was one day late
+CQ03,15291601,1,course draft,Late fees charged on the payment due date
+CQ03,18375883,1,course draft,Late fees although payment was made the day before
+CQ03,16060260,1,course draft,Court ruled no payment was missed; late fee charged
+CQ04,14994718,1,course draft,Escrow for taxes and insurance overstated; payment raised
+CQ04,16098899,,student,
+CQ04,16235575,1,course draft,Escrow imposed for insurance; higher payments demanded
+CQ04,17043940,1,course draft,Taxes and insurance rose; payment increased
+CQ04,16290584,,student,
+CQ04,15007786,0,course draft,Missing closing escrow deposit; no payment increase
+CQ04,15517679,0,course draft,Debt collection about taxes; not a mortgage
+CQ04,14952552,1,course draft,Forced insurance kept in escrow; inflated monthly payment
+CQ04,16131767,0,course draft,"Main point: the servicer did not pay insurance from escrow, not a payment increase"
+CQ04,16034502,1,course draft,Escrow created after a claimed insurance lapse; payment up
+CQ04,15814728,1,course draft,Tax error added to escrow; payment increased
+CQ04,14805569,1,course draft,Escrow shortage for taxes; payment increasing
+CQ04,15312422,1,course draft,Insurance premium overestimated in escrow
+CQ04,18079678,1,course draft,Wrong tax amounts; escrow shortage; payment increased
+CQ04,17905908,1,course draft,Wrong tax amount in escrow analysis; more owed
+CQ04,14737905,1,course draft,Escrow added for taxes; higher payment
+CQ04,16005953,1,course draft,Tax error created an escrow shortage; extra monthly charge
+CQ04,18282458,0,course draft,Escrow imposed and insurance unpaid; no payment increase described
+CQ04,18647252,1,course draft,Forced insurance inflated escrow and payment
+CQ04,18318330,0,course draft,Main point: the servicer did not pay taxes and insurance from escrow; increase is secondary
+CQ04,17218046,1,course draft,Tax underestimates caused escrow shortages; payment up
+CQ04,17017427,0,course draft,Insurance paid from escrow in error; refund issue
+CQ05,15614978,1,course draft,Fraudulent hard inquiry
+CQ05,15383070,1,course draft,Unauthorized hard inquiry
+CQ05,17456456,,student,
+CQ05,14575947,1,course draft,Unauthorized hard inquiry remains
+CQ05,15294948,1,course draft,Hard inquiry not authorized
+CQ05,14874948,1,course draft,Told it would be a soft pull; did not authorize a hard inquiry
+CQ05,15572471,1,course draft,Hard inquiry not approved
+CQ05,15331575,1,course draft,Did not give permission for inquiries
+CQ05,14807783,0,course draft,"Disputes an account, not an inquiry"
+CQ05,16396919,0,course draft,Credit denial complaint; the inquiry came from the consumer's own application
+CQ05,18329543,1,course draft,Disputes inquiries not authorized
+CQ05,15193334,1,course draft,Inquiries not authorized
+CQ05,15237468,1,course draft,Hard inquiries not authorized
+CQ05,15223582,1,course draft,Inquiries not authorized
+CQ05,14530315,1,course draft,No permission for the hard inquiry
+CQ05,14642136,1,course draft,Inquiry without consent
+CQ05,16199828,1,course draft,Disputes a hard inquiry; unsure if an account was opened
+CQ05,14561615,1,course draft,Lists unauthorized hard inquiries among other items
+CQ05,16966068,1,course draft,Did not authorize the inquiries
+CQ05,14674570,1,course draft,Inquiry not authorized
+CQ05,17641984,1,course draft,Unauthorized hard inquiries (first item of several)
+CQ05,14721134,1,course draft,Hard inquiries not authorized
+CQ05,16828963,1,course draft,Unauthorized hard inquiries

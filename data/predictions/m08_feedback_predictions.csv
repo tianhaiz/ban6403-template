@@ -1,0 +1,11 @@
+feedback_id,follow_up,baseline,predicted,p_yes,text
+FB013,no,no,yes,0.5287,"Good screen, but the battery lasts only two hours."
+FB014,yes,no,no,0.4823,"My package shows delivered, but I have not received it."
+FB015,yes,no,no,0.4644,The left side has no sound. Please send troubleshooting steps.
+FB016,no,no,no,0.4652,The old unit failed. The new unit works well.
+FB017,yes,no,yes,0.5358,Can I return the tablet after opening the box?
+FB018,yes,no,yes,0.5612,Great service. Please send the missing charging cable.
+FB019,no,no,yes,0.5146,"Comfortable for short calls, but not for a full workday."
+FB021,no,no,no,0.3981,I followed the reset steps and it starts now. Thanks.
+FB023,yes,no,no,0.4941,I need help with the microphone before a meeting tomorrow.
+FB024,no,no,no,0.4758,The cable arrived today. The case can be closed.

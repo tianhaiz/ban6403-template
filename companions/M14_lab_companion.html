@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Lab 14 Companion - BAN 6403</title><style>
+:root { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.62; }
+* { box-sizing: border-box; }
+body { margin:0; background:#fff; color:#111; }
+a { color:#0645ad; text-decoration-thickness:.12em; }
+a:focus, button:focus, summary:focus, pre:focus, .table-wrap:focus, select:focus, input:focus { outline:3px solid currentColor; outline-offset:3px; }
+.skip-link { position:absolute; left:-9999px; }
+.skip-link:focus { left:1rem; top:1rem; background:#fff; padding:.75rem; z-index:1000; border:2px solid #111; }
+header { border-bottom:2px solid #111; padding:1.5rem max(1rem, calc((100vw - 1060px)/2)); }
+header h1 { margin:0 0 .35rem; }
+.subtitle { margin:.2rem 0 0; font-size:1.08rem; }
+main { max-width:1060px; margin:0 auto; padding:1.5rem 1rem 4rem; }
+h2 { margin-top:2.6rem; padding-top:.55rem; border-top:1px solid #bbb; }
+h3 { margin-top:1.7rem; }
+.accessibility-summary, .toc, .note-box, .result-box, .try-box, .assignment-box, .summary-box, .listen-panel, .solution-box { border:1px solid #555; border-radius:.45rem; padding:1rem 1.1rem; margin:1.15rem 0; }
+.note-box { border-left:6px solid #1f4e79; background:#f4f8fc; position:relative; }
+.note-label { display:inline-block; font-size:.78rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; border:2px solid #1f4e79; border-radius:.25rem; padding:.22rem .45rem; margin:0 0 .55rem; background:#fff; }
+.note-box h3 { margin-top:.15rem; }
+.content-key { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:.8rem; margin:1rem 0; }
+.key-item { border:1px solid #777; border-radius:.4rem; padding:.8rem .9rem; }
+.key-label { font-weight:800; display:block; margin-bottom:.25rem; }
+.try-box { border-left:5px solid #111; }
+.result-box { background:#fafafa; }
+.solution-box summary { cursor:pointer; font-weight:700; }
+.solution-box[open] summary { margin-bottom:.8rem; }
+.controls { display:flex; gap:.6rem; flex-wrap:wrap; margin:1rem 0; }
+button { font:inherit; padding:.55rem .8rem; border:2px solid #111; background:#fff; border-radius:.3rem; cursor:pointer; }
+pre { overflow:auto; border:1px solid #777; padding:1rem; background:#f6f6f6; white-space:pre; }
+code { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.code-step { margin:1rem 0 1.55rem; }
+.code-purpose { margin-bottom:.4rem; }
+.table-wrap { overflow-x:auto; margin:.8rem 0; }
+table { border-collapse:collapse; width:100%; min-width:620px; }
+th, td { border:1px solid #666; padding:.5rem; text-align:left; vertical-align:top; }
+th { font-weight:700; }
+caption { font-weight:700; text-align:left; margin-bottom:.45rem; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.speech-options { display:grid; grid-template-columns:max-content minmax(180px,1fr); gap:.65rem .9rem; align-items:center; max-width:800px; }
+.speech-options select, .speech-options input[type="range"] { width:100%; font:inherit; }
+#speech-status { min-height:1.5em; }
+.section-read-controls { margin:.25rem 0 1rem; display:flex; align-items:center; gap:.5rem; }
+.section-read-controls button { font-size:.9rem; padding:.4rem .7rem; }
+.section-read-controls .read-hint { color:#555; font-size:.88rem; }
+.kicker { font-weight:700; }
+.muted { color:#555; }
+.footer-note { margin-top:3rem; border-top:2px solid #111; padding-top:1rem; }
+.inline-code-list li { margin:.25rem 0; }
+@media (max-width:700px) { table { min-width:760px; } .speech-options { grid-template-columns:1fr; } .section-read-controls { flex-direction:column; align-items:flex-start; } }
+@media print { .controls,.skip-link,.speak-section,.listen-panel,.jump-controls { display:none !important; } main { max-width:none; } a { color:inherit; text-decoration:none; } details { display:block; } details > * { display:block !important; } }
+
+.read-aloud-intro { border:2px solid #111; background:#fbfbfb; }
+.read-aloud-intro h3 { margin-top:.15rem; }
+.speak-section { font-weight:700; }
+.sticky-audio-controls { position:fixed; left:50%; bottom:1rem; transform:translateX(-50%); width:min(960px,calc(100vw - 2rem)); z-index:2000; background:#fff; border:3px solid #111; border-radius:.55rem; padding:.65rem .8rem; box-shadow:0 4px 20px rgba(0,0,0,.18); }
+.sticky-audio-inner { display:flex; align-items:center; gap:.65rem; flex-wrap:wrap; }
+.sticky-audio-label { font-weight:800; margin-right:auto; }
+.sticky-audio-status { flex:1 1 260px; min-width:180px; }
+.sticky-audio-controls button { padding:.42rem .68rem; }
+.sticky-audio-controls[hidden] { display:none !important; }
+@media (max-width:700px) { .sticky-audio-inner { align-items:stretch; } .sticky-audio-label, .sticky-audio-status { flex-basis:100%; } .sticky-audio-controls button { flex:1 1 auto; } }
+@media print { .sticky-audio-controls { display:none !important; } }
+
+.back-to-contents { margin: 1.6rem 0 .6rem; padding-top: .7rem; border-top: 1px dashed #aaa; font-size: .95rem; }
+.back-to-contents a { font-weight: 700; }
+
+/* code-output-tint v1: calm colours that separate code, output and instructor notes */
+.code-step pre { background:#f0f2f4; border:1px solid #a3abb5; border-left:4px solid #6b7785; }
+.result-box { background:#fbf8ef; border:1px solid #b9ae92; border-left:4px solid #8a7a52; }
+.result-box pre { background:#fffdf7; border:1px solid #cfc6ae; }
+.note-box { border:2px solid #1f4e79; border-left:8px solid #1f4e79; background:#e8f1fb; }
+.result-box > h3:first-child { margin-top:.1rem; }
+@media (forced-colors: active) { .code-step pre, .result-box, .result-box pre, .note-box { border-color:CanvasText; } }
+</style><style>/* Added for BAN 6403: let long inline paths wrap on narrow screens. */ p code, li code, td code, th code, summary code { overflow-wrap:anywhere; }</style></head>
+<body><a class="skip-link" href="#main-content">Skip to lab content</a>
+<header><h1>Lab 14 Companion</h1><p class="subtitle"><strong>BAN 6403: Text Analytics for Business</strong></p><p>Module 14: Business Recommendations</p></header>
+<div aria-label="Active read-aloud controls" class="sticky-audio-controls" hidden="" id="sticky-audio-controls" role="region"><div class="sticky-audio-inner"><span class="sticky-audio-label">Read Aloud</span><span aria-live="polite" class="sticky-audio-status" id="sticky-speech-status">Ready.</span><button id="sticky-pause" type="button">Pause</button><button id="sticky-resume" type="button">Resume</button><button id="sticky-stop" type="button">Stop</button></div></div><main id="main-content">
+<section aria-labelledby="how-to-use" class="accessibility-summary">
+<h2 id="how-to-use">How to use this companion</h2>
+<p>Open the <strong>Module 14 notebook and this companion at the same time</strong>. Work through the companion from top to bottom and run the matching notebook cells as you go. The notebook is the authoritative source for the lab sequence, code and required work. This companion explains what each step means, what to notice in the output and why the step matters.</p><div aria-labelledby="listen-title" class="listen-panel read-aloud-intro">
+<h3 id="listen-title">Read aloud: controls and directions</h3>
+<p><strong>Before you start:</strong> choose a reading mode, speed, and voice below. Select <strong>Read Aloud from Beginning</strong> to hear the full companion, or use <strong>Read Aloud from This Section</strong> beside any major section to continue from that point. While audio is playing, a floating control bar remains visible at the bottom of the page. Use <strong>Pause</strong> to pause temporarily, <strong>Resume</strong> to continue, and <strong>Stop</strong> to end the current reading.</p><p><strong>Study mode</strong> reads explanations, results, tables, and notes while skipping exact Python code. <strong>Full mode</strong> also reads Python code and verbalizes common programming symbols.</p>
+<div aria-label="Read aloud controls" class="controls">
+<button id="speak" type="button">Read Aloud from Beginning</button><button id="pause" type="button">Pause</button><button id="resume" type="button">Resume</button><button id="stop" type="button">Stop</button>
+</div>
+<div class="speech-options">
+<label for="reading-mode"><strong>Reading mode:</strong></label><select id="reading-mode"><option selected="" value="study">Study mode - explanations and results</option><option value="full">Full mode - include Python code</option></select>
+<label for="speech-rate"><strong>Speed:</strong> <span id="rate-value">1.0×</span></label><input aria-describedby="rate-help" id="speech-rate" max="2" min="0.5" step="0.1" type="range" value="1"/><span class="sr-only" id="rate-help">Adjust text-to-speech speed from one half to two times normal speed.</span>
+<label for="voice-select"><strong>Voice:</strong></label><select id="voice-select"><option value="">Browser default</option></select>
+<label for="section-select"><strong>Jump to section:</strong></label><select id="section-select"><option value="">Choose a section</option></select>
+</div>
+<div class="controls jump-controls"><button id="jump-section" type="button">Jump</button><button id="read-section" type="button">Read Aloud from Selected Section</button></div>
+<p aria-live="polite" id="speech-status" role="status"><small>Ready to read.</small></p>
+<p><small>The read-aloud feature uses your browser's speech engine. A screen reader can access the page independently of these controls.</small></p>
+</div>
+<h3>What is in the notebook, and what this companion adds</h3>
+<ul>
+<li><strong>Notebook:</strong> the exact Python code, the written questions, the Practice exercises, the checkpoint and the Submit steps.</li>
+<li><strong>Companion:</strong> plain-language explanations, the results you should expect (taken from real runs of the notebook), common mistakes and how to fix them.</li>
+<li><strong>If anything ever seems inconsistent:</strong> follow the current notebook.</li>
+</ul>
+<div aria-label="Content key" class="content-key">
+<div class="key-item"><span class="key-label">Notebook content</span>Code, official prompts, required tasks and the lab sequence come from the notebook. Each code block shows its notebook cell number.</div>
+<div class="key-item"><span class="key-label">Companion-added instructor note</span>These clearly labeled notes are explanations, cautions or study advice added by this companion. They are not extra required notebook steps unless the note says so.</div>
+</div>
+<p>This companion is designed for keyboard and screen-reader access, but it is <strong>not a separate version for students who need accessibility features</strong>. It is the same learning guide for everyone. You can read it visually, use a screen reader, or use the built-in read-aloud controls while you work in the notebook.</p>
+</section>
+<nav aria-labelledby="toc-title" class="toc"><p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="toc-title" tabindex="-1">Lab contents</h2><ol><li><a href="#how-to-use">How to use this companion</a></li><li><a href="#learning-goals">Module 14 Learning Goals</a></li><li><a href="#setup">Before You Start: Setup</a></li><li><a href="#part-1a">Part 1A: The Worked Example and a Fresh Rerun (Steps 1.1–1.7)</a></li><li><a href="#part-1b">Part 1B: Checklist, Denominators, Intervals and the Exhibit (Steps 1.8–1.15)</a></li><li><a href="#checkpoint">Checkpoint</a></li><li><a href="#part-2">Part 2: Practice on Your Own Project (Steps 2.1–2.2)</a></li><li><a href="#exercises">Practice Exercises and Interpretation</a></li><li><a href="#submit">Submit</a></li><li><a href="#challenge">Part 3 Challenge (Optional)</a></li><li><a href="#problems">Common Problems</a></li><li><a href="#wrap-up">Lab Wrap-Up</a></li><li><a href="#source-note">Notebook and accessibility note</a></li></ol></nav>
+<section aria-labelledby="learning-goals" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="learning-goals">Module 14 Learning Goals</h2>
+<p>This lab introduces no new method. You practise the checks that make a project result trustworthy, first on a small worked example, then on your own project. By the end of the lab you should be able to:</p>
+<ul><li><strong>Synthesize</strong> a recommendation in three layers: evidence, interpretation and an action for a named decision owner.</li><li><strong>Show</strong> a result with its <strong>denominator</strong> (the number of cases it is counted out of) and a 95% interval. Use a <strong>Wilson interval</strong> for a share and a <strong>bootstrap interval</strong> for any other metric.</li><li><strong>Revise</strong> your project with a short revision log of problems and fixes.</li><li><strong>Verify</strong> that your work reruns from a fresh state, with files, hashes, seeds, versions and an AI-use statement recorded.</li></ul>
+<p>The main idea: <strong>every recommendation rests on a number with its denominator and its uncertainty.</strong></p>
+</section><section aria-labelledby="setup" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="setup">Before You Start: Setup</h2>
+<p>The main route is your own computer:</p>
+<ol><li>Open <strong>GitHub Desktop</strong> and select your course repository (<code>ban6403-</code> plus your GitHub username). This week's notebook is already in your copy, in the <code>notebooks</code> folder.</li><li>Open the repository folder in <strong>Visual Studio Code</strong> and open <code>notebooks/M14_Project_Readiness.ipynb</code>.</li><li>Click the kernel picker at the top right of the notebook and choose <strong>ban6403</strong>. This lab needs numpy, pandas, scikit-learn, scipy and matplotlib, which are all in the course environment.</li><li>Have your project folder ready. In Part 2 you type the paths of your project files. If your project is in another folder, note its full path (in VS Code, right-click a file and choose <strong>Copy Path</strong>).</li><li>Run the cells in order from the top. If you restart the kernel, run from the top again.</li></ol>
+<p><strong>Optional:</strong> where your network allows it, you can open the repository in GitHub Codespaces instead. Your own project files must then be in the same Codespace.</p>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Version numbers will differ</h3><p>The expected outputs on this page come from one run of the notebook. Your Python and package versions may differ. Everything else, including the counts, the hash of the course data and the result fingerprint, should match exactly.</p></aside>
+</section><section aria-labelledby="part-1a" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1a">Part 1A: The Worked Example and a Fresh Rerun (Steps 1.1–1.7)</h2>
+<p>The worked example: the operations lead for credit cards asks whether complaints that mention a fee should get a priority review. You check how often such complaints were closed with monetary relief (money back).</p>
+<h3>1.1 Import the libraries and note their versions</h3>
+<section aria-label="Import the tools and record the versions" class="code-step" data-cell="1">
+<pre aria-label="Import the tools and record the versions (notebook cell 1)" tabindex="0"><code># Path builds file paths; hashlib computes fingerprints; platform reports the Python version;
+# textwrap breaks long titles into lines.
+from pathlib import Path
+import hashlib
+import json
+import platform
+import re
+import textwrap
+import numpy as np
+import pandas as pd
+import scipy
+import sklearn
+import matplotlib
+import matplotlib.pyplot as plt
+from matplotlib.ticker import PercentFormatter
+
+# The Python and package versions, kept for the manifest in step 1.15.
+versions = {&quot;python&quot;: platform.python_version(), &quot;numpy&quot;: np.__version__, &quot;pandas&quot;: pd.__version__,
+            &quot;scipy&quot;: scipy.__version__, &quot;scikit-learn&quot;: sklearn.__version__, &quot;matplotlib&quot;: matplotlib.__version__}
+versions</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.1" tabindex="0"><code>{&#x27;python&#x27;: &#x27;3.13.16&#x27;, &#x27;numpy&#x27;: &#x27;2.5.3&#x27;, &#x27;pandas&#x27;: &#x27;3.0.5&#x27;, &#x27;scipy&#x27;: &#x27;1.18.1&#x27;, &#x27;scikit-learn&#x27;: &#x27;1.9.1&#x27;, &#x27;matplotlib&#x27;: &#x27;3.11.2&#x27;}</code></pre><p>A dictionary of versions from our test run, including scikit-learn. Your version numbers will differ. You record them later in the readiness checklist and the manifest.</p></aside>
+<h3>1.2 Set the output folder</h3>
+<section aria-label="Set the data and output folders" class="code-step" data-cell="3">
+<pre aria-label="Set the data and output folders (notebook cell 3)" tabindex="0"><code># &quot;..&quot; means one folder up from notebooks.
+OUTPUT_DIR = Path(&quot;../outputs/m14&quot;)
+# parents=True also creates the outputs folder if needed; exist_ok=True means no error if the folder exists.
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>No output. The course data is one folder up. Your saved files go to <code>outputs/m14</code>.</p></aside>
+<h3>1.3 The worked example: data, seed and data fingerprint</h3>
+<p>A <strong>SHA-256 hash</strong> is a 64-character code computed from a file's bytes. If one character changes, the hash changes. The helper computes a line-ending-normalized text hash: it treats Windows and Mac line endings the same way, so it is meant for text files.</p>
+<section aria-label="Record the data file, seed and SHA-256 hash" class="code-step" data-cell="5">
+<pre aria-label="Record the data file, seed and SHA-256 hash (notebook cell 5)" tabindex="0"><code>DATA = Path(&quot;../data/course/cfpb_complaints.csv&quot;)
+SEED = 1404  # the seed for every random draw in this notebook
+
+def text_sha256(path):
+    &quot;&quot;&quot;Take the path of a text file; return its SHA-256 hash (64 characters), with Windows line endings changed to the Mac and Linux form first.&quot;&quot;&quot;
+    # Windows line endings (\r\n) become \n, so the hash is the same on Windows and Mac.
+    data = Path(path).read_bytes().replace(b&quot;\r\n&quot;, b&quot;\n&quot;)
+    # hexdigest() writes the hash as text.
+    return hashlib.sha256(data).hexdigest()
+
+data_hash = text_sha256(DATA)
+print(&quot;rows:&quot;, len(pd.read_csv(DATA)))
+print(&quot;sha256:&quot;, data_hash[:12])  # the first 12 characters are enough to compare by eye</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.3" tabindex="0"><code>rows: 10000
+sha256: f6a7bfdcae91</code></pre><p><code>f6a7bfdcae91</code> is the start of the fingerprint of the frozen course data. If yours differs, see Common problems.</p></aside>
+<h3>1.4 The analysis as one function from the raw file</h3>
+<section aria-label="Define fee_analysis and run it" class="code-step" data-cell="7">
+<pre aria-label="Define fee_analysis and run it (notebook cell 7)" tabindex="0"><code># \b marks the edge of a word, so &quot;fee&quot; does not match inside &quot;feedback&quot;; (?:fee|fees) means fee or fees.
+FEE_PATTERN = r&quot;\b(?:fee|fees)\b&quot;
+
+def fee_analysis(path, product=&quot;Credit card&quot;):
+    &quot;&quot;&quot;Take the data file and a product; return relief counts and complaint counts for each fee group.&quot;&quot;&quot;
+    data = pd.read_csv(path)
+    data = data[data[&quot;product&quot;].eq(product)].copy()
+    # Two True/False columns: does the narrative mention a fee, and was the complaint closed with money back?
+    data[&quot;mentions_fee&quot;] = data[&quot;narrative&quot;].str.contains(FEE_PATTERN, case=False, regex=True)
+    data[&quot;monetary_relief&quot;] = data[&quot;company_response&quot;].eq(&quot;Closed with monetary relief&quot;)
+    # For each fee group: relief = the number of True values (sum), complaints = the number of rows (count).
+    table = data.groupby(&quot;mentions_fee&quot;)[&quot;monetary_relief&quot;].agg(relief=&quot;sum&quot;, complaints=&quot;count&quot;)
+    # Readable row names instead of True and False.
+    table = table.rename(index={True: &quot;mentions a fee&quot;, False: &quot;no fee mention&quot;})
+    return table.sort_index()
+
+first = fee_analysis(DATA)
+first</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Credit card complaints: monetary relief by fee mention</caption><thead><tr><th scope="col">mentions_fee</th><th scope="col">relief</th><th scope="col">complaints</th></tr></thead><tbody><tr><td>mentions a fee</td><td>97</td><td>291</td></tr><tr><td>no fee mention</td><td>181</td><td>1209</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p><code>relief</code> is the count with the outcome; <code>complaints</code> is the denominator. Together the two groups make the 1,500 credit card complaints.</p></aside>
+<h3>1.5 Read before you count</h3>
+<section aria-label="Show the words around the first fee match in three complaints" class="code-step" data-cell="9">
+<pre aria-label="Show the words around the first fee match in three complaints (notebook cell 9)" tabindex="0"><code>def around(text, width=70):
+    &quot;&quot;&quot;Take a text; return the words around its first fee match (width characters on each side).&quot;&quot;&quot;
+    match = re.search(FEE_PATTERN, text, flags=re.IGNORECASE)
+    # match.start() and match.end() are the positions of the match; max(0, ...) avoids a negative start.
+    return &quot;...&quot; + text[max(0, match.start() - width): match.end() + width] + &quot;...&quot;
+
+# query keeps the rows that meet the condition.
+card = pd.read_csv(DATA).query(&quot;product == &#x27;Credit card&#x27;&quot;)
+flagged = card[card[&quot;narrative&quot;].str.contains(FEE_PATTERN, case=False, regex=True)]
+# random_state=SEED draws the same 3 complaints on every run.
+examples = flagged.sample(3, random_state=SEED)
+for cid, text in zip(examples[&quot;complaint_id&quot;], examples[&quot;narrative&quot;]):
+    print(cid, around(text))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.5" tabindex="0"><code>15121314 ...phire Reserve card on XX/XX/year&gt;, and was charged a {$790.00} annual fee. At the time of application, I had already been appointed as a XXXX X...
+17365366 ...e an error on my recent Capital One statement. I was charged interest fees XXXX, and this is absolutely unacceptable. I pay close attention to m...
+14896247 ...00} which cleared on XX/XX/XXXX. On XX/XX/XXXX I was charged the late fee of {$29.00}, as expected and on XX/XX/year&gt; I was charged {$110.00} f...</code></pre><p>Three complaint excerpts, about 150 characters around the first match. All three are about fees: an annual fee, interest fees and a late fee. The flag is still a <strong>proxy</strong>: three complaints are not a measurement of how often it is right.</p></aside>
+<h3>1.6 Rerun from a fresh state</h3>
+<p>The real test is <strong>Restart</strong>, then <strong>Run All</strong> in VS Code. This cell adds a quick check inside one run.</p>
+<section aria-label="Run the function again and compare" class="code-step" data-cell="11">
+<pre aria-label="Run the function again and compare (notebook cell 11)" tabindex="0"><code>second = fee_analysis(DATA)
+# The table as CSV text (with \n line endings), turned into bytes and hashed.
+result_csv = first.to_csv(lineterminator=&quot;\n&quot;)
+result_hash = hashlib.sha256(result_csv.encode()).hexdigest()[:12]
+# equals is True when the two tables have the same labels and values.
+print(&quot;same table on rerun:&quot;, first.equals(second))
+print(&quot;result fingerprint:&quot;, result_hash)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.6" tabindex="0"><code>same table on rerun: True
+result fingerprint: c75a367e6a1e</code></pre><p>The fingerprint is the first 12 characters of a hash of the result table. Yours should be the same.</p></aside>
+<h3>1.7 Random draws need a seed</h3>
+<section aria-label="Draw samples of 30 without and with a seed" class="code-step" data-cell="13">
+<pre aria-label="Draw samples of 30 without and with a seed (notebook cell 13)" tabindex="0"><code>fee_cases = card[card[&quot;narrative&quot;].str.contains(FEE_PATTERN, case=False, regex=True)].copy()
+fee_cases[&quot;monetary_relief&quot;] = fee_cases[&quot;company_response&quot;].eq(&quot;Closed with monetary relief&quot;)
+# Two draws of 30 without a seed, then two with the seed; each time, count the complaints with relief.
+no_seed = []
+for _ in range(2):
+    no_seed.append(int(fee_cases.sample(30)[&quot;monetary_relief&quot;].sum()))
+with_seed = []
+for _ in range(2):
+    with_seed.append(int(fee_cases.sample(30, random_state=SEED)[&quot;monetary_relief&quot;].sum()))
+print(&quot;relief in a sample of 30, no seed:  &quot;, no_seed, &quot;(can change from run to run)&quot;)
+print(&quot;relief in a sample of 30, seed 1404:&quot;, with_seed)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.7" tabindex="0"><code>relief in a sample of 30, no seed:   [11, 13] (can change from run to run)
+relief in a sample of 30, seed 1404: [9, 9]</code></pre><p>Your two numbers without a seed will usually differ from these and from each other. With the seed you get <code>[9, 9]</code> every time.</p></aside>
+</section><section aria-labelledby="part-1b" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1b">Part 1B: Checklist, Denominators, Intervals and the Exhibit (Steps 1.8–1.15)</h2>
+<h3>1.8 A readiness checklist</h3>
+<section aria-label="Define readiness_checks and run it on the worked example" class="code-step" data-cell="15">
+<pre aria-label="Define readiness_checks and run it on the worked example (notebook cell 15)" tabindex="0"><code>def readiness_checks(files, seed, ai_use):
+    &quot;&quot;&quot;Take a list of files, a seed and an AI-use statement; return a checklist table (status ok or CHECK).&quot;&quot;&quot;
+    rows = []
+    for f in files:
+        f = Path(f)
+        if f.exists():
+            # Size counted with \n line endings, as in text_sha256; {size:,} adds thousands commas.
+            size = len(f.read_bytes().replace(b&quot;\r\n&quot;, b&quot;\n&quot;))
+            rows.append({&quot;check&quot;: &quot;file: &quot; + f.name, &quot;status&quot;: &quot;ok&quot;,
+                         &quot;detail&quot;: f&quot;{size:,} bytes, sha256 {text_sha256(f)[:12]}&quot;})
+        else:
+            rows.append({&quot;check&quot;: &quot;file: &quot; + f.name, &quot;status&quot;: &quot;CHECK&quot;, &quot;detail&quot;: &quot;not found: &quot; + str(f)})
+
+    if seed is not None:
+        seed_status = &quot;ok&quot;
+    else:
+        seed_status = &quot;CHECK&quot;
+    rows.append({&quot;check&quot;: &quot;random seed recorded&quot;, &quot;status&quot;: seed_status, &quot;detail&quot;: str(seed)})
+
+    # strip() removes spaces at both ends, so a statement of only spaces counts as empty.
+    statement = ai_use.strip()
+    if statement:
+        rows.append({&quot;check&quot;: &quot;AI-use statement written&quot;, &quot;status&quot;: &quot;ok&quot;, &quot;detail&quot;: statement[:60]})
+    else:
+        rows.append({&quot;check&quot;: &quot;AI-use statement written&quot;, &quot;status&quot;: &quot;CHECK&quot;, &quot;detail&quot;: &quot;empty&quot;})
+
+    # The versions as one text, such as &quot;python 3.13.1, numpy 2.3.0, ...&quot;.
+    version_parts = []
+    for name, version in versions.items():
+        version_parts.append(f&quot;{name} {version}&quot;)
+    rows.append({&quot;check&quot;: &quot;package versions recorded&quot;, &quot;status&quot;: &quot;ok&quot;, &quot;detail&quot;: &quot;, &quot;.join(version_parts)})
+    return pd.DataFrame(rows)
+
+example_files = [DATA, Path(&quot;../data/course/README.md&quot;), Path(&quot;M14_Project_Readiness.ipynb&quot;)]
+example_checks = readiness_checks(example_files, SEED, &quot;none&quot;)
+example_checks</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Readiness checklist for the worked example (versions shortened)</caption><thead><tr><th scope="col">check</th><th scope="col">status</th><th scope="col">detail</th></tr></thead><tbody><tr><td>file: cfpb_complaints.csv</td><td>ok</td><td>13,627,754 bytes, sha256 f6a7bfdcae91</td></tr><tr><td>file: README.md</td><td>ok</td><td>4,542 bytes, sha256 d1f483f4bf4a</td></tr><tr><td>file: M14_Project_Readiness.ipynb</td><td>ok</td><td>size and hash change whenever you save</td></tr><tr><td>random seed recorded</td><td>ok</td><td>1404</td></tr><tr><td>AI-use statement written</td><td>ok</td><td>none</td></tr><tr><td>package versions recorded</td><td>ok</td><td>python ..., numpy ..., pandas ..., scipy ..., scikit-learn ..., matplotlib ...</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Every row is <code>ok</code>. A row marked <code>CHECK</code> needs attention. Sizes and hashes count line endings the same way on Windows and Mac. The README size and hash change whenever that file is updated.</p></aside>
+<h3>1.9 Show the denominator</h3>
+<section aria-label="Print each share with and without its denominator" class="code-step" data-cell="17">
+<pre aria-label="Print each share with and without its denominator (notebook cell 17)" tabindex="0"><code>def share_label(k, n):
+    &quot;&quot;&quot;Take a count and a denominator; return a text such as &quot;97 of 291 (33%)&quot;.&quot;&quot;&quot;
+    # :, adds thousands commas; :.0% writes a share as a percent without decimals.
+    return f&quot;{k:,} of {n:,} ({k / n:.0%})&quot;
+
+# iterrows gives the rows one at a time, as (row label, row) pairs.
+for group, row in first.iterrows():
+    percent_only = row[&quot;relief&quot;] / row[&quot;complaints&quot;]
+    # {group:&gt;15} right-aligns the group name in 15 characters.
+    print(f&quot;{group:&gt;15}: percent only {percent_only:.0%}  |  with denominator {share_label(row[&#x27;relief&#x27;], row[&#x27;complaints&#x27;])}&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.9" tabindex="0"><code> mentions a fee: percent only 33%  |  with denominator 97 of 291 (33%)
+ no fee mention: percent only 15%  |  with denominator 181 of 1,209 (15%)</code></pre></aside>
+<h3>1.10 Add an uncertainty interval</h3>
+<p>A 95% <strong>confidence interval</strong> (CI) gives the range of shares that fit the data. The <strong>Wilson interval</strong> works well for small groups and for shares near 0% or 100%.</p>
+<section aria-label="Define wilson and add_intervals; check one interval with scipy" class="code-step" data-cell="19">
+<pre aria-label="Define wilson and add_intervals; check one interval with scipy (notebook cell 19)" tabindex="0"><code>def wilson(k, n, z=1.96):
+    &quot;&quot;&quot;Take a count k and a denominator n; return the low and high ends of the Wilson interval (95% with z = 1.96).&quot;&quot;&quot;
+    p = k / n
+    # The centre of the interval is pulled a little towards 50%, more so for small n.
+    centre = (p + z**2 / (2 * n)) / (1 + z**2 / n)
+    # Half the width of the interval.
+    half = z / (1 + z**2 / n) * np.sqrt(p * (1 - p) / n + z**2 / (4 * n**2))
+    return centre - half, centre + half
+
+def add_intervals(table, k, n):
+    &quot;&quot;&quot;Take a table and the names of its count and denominator columns; return it with share, low, high and label.&quot;&quot;&quot;
+    out = table.copy()
+    out[&quot;share&quot;] = out[k] / out[n]
+    # wilson works on whole columns at once and returns two columns: the low ends and the high ends.
+    out[&quot;low&quot;], out[&quot;high&quot;] = wilson(out[k], out[n])
+    labels = []
+    for count, total, low, high in zip(out[k], out[n], out[&quot;low&quot;], out[&quot;high&quot;]):
+        labels.append(f&quot;{share_label(count, total)}, 95% CI {low:.0%} to {high:.0%}&quot;)
+    out[&quot;label&quot;] = labels
+    return out
+
+exhibit = add_intervals(first, k=&quot;relief&quot;, n=&quot;complaints&quot;)
+print(exhibit[&quot;label&quot;].to_string())
+# Check one interval against the Wilson interval in scipy.
+from scipy.stats import binomtest
+k, n = first.loc[&quot;mentions a fee&quot;, [&quot;relief&quot;, &quot;complaints&quot;]]
+print(&quot;scipy check:&quot;, binomtest(int(k), int(n)).proportion_ci(method=&quot;wilson&quot;))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.10" tabindex="0"><code>mentions_fee
+mentions a fee       97 of 291 (33%), 95% CI 28% to 39%
+no fee mention    181 of 1,209 (15%), 95% CI 13% to 17%
+scipy check: ConfidenceInterval(low=np.float64(0.2816529298612447), high=np.float64(0.38935670227129093))</code></pre><p>The scipy interval agrees with the helper to three decimals. (scipy uses z = 1.95996 instead of 1.96, so the fourth decimal can differ.)</p></aside>
+<h3>1.11 A small sample overclaims</h3>
+<section aria-label="Compare the sample of 30 with all fee complaints" class="code-step" data-cell="21">
+<pre aria-label="Compare the sample of 30 with all fee complaints (notebook cell 21)" tabindex="0"><code>k30 = with_seed[0]  # the relief count in the seeded sample of 30
+lo30, hi30 = wilson(k30, 30)
+fee_row = exhibit.loc[&quot;mentions a fee&quot;]
+# Interval widths in percentage points.
+width30 = (hi30 - lo30) * 100
+width_all = (fee_row[&quot;high&quot;] - fee_row[&quot;low&quot;]) * 100
+print(f&quot;sample of 30:       {share_label(k30, 30)}, 95% CI {lo30:.0%} to {hi30:.0%}, width {width30:.0f} points&quot;)
+print(f&quot;all fee complaints: {fee_row[&#x27;label&#x27;]}, width {width_all:.0f} points&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.11" tabindex="0"><code>sample of 30:       9 of 30 (30%), 95% CI 17% to 48%, width 31 points
+all fee complaints: 97 of 291 (33%), 95% CI 28% to 39%, width 11 points</code></pre><p>The sample's share is close to the full result, but its interval is almost three times as wide.</p></aside>
+<h3>1.12 An interval for any metric: the bootstrap</h3>
+<p>The <strong>bootstrap</strong> from Lab 13, in a general form. <code>bootstrap_interval</code> takes a table with one row per record and a function that computes your metric from such a table. It draws the records with replacement 2,000 times, recomputes the metric each time and keeps the middle 95%.</p>
+<section aria-label="Define bootstrap_interval and check it against Wilson" class="code-step" data-cell="23">
+<pre aria-label="Define bootstrap_interval and check it against Wilson (notebook cell 23)" tabindex="0"><code>def bootstrap_interval(records, metric, reps=2000, seed=SEED):
+    &quot;&quot;&quot;Take a table (one row per record) and a metric function; return the metric with its 95% bootstrap interval.&quot;&quot;&quot;
+    # A random number generator with a fixed seed, so everyone gets the same draws.
+    rng = np.random.default_rng(seed)
+    records = records.reset_index(drop=True)
+    draws = []
+    for _ in range(reps):
+        # len(records) random row positions, drawn with replacement; iloc picks those rows.
+        positions = rng.integers(0, len(records), len(records))
+        draws.append(metric(records.iloc[positions]))
+    # The middle 95% of the draws.
+    low, high = np.percentile(draws, [2.5, 97.5])
+    return {&quot;value&quot;: metric(records), &quot;low&quot;: low, &quot;high&quot;: high}
+
+def relief_share(records):
+    &quot;&quot;&quot;Take a table of complaints; return the share closed with monetary relief.&quot;&quot;&quot;
+    # The mean of a True/False column is the share of True values.
+    return records[&quot;monetary_relief&quot;].mean()
+
+boot = bootstrap_interval(fee_cases, relief_share)
+wilson_low, wilson_high = wilson(int(fee_cases[&quot;monetary_relief&quot;].sum()), len(fee_cases))
+print(f&quot;bootstrap: {boot[&#x27;value&#x27;]:.1%}, 95% interval {boot[&#x27;low&#x27;]:.1%} to {boot[&#x27;high&#x27;]:.1%}&quot;)
+print(f&quot;Wilson:    {boot[&#x27;value&#x27;]:.1%}, 95% interval {wilson_low:.1%} to {wilson_high:.1%}&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.12" tabindex="0"><code>bootstrap: 33.3%, 95% interval 27.8% to 38.8%
+Wilson:    33.3%, 95% interval 28.2% to 38.9%</code></pre><p>For a share, the two intervals almost agree. Use Wilson for a share, because it needs no random draws.</p></aside>
+<p>The second cell applies the same helper to macro F1, which has no Wilson interval. It reads the Lab 8 test predictions of two classifiers, which Lab 9 already opened once. For the <strong>difference</strong> between the classifiers, both are scored on the same draw, so each complaint keeps its two predictions together, as in the paired comparison of Lab 13. The cell takes about half a minute.</p>
+<section aria-label="Bootstrap intervals for macro F1 and for the difference between two classifiers" class="code-step" data-cell="25">
+<pre aria-label="Bootstrap intervals for macro F1 and for the difference between two classifiers (notebook cell 25)" tabindex="0"><code>from sklearn.metrics import f1_score
+
+# The test predictions of the two Lab 8 classifiers, one row per complaint.
+PREDICTIONS = Path(&quot;../data/predictions/m08_route_predictions.csv&quot;)
+routes = pd.read_csv(PREDICTIONS).query(&quot;split == &#x27;test&#x27;&quot;)
+
+def macro_f1(records, column=&quot;tfidf_route&quot;):
+    &quot;&quot;&quot;Take a table of predictions and a prediction column; return macro F1 against the true route.&quot;&quot;&quot;
+    # average=&quot;macro&quot;: the F1 of each product, then the plain average of the six.
+    return f1_score(records[&quot;route&quot;], records[column], average=&quot;macro&quot;)
+
+def f1_gap(records):
+    &quot;&quot;&quot;Take a table of predictions; return TF-IDF macro F1 minus embedding macro F1 on the same records.&quot;&quot;&quot;
+    return macro_f1(records, &quot;tfidf_route&quot;) - macro_f1(records, &quot;emb_route&quot;)
+
+# Each call returns a dictionary with the value and the low and high ends of its interval.
+f1_result = bootstrap_interval(routes, macro_f1)
+gap_result = bootstrap_interval(routes, f1_gap)
+# One column per metric; .T flips the table, so each metric is a row.
+metric_table = pd.DataFrame({&quot;TF-IDF macro F1&quot;: f1_result, &quot;TF-IDF minus embedding&quot;: gap_result}).T
+metric_table[&quot;n&quot;] = len(routes)
+metric_table.round(3)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Bootstrap intervals on the 2,000 test complaints (2,000 draws, seed 1404)</caption><thead><tr><th scope="col"></th><th scope="col">value</th><th scope="col">low</th><th scope="col">high</th><th scope="col">n</th></tr></thead><tbody><tr><td>TF-IDF macro F1</td><td>0.824</td><td>0.806</td><td>0.840</td><td>2000</td></tr><tr><td>TF-IDF minus embedding</td><td>0.018</td><td>0.002</td><td>0.034</td><td>2000</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>The interval for the difference (0.002 to 0.034) is above 0, but only just: TF-IDF is ahead on these 2,000 complaints by a small margin. In your project, pass your own table of test predictions and your own metric function.</p></aside>
+<h3>1.13 Build the exhibit</h3>
+<section aria-label="Define plot_exhibit, draw the exhibit and save it" class="code-step" data-cell="28">
+<pre aria-label="Define plot_exhibit, draw the exhibit and save it (notebook cell 28)" tabindex="0"><code>def plot_exhibit(table, title, xlabel, note, path, percent=True):
+    &quot;&quot;&quot;Take a table with share, low, high and label; draw a dot and an interval line per row and save the figure.&quot;&quot;&quot;
+    # The figure gets taller with more rows.
+    fig, ax = plt.subplots(figsize=(9, 0.55 * len(table) + 2.4))
+    # One y position per row; [::-1] reverses them, so the first row is at the top.
+    y = np.arange(len(table))[::-1]
+    # A line for each interval and a dot for each share.
+    ax.hlines(y, table[&quot;low&quot;], table[&quot;high&quot;], color=&quot;#E87722&quot;, linewidth=4)
+    ax.plot(table[&quot;share&quot;], y, &quot;o&quot;, color=&quot;#1C2E45&quot;, markersize=9)
+    if percent:
+        # Shares run from 0% to 100%.
+        x_low, x_high = 0, 1
+    else:
+        # Other metrics, such as a difference, can be negative: fit the axis to the intervals.
+        x_low = table[&quot;low&quot;].min()
+        x_high = table[&quot;high&quot;].max()
+        if x_low &lt; 0:
+            # Keep 0 in view and draw a reference line there: an interval that crosses it cannot separate the two sides.
+            x_high = max(x_high, 0)
+            ax.axvline(0, color=&quot;grey&quot;, linewidth=1, linestyle=&quot;--&quot;)
+        width = x_high - x_low
+        # Some room on the left, and more on the right for the labels.
+        x_low, x_high = x_low - 0.1 * width, x_high + 0.6 * width
+    # The label just right of each interval.
+    gap = 0.01 * (x_high - x_low)
+    for y_pos, high, label in zip(y, table[&quot;high&quot;], table[&quot;label&quot;]):
+        ax.text(high + gap, y_pos, label, va=&quot;center&quot;, fontsize=9)
+    ax.set_yticks(y)
+    ax.set_yticklabels(table.index)
+    ax.set_ylim(-0.6, len(table) - 0.4)
+    ax.set_xlim(x_low, x_high)
+    if percent:
+        ax.xaxis.set_major_formatter(PercentFormatter(1.0))
+    # textwrap.fill breaks long text into lines of at most 80 (or 120) characters.
+    ax.set_xlabel(textwrap.fill(xlabel, 80))
+    fig.suptitle(textwrap.fill(title, 80), x=0.01, ha=&quot;left&quot;, fontsize=12)
+    fig.text(0.01, 0.01, textwrap.fill(note, 120), fontsize=8, va=&quot;bottom&quot;)
+    fig.tight_layout(rect=(0, 0.1, 1, 0.92))
+    fig.savefig(path, dpi=150)
+    plt.show()
+
+plot_exhibit(exhibit,
+             title=&quot;Credit card complaints that mention a fee were closed with money back about twice as often&quot;,
+             xlabel=&quot;Share closed with monetary relief (dot) and 95% Wilson interval (line)&quot;,
+             note=&quot;Source: 1,500 credit card complaints in the BAN 6403 course data (CFPB, July-December 2025). Fee = the word fee or fees. Complainants are not a random sample of customers.&quot;,
+             path=OUTPUT_DIR / &quot;fee_relief_exhibit.png&quot;)
+
+# Alt text: the finding and the key numbers in words, for readers who cannot see the chart.
+alt_text = (&quot;Dot and interval chart of credit card complaints closed with monetary relief. &quot;
+            + &quot;Complaints that mention a fee: &quot; + exhibit.loc[&quot;mentions a fee&quot;, &quot;label&quot;] + &quot;. &quot;
+            + &quot;No fee mention: &quot; + exhibit.loc[&quot;no fee mention&quot;, &quot;label&quot;] + &quot;.&quot;)
+print(&quot;Alt text:&quot;, alt_text)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.13" tabindex="0"><code>Alt text: Dot and interval chart of credit card complaints closed with monetary relief. Complaints that mention a fee: 97 of 291 (33%), 95% CI 28% to 39%. No fee mention: 181 of 1,209 (15%), 95% CI 13% to 17%.</code></pre><p>A chart with two rows. Each row has a dot for the share, an orange line for the interval and a label such as “97 of 291 (33%), 95% CI 28% to 39%”. The title states the finding; the note gives the source and the main limitation. The file <code>outputs/m14/fee_relief_exhibit.png</code> is saved. Shares keep the 0–100% axis. With <code>percent=False</code> the axis fits the intervals, and a dashed line marks 0 when an interval is negative.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Alt text for your exhibit</h3><p>The cell prints <strong>alt text</strong>: the finding and the key numbers in one or two sentences, for readers who cannot see the chart. Use the same text beside the chart in your report and slides. Exercise 3 asks you to write one for your own exhibit.</p></aside>
+<h3>1.14 Evidence, interpretation, recommendation</h3>
+<section aria-label="Print the evidence line with both groups" class="code-step" data-cell="30">
+<pre aria-label="Print the evidence line with both groups (notebook cell 30)" tabindex="0"><code># The evidence layer: both labels and the ratio of the two shares.
+nofee_row = exhibit.loc[&quot;no fee mention&quot;]
+print(&quot;Credit card complaints closed with monetary relief&quot;)
+print(&quot;  mention a fee: &quot;, fee_row[&quot;label&quot;])
+print(&quot;  no fee mention:&quot;, nofee_row[&quot;label&quot;])
+print(&quot;Ratio of the two shares:&quot;, round(fee_row[&quot;share&quot;] / nofee_row[&quot;share&quot;], 2))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.14" tabindex="0"><code>Credit card complaints closed with monetary relief
+  mention a fee:  97 of 291 (33%), 95% CI 28% to 39%
+  no fee mention: 181 of 1,209 (15%), 95% CI 13% to 17%
+Ratio of the two shares: 2.23</code></pre><p>Read the interpretation and the recommendation in the notebook text above the cell. The recommendation is a <em>pilot</em> with a check, because the evidence is an association from a keyword flag.</p></aside>
+<h3>1.15 Save your outputs</h3>
+<section aria-label="Save the exhibit table, the interval table, the checklist and the manifest" class="code-step" data-cell="32">
+<pre aria-label="Save the exhibit table, the interval table, the checklist and the manifest (notebook cell 32)" tabindex="0"><code>exhibit.to_csv(OUTPUT_DIR / &quot;fee_relief_exhibit.csv&quot;)
+metric_table.to_csv(OUTPUT_DIR / &quot;bootstrap_example.csv&quot;)
+example_checks.to_csv(OUTPUT_DIR / &quot;readiness_example.csv&quot;, index=False)
+# The record a reader needs to rerun the example: both input files with their hashes, the seed and the versions.
+manifest = {&quot;data_file&quot;: &quot;data/course/cfpb_complaints.csv&quot;, &quot;data_sha256&quot;: data_hash,
+            &quot;predictions_file&quot;: &quot;data/predictions/m08_route_predictions.csv&quot;, &quot;predictions_sha256&quot;: text_sha256(PREDICTIONS),
+            &quot;seed&quot;: SEED, &quot;versions&quot;: versions, &quot;result_fingerprint&quot;: result_hash}
+(OUTPUT_DIR / &quot;manifest_example.json&quot;).write_text(json.dumps(manifest, indent=2))
+print(&quot;saved in outputs/m14: fee_relief_exhibit.png, fee_relief_exhibit.csv, bootstrap_example.csv,&quot;,
+      &quot;readiness_example.csv, manifest_example.json&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.15" tabindex="0"><code>saved in outputs/m14: fee_relief_exhibit.png, fee_relief_exhibit.csv, bootstrap_example.csv, readiness_example.csv, manifest_example.json</code></pre><p>The cell names the five files it saved. The manifest records both input files with their hashes (the complaints and the Lab 8 predictions file), the seed, the versions and the result fingerprint.</p></aside>
+</section><section aria-labelledby="checkpoint" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="checkpoint">Checkpoint</h2>
+<div class="assignment-box"><h3>Complete independently</h3><p>Answer the two questions in the notebook in 2–3 sentences in total. This companion does not answer them.</p><ol><li>In step 1.11, why is the interval for the sample of 30 so much wider than the interval for all fee complaints? What would you write if the sample of 30 were your only evidence?</li><li>The exhibit shows that fee complaints were closed with monetary relief more often. Give one reason why this does not prove that fees cause refunds.</li></ol><p><strong>What to check:</strong> your first answer uses the two interval widths from step 1.11. Your second answer names a specific reason, not only “correlation is not causation”.</p></div>
+</section><section aria-labelledby="part-2" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-2">Part 2: Practice on Your Own Project (Steps 2.1–2.2)</h2>
+<p>Now you point the same checks at your project. If your project files are not on this computer yet, leave the settings unchanged: the cells then use the course data, so Run All still works.</p>
+<h3>2.1 Your project settings</h3>
+<p>Type paths relative to the repository (such as <code>"project/report/report.html"</code>) or full paths (such as <code>"C:/Users/you/Documents/GitHub/ban6403-jdoe/project/data/private/reviews.csv"</code>). Use forward slashes, also on Windows.</p>
+<section aria-label="Edit three settings for your project" class="code-step" data-cell="35">
+<pre aria-label="Edit three settings for your project (notebook cell 35)" tabindex="0"><code># Edit these three lines for your project. Leave them unchanged to use the course example.
+PROJECT_FILES = []
+PROJECT_SEED = None
+AI_USE_STATEMENT = &quot;&quot;</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>No output. This cell only sets three variables.</p></aside>
+<h3>2.2 Run the readiness checklist</h3>
+<section aria-label="Resolve the paths and run readiness_checks" class="code-step" data-cell="37">
+<pre aria-label="Resolve the paths and run readiness_checks (notebook cell 37)" tabindex="0"><code># The repository is one folder up (&quot;..&quot;); joining &quot;..&quot; with a full path keeps the full path.
+project_files = []
+for f in PROJECT_FILES:
+    project_files.append(Path(&quot;..&quot;) / f)
+using_course_example = len(project_files) == 0
+if using_course_example:
+    project_files = [DATA, Path(&quot;../data/course/README.md&quot;)]
+print(&quot;using the course example:&quot;, using_course_example)
+project_checks = readiness_checks(project_files, PROJECT_SEED, AI_USE_STATEMENT)
+n_check = (project_checks[&quot;status&quot;] == &quot;CHECK&quot;).sum()
+print(&quot;rows to check:&quot;, n_check, &quot;of&quot;, len(project_checks))
+project_checks</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Readiness checklist with the settings unchanged (versions shortened)</caption><thead><tr><th scope="col">check</th><th scope="col">status</th><th scope="col">detail</th></tr></thead><tbody><tr><td>file: cfpb_complaints.csv</td><td>ok</td><td>13,627,754 bytes, sha256 f6a7bfdcae91</td></tr><tr><td>file: README.md</td><td>ok</td><td>4,542 bytes, sha256 d1f483f4bf4a</td></tr><tr><td>random seed recorded</td><td>CHECK</td><td>None</td></tr><tr><td>AI-use statement written</td><td>CHECK</td><td>empty</td></tr><tr><td>package versions recorded</td><td>ok</td><td>python ..., numpy ..., pandas ..., scipy ..., scikit-learn ..., matplotlib ...</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.2" tabindex="0"><code>using the course example: True
+rows to check: 2 of 5</code></pre><p>With your own files you see one row per file. A file marked <code>CHECK</code> with “not found” has a wrong path: check the spelling and the slashes.</p></aside>
+</section><section aria-labelledby="exercises" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="exercises">Practice Exercises and Interpretation</h2>
+<div class="assignment-box"><h3>Complete independently</h3><p>The exercises are intentionally not solved in this companion. Use the exact instructions in the notebook. Each exercise cell starts with <code># Exercise N: your code here</code>.</p><h3>Exercise 1: fix one reproducibility issue and keep a revision log</h3><p>Fix at least one problem: a <code>CHECK</code> row from 2.2 or another issue in your project. Rerun 2.1 and 2.2, then build <code>revision_log</code> with the columns <code>item</code>, <code>problem</code>, <code>fix</code> and <code>source</code>. Include at least one row from the readiness check and one from feedback on your project. If your MS3 feedback is not back yet, use this week's peer review or a finding from the project clinic self-check. Save it as <code>outputs/m14/revision_log.csv</code>.</p><p><strong>What to check:</strong> after your fix, step 2.2 shows fewer <code>CHECK</code> rows. Build the log with <code>pd.DataFrame([{...}, {...}])</code>, one dictionary per row.</p><h3>Exercise 2: rerun your headline number from a fresh state</h3><p>Write <code>headline()</code> so that it reads a file from disk and returns the main number of your report. Read your raw data or, for a model score, your saved test predictions with record IDs; no refitting is needed. Call it twice, compare the two results, and compare them with <code>REPORTED_VALUE</code> from your report draft. With the course example: among checking or savings account complaints that mention a fee, return the share closed with monetary relief. The notebook gives the last three lines of <code>headline()</code>. Without a report draft, set <code>REPORTED_VALUE</code> to the share as a report would show it, rounded to two decimals.</p><p><strong>What to check:</strong> the two calls are equal. If your number differs from your report, decide which is right and say why in a comment. Then restart the kernel and run everything once more.</p><h3>Exercise 3: finalize one exhibit with denominators and uncertainty</h3><p>Build a table with a count column and a denominator column per group, add intervals with <code>add_intervals</code>, and draw it with <code>plot_exhibit</code>. The title states the finding; the note gives the source, the denominators and the main limitation. Save <code>outputs/m14/my_exhibit.png</code> and <code>my_exhibit.csv</code>. Write alt text for your chart in <code>MY_ALT_TEXT</code>, as in step 1.13, and print it. With the course example, show the six products. If your key result is not a share (for example macro F1), use <code>bootstrap_interval</code> from step 1.12 and <code>plot_exhibit(..., percent=False)</code>.</p><p><strong>What to check:</strong> every label shows “k of n”. Your title does not claim more than the intervals support: if two intervals overlap a lot, do not call one group higher. A group with 0 cases gets an interval from 0% up, not a single point.</p></div>
+<h3>Practice interpretation</h3>
+<p>Write 3–5 sentences that use your own outputs. Answer the three points in the notebook:</p>
+<ul><li>State your recommendation in three layers: the evidence (with a denominator and an interval from Exercise 3), the interpretation, and the action for a named decision owner.</li><li>Name the main limitation a reader must know.</li><li>Say what you fixed in Exercise 1 and whether your headline number reproduced in Exercise 2.</li></ul>
+</section><section aria-labelledby="submit" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="submit">Submit</h2>
+<ol><li>Run the whole notebook from the top (<strong>Restart</strong>, then <strong>Run All</strong>) and confirm there are no errors.</li><li>Check that every <strong>Your answer</strong> cell is filled.</li><li>Add the one-line AI-use note in the Submit cell if you used an AI tool.</li><li>Save the notebook, so the outputs are saved in the file.</li><li>In GitHub Desktop, write a short summary such as "Lab 14 complete", click <strong>Commit to main</strong>, then <strong>Push origin</strong>. Your project is in the <code>project/</code> folder of the same repository, so this commit includes it.</li><li>Push before the deadline. You upload nothing to Canvas: the instructor grades the saved notebook, with its outputs, in your repository as it is at the deadline.</li></ol>
+<p>Lab notebook 14 is graded with the course Lab Notebook rubric in Canvas (the same rubric for every lab).</p>
+</section><section aria-labelledby="challenge" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="challenge">Part 3 Challenge (Optional)</h2>
+<p>These parts are optional. Do them after the required work.</p>
+<h3>A. An interval for the difference in shares</h3>
+<section aria-label="Optional: Your own bootstrap interval for the difference in shares" class="code-step" data-cell="47">
+<pre aria-label="Optional: Your own bootstrap interval for the difference in shares (notebook cell 47)" tabindex="0"><code># Challenge A: your code here
+# TODO: add the columns mentions_fee and monetary_relief to card, as fee_analysis does.
+# TODO: write a metric function: relief share of fee complaints minus relief share of the others.
+# TODO: call bootstrap_interval(card_with_flags, your_function) and check whether the interval includes 0.</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Use <code>bootstrap_interval</code> from step 1.12 on the 1,500 credit card complaints. Add the fee flag and the relief column first, then write a metric function that returns the relief share of fee complaints minus that of the others. Check whether the interval includes zero.</p></aside>
+<h3>B. Rerun from a fresh clone</h3>
+<p>Clone your repository into a new folder, create the environment from your environment file, and run your main notebook from the top. Compare the hashes of your main text outputs with <code>text_sha256</code>. Hash binary outputs, such as <code>.png</code> images, from their bytes unchanged. List what you had to fix.</p>
+<h3>C. One additional modeling technique</h3>
+<p>Try one more method from the course. Choose the method and its settings on development data only (train and validation). Then compare it with the original once on the frozen test set, with the same metric and denominators. A comparison you design or tune after seeing test results is exploratory: label it so in your report.</p>
+</section><section aria-labelledby="problems" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="problems">Common Problems</h2>
+<p>If a cell fails, read the last line of the error message first. Then find it below.</p>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Step 1.3 shows another sha256 than f6a7bfdcae91</h3><p>Your data file differs from the course version. Do not edit files in <code>data/course</code>. In GitHub Desktop, right-click the file in the <strong>Changes</strong> list and choose <strong>Discard changes</strong>, then run from the top again.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Hashes of my own project differ between Windows and Mac</h3><p>Git may convert line endings on Windows. The helper already normalizes them. To keep files identical everywhere, add a file named <code>.gitattributes</code> to the top folder of your repository with the line <code>* text=auto eol=lf</code>, then commit it.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>ModuleNotFoundError: No module named 'scipy' (or 'sklearn')</h3><p>The kernel is not <strong>ban6403</strong>. Choose it in the kernel picker and run from the top.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Step 1.12 runs for a long time</h3><p>The macro F1 cell computes the metric 4,000 times and takes about half a minute. Wait for it to finish. In your project, a test set of a few hundred records is faster.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>A project file shows CHECK, not found</h3><p>The path is wrong. Use forward slashes, check upper and lower case, and use a full path if the file is outside this repository.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>KeyError: 'mentions a fee' in Exercise 2 or 3</h3><p>Use the row label exactly as printed in step 1.4, including spaces. For the course example, spell the product exactly as in the data, for example <code>"Checking or savings account"</code>.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>The chart does not appear</h3><p>Run the cell again. In VS Code, figures show below the cell; the PNG file is saved in <code>outputs/m14</code> either way.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>My numbers differ from this page</h3><p>Restart the kernel and run from the top. Without changes to the helpers, every count, interval and fingerprint matches on every computer; only version numbers and the notebook's own hash differ.</p></aside>
+<p>Still stuck? Post the error message and the cell number in the course Q&amp;A discussion. Do not post your full answers.</p>
+</section><section aria-labelledby="wrap-up" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="wrap-up">Lab Wrap-Up</h2>
+<p>In this lab you used one workflow on the course data and on your project:</p>
+<ul class="inline-code-list"><li><strong>Rerun:</strong> one function from the raw file, a seed for every random step, and Restart and Run All.</li><li><strong>Record:</strong> files, hashes, seed, versions and an AI-use statement in a readiness checklist.</li><li><strong>Show:</strong> every share as k of n with a Wilson interval, any other metric with a bootstrap interval, in an exhibit whose title states the finding.</li><li><strong>Recommend:</strong> evidence, interpretation and an action for a named owner, with a check.</li></ul>
+<p>Module 15: you record your presentation, answer questions on it and submit the final project package.</p>
+</section>
+<section aria-labelledby="source-note" class="footer-note"><p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="source-note">Notebook and accessibility note</h2><p>The current Module 14 notebook is authoritative for Python code, sequence, prompts and required work. This companion adds explanation and accessible presentation without changing those requirements. Expected results come from running the notebook on the current course data.</p><p>The page is designed for keyboard navigation, screen readers, browser text-to-speech and ordinary visual reading. Important instructional information is presented as text rather than depending on a visual demonstration.</p></section>
+</main><script>
+(function() {
+  const synth = window.speechSynthesis;
+  const speakBtn = document.getElementById('speak');
+  const pauseBtn = document.getElementById('pause');
+  const resumeBtn = document.getElementById('resume');
+  const stopBtn = document.getElementById('stop');
+  const rate = document.getElementById('speech-rate');
+  const rateValue = document.getElementById('rate-value');
+  const mode = document.getElementById('reading-mode');
+  const voiceSelect = document.getElementById('voice-select');
+  const sectionSelect = document.getElementById('section-select');
+  const jumpSection = document.getElementById('jump-section');
+  const readSection = document.getElementById('read-section');
+  const status = document.getElementById('speech-status');
+  const stickyControls = document.getElementById('sticky-audio-controls');
+  const stickyPause = document.getElementById('sticky-pause');
+  const stickyResume = document.getElementById('sticky-resume');
+  const stickyStop = document.getElementById('sticky-stop');
+  const stickyStatus = document.getElementById('sticky-speech-status');
+  let chunks = [], index = 0, stopped = true, voices = [];
+  function setStatus(t){ status.innerHTML='<small>'+t+'</small>'; if(stickyStatus) stickyStatus.textContent=t; }
+  function populateVoices(){ if(!synth)return; voices=synth.getVoices(); const cur=voiceSelect.value; voiceSelect.innerHTML='<option value="">Browser default</option>'; voices.forEach((v,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=v.name+' ('+v.lang+')';voiceSelect.appendChild(o);}); if([...voiceSelect.options].some(o=>o.value===cur))voiceSelect.value=cur; }
+  function codeToSpeech(text){ return text
+    .replace(/\\/g,' backslash ').replace(/_/g,' underscore ')
+    .replace(/==/g,' equals equals ').replace(/!=/g,' not equals ').replace(/>=/g,' greater than or equal to ').replace(/<=/g,' less than or equal to ')
+    .replace(/&/g,' and ').replace(/\|/g,' or ').replace(/>/g,' greater than ').replace(/</g,' less than ').replace(/=/g,' equals ')
+    .replace(/\(/g,' open parenthesis ').replace(/\)/g,' close parenthesis ').replace(/\[/g,' open bracket ').replace(/\]/g,' close bracket ').replace(/\{/g,' open brace ').replace(/\}/g,' close brace ')
+    .replace(/\./g,' dot ').replace(/,/g,' comma ').replace(/:/g,' colon ').replace(/;/g,' semicolon ').replace(/\+/g,' plus ').replace(/-/g,' minus ').replace(/\*/g,' star ').replace(/\//g,' slash ').replace(/%/g,' percent ')
+    .replace(/"/g,' quote ').replace(/'/g,' single quote ').replace(/\s+/g,' ').trim(); }
+  function tableToSpeech(table){ const cap=table.querySelector('caption'); const rows=[...table.querySelectorAll('tr')]; const out=[]; if(cap)out.push(cap.innerText.trim()+'.'); rows.forEach((row,r)=>{const cells=[...row.querySelectorAll('th,td')].map(c=>c.innerText.trim()); if(!cells.length)return; if(r===0)out.push('Columns: '+cells.join(', ')+'.'); else out.push('Row '+r+': '+cells.join(', ')+'.');}); return out.join(' '); }
+  function buildChunks(startElement){ const includeCode=mode.value==='full'; const main=document.getElementById('main-content'); const items=[]; let started=!startElement; main.querySelectorAll('h2,h3,h4,p,li,table,pre').forEach(el=>{ if(!started){if(el===startElement)started=true;else return;} if(el.closest('.listen-panel')||el.closest('nav')||el.closest('.controls')||el.closest('.section-read-controls')||el.closest('.back-to-contents'))return; if(el.closest('details:not([open])'))return; if(el.matches('pre')){if(!includeCode)return; const c=el.innerText.trim(); if(c)items.push({text:'Python code. '+codeToSpeech(c),el}); return;} if(el.matches('table')){const t=tableToSpeech(el);if(t)items.push({text:t,el});return;} const t=el.innerText.replace(/\s+/g,' ').trim(); if(t)items.push({text:t,el}); }); return items; }
+  function speakNext(){ if(!synth||stopped)return; if(index>=chunks.length){stopped=true;setStatus('Finished reading the companion.');if(stickyControls) stickyControls.hidden=true;return;} const cur=chunks[index]; const u=new SpeechSynthesisUtterance(cur.text);u.rate=parseFloat(rate.value); if(voiceSelect.value!==''&&voices[Number(voiceSelect.value)])u.voice=voices[Number(voiceSelect.value)];u.onstart=()=>setStatus('Reading item '+(index+1)+' of '+chunks.length+' at '+rate.value+'×.');u.onend=()=>{index++;speakNext();};u.onerror=e=>{if(e.error!=='canceled'&&e.error!=='interrupted'){setStatus('Speech stopped because the browser reported: '+e.error+'.');stopped=true;}}; synth.speak(u); }
+  function startReading(el,label){if(!synth){setStatus('This browser does not provide the Web Speech API.');return;}synth.cancel();chunks=buildChunks(el||null);index=0;stopped=false;if(stickyControls) stickyControls.hidden=false;setStatus(label?'Starting from '+label+'.':'Starting from the beginning.');setTimeout(speakNext,50);}
+  function setupSections(){ const hs=[...document.querySelectorAll('#main-content h2[id]')].filter(h=>!h.closest('.listen-panel')&&!h.closest('nav')); hs.forEach(h=>{const sectionName=h.innerText.trim();const o=document.createElement('option');o.value=h.id;o.textContent=sectionName;sectionSelect.appendChild(o);const d=document.createElement('div');d.className='section-read-controls';d.setAttribute('aria-label','Read-aloud controls for '+sectionName);const b=document.createElement('button');b.type='button';b.className='speak-section';b.textContent='Read Aloud from This Section';b.setAttribute('aria-label','Read aloud from this section: '+sectionName);b.addEventListener('click',()=>startReading(h,sectionName));const hint=document.createElement('span');hint.className='read-hint';hint.textContent='Reads continuously from this section to the end.';d.appendChild(b);d.appendChild(hint);h.insertAdjacentElement('afterend',d);}); }
+  speakBtn.addEventListener('click',()=>startReading(null,'the beginning'));
+  function pauseReading(){if(synth&&synth.speaking&&!synth.paused){synth.pause();setStatus('Paused.');}}
+  function resumeReading(){if(synth&&synth.paused){synth.resume();setStatus('Resumed. Speed changes apply to the next reading item.');}}
+  function stopReading(){stopped=true;if(synth)synth.cancel();setStatus('Stopped.');if(stickyControls) stickyControls.hidden=true;}
+  pauseBtn.addEventListener('click',pauseReading);
+  resumeBtn.addEventListener('click',resumeReading);
+  stopBtn.addEventListener('click',stopReading);
+  if(stickyPause) stickyPause.addEventListener('click',pauseReading);
+  if(stickyResume) stickyResume.addEventListener('click',resumeReading);
+  if(stickyStop) stickyStop.addEventListener('click',stopReading);
+  rate.addEventListener('input',()=>{rateValue.textContent=Number(rate.value).toFixed(1)+'×';if(synth&&synth.speaking)setStatus('Speed set to '+rateValue.textContent+'. It will apply to the next reading item.');});
+  mode.addEventListener('change',()=>setStatus(mode.value==='full'?'Full mode selected. Python code will be read aloud.':'Study mode selected. Exact Python code will be skipped.'));
+  jumpSection.addEventListener('click',()=>{const h=document.getElementById(sectionSelect.value);if(h){h.scrollIntoView({behavior:'smooth',block:'start'});h.setAttribute('tabindex','-1');h.focus();}});
+  readSection.addEventListener('click',()=>{const h=document.getElementById(sectionSelect.value);if(h)startReading(h,h.innerText.trim());});
+  setupSections(); populateVoices(); if(synth&&'onvoiceschanged' in synth)synth.onvoiceschanged=populateVoices;
+})();
+</script></body></html>

@@ -1,0 +1,59 @@
+{
+  "module": "M07",
+  "data": {
+    "file": "data/course/clothing_reviews.csv",
+    "sha256_16": "8a61265cd4b1421c",
+    "source": "Women's E-Commerce Clothing Reviews (Kaggle nicapotato/womens-ecommerce-clothing-reviews), CC0 1.0"
+  },
+  "codebook": {
+    "file": "data/llm_outputs/prompts/m07_review_codebook.md",
+    "version": "v1",
+    "sha256_16": "f44c3b3bd3c7eaaa"
+  },
+  "prompt": {
+    "prompt_version": "m07_review_aspects_v1",
+    "file": "data/llm_outputs/prompts/m07_review_aspects_prompt.md",
+    "sha256_16": "846cd2c6d6603d67",
+    "json_schema": "data/llm_outputs/prompts/m07_review_aspects_schema.json",
+    "json_schema_sha256_16": "900f13e504f1be7f",
+    "input_fields_sent": [
+      "review_text"
+    ]
+  },
+  "selection": "360 reviews from train and valid: 24 per department (Tops, Dresses, Bottoms, Intimate, Jackets) and rating band (1-2, 3, 4-5 stars). The 120 in data/reviewed/m07_reviewed_sample.csv (valid, 8 per group) plus 240 more (16 per group), seed 6407 (select_reviewed_sample.py).",
+  "artifacts": [
+    {
+      "file": "data/llm_outputs/m07_review_aspects_gemini.jsonl",
+      "kind": "real_model_output",
+      "api": "vertex",
+      "prompt_version": "m07_review_aspects_v1",
+      "model_requested": "gemini-3.5-flash-lite",
+      "model_version": [
+        "gemini-3.5-flash-lite"
+      ],
+      "temperature": 0.0,
+      "created_utc": [
+        "2026-10-15T00:42:46Z",
+        "2026-10-15T00:50:04Z"
+      ],
+      "rows": 360,
+      "rows_parsed": 360,
+      "errors": 0,
+      "median_latency_ms": 1050.0,
+      "input_tokens": 332274,
+      "output_tokens": 47327,
+      "aspect_mentions": 988,
+      "sha256_16": "d16cfa0c79bc487a"
+    }
+  ],
+  "reviewed_sample": {
+    "file": "data/reviewed/m07_reviewed_sample.csv",
+    "rows": 120,
+    "sha256_16": "89b0dcfd0596e0bc",
+    "kind": "draft labels written with AI assistance and reviewed by the instructor: draft (written before the LLM run), blind second reading and cached LLM labels compared; all three agree or majority; 3 cells by rulings R1 (9211) and R2 (22459)",
+    "aspect_rows": 295,
+    "reviews_without_aspect": [
+      116
+    ]
+  }
+}

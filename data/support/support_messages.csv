@@ -1,0 +1,155 @@
+message_id,channel,text,n_words,topic,answerable,expected_source_ids,priority,label_note,split
+SUP001,chat,How many days do I have to dispute something on my credit card? The store never credited the blender I returned.,21,disputes,yes,KB01-1;KB01-2,routine,,dev
+SUP002,email,I filed a dispute on my credit card two weeks ago for $214. Do I have to pay interest on that amount while you look into it?,27,disputes,yes,KB01-3,routine,,test
+SUP003,secure_message,An online shop charged my Fernhollow credit card twice for the same order of $58.40. The shop does not answer my emails. Can I dispute the second charge?,28,disputes,yes,KB01-1;KB01-2,routine,,test
+SUP004,chat,I paid for concert tickets with my debit card and the concert was cancelled. The seller will not refund me. What do I do?,24,disputes,yes,KB02-1,routine,,dev
+SUP005,email,What is the deadline to dispute a debit card purchase? It is on last month's statement.,16,disputes,yes,KB02-2,routine,,test
+SUP006,secure_message,What proof should I upload for my dispute about a sofa that never arrived?,14,disputes,yes,KB04-1,routine,,dev
+SUP007,chat,"You asked me for documents for my dispute while I was traveling, and now the dispute shows as closed. Can I still send them?",24,disputes,yes,KB04-2,routine,,dev
+SUP008,email,The temporary credit for my card dispute disappeared from my account today. Why would that happen?,16,disputes,yes,KB01-3,routine,,test
+SUP009,chat,"Your questions page says I have 60 days to dispute a credit card charge, but the app says 120 days. Which one is right?",24,disputes,yes,KB01-2,routine,Conflict: the old Q&A article KB03-1 (last reviewed 2023) says 60 days; the current article KB01-2 says 120 days. The current article wins.,dev
+SUP010,secure_message,Can I just email you my card number and the receipts to start a dispute?,15,disputes,yes,KB01-2;KB03-2;KB35-2,routine,"KB01-2 lists the app and Card Services as channels. KB03-2 (an older Q&A, still current) says card disputes cannot be filed by email. KB35-2 warns against sending card numbers.",test
+SUP011,chat,how long does a credit card dispute usually take,9,disputes,yes,KB01-3,routine,,test
+SUP012,email,Three months ago I bought a used laptop online with my debit card. It stopped working and the seller has disappeared. Am I too late to dispute the purchase?,29,disputes,yes,KB02-1;KB02-2,routine,,dev
+SUP013,secure_message,I want to dispute a charge on my business credit card for my bakery. Is the process different for business cards?,21,disputes,partly,KB01-1;KB01-2,routine,"The help center covers personal cards only. The card dispute process (KB01-1, KB01-2) gives general context, not the business-card answer.",test
+SUP014,email,The merchant won my dispute and you took the credit back. I do not agree with the decision. Can I appeal it?,22,disputes,partly,KB01-3,routine,KB01-3 says the decision is explained in writing; no passage describes an appeal.,dev
+SUP015,chat,Do I have to contact the merchant before I dispute a debit card purchase?,14,disputes,yes,KB02-1,routine,,dev
+SUP016,secure_message,Should I mail you the original receipt for my dispute or a copy?,13,disputes,yes,KB04-1,routine,,dev
+SUP017,email,"A hotel charged my credit card a $95 no-show fee even though I cancelled on time. I have the cancellation number. Is this something I can dispute, and what happens next?",31,disputes,yes,KB01-1;KB01-3;KB04-1,routine,"KB01-1 covers wrong charges, KB04-1 lists cancellation numbers as proof, and KB01-3 says what happens after filing.",dev
+SUP018,chat,"someone is using my debit card right now, I just got 3 alerts for purchases in another state. help",19,fraud_scams,yes,KB05-1,urgent,,test
+SUP019,secure_message,Am I responsible for fraud charges on my credit card if I only noticed them on my statement from two months ago?,22,fraud_scams,yes,KB05-2,urgent,"The 60-day window (KB05-2) runs from a statement two months old, so the deadline is days away.",dev
+SUP020,email,I reported fraud on my checking account 6 business days ago and I still have no decision. How long does this take?,22,fraud_scams,yes,KB06-1,routine,,dev
+SUP021,chat,You removed the temporary credit from my fraud claim and nobody told me why. Is that allowed?,17,fraud_scams,yes,KB06-2,routine,,dev
+SUP022,secure_message,"A man called pretending to be from my internet company, and I paid him $300 with my debit card. Is that covered?",22,fraud_scams,yes,KB07-1;KB07-2,routine,,test
+SUP023,email,I just got a welcome letter for a Fernhollow credit card that I never applied for. What should I do?,20,fraud_scams,yes,KB09-1,urgent,,test
+SUP024,chat,How long until my new card arrives after a fraud report?,11,fraud_scams,yes,KB05-2,routine,,dev
+SUP025,secure_message,"While you review my identity theft claim, will the account someone opened in my name hurt my credit?",18,fraud_scams,yes,KB09-2,routine,,test
+SUP026,chat,"If I lock my card in the app, will my gym membership autopay still go through?",16,fraud_scams,yes,KB05-1,routine,,dev
+SUP027,email,"I sent $1,900 to an online seller for a puppy and it was a scam. Can Fernhollow get my money back?",21,fraud_scams,yes,KB07-1;KB07-2,routine,,dev
+SUP028,secure_message,Do I need to sign anything for my fraud claim?,10,fraud_scams,yes,KB06-2,routine,,test
+SUP029,email,My elderly mother was talked into buying gift cards for a caller and she read him the numbers an hour ago. Can you stop the gift cards?,27,fraud_scams,partly,KB07-1;KB07-2,urgent,Scam payments are covered in KB07; nothing covers stopping gift cards.,dev
+SUP030,chat,Is the fraud line open on Sunday night?,8,fraud_scams,yes,KB05-1;KB35-1,routine,,dev
+SUP031,secure_message,My wallet was stolen with my Fernhollow debit card in it. I locked the card. Do you also offer identity theft insurance?,22,fraud_scams,partly,KB05-1;KB05-2,routine,"Locking and replacement are covered; insurance is not. The card is already locked, so the message is routine.",test
+SUP032,chat,There is a charge on my credit card from a store I have never heard of. Should I dispute it?,20,disputes,yes,KB01-1;KB05-1,routine,"The customer asks whether to dispute a charge they do not recognize, so the topic is disputes. KB01-1 sends it to fraud reporting (KB05-1).",dev
+SUP033,email,There is a Fernhollow account on my credit report that I do not recognize. I never opened it.,18,fraud_scams,yes,KB09-1,routine,"Could also be routed to credit reporting; the account was opened by someone else, so it is identity theft.",dev
+SUP034,secure_message,Will I get a temporary credit while you investigate the unauthorized withdrawal from my savings?,15,fraud_scams,yes,KB06-1,routine,,dev
+SUP035,chat,Can you add a travel notice to my card so it is not blocked in Portugal next month?,18,account_services,no,,routine,No passage covers travel notices.,test
+SUP036,chat,I sent $150 with QuickSend to the wrong phone number five minutes ago. Can you cancel it?,17,payments_transfers,partly,KB08-2,urgent,KB08-2 covers enrolled recipients; it does not say what happens if the wrong number is not enrolled (general context only).,test
+SUP037,secure_message,What is the most I can send with QuickSend in one day?,12,payments_transfers,yes,KB08-1,routine,,test
+SUP038,email,How fast does a QuickSend payment arrive? My sister is already enrolled.,12,payments_transfers,yes,KB08-1,routine,,test
+SUP039,chat,"If I send a domestic wire at 4 pm today, will it go out today?",15,payments_transfers,yes,KB15-1,routine,,test
+SUP040,secure_message,I sent an international wire last Friday and the person has not received it yet. Can you trace it?,19,payments_transfers,no,,routine,No passage covers tracing a wire.,dev
+SUP041,email,Can I set up a QuickSend payment that repeats every month for my rent?,14,payments_transfers,no,,routine,No passage covers repeating payments.,dev
+SUP042,chat,My QuickSend payment went to an old number that belongs to someone else now. They will not answer. What are my options?,22,payments_transfers,yes,KB08-2,routine,,dev
+SUP043,secure_message,Does QuickSend work with banks in other countries?,8,payments_transfers,no,,routine,KB08-1 does not say.,test
+SUP044,chat,Where do I find the routing number for a wire into my savings account?,14,payments_transfers,no,,routine,,dev
+SUP045,secure_message,Can I use QuickSend from my savings account?,8,payments_transfers,yes,KB08-1,routine,KB08-1 says QuickSend sends money from a checking account.,dev
+SUP046,email,"I want to send money to my son overseas every month. Which is cheaper, a wire or QuickSend?",18,payments_transfers,partly,KB15-1,routine,Wire fees are in KB15-1. No passage gives QuickSend fees or says QuickSend can send abroad.,dev
+SUP047,secure_message,I paid a seller with QuickSend and he never shipped the bike. Can I reverse the payment?,17,payments_transfers,yes,KB08-2;KB07-1;KB07-2,routine,Also a scam case (KB07).,dev
+SUP048,chat,I sent a wire to the wrong account number an hour ago. Please get it back!,16,payments_transfers,no,,urgent,No passage covers recalling a wire.,dev
+SUP049,email,My friend is not enrolled in QuickSend yet. Will the money still reach her within minutes?,16,payments_transfers,partly,KB08-1,routine,KB08-1 gives the speed for enrolled recipients only.,test
+SUP050,chat,"If my checking account is short by $40 tonight, what will the overdraft cost me?",15,fees,yes,KB10-1,routine,,test
+SUP051,secure_message,I was charged $35 for an overdraft in February 2026. Was that the right amount?,15,fees,yes,KB11-1;KB11-2,routine,"The archived fee schedule KB11 applied until March 31, 2026, so $35 was correct then.",dev
+SUP052,email,I was overdrawn by $6 at the end of the day yesterday and you charged me an overdraft fee. Is that right?,22,fees,yes,KB10-1;KB13-2,routine,"No fee at $10 or less (KB10-1), so the fee was charged in error (KB13-2).",test
+SUP053,chat,Can you waive the overdraft fee from Tuesday? It is my first one this year.,15,fees,yes,KB13-1,routine,,dev
+SUP054,secure_message,Why do I pay $12 every month on my checking account?,11,fees,yes,KB12-1,routine,,dev
+SUP055,email,I am 22 years old. Should I be paying the monthly fee on Everyday Checking?,15,fees,yes,KB12-1,routine,,test
+SUP056,chat,"My debit card was declined at the store, but I was not charged a fee. Why didn't the purchase just go through?",22,fees,yes,KB10-2,routine,,test
+SUP057,secure_message,"If I pay my credit card late, will my interest rate go up?",13,fees,yes,KB14-1,routine,,dev
+SUP058,email,Can you remove the late fee on my credit card? I have never been late before.,16,fees,yes,KB14-2,routine,,dev
+SUP059,chat,how much does an international wire cost,7,fees,yes,KB15-1,routine,,test
+SUP060,secure_message,What does it cost to stop payment on a check?,10,fees,yes,KB15-2,routine,,dev
+SUP061,email,You charged me 3 overdraft fees on one day. I thought the limit was 2. Will I get one back?,20,fees,yes,KB10-1;KB13-2,routine,,test
+SUP062,chat,How do I avoid the $5 fee on my savings account?,11,fees,yes,KB12-2,routine,,test
+SUP063,secure_message,An overdraft fee was refunded for me in March. Can I get another one refunded now?,16,fees,yes,KB13-1,routine,,dev
+SUP064,email,What interest rate does Basic Savings pay?,7,account_services,no,,routine,"Account terms, not a fee: routed to account services (the topic was corrected after the split was drawn).",dev
+SUP065,chat,Do I have to pay for a new debit card if mine was stolen?,14,fees,yes,KB15-2,routine,,dev
+SUP066,secure_message,How long does a fee refund take to show up in my account?,13,fees,yes,KB13-2,routine,,test
+SUP067,email,"When does interest start on a cash advance, and how much is the cash advance fee?",16,fees,partly,KB14-2,routine,Interest timing is in KB14-2; no passage gives a cash advance fee.,dev
+SUP068,chat,Do you charge me when someone wires money into my account?,11,fees,yes,KB15-1,routine,,dev
+SUP069,secure_message,Is there a foreign transaction fee on the Fernhollow credit card when I travel?,14,fees,no,,routine,,dev
+SUP070,email,Why was I charged $2 on my statement for a paper statement?,12,fees,yes,KB15-2,routine,,dev
+SUP071,chat,I got two overdraft fees in one week and money is really tight right now. Is there anything you can do?,21,fees,yes,KB13-1,routine,Courtesy refunds are limited to one per 12 months (KB13-1); a second one is reviewed case by case.,test
+SUP072,chat,I am locked out of the app after too many tries. How long do I have to wait?,18,account_services,yes,KB16-1,routine,,test
+SUP073,secure_message,I changed my phone number and cannot get the reset code. How do I get back into online banking?,19,account_services,yes,KB16-2,routine,,dev
+SUP074,email,My checking account is frozen and my paycheck is supposed to arrive on Friday. Will the deposit still go in? Who do I call?,24,account_services,yes,KB17-2,urgent,,dev
+SUP075,chat,Why would Fernhollow restrict my account? Nobody told me anything.,10,account_services,yes,KB17-1,routine,,test
+SUP076,secure_message,How do I close my savings account? I moved to another state.,12,account_services,yes,KB18-1,routine,,dev
+SUP077,email,You closed my account because I had not used it. How do I get the money that was left in it?,21,account_services,yes,KB18-2,routine,,dev
+SUP078,chat,I deposited a check in the app at 9 pm. When will the money be available?,16,account_services,yes,KB19-1,routine,,test
+SUP079,secure_message,"Why is my $7,000 check on hold for a whole week?",11,account_services,yes,KB19-2,routine,,test
+SUP080,email,Someone texted me saying they are from Fernhollow and asked for the code you just sent me. Is that real?,20,fraud_scams,yes,KB20-1,urgent,A fraud attempt; the answer is in the security-code article.,dev
+SUP081,chat,I got a security code by text that I did not ask for. Should I worry?,16,fraud_scams,yes,KB20-2,urgent,,dev
+SUP082,secure_message,Can I open a checking account for my 15-year-old son?,10,account_services,no,,routine,No passage covers accounts for minors.,test
+SUP083,email,Can I add my wife as a joint owner on my checking account online?,14,account_services,no,,routine,,test
+SUP084,chat,Where is the nearest Fernhollow ATM?,6,account_services,no,,routine,,dev
+SUP085,secure_message,I am trying to close my checking account but it says it cannot be closed. I have a payment pending. Why?,21,account_services,yes,KB18-1,routine,,test
+SUP086,email,A garnishment order froze my account. Can I still take out money for groceries?,14,account_services,partly,KB17-1;KB17-2,urgent,KB17 covers legal orders and reviews; it does not say which funds can be used.,dev
+SUP087,chat,how do i reset my password,6,account_services,yes,KB16-1,routine,,dev
+SUP088,secure_message,Can I give my daughter power of attorney over my accounts?,11,account_services,no,,routine,,test
+SUP089,email,I opened my account last week and my first check deposit is on hold for 7 days. Is that normal?,20,account_services,yes,KB19-2,routine,,dev
+SUP090,chat,Is there a daily limit on mobile check deposits?,9,account_services,no,,routine,,dev
+SUP091,secure_message,My account has been under review for 12 business days and I sent every document you asked for. Is that normal?,21,account_services,yes,KB17-2,routine,"KB17-2: 3 to 10 business days after documents arrive, so this review is longer than usual.",dev
+SUP092,secure_message,"Your report to the credit bureaus shows my card balance as $4,000, but I paid it down to $900 last month. How do I get it corrected?",27,credit_reporting,yes,KB22-1;KB22-2,routine,,test
+SUP093,chat,Does my Fernhollow checking account show up on my credit report?,11,credit_reporting,yes,KB21-1,routine,,test
+SUP094,email,I paid my loan 10 days late. Will that show as late on my credit report?,16,credit_reporting,yes,KB21-2,routine,,dev
+SUP095,chat,My application for your card was declined. Can you remove the hard inquiry now?,14,credit_reporting,yes,KB23-1,routine,,test
+SUP096,secure_message,I caught up on my past-due card payments. Will you remove the late marks from my report?,17,credit_reporting,yes,KB21-2,routine,,test
+SUP097,email,How long will it take you to investigate my credit report dispute?,12,credit_reporting,yes,KB22-2,routine,,test
+SUP098,secure_message,"There is a hard inquiry from Fernhollow on my credit report, but I never applied for anything.",17,credit_reporting,yes,KB23-2,routine,Possible identity theft; the answer is in the inquiry article.,dev
+SUP099,email,Can you report my rent payments to the credit bureaus to help my score?,14,credit_reporting,no,,routine,,dev
+SUP100,chat,What is my credit score?,5,credit_reporting,no,,routine,,dev
+SUP101,email,My mortgage with you does not show up on my credit report at all. Is that an error?,18,credit_reporting,yes,KB21-1;KB22-1,routine,,dev
+SUP102,secure_message,Should I dispute a wrong item with you or with the credit bureau?,13,credit_reporting,yes,KB22-1,routine,,dev
+SUP103,email,I sent my credit reporting dispute 45 days ago and have heard nothing. What can I do now?,18,credit_reporting,partly,KB22-2;KB34-1,routine,"KB22-2 promises 30 days; no passage says what to do after that, so a complaint (KB34-1) is the closest step.",dev
+SUP104,chat,What should I include in my letter disputing a late payment on my report?,14,credit_reporting,yes,KB22-2,routine,,dev
+SUP105,secure_message,How often do you send my card information to the credit bureaus?,12,credit_reporting,yes,KB21-1,routine,,test
+SUP106,chat,Can you send me a free copy of my credit report?,11,credit_reporting,no,,routine,,dev
+SUP107,chat,Your collectors keep calling me at work. Can I ask them to only write to me?,16,debt_collection,yes,KB24-2,routine,,test
+SUP108,secure_message,"Recovery Services says I owe $3,412. I do not think that debt is mine. What should I do?",18,debt_collection,yes,KB25-2,routine,,dev
+SUP109,email,What information should the validation notice include?,7,debt_collection,yes,KB25-1,routine,,test
+SUP110,chat,My card was charged off. Does that mean I do not owe it anymore?,14,debt_collection,yes,KB24-1,routine,,dev
+SUP111,secure_message,A company I have never heard of says it bought my old Fernhollow card balance. How do I know this is real?,22,debt_collection,yes,KB26-1,routine,,test
+SUP112,email,Can I settle my charged-off credit card for less than the full balance?,13,debt_collection,yes,KB27-1,routine,,dev
+SUP113,chat,How long can a payment plan with Recovery Services be?,10,debt_collection,yes,KB27-2,routine,,dev
+SUP114,secure_message,A collector called me at 10:30 pm last night. Is that allowed?,12,debt_collection,yes,KB24-2,routine,,dev
+SUP115,email,I disputed the debt two months after the validation notice came. Will collection stop?,14,debt_collection,yes,KB25-2,routine,,test
+SUP116,chat,"If my debt is settled, will I get a tax form for the forgiven part?",15,debt_collection,no,,routine,,test
+SUP117,secure_message,"My old Fernhollow card shows a zero balance and the word sold on my credit report, but a collection agency also lists it. Is that right?",26,debt_collection,yes,KB26-2,routine,Could also be routed to credit reporting.,dev
+SUP118,email,A collector offered me a settlement on the phone. Should I pay right away?,14,debt_collection,yes,KB27-1,routine,,dev
+SUP119,chat,I was served court papers about my old Fernhollow card. Can you stop the lawsuit?,15,debt_collection,no,,urgent,No passage covers lawsuits.,dev
+SUP120,secure_message,"If I settle my charged-off card for less, how will it show on my credit report?",16,debt_collection,yes,KB27-2,routine,Could also be routed to credit reporting.,dev
+SUP121,email,I do not know who owns my old Fernhollow loan now. Who do I pay?,15,debt_collection,yes,KB26-1;KB26-2,routine,KB26-1 says a letter names the buyer and Fernhollow can no longer accept payments; KB26-2 sends balance questions to the buyer.,dev
+SUP122,chat,Is there a time limit after which my old card debt can no longer be collected?,16,debt_collection,no,,routine,,test
+SUP123,secure_message,"My escrow statement says I have a shortage of $600. What does that mean, and what are my options?",19,mortgage_escrow,yes,KB29-1,routine,,test
+SUP124,email,My escrow statement shows a surplus of $212. Will I get a check?,13,mortgage_escrow,yes,KB29-2,routine,,dev
+SUP125,chat,"What is escrow, and why is it part of my payment?",11,mortgage_escrow,yes,KB28-1,routine,,dev
+SUP126,secure_message,"You bought insurance for my house, but I already have a policy. Please remove the charge.",16,mortgage_escrow,yes,KB30-2,routine,,dev
+SUP127,email,"If I pay my mortgage on the 12th, is there a late charge?",13,mortgage_escrow,yes,KB31-1,routine,,dev
+SUP128,chat,How much is the late charge on my mortgage?,9,mortgage_escrow,yes,KB31-1,routine,,test
+SUP129,secure_message,I sent half a payment because money is tight. It is not showing on my loan. Where did it go?,20,mortgage_escrow,yes,KB31-2,routine,,dev
+SUP130,email,I lost my job and I will not be able to make next month's mortgage payment. What help is there?,20,mortgage_escrow,yes,KB32-1;KB32-2,routine,"The payment is due next month, so the message is routine.",dev
+SUP131,chat,"How do I get a payoff statement, and is there a fee?",12,mortgage_escrow,yes,KB33-1,routine,,dev
+SUP132,secure_message,I sent my hardship application three weeks ago. When will I hear back?,13,mortgage_escrow,yes,KB32-2,routine,,dev
+SUP133,email,Can I pay my escrow shortage all at once instead of a higher monthly payment?,15,mortgage_escrow,yes,KB29-1,routine,,test
+SUP134,chat,What are your current mortgage refinance rates?,7,mortgage_escrow,no,,routine,,test
+SUP135,secure_message,My property taxes went down this year. Can you redo my escrow analysis now instead of waiting?,17,mortgage_escrow,partly,KB28-2,routine,KB28-2 says the analysis is once a year; it does not say whether an early one is possible.,dev
+SUP136,email,Why is lender-placed insurance so expensive?,6,mortgage_escrow,yes,KB30-2,routine,,dev
+SUP137,chat,A storm damaged my roof and I need the money for repairs. Can I skip this month's mortgage payment?,19,mortgage_escrow,partly,KB32-1;KB32-2,routine,"KB32-1 lists options and KB32-2 the application; no passage covers skipping a payment. Lab 12 Q18 asks about an auto loan, which the help center does not cover at all; this message is about a mortgage.",test
+SUP138,secure_message,My escrow surplus was $30 and I did not get a check. Why?,13,mortgage_escrow,yes,KB29-2,routine,,test
+SUP139,email,Can you remove the mortgage insurance from my loan now that I have 20% equity?,15,mortgage_escrow,no,,routine,,test
+SUP140,chat,Can I make my mortgage payments every two weeks instead of monthly?,12,mortgage_escrow,no,,routine,,dev
+SUP141,secure_message,My homeowners policy was cancelled last month. What happens if I do not get a new one right away?,19,mortgage_escrow,yes,KB30-1,routine,,test
+SUP142,chat,What time does phone support close on Saturday?,8,complaints_contact,yes,KB35-1,routine,,dev
+SUP143,secure_message,I want to file a formal complaint about how my branch handled my account. How do I do it?,19,complaints_contact,yes,KB34-1,routine,,dev
+SUP144,email,I filed a complaint with you yesterday. When should I hear that you received it?,15,complaints_contact,yes,KB34-2,routine,,test
+SUP145,chat,Is chat available at 11 pm?,6,complaints_contact,yes,KB35-1,routine,,dev
+SUP146,secure_message,When will someone answer my secure message?,7,complaints_contact,yes,KB35-2,routine,,dev
+SUP147,email,Can I also send my complaint to the CFPB?,9,complaints_contact,yes,KB34-2,routine,,test
+SUP148,chat,Can I speak to someone in Spanish?,7,complaints_contact,no,,routine,,dev
+SUP149,secure_message,It has been 20 business days and I have not received a response to my complaint.,16,complaints_contact,yes,KB34-2,routine,KB34-2 promises 15 business days or a new date; it does not say what happens when neither arrives.,dev
+SUP150,email,What is the mailing address for the Customer Advocacy Office?,10,complaints_contact,partly,KB34-1,routine,KB34-1 names the Customer Advocacy Office but gives no mailing address.,dev
+SUP151,chat,Is customer support open on Sunday?,6,complaints_contact,yes,KB35-1,routine,,test
+SUP152,secure_message,Is it safe to put my full card number in a secure message?,13,complaints_contact,yes,KB35-2,routine,,test
+SUP153,email,Do you have a branch near downtown that is open on Saturdays?,12,complaints_contact,no,,routine,,dev
+SUP154,chat,What should I include when I write a complaint letter to you?,12,complaints_contact,yes,KB34-1,routine,,test

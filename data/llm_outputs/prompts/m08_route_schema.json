@@ -1,0 +1,17 @@
+{
+  "type": "OBJECT",
+  "properties": {
+    "product": {
+      "type": "STRING",
+      "enum": [
+        "Credit reporting or other personal consumer reports",
+        "Debt collection",
+        "Checking or savings account",
+        "Credit card",
+        "Money transfer, virtual currency, or money service",
+        "Mortgage"
+      ]
+    }
+  },
+  "required": ["product"]
+}

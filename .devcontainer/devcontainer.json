@@ -1,0 +1,19 @@
+{
+  "name": "BAN 6403 Labs",
+  "image": "mcr.microsoft.com/devcontainers/python:3.13",
+  "hostRequirements": {
+    "cpus": 2
+  },
+  "postCreateCommand": "python -m pip install --no-cache-dir numpy \"pandas>=3.0,<3.1\" \"scikit-learn>=1.8\" scipy matplotlib ipykernel nbconvert",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python"
+      }
+    }
+  }
+}

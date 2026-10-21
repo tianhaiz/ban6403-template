@@ -1,0 +1,36 @@
+article_id,title,topic,effective_date,last_reviewed,status,n_passages
+KB01,Disputing a credit card charge,disputes,2026-01-15,2026-01-15,current,3
+KB02,Disputing a debit card purchase,disputes,2026-01-15,2026-01-15,current,2
+KB03,Card dispute questions and answers,disputes,2021-03-01,2023-06-01,current,2
+KB04,Documents that help a dispute,disputes,2026-01-15,2026-01-15,current,2
+KB05,Reporting unauthorized card transactions,unauthorized,2026-02-01,2026-02-01,current,2
+KB06,What happens after you report fraud,unauthorized,2026-02-01,2026-02-01,current,2
+KB07,Scams and payments you authorized,unauthorized,2026-02-01,2026-02-01,current,2
+KB08,QuickSend person-to-person payments,payments,2026-02-01,2026-02-01,current,2
+KB09,Identity theft and accounts opened in your name,unauthorized,2026-02-01,2026-02-01,current,2
+KB10,Overdraft fees,fees,2026-04-01,2026-04-01,current,2
+KB11,Overdraft fees (archived),fees,2024-07-01,2024-07-01,archived,2
+KB12,Monthly maintenance fees,fees,2026-01-01,2026-01-01,current,2
+KB13,Asking for a fee refund,fees,2026-01-01,2026-01-01,current,2
+KB14,Credit card late fees and interest,fees,2026-01-01,2026-01-01,current,2
+KB15,Wire transfers and other service fees,fees,2026-01-01,2026-01-01,current,2
+KB16,Locked out of online banking,account_access,2026-03-01,2026-03-01,current,2
+KB17,Frozen or restricted accounts,account_access,2026-03-01,2026-03-01,current,2
+KB18,Closing your account,account_access,2026-03-01,2026-03-01,current,2
+KB19,When deposited funds are available,account_access,2026-03-01,2026-03-01,current,2
+KB20,Security codes and phone calls from Fernhollow,account_access,2026-03-01,2026-03-01,current,2
+KB21,How Fernhollow reports to credit bureaus,credit_reporting,2026-01-10,2026-01-10,current,2
+KB22,Disputing information Fernhollow reported,credit_reporting,2026-01-10,2026-01-10,current,2
+KB23,Credit checks and hard inquiries,credit_reporting,2026-01-10,2026-01-10,current,2
+KB24,Fernhollow Recovery Services,debt_collection,2026-02-15,2026-02-15,current,2
+KB25,Asking us to validate a debt,debt_collection,2026-02-15,2026-02-15,current,2
+KB26,If your account was sold to another company,debt_collection,2026-02-15,2026-02-15,current,2
+KB27,Settlements and payment plans for charged-off accounts,debt_collection,2026-02-15,2026-02-15,current,2
+KB28,How your escrow account works,escrow,2026-01-20,2026-01-20,current,2
+KB29,Escrow shortages and surpluses,escrow,2026-01-20,2026-01-20,current,2
+KB30,Homeowners insurance and lender-placed insurance,escrow,2026-01-20,2026-01-20,current,2
+KB31,Mortgage payments and late charges,mortgage,2026-01-20,2026-01-20,current,2
+KB32,Help if you are struggling to pay your mortgage,mortgage,2026-01-20,2026-01-20,current,2
+KB33,Mortgage payoff statements,mortgage,2026-01-20,2026-01-20,current,1
+KB34,How to make a complaint to Fernhollow,complaints,2026-01-05,2026-01-05,current,2
+KB35,Contact hours and channels,complaints,2026-01-05,2026-01-05,current,2

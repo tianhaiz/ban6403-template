@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Lab 1 Companion - BAN 6403</title><style>
+:root { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.62; }
+* { box-sizing: border-box; }
+body { margin:0; background:#fff; color:#111; }
+a { color:#0645ad; text-decoration-thickness:.12em; }
+a:focus, button:focus, summary:focus, pre:focus, .table-wrap:focus, select:focus, input:focus { outline:3px solid currentColor; outline-offset:3px; }
+.skip-link { position:absolute; left:-9999px; }
+.skip-link:focus { left:1rem; top:1rem; background:#fff; padding:.75rem; z-index:1000; border:2px solid #111; }
+header { border-bottom:2px solid #111; padding:1.5rem max(1rem, calc((100vw - 1060px)/2)); }
+header h1 { margin:0 0 .35rem; }
+.subtitle { margin:.2rem 0 0; font-size:1.08rem; }
+main { max-width:1060px; margin:0 auto; padding:1.5rem 1rem 4rem; }
+h2 { margin-top:2.6rem; padding-top:.55rem; border-top:1px solid #bbb; }
+h3 { margin-top:1.7rem; }
+.accessibility-summary, .toc, .note-box, .result-box, .try-box, .assignment-box, .summary-box, .listen-panel, .solution-box { border:1px solid #555; border-radius:.45rem; padding:1rem 1.1rem; margin:1.15rem 0; }
+.note-box { border-left:6px solid #1f4e79; background:#f4f8fc; position:relative; }
+.note-label { display:inline-block; font-size:.78rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; border:2px solid #1f4e79; border-radius:.25rem; padding:.22rem .45rem; margin:0 0 .55rem; background:#fff; }
+.note-box h3 { margin-top:.15rem; }
+.content-key { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:.8rem; margin:1rem 0; }
+.key-item { border:1px solid #777; border-radius:.4rem; padding:.8rem .9rem; }
+.key-label { font-weight:800; display:block; margin-bottom:.25rem; }
+.try-box { border-left:5px solid #111; }
+.result-box { background:#fafafa; }
+.solution-box summary { cursor:pointer; font-weight:700; }
+.solution-box[open] summary { margin-bottom:.8rem; }
+.controls { display:flex; gap:.6rem; flex-wrap:wrap; margin:1rem 0; }
+button { font:inherit; padding:.55rem .8rem; border:2px solid #111; background:#fff; border-radius:.3rem; cursor:pointer; }
+pre { overflow:auto; border:1px solid #777; padding:1rem; background:#f6f6f6; white-space:pre; }
+code { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.code-step { margin:1rem 0 1.55rem; }
+.code-purpose { margin-bottom:.4rem; }
+.table-wrap { overflow-x:auto; margin:.8rem 0; }
+table { border-collapse:collapse; width:100%; min-width:620px; }
+th, td { border:1px solid #666; padding:.5rem; text-align:left; vertical-align:top; }
+th { font-weight:700; }
+caption { font-weight:700; text-align:left; margin-bottom:.45rem; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.speech-options { display:grid; grid-template-columns:max-content minmax(180px,1fr); gap:.65rem .9rem; align-items:center; max-width:800px; }
+.speech-options select, .speech-options input[type="range"] { width:100%; font:inherit; }
+#speech-status { min-height:1.5em; }
+.section-read-controls { margin:.25rem 0 1rem; display:flex; align-items:center; gap:.5rem; }
+.section-read-controls button { font-size:.9rem; padding:.4rem .7rem; }
+.section-read-controls .read-hint { color:#555; font-size:.88rem; }
+.kicker { font-weight:700; }
+.muted { color:#555; }
+.footer-note { margin-top:3rem; border-top:2px solid #111; padding-top:1rem; }
+.inline-code-list li { margin:.25rem 0; }
+@media (max-width:700px) { table { min-width:760px; } .speech-options { grid-template-columns:1fr; } .section-read-controls { flex-direction:column; align-items:flex-start; } }
+@media print { .controls,.skip-link,.speak-section,.listen-panel,.jump-controls { display:none !important; } main { max-width:none; } a { color:inherit; text-decoration:none; } details { display:block; } details > * { display:block !important; } }
+
+.read-aloud-intro { border:2px solid #111; background:#fbfbfb; }
+.read-aloud-intro h3 { margin-top:.15rem; }
+.speak-section { font-weight:700; }
+.sticky-audio-controls { position:fixed; left:50%; bottom:1rem; transform:translateX(-50%); width:min(960px,calc(100vw - 2rem)); z-index:2000; background:#fff; border:3px solid #111; border-radius:.55rem; padding:.65rem .8rem; box-shadow:0 4px 20px rgba(0,0,0,.18); }
+.sticky-audio-inner { display:flex; align-items:center; gap:.65rem; flex-wrap:wrap; }
+.sticky-audio-label { font-weight:800; margin-right:auto; }
+.sticky-audio-status { flex:1 1 260px; min-width:180px; }
+.sticky-audio-controls button { padding:.42rem .68rem; }
+.sticky-audio-controls[hidden] { display:none !important; }
+@media (max-width:700px) { .sticky-audio-inner { align-items:stretch; } .sticky-audio-label, .sticky-audio-status { flex-basis:100%; } .sticky-audio-controls button { flex:1 1 auto; } }
+@media print { .sticky-audio-controls { display:none !important; } }
+
+.back-to-contents { margin: 1.6rem 0 .6rem; padding-top: .7rem; border-top: 1px dashed #aaa; font-size: .95rem; }
+.back-to-contents a { font-weight: 700; }
+
+/* code-output-tint v1: calm colours that separate code, output and instructor notes */
+.code-step pre { background:#f0f2f4; border:1px solid #a3abb5; border-left:4px solid #6b7785; }
+.result-box { background:#fbf8ef; border:1px solid #b9ae92; border-left:4px solid #8a7a52; }
+.result-box pre { background:#fffdf7; border:1px solid #cfc6ae; }
+.note-box { border:2px solid #1f4e79; border-left:8px solid #1f4e79; background:#e8f1fb; }
+.result-box > h3:first-child { margin-top:.1rem; }
+@media (forced-colors: active) { .code-step pre, .result-box, .result-box pre, .note-box { border-color:CanvasText; } }
+</style><style>/* Added for BAN 6403: let long inline paths wrap on narrow screens. */ p code, li code, td code, th code, summary code { overflow-wrap:anywhere; }</style></head>
+<body><a class="skip-link" href="#main-content">Skip to lab content</a>
+<header><h1>Lab 1 Companion</h1><p class="subtitle"><strong>BAN 6403: Text Analytics for Business</strong></p><p>Module 1: Text Analytics for Business – Getting Started</p></header>
+<div aria-label="Active read-aloud controls" class="sticky-audio-controls" hidden="" id="sticky-audio-controls" role="region"><div class="sticky-audio-inner"><span class="sticky-audio-label">Read Aloud</span><span aria-live="polite" class="sticky-audio-status" id="sticky-speech-status">Ready.</span><button id="sticky-pause" type="button">Pause</button><button id="sticky-resume" type="button">Resume</button><button id="sticky-stop" type="button">Stop</button></div></div><main id="main-content">
+<section aria-labelledby="how-to-use" class="accessibility-summary">
+<h2 id="how-to-use">How to use this companion</h2>
+<p>Open the <strong>Module 1 notebook and this companion at the same time</strong>. Work through the companion from top to bottom and run the matching notebook cells as you go. The notebook is the authoritative source for the lab sequence, code, and required work. This companion explains what each step means, what to notice in the output, and why the step matters.</p><div aria-labelledby="listen-title" class="listen-panel read-aloud-intro">
+<h3 id="listen-title">Read aloud: controls and directions</h3>
+<p><strong>Before you start:</strong> choose a reading mode, speed, and voice below. Select <strong>Read Aloud from Beginning</strong> to hear the full companion, or use <strong>Read Aloud from This Section</strong> beside any major section to continue from that point. While audio is playing, a floating control bar remains visible at the bottom of the page. Use <strong>Pause</strong> to pause temporarily, <strong>Resume</strong> to continue, and <strong>Stop</strong> to end the current reading.</p><p><strong>Study mode</strong> reads explanations, results, tables, and notes while skipping exact Python code. <strong>Full mode</strong> also reads Python code and verbalizes common programming symbols.</p>
+<div aria-label="Read aloud controls" class="controls">
+<button id="speak" type="button">Read Aloud from Beginning</button><button id="pause" type="button">Pause</button><button id="resume" type="button">Resume</button><button id="stop" type="button">Stop</button>
+</div>
+<div class="speech-options">
+<label for="reading-mode"><strong>Reading mode:</strong></label><select id="reading-mode"><option selected="" value="study">Study mode - explanations and results</option><option value="full">Full mode - include Python code</option></select>
+<label for="speech-rate"><strong>Speed:</strong> <span id="rate-value">1.0×</span></label><input aria-describedby="rate-help" id="speech-rate" max="2" min="0.5" step="0.1" type="range" value="1"/><span class="sr-only" id="rate-help">Adjust text-to-speech speed from one half to two times normal speed.</span>
+<label for="voice-select"><strong>Voice:</strong></label><select id="voice-select"><option value="">Browser default</option></select>
+<label for="section-select"><strong>Jump to section:</strong></label><select id="section-select"><option value="">Choose a section</option></select>
+</div>
+<div class="controls jump-controls"><button id="jump-section" type="button">Jump</button><button id="read-section" type="button">Read Aloud from Selected Section</button></div>
+<p aria-live="polite" id="speech-status" role="status"><small>Ready to read.</small></p>
+<p><small>The read-aloud feature uses your browser's speech engine. A screen reader can access the page independently of these controls.</small></p>
+</div>
+
+<h3>What is in the notebook, and what this companion adds</h3>
+<ul>
+<li><strong>Notebook:</strong> the exact Python code, the guided steps, the checkpoint and decision note, the Practice exercises and interpretation, and the optional Challenge.</li>
+<li><strong>Companion:</strong> plain-language explanations, the output you should expect at each step (from a real run on the current data), checks for the exercises, and help with common problems.</li>
+<li><strong>If anything ever seems inconsistent:</strong> follow the current notebook.</li>
+</ul>
+<div aria-label="Content key" class="content-key">
+<div class="key-item"><span class="key-label">Notebook content</span>Code, official prompts, required tasks, and the lab sequence come from the notebook.</div>
+<div class="key-item"><span class="key-label">Companion-added instructor note</span>These clearly labeled notes are explanations, cautions, interpretations, or study advice added by this companion to help you understand the notebook more deeply. They are not extra required notebook steps unless the note explicitly says so.</div>
+</div>
+<p>This companion is designed for keyboard and screen-reader access, but it is <strong>not a separate version for students who need accessibility features</strong>. It is the same learning guide for everyone. You can read it visually, use a screen reader, or use the built-in read-aloud controls while you work in the notebook.</p>
+<h3>Your course environment</h3>
+<ul>
+<li><strong>Main route: Anaconda + GitHub Desktop + VS Code:</strong> get the repository with GitHub Desktop, open the folder in VS Code, open the notebook, and select the <code>ban6403</code> kernel. Module 0 explains the setup.</li>
+<li><strong>Optional: GitHub Codespaces:</strong> Online students may open their copy of the repository in GitHub Codespaces instead (see <code>.devcontainer/README.md</code>). Codespaces is not reachable on the UTSA campus network.</li>
+<li><strong>In either environment:</strong> the notebook content and this companion are the same. Keep the repository structure unchanged so notebook paths and output folders continue to work.</li>
+</ul>
+</section>
+<nav aria-labelledby="toc-title" class="toc"><p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="toc-title" tabindex="-1">Lab contents</h2><ol><li><a href="#how-to-use">How to use this companion</a></li><li><a href="#learning-goals">Module 1 Learning Goals</a></li><li><a href="#part-0-open">Part 0: Open the Notebook</a></li><li><a href="#part-1-setup">Part 1, Steps 1.1–1.3: Check Your Setup</a></li><li><a href="#part-1-read">Steps 1.4–1.9: Load and Read the Messages</a></li><li><a href="#part-1-save">Steps 1.10–1.12: Save the Preview</a></li><li><a href="#decision-note">Step 1.13: Your Decision Note</a></li><li><a href="#checkpoint">Checkpoint</a></li><li><a href="#part-2-explore">Part 2, Steps 2.1–2.5: Load and Explore the Complaints</a></li><li><a href="#part-2-read">Steps 2.6–2.7: Read Five Complaints</a></li><li><a href="#practice-exercises">Practice Exercises and Interpretation</a></li><li><a href="#submit">Submit Your Notebook</a></li><li><a href="#part-3-challenge">Part 3: Challenge (Optional)</a></li><li><a href="#common-problems">Common Problems</a></li><li><a href="#wrap-up">Lab Wrap-Up</a></li><li><a href="#source-note">Notebook and accessibility note</a></li></ol></nav>
+<section aria-labelledby="learning-goals" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="learning-goals">Module 1 Learning Goals</h2>
+<p>By the end of this lab, you should be able to open the course notebook with the right kernel and load a CSV file into a pandas table. You should also be able to read records by their ID and save a small output file without changing the raw data. Finally, you should be able to say what business decision a piece of customer text could support.</p>
+<p>The main idea is simple: <strong>a star rating tells you how a customer felt; the text tells you whether someone still needs help.</strong> Every output you make keeps the record ID, so anyone can check it against the original text.</p>
+</section>
+<section aria-labelledby="part-0-open" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-0-open">Part 0: Open the Notebook</h2>
+<p>This lab assumes you finished the setup in <strong>Module 0</strong>. You need Anaconda with the <code>ban6403</code> environment, VS Code with the Python and Jupyter extensions, and GitHub Desktop with your copy of the course repository.</p>
+<ol>
+<li>Open <strong>GitHub Desktop</strong> and select your course repository (<code>ban6403-</code> plus your GitHub username). Your repository has held this week's notebook and data since Week 1, so there is nothing to download.</li>
+<li>Open the repository folder in <strong>VS Code</strong> (<strong>File › Open Folder</strong>) and open <code>notebooks/M01_Text_Analytics_for_Business.ipynb</code>.</li>
+<li>Open the kernel picker at the top right of the notebook and choose <strong>ban6403</strong>.</li>
+<li>Run the cells in order from the top with <strong>Shift+Enter</strong>. If you restart the kernel, run from the top again.</li>
+</ol>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Markdown cells do not run code</h3><p>Cells with instructions are markdown cells. Pressing Shift+Enter in a markdown cell only shows it formatted. A code cell has run when a number appears to its left.</p></aside>
+</section>
+<section aria-labelledby="part-1-setup" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1-setup">Part 1, Steps 1.1–1.3: Check Your Setup</h2>
+<p>The guided core uses 24 short customer messages that we wrote for this course. They describe no real customers. First, check that the notebook runs with the course Python.</p>
+<h3>1.1 Choose your Python kernel</h3>
+<p>The <strong>kernel</strong> is the Python environment that runs your code cells. This step has no code cell. Click the kernel picker at the top right of the notebook and choose <code>ban6403</code>. In GitHub Codespaces, choose the Python 3.13 kernel.</p>
+<aside aria-label="Result" class="result-box"><h3>What you should see</h3><p>The kernel name <code>ban6403</code> at the top right of the notebook. If <code>ban6403</code> is missing from the list, your setup is not finished yet. Go back to the setup steps in Module 0, then return here.</p></aside>
+<h3>1.2 Import pandas</h3>
+<p><code>pandas</code> is the Python library we use to read and inspect tables. We import it once and call it <code>pd</code>.</p>
+<section aria-label="Import pandas" class="code-step" data-cell="2">
+<pre aria-label="Import pandas" tabindex="0"><code>import pandas as pd</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>What you should see</h3><p>No output. That means pandas was imported. If you get <code>ModuleNotFoundError</code>, check that <code>ban6403</code> is selected (step 1.1). If it is, pandas is missing from that environment: run the Module 0 readiness check.</p></aside>
+<h3>1.3 Point to the data folder</h3>
+<p>The notebook runs from the <code>notebooks</code> folder of your repository. The data sits next to it, in the <code>data</code> folder. In a file path, <code>..</code> means "one folder up", so <code>../data</code> is the data folder on every computer. <code>Path</code> turns text into a file path that works on Windows, macOS and Linux, and the <code>/</code> operator joins a folder and a file name into one path.</p>
+<section aria-label="Point to the data folder and the feedback file" class="code-step" data-cell="4">
+<pre aria-label="Point to the data folder and the feedback file" tabindex="0"><code>from pathlib import Path
+
+# &quot;..&quot; means one folder up, so this is the data folder next to notebooks/.
+DATA = Path(&quot;../data&quot;)
+
+# The / operator joins folder names and a file name into one path.
+FEEDBACK_FILE = DATA / &quot;raw&quot; / &quot;customer_feedback_m01.csv&quot;
+FEEDBACK_FILE</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>What you should see</h3><pre aria-label="Output of step 1.3" tabindex="0"><code>PosixPath('../data/raw/customer_feedback_m01.csv')</code></pre><p>This is the path of today's file. On Windows it shows as <code>WindowsPath('../data/raw/customer_feedback_m01.csv')</code>. Step 1.4 reads the file from this path.</p></aside>
+</section>
+<section aria-labelledby="part-1-read" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1-read">Steps 1.4–1.9: Load and Read the Messages</h2>
+<h3>1.4 Load the feedback messages</h3>
+<p><code>read_csv</code> loads <code>data/raw/customer_feedback_m01.csv</code> into a table called <code>feedback</code>. One message is empty. <code>keep_default_na=False</code> keeps it as empty text instead of <code>NaN</code>, pandas' marker for a missing value. This cell shows no output; that is normal.</p>
+<section aria-label="Load the feedback file" class="code-step" data-cell="6">
+<pre aria-label="Load the feedback file" tabindex="0"><code># keep_default_na=False keeps the empty message as &quot;&quot; instead of NaN.
+feedback = pd.read_csv(FEEDBACK_FILE, keep_default_na=False)</code></pre>
+</section>
+<h3>1.5 Look at the first five rows</h3>
+<p>A <strong>DataFrame</strong> is a pandas table with named columns. <code>head()</code> shows the first five rows and does not change the data.</p>
+<section aria-label="Show the first five rows" class="code-step" data-cell="8">
+<pre aria-label="Show the first five rows" tabindex="0"><code># Show the first five rows; head() does not change the table.
+feedback.head()</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>First five rows of feedback</caption><thead><tr><th scope="col">index</th><th scope="col">feedback_id</th><th scope="col">channel</th><th scope="col">product</th><th scope="col">stars</th><th scope="col">text</th></tr></thead><tbody><tr><td>0</td><td>FB001</td><td>review</td><td>speaker</td><td>5</td><td>Love the speaker, but the charger is missing.</td></tr><tr><td>1</td><td>FB002</td><td>email</td><td>speaker</td><td>1</td><td>Delivery was late. Support fixed it; no further help needed.</td></tr><tr><td>2</td><td>FB003</td><td>email</td><td>headset</td><td>2</td><td>The headset stopped working. Please arrange a refund.</td></tr><tr><td>3</td><td>FB004</td><td>review</td><td>tablet</td><td>3</td><td>It is okay.</td></tr><tr><td>4</td><td>FB005</td><td>chat</td><td>headset</td><td>4</td><td>The refund arrived yesterday. No action is required.</td></tr></tbody></table></div>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Read the text, not only the stars</h3><p>FB002 has one star, but the customer says the problem is fixed. FB001 has five stars, but the charger is missing. The rating and the need for help are different questions.</p></aside>
+<h3>1.6 and 1.7 Column names and table size</h3>
+<section aria-label="List the column names" class="code-step" data-cell="10">
+<pre aria-label="List the column names" tabindex="0"><code># The column names of the table.
+feedback.columns</code></pre>
+</section>
+<section aria-label="Show the table size" class="code-step" data-cell="12">
+<pre aria-label="Show the table size" tabindex="0"><code># (rows, columns)
+feedback.shape</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>What you should see</h3><p>The five column names <code>feedback_id</code>, <code>channel</code>, <code>product</code>, <code>stars</code> and <code>text</code>, shown as <code>Index([...], dtype='str')</code>. Then <code>(24, 5)</code>: 24 messages and 5 columns.</p><p><code>feedback_id</code> is the column that links each message to every later output.</p></aside>
+<h3>1.8 Keep the columns we will read</h3>
+<p>A list of column names selects a smaller table. We keep the ID, the rating and the text for the first five messages.</p>
+<section aria-label="Make the five-row preview" class="code-step" data-cell="14">
+<pre aria-label="Make the five-row preview" tabindex="0"><code># A list of column names inside the brackets keeps only those columns.
+# head(5) then keeps the first five rows.
+preview = feedback[[&quot;feedback_id&quot;, &quot;stars&quot;, &quot;text&quot;]].head(5)
+preview</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>What you should see</h3><p>The same five messages, FB001 to FB005, with only <code>feedback_id</code>, <code>stars</code> and <code>text</code>.</p></aside>
+<h3>1.9 Read one complete message</h3>
+<p>A table may cut long text short on screen. This cell prints FB001 in full. <code>loc</code> selects the row where <code>feedback_id</code> equals <code>"FB001"</code>.</p>
+<section aria-label="Print message FB001 in full" class="code-step" data-cell="16">
+<pre aria-label="Print message FB001 in full" tabindex="0"><code># The condition is True only for the row whose ID is FB001.
+# .loc[condition, &quot;text&quot;] keeps that row and the text column.
+message = feedback.loc[feedback[&quot;feedback_id&quot;] == &quot;FB001&quot;, &quot;text&quot;]
+
+# message is still a column with one value; iloc[0] takes that first value.
+print(message.iloc[0])</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>What you should see</h3><p><code>Love the speaker, but the charger is missing.</code></p><p>Five stars, and still a problem to fix. You will use this message in your decision note.</p></aside>
+</section>
+<section aria-labelledby="part-1-save" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1-save">Steps 1.10–1.12: Save the Preview</h2>
+<p>New files go to <code>outputs/m01</code>. The raw data file is never changed, so anyone can check your outputs against the original messages.</p>
+<h3>1.10 Make an output folder</h3>
+<p><code>exist_ok=True</code> means the cell also works when you run it again. This cell shows no output.</p>
+<section aria-label="Create the output folder" class="code-step" data-cell="18">
+<pre aria-label="Create the output folder" tabindex="0"><code>OUTPUT_DIR = Path(&quot;../outputs/m01&quot;)
+# parents=True also creates outputs/ if it does not exist yet; exist_ok=True accepts an existing folder.
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)</code></pre>
+</section>
+<h3>1.11 Save the preview as a CSV file</h3>
+<p><code>to_csv</code> writes the five-row preview. <code>index=False</code> leaves out pandas' row numbers.</p>
+<section aria-label="Write the preview to a CSV file" class="code-step" data-cell="20">
+<pre aria-label="Write the preview to a CSV file" tabindex="0"><code># As in 1.3, the / operator joins a folder and a file name into one path.
+PREVIEW_PATH = OUTPUT_DIR / &quot;first_feedback_preview.csv&quot;
+preview.to_csv(PREVIEW_PATH, index=False)
+PREVIEW_PATH</code></pre>
+</section>
+<h3>1.12 Confirm that the file exists</h3>
+<section aria-label="Check that the file exists" class="code-step" data-cell="22">
+<pre aria-label="Check that the file exists" tabindex="0"><code># exists() is True when a file is saved at this path.
+PREVIEW_PATH.exists()</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>What you should see</h3><p>A path ending in <code>outputs/m01/first_feedback_preview.csv</code>, then <code>True</code>. Open the file in VS Code. It should contain these six lines:</p><pre aria-label="Contents of first_feedback_preview.csv" tabindex="0"><code>feedback_id,stars,text
+FB001,5,"Love the speaker, but the charger is missing."
+FB002,1,Delivery was late. Support fixed it; no further help needed.
+FB003,2,The headset stopped working. Please arrange a refund.
+FB004,3,It is okay.
+FB005,4,The refund arrived yesterday. No action is required.</code></pre><p>The quotation marks around FB001's text are added because the text contains a comma.</p></aside>
+</section>
+<section aria-labelledby="decision-note" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="decision-note">Step 1.13: Your Decision Note</h2>
+<p>Imagine you work with a service manager. Each day, the team can read only about ten messages, so the manager wants a list of messages that may still need staff help.</p>
+<div class="assignment-box"><h3>Write in the notebook</h3>
+<p>Write 4–6 sentences in the answer cell below step 1.13. Double-click the cell to edit it, and press Shift+Enter to show it formatted. There is no single right answer. Your note is complete when it answers all four prompts:</p>
+<ol>
+<li>Who uses this list, and what do they decide?</li>
+<li>FB001 has five stars. What does its text tell you that the rating does not?</li>
+<li>Name one method that could help draft the list, for example a keyword rule. How could it get FB001 or another message wrong?</li>
+<li>What would show that the list helps? Name one limit of our 24 made-up messages.</li>
+</ol></div>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>You are proposing, not reporting</h3><p>No method has been tested on this data. Write what you would try and what could go wrong, in your own words. Quoting the customer's words, such as "the charger is missing", makes your point easy to check.</p></aside>
+</section>
+<section aria-labelledby="checkpoint" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="checkpoint">Checkpoint</h2>
+<div class="assignment-box"><h3>Answer in the notebook</h3>
+<p>Answer the two questions in the notebook in 2–3 sentences in total:</p>
+<ol>
+<li>Which file did you save in step 1.11, and which feedback IDs does it contain?</li>
+<li>Why do we write new files to <code>outputs/m01</code> and never change <code>data/raw/customer_feedback_m01.csv</code>?</li>
+</ol>
+<p><strong>What to check:</strong> your answer names the file and its five IDs, and gives a reason in your own words.</p></div>
+</section>
+<section aria-labelledby="part-2-explore" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-2-explore">Part 2, Steps 2.1–2.5: Load and Explore the Complaints</h2>
+<p>Now look at real customer text. The course extract holds 10,000 complaints that consumers sent to the U.S. Consumer Financial Protection Bureau (CFPB) in the second half of 2025. Each row is one complaint, written by the consumer.</p>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>These are real people</h3><p>CFPB replaces personal details with <code>XXXX</code>. Hidden dates look like <code>XX/XX/XXXX</code> or <code>XX/XX/year&gt;</code>; Module 3 looks at these marks closely. Do not try to find out who wrote a complaint. Only people who chose to complain are here. The course data also has a fixed number of rows per product, so the counts do not show how common each problem is.</p></aside>
+<h3>2.1 Load the complaint extract</h3>
+<section aria-label="Load the complaint extract" class="code-step" data-cell="26">
+<pre aria-label="Load the complaint extract" tabindex="0"><code># Read the complaints; shape gives (rows, columns).
+complaints = pd.read_csv(DATA / &quot;course/cfpb_complaints.csv&quot;)
+complaints.shape</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>What you should see</h3><p><code>(10000, 13)</code>: 10,000 complaints and 13 columns.</p></aside>
+<h3>2.2 List the columns</h3>
+<p><code>complaint_id</code> plays the same role as <code>feedback_id</code>: it links every output back to the original complaint. <code>narrative</code> is the complaint text. <code>product</code> and <code>issue</code> are categories the consumer chose.</p>
+<section aria-label="List the complaint columns" class="code-step" data-cell="28">
+<pre aria-label="List the complaint columns" tabindex="0"><code># The column names of the complaint table.
+complaints.columns</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>What you should see</h3><p>13 column names, from <code>complaint_id</code> to <code>split</code>.</p></aside>
+<h3>2.3 Count the splits and the products</h3>
+<section aria-label="Count rows per split" class="code-step" data-cell="30">
+<pre aria-label="Count rows per split" tabindex="0"><code># Count how many complaints belong to each split.
+complaints[&quot;split&quot;].value_counts()</code></pre>
+</section>
+<section aria-label="Count rows per product" class="code-step" data-cell="31">
+<pre aria-label="Count rows per product" tabindex="0"><code># Count how many complaints belong to each product.
+complaints[&quot;product&quot;].value_counts()</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Rows per split</caption><thead><tr><th scope="col">split</th><th scope="col">count</th></tr></thead><tbody><tr><td>train</td><td>6,000</td></tr><tr><td>valid</td><td>2,000</td></tr><tr><td>test</td><td>2,000</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0"><table><caption>Rows per product in the whole extract</caption><thead><tr><th scope="col">product</th><th scope="col">count</th></tr></thead><tbody><tr><td>Credit reporting or other personal consumer reports</td><td>2,500</td></tr><tr><td>Debt collection</td><td>2,000</td></tr><tr><td>Checking or savings account</td><td>1,500</td></tr><tr><td>Credit card</td><td>1,500</td></tr><tr><td>Money transfer, virtual currency, or money service</td><td>1,250</td></tr><tr><td>Mortgage</td><td>1,250</td></tr></tbody></table></div>
+<h3>2.4 Keep the training complaints</h3>
+<p><code>eq("train")</code> marks the rows whose split is <code>train</code>, and the outer brackets keep only those rows. The <code>valid</code> and <code>test</code> rows stay aside so later models can be checked on complaints they have not seen.</p>
+<section aria-label="Keep the training complaints" class="code-step" data-cell="33">
+<pre aria-label="Keep the training complaints" tabindex="0"><code># eq(&quot;train&quot;) gives True for training rows; the outer brackets keep those rows.
+train = complaints[complaints[&quot;split&quot;].eq(&quot;train&quot;)]
+train.shape</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>What you should see</h3><p><code>(6000, 13)</code>.</p></aside>
+<h3>2.5 How long are the complaints?</h3>
+<p><code>str.len()</code> counts the characters in each narrative, and <code>describe()</code> summarizes those counts. <code>count</code> is the number of complaints, <code>mean</code> the average length and <code>std</code> the standard deviation (how far lengths typically are from the mean). <code>min</code> and <code>max</code> are the shortest and longest. The <code>50%</code> row is the median: half are shorter and half are longer. <code>25%</code> and <code>75%</code> mark the middle half. <code>.round()</code> rounds to whole numbers. The second cell prints the longest message from Part 1 for comparison.</p>
+<section aria-label="Summarize narrative length" class="code-step" data-cell="35">
+<pre aria-label="Summarize narrative length" tabindex="0"><code># Characters per complaint, then a summary of those numbers.
+lengths = train[&quot;narrative&quot;].str.len()
+lengths.describe().round()</code></pre>
+</section>
+<section aria-label="Print the longest Part 1 message length" class="code-step" data-cell="36">
+<pre aria-label="Print the longest Part 1 message length" tabindex="0"><code># .str.len() counts the characters in each message; .max() takes the largest count.
+print(&quot;longest message in Part 1:&quot;, feedback[&quot;text&quot;].str.len().max(), &quot;characters&quot;)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Narrative length in characters, training complaints</caption><thead><tr><th scope="col">statistic</th><th scope="col">value</th></tr></thead><tbody><tr><td>count</td><td>6000.0</td></tr><tr><td>mean</td><td>1151.0</td></tr><tr><td>std</td><td>774.0</td></tr><tr><td>min</td><td>137.0</td></tr><tr><td>25%</td><td>537.0</td></tr><tr><td>50%</td><td>976.0</td></tr><tr><td>75%</td><td>1581.0</td></tr><tr><td>max</td><td>4019.0</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Compare the two datasets</h3><p>The second cell prints <code>longest message in Part 1: 62 characters</code>. The median complaint has 976 characters, almost 16 times as long as the longest message in Part 1.</p></aside>
+</section>
+<section aria-labelledby="part-2-read" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-2-read">Steps 2.6–2.7: Read Five Complaints</h2>
+<h3>2.6 Pick five complaints to read</h3>
+<p>We chose five training complaints, one from each of five products, each short enough to read in a minute. We select them by <code>complaint_id</code>, just as we selected FB001 by its ID.</p>
+<section aria-label="Select five complaints by complaint_id" class="code-step" data-cell="38">
+<pre aria-label="Select five complaints by complaint_id" tabindex="0"><code>import textwrap
+
+reading_ids = [14438857, 14412986, 14413024, 14387677, 14620078]
+
+# Use complaint_id as the row label, so we can look rows up by ID.
+train_by_id = train.set_index(&quot;complaint_id&quot;)
+
+# .loc[list of IDs, list of columns] keeps those rows in that order.
+reading = train_by_id.loc[reading_ids, [&quot;product&quot;, &quot;issue&quot;, &quot;company&quot;, &quot;narrative&quot;]]
+
+# Show the three short columns; the narratives are printed in 2.7.
+reading[[&quot;product&quot;, &quot;issue&quot;, &quot;company&quot;]]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>The five complaints you will read</caption><thead><tr><th scope="col">complaint_id</th><th scope="col">product</th><th scope="col">issue</th><th scope="col">company</th></tr></thead><tbody><tr><td>14438857</td><td>Checking or savings account</td><td>Closing an account</td><td>JPMORGAN CHASE &amp; CO.</td></tr><tr><td>14412986</td><td>Credit card</td><td>Problem when making payments</td><td>CITIBANK, N.A.</td></tr><tr><td>14413024</td><td>Debt collection</td><td>Electronic communications</td><td>Kriya Capital, LLC</td></tr><tr><td>14387677</td><td>Money transfer, virtual currency, or money service</td><td>Money was not available when promised</td><td>DISCOVER BANK</td></tr><tr><td>14620078</td><td>Mortgage</td><td>Struggling to pay mortgage</td><td>MIDFIRST BANK</td></tr></tbody></table></div>
+<h3>2.7 Read the five complaints in full</h3>
+<p>The loop prints each complaint in turn: its ID, product and issue, then the full narrative. <code>textwrap.fill</code> only breaks long lines so they fit on screen; no words are removed.</p>
+<section aria-label="Print the five complaints in full" class="code-step" data-cell="40">
+<pre aria-label="Print the five complaints in full" tabindex="0"><code># iterrows() gives one row at a time: its label (the ID) and its values.
+for complaint_id, row in reading.iterrows():
+    print(complaint_id, &quot;|&quot;, row[&quot;product&quot;], &quot;|&quot;, row[&quot;issue&quot;])
+    # Break the narrative into lines of at most 100 characters.
+    print(textwrap.fill(row[&quot;narrative&quot;], width=100))
+    print()</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>What you should see</h3><p>Five blocks of text. The first one starts:</p><pre aria-label="Start of the printed complaints" tabindex="0"><code>14438857 | Checking or savings account | Closing an account
+XX/XX/XXXX Chase bank closed account. I had earned an {$100.00} sign up bonus as well as {$40.00} I
+had deposited. ...</code></pre></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Read with two questions in mind</h3><p>For each complaint, ask: <strong>who at the company would act on it, and what would they decide?</strong> You answer this for two complaints in the Practice interpretation. Notice also that the <code>company</code> column and the text do not always name the same firm. Check before you act.</p></aside>
+</section>
+<section aria-labelledby="practice-exercises" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="practice-exercises">Practice Exercises and Interpretation</h2>
+<p>These exercises are part of your graded notebook, so the companion does not give solution code. It tells you what each exercise asks and how to check your result. Use only the <code>train</code> rows.</p>
+<div class="assignment-box"><h3>Exercise 1: Read a complaint of your choice</h3>
+<p>Choose one training complaint that is not one of the five above, for example one about credit reporting. You can find IDs with <code>train[["complaint_id", "product", "issue"]].head(20)</code>. Select it by its <code>complaint_id</code> and print its product, issue, company and full narrative.</p>
+<p><strong>Check:</strong> the whole narrative is printed, not cut short in a table. <code>complaint_id</code> is a number, so write it without quotation marks. Use <code>textwrap.fill(..., width=100)</code> as in step 2.7 if the text runs off the screen.</p></div>
+<div class="assignment-box"><h3>Exercise 2: Count complaints per product in train</h3>
+<p>Count how many training complaints each product has, and compare the result with the counts for the whole extract in step 2.3.</p>
+<p><strong>Check:</strong> the six counts add up to 6,000. Work out what share of each product is in <code>train</code>.</p></div>
+<div class="assignment-box"><h3>Exercise 3: Find complaints that mention a word</h3>
+<p>Choose one word that might signal a need for action, for example <em>refund</em>, <em>fraud</em> or <em>locked</em>. Use letters only. <code>train["narrative"].str.contains("your word", case=False)</code> finds the complaints containing these letters. <code>case=False</code> ignores capitalization, so <em>Refund</em> and <em>refund</em> both count. Show how many there are, and print one matching narrative in full with its <code>complaint_id</code>.</p>
+<p><strong>Check:</strong> check the count first. If it is zero, choose another word and search again before you select a complaint. With <em>refund</em>, the count is 545 training complaints. The search also matches parts of longer words, so <em>refund</em> also finds <em>refunded</em>.</p></div>
+<div class="assignment-box"><h3>Practice interpretation</h3>
+<p>Write 3–5 sentences in the notebook, using your own outputs:</p>
+<ol>
+<li>Choose two of the five complaints from step 2.7 and give their <code>complaint_id</code>. Who at the company would act on each, and what decision would it support?</li>
+<li>How many training complaints contained your Exercise 3 word? Did the complaint you read really need the action your word suggests? What does that tell you about a simple keyword rule?</li>
+<li>Why do the product counts in Exercise 2 not tell you which problems are most common for consumers?</li>
+</ol></div>
+</section>
+<section aria-labelledby="submit" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="submit">Submit Your Notebook</h2>
+<ol>
+<li>Run the whole notebook from the top (<strong>Restart</strong>, then <strong>Run All</strong>) and check that there are no errors. Run All does not write your answers, so check that every answer cell is filled in.</li>
+<li>Save the notebook, so the outputs are saved in the file.</li>
+<li>In GitHub Desktop, you should see the notebook and <code>outputs/m01/first_feedback_preview.csv</code> as changed files. Write a short summary such as "Lab 1 complete", select <strong>Commit to main</strong>, then <strong>Push origin</strong>.</li>
+<li>Push before the deadline. You upload nothing to Canvas: the instructor grades the saved notebook, with its outputs, in your repository as it is at the deadline.</li>
+<li>Did you use an AI tool to explain or debug code? Then add one line in the notebook's <strong>AI use</strong> cell: the tool, what you used it for, and how you checked the result.</li>
+</ol>
+<p>Lab notebook 1 is graded with the course Lab Notebook rubric in Canvas (the same rubric for every lab).</p>
+<p>Discussion 1 is a separate Canvas item with its own instructions.</p>
+</section>
+<section aria-labelledby="part-3-challenge" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-3-challenge">Part 3: Challenge (Optional)</h2>
+<p>These tasks are optional and not graded. Try them if you have time.</p>
+<h3>A. Do the words match the product label?</h3>
+<p>The product label is the consumer's choice, so it is usually right but not always. This cell shows, for each product, the share of training complaints whose narrative contains the letters <em>card</em>, ignoring capitalization. This also matches parts of longer words, such as <em>cards</em> or <em>discard</em>. The mean of True/False values is a share, because True counts as 1 and False as 0.</p>
+<section aria-label="Share of complaints that mention card, by product" class="code-step" data-cell="50">
+<pre aria-label="Share of complaints that mention card, by product" tabindex="0"><code># True for each training complaint whose narrative contains the letters &quot;card&quot; (case=False ignores capitals).
+mentions_card = train[&quot;narrative&quot;].str.contains(&quot;card&quot;, case=False)
+
+# Group the True/False values by product; the mean in each group is a share.
+mentions_card.groupby(train[&quot;product&quot;]).mean().round(3)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Share of training complaints that contain the letters card</caption><thead><tr><th scope="col">product</th><th scope="col">share</th></tr></thead><tbody><tr><td>Checking or savings account</td><td>0.289</td></tr><tr><td>Credit card</td><td>0.709</td></tr><tr><td>Credit reporting or other personal consumer reports</td><td>0.091</td></tr><tr><td>Debt collection</td><td>0.080</td></tr><tr><td>Money transfer, virtual currency, or money service</td><td>0.152</td></tr><tr><td>Mortgage</td><td>0.021</td></tr></tbody></table></div>
+<div class="try-box"><h3>Try first</h3><p>Print one <code>Credit card</code> complaint that never mentions <em>card</em>. What is it about? Would a team that routes complaints by keyword miss it?</p></div>
+<details class="solution-box">
+<summary>Show sample solution for Challenge A</summary>
+<p><strong>Use this only after you have made your own attempt.</strong> Compare the structure and logic, not just the final line of code.</p>
+<pre aria-label="Sample solution code for Challenge A" tabindex="0"><code>no_card = train[train["product"].eq("Credit card") &amp; ~mentions_card]
+print("Credit card complaints without the word card:", len(no_card))
+print(no_card["complaint_id"].iloc[0], "|", no_card["issue"].iloc[0])
+print(textwrap.fill(no_card["narrative"].iloc[0], width=100))</code></pre>
+<p>This prints 262 complaints. The first is 14417057, a Capital One complaint about income verification and an account restriction. A keyword rule for <em>card</em> would miss it.</p>
+</details>
+<h3>B. A project idea</h3>
+<p>Do you already have a business text source in mind? Write two sentences in the notebook: what decision could it support, and what limits might you face with the data? No data collection is needed.</p>
+</section>
+<section aria-labelledby="common-problems" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="common-problems">Common Problems</h2>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>ban6403 is not in the kernel list</h3><p>Open the kernel picker, choose <strong>Select Another Kernel › Python Environments</strong> and look for <strong>ban6403</strong>. If it is still missing, the environment was not created. Repeat the environment setup in Module 0, then reload VS Code.</p></aside><aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>ModuleNotFoundError: No module named 'pandas'</h3><p>The notebook is using the wrong kernel. Choose <strong>ban6403</strong> in the kernel picker, then run from the top.</p></aside><aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>FileNotFoundError for a CSV file</h3><p>Open the whole repository folder (<code>ban6403-</code> plus your GitHub username) in VS Code, not a single file or a copy elsewhere. If the error names <code>data/course/cfpb_complaints.csv</code>, the file was moved or deleted. Restore it in GitHub Desktop: on the <strong>Changes</strong> tab, right-click the file and choose <strong>Discard changes</strong>.</p></aside><aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>NameError: name 'feedback' (or 'train') is not defined</h3><p>A cell above was not run, or the kernel restarted. Run the notebook from the top.</p></aside><aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>IndexError: single positional indexer is out-of-bounds (Exercise 1)</h3><p>No row matched your <code>complaint_id</code>. Check the number, remove any quotation marks around it, and make sure the complaint is in <code>train</code>.</p></aside><aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>PatternError or "unterminated subpattern" (Exercise 3)</h3><p><code>str.contains</code> treats some characters, such as <code>(</code>, <code>$</code> and <code>?</code>, as search patterns. Use a word made of letters only, or add <code>regex=False</code>.</p></aside><aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>My answer cell shows ** and other symbols</h3><p>The markdown cell is still in edit mode. Press Shift+Enter to show it formatted.</p></aside><aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>GitHub Desktop shows no changed files</h3><p>Save the notebook in VS Code first. Check that GitHub Desktop has the same repository selected that you opened in VS Code.</p></aside><p>Still stuck? Post the error message and the cell number in the course Q&amp;A discussion. Do not post your full answers.</p>
+</section>
+<section aria-labelledby="wrap-up" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="wrap-up">Lab Wrap-Up</h2>
+<p>You now have a working notebook, a saved preview file and a first decision note. You used these pandas moves:</p>
+<ul class="inline-code-list">
+<li><code>read_csv()</code>: load a table from a file.</li>
+<li><code>head()</code>, <code>columns</code>, <code>shape</code>: look at a table before you use it.</li>
+<li><code>[[...]]</code> and <code>loc</code>: keep the columns or the row you need, by name or ID.</li>
+<li><code>value_counts()</code>: count rows per category.</li>
+<li><code>str.len()</code> and <code>str.contains()</code>: measure and search text.</li>
+<li><code>to_csv()</code>: save a new output without touching the raw data.</li>
+</ul>
+<p>Next, Module 2 checks the feedback data for missing and repeated text, writes a review policy and keeps some messages aside for checking.</p>
+</section>
+<section aria-labelledby="source-note" class="footer-note"><p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="source-note">Notebook and accessibility note</h2><p>The current Module 1 notebook is authoritative for Python syntax, sequence, prompts and required work. This companion adds explanation and accessible presentation without changing those requirements. Expected outputs come from a run of the notebook on the current course data.</p><p>The page is designed for keyboard navigation, screen readers, browser text-to-speech, and ordinary visual reading. Important instructional information is presented as text rather than depending on a visual demonstration.</p></section>
+</main><script>
+(function() {
+  const synth = window.speechSynthesis;
+  const speakBtn = document.getElementById('speak');
+  const pauseBtn = document.getElementById('pause');
+  const resumeBtn = document.getElementById('resume');
+  const stopBtn = document.getElementById('stop');
+  const rate = document.getElementById('speech-rate');
+  const rateValue = document.getElementById('rate-value');
+  const mode = document.getElementById('reading-mode');
+  const voiceSelect = document.getElementById('voice-select');
+  const sectionSelect = document.getElementById('section-select');
+  const jumpSection = document.getElementById('jump-section');
+  const readSection = document.getElementById('read-section');
+  const status = document.getElementById('speech-status');
+  const stickyControls = document.getElementById('sticky-audio-controls');
+  const stickyPause = document.getElementById('sticky-pause');
+  const stickyResume = document.getElementById('sticky-resume');
+  const stickyStop = document.getElementById('sticky-stop');
+  const stickyStatus = document.getElementById('sticky-speech-status');
+  let chunks = [], index = 0, stopped = true, voices = [];
+  function setStatus(t){ status.innerHTML='<small>'+t+'</small>'; if(stickyStatus) stickyStatus.textContent=t; }
+  function populateVoices(){ if(!synth)return; voices=synth.getVoices(); const cur=voiceSelect.value; voiceSelect.innerHTML='<option value="">Browser default</option>'; voices.forEach((v,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=v.name+' ('+v.lang+')';voiceSelect.appendChild(o);}); if([...voiceSelect.options].some(o=>o.value===cur))voiceSelect.value=cur; }
+  function codeToSpeech(text){ return text
+    .replace(/\\/g,' backslash ').replace(/_/g,' underscore ')
+    .replace(/==/g,' equals equals ').replace(/!=/g,' not equals ').replace(/>=/g,' greater than or equal to ').replace(/<=/g,' less than or equal to ')
+    .replace(/&/g,' and ').replace(/\|/g,' or ').replace(/>/g,' greater than ').replace(/</g,' less than ').replace(/=/g,' equals ')
+    .replace(/\(/g,' open parenthesis ').replace(/\)/g,' close parenthesis ').replace(/\[/g,' open bracket ').replace(/\]/g,' close bracket ').replace(/\{/g,' open brace ').replace(/\}/g,' close brace ')
+    .replace(/\./g,' dot ').replace(/,/g,' comma ').replace(/:/g,' colon ').replace(/;/g,' semicolon ').replace(/\+/g,' plus ').replace(/-/g,' minus ').replace(/\*/g,' star ').replace(/\//g,' slash ').replace(/%/g,' percent ')
+    .replace(/"/g,' quote ').replace(/'/g,' single quote ').replace(/\s+/g,' ').trim(); }
+  function tableToSpeech(table){ const cap=table.querySelector('caption'); const rows=[...table.querySelectorAll('tr')]; const out=[]; if(cap)out.push(cap.innerText.trim()+'.'); rows.forEach((row,r)=>{const cells=[...row.querySelectorAll('th,td')].map(c=>c.innerText.trim()); if(!cells.length)return; if(r===0)out.push('Columns: '+cells.join(', ')+'.'); else out.push('Row '+r+': '+cells.join(', ')+'.');}); return out.join(' '); }
+  function buildChunks(startElement){ const includeCode=mode.value==='full'; const main=document.getElementById('main-content'); const items=[]; let started=!startElement; main.querySelectorAll('h2,h3,h4,p,li,table,pre').forEach(el=>{ if(!started){if(el===startElement)started=true;else return;} if(el.closest('.listen-panel')||el.closest('nav')||el.closest('.controls')||el.closest('.section-read-controls')||el.closest('.back-to-contents'))return; if(el.closest('details:not([open])'))return; if(el.matches('pre')){if(!includeCode)return; const c=el.innerText.trim(); if(c)items.push({text:'Python code. '+codeToSpeech(c),el}); return;} if(el.matches('table')){const t=tableToSpeech(el);if(t)items.push({text:t,el});return;} const t=el.innerText.replace(/\s+/g,' ').trim(); if(t)items.push({text:t,el}); }); return items; }
+  function speakNext(){ if(!synth||stopped)return; if(index>=chunks.length){stopped=true;setStatus('Finished reading the companion.');if(stickyControls) stickyControls.hidden=true;return;} const cur=chunks[index]; const u=new SpeechSynthesisUtterance(cur.text);u.rate=parseFloat(rate.value); if(voiceSelect.value!==''&&voices[Number(voiceSelect.value)])u.voice=voices[Number(voiceSelect.value)];u.onstart=()=>setStatus('Reading item '+(index+1)+' of '+chunks.length+' at '+rate.value+'×.');u.onend=()=>{index++;speakNext();};u.onerror=e=>{if(e.error!=='canceled'&&e.error!=='interrupted'){setStatus('Speech stopped because the browser reported: '+e.error+'.');stopped=true;}}; synth.speak(u); }
+  function startReading(el,label){if(!synth){setStatus('This browser does not provide the Web Speech API.');return;}synth.cancel();chunks=buildChunks(el||null);index=0;stopped=false;if(stickyControls) stickyControls.hidden=false;setStatus(label?'Starting from '+label+'.':'Starting from the beginning.');setTimeout(speakNext,50);}
+  function setupSections(){ const hs=[...document.querySelectorAll('#main-content h2[id]')].filter(h=>!h.closest('.listen-panel')&&!h.closest('nav')); hs.forEach(h=>{const sectionName=h.innerText.trim();const o=document.createElement('option');o.value=h.id;o.textContent=sectionName;sectionSelect.appendChild(o);const d=document.createElement('div');d.className='section-read-controls';d.setAttribute('aria-label','Read-aloud controls for '+sectionName);const b=document.createElement('button');b.type='button';b.className='speak-section';b.textContent='Read Aloud from This Section';b.setAttribute('aria-label','Read aloud from this section: '+sectionName);b.addEventListener('click',()=>startReading(h,sectionName));const hint=document.createElement('span');hint.className='read-hint';hint.textContent='Reads continuously from this section to the end.';d.appendChild(b);d.appendChild(hint);h.insertAdjacentElement('afterend',d);}); }
+  speakBtn.addEventListener('click',()=>startReading(null,'the beginning'));
+  function pauseReading(){if(synth&&synth.speaking&&!synth.paused){synth.pause();setStatus('Paused.');}}
+  function resumeReading(){if(synth&&synth.paused){synth.resume();setStatus('Resumed. Speed changes apply to the next reading item.');}}
+  function stopReading(){stopped=true;if(synth)synth.cancel();setStatus('Stopped.');if(stickyControls) stickyControls.hidden=true;}
+  pauseBtn.addEventListener('click',pauseReading);
+  resumeBtn.addEventListener('click',resumeReading);
+  stopBtn.addEventListener('click',stopReading);
+  if(stickyPause) stickyPause.addEventListener('click',pauseReading);
+  if(stickyResume) stickyResume.addEventListener('click',resumeReading);
+  if(stickyStop) stickyStop.addEventListener('click',stopReading);
+  rate.addEventListener('input',()=>{rateValue.textContent=Number(rate.value).toFixed(1)+'×';if(synth&&synth.speaking)setStatus('Speed set to '+rateValue.textContent+'. It will apply to the next reading item.');});
+  mode.addEventListener('change',()=>setStatus(mode.value==='full'?'Full mode selected. Python code will be read aloud.':'Study mode selected. Exact Python code will be skipped.'));
+  jumpSection.addEventListener('click',()=>{const h=document.getElementById(sectionSelect.value);if(h){h.scrollIntoView({behavior:'smooth',block:'start'});h.setAttribute('tabindex','-1');h.focus();}});
+  readSection.addEventListener('click',()=>{const h=document.getElementById(sectionSelect.value);if(h)startReading(h,h.innerText.trim());});
+  setupSections(); populateVoices(); if(synth&&'onvoiceschanged' in synth)synth.onvoiceschanged=populateVoices;
+})();
+</script></body></html>

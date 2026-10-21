@@ -1,0 +1,10 @@
+query_id,query_set,query,information_need,filter_product,lab_use
+TQ01,teaching,money back for a broken product,"The customer asks for, or reports, a refund or replacement because a product failed.",,guided
+TQ02,teaching,missing charging cable,The customer reports that a charger or charging cable is missing from the order.,,guided
+TQ03,teaching,device will not turn on,The customer says a device does not start or has stopped working and the problem is not yet fixed.,,guided
+TQ04,teaching,order has not arrived,The customer says an order or package has not reached them yet.,,guided
+CQ01,complaint,bank closed my account and is holding my remaining balance,The company closed or froze the consumer's account and has not returned the money left in it.,Checking or savings account,worked example
+CQ02,complaint,scammer tricked me into sending money and the app will not refund it,A scammer persuaded the consumer to send a payment and the company refused to give the money back.,"Money transfer, virtual currency, or money service",worked example
+CQ03,complaint,late fee charged even though I paid on time,The company charged a late fee although the consumer says the payment was made on time.,Credit card,practice
+CQ04,complaint,escrow payment went up because of insurance or taxes,The consumer's mortgage escrow or monthly payment rose because of homeowners insurance or property tax amounts.,Mortgage,practice
+CQ05,complaint,hard inquiry on my credit report I did not authorize,The consumer disputes a hard credit inquiry that they say they did not authorize.,Credit reporting or other personal consumer reports,practice

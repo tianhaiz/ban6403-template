@@ -1,0 +1,25 @@
+feedback_id,group_id,partition,reason
+FB001,FB001,development,supplied teaching partition
+FB002,FB002,development,supplied teaching partition
+FB003,FB003,development,supplied teaching partition
+FB004,FB004,development,supplied teaching partition
+FB005,exact_refund_text,development,exact-text group kept together
+FB006,FB006,development,supplied teaching partition
+FB007,FB007,development,supplied teaching partition
+FB008,FB008,development,supplied teaching partition
+FB009,FB009,development,supplied teaching partition
+FB010,FB010,development,supplied teaching partition
+FB011,FB011,development,supplied teaching partition
+FB012,FB012,development,supplied teaching partition
+FB013,FB013,protected,supplied teaching partition
+FB014,FB014,protected,supplied teaching partition
+FB015,FB015,protected,supplied teaching partition
+FB016,FB016,protected,supplied teaching partition
+FB017,FB017,protected,supplied teaching partition
+FB018,FB018,protected,supplied teaching partition
+FB019,FB019,protected,supplied teaching partition
+FB020,exact_refund_text,development,exact-text group kept together
+FB021,FB021,protected,supplied teaching partition
+FB022,FB022,excluded,missing text
+FB023,FB023,protected,supplied teaching partition
+FB024,FB024,protected,supplied teaching partition

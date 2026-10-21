@@ -1,0 +1,12 @@
+row,sentence_id,n_tokens,truncated
+0,S01,8,False
+1,S02,10,False
+2,S03,10,False
+3,S04,7,False
+4,S05,10,False
+5,S06,8,False
+6,S07,9,False
+7,S08,7,False
+8,S09,10,False
+9,S10,11,False
+10,S11,8,False

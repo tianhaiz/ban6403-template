@@ -1,0 +1,163 @@
+run_id,condition,question_id,claim_no,claim,cited_ids,verdict,citation_ok,evidence_ids,note,judged_by
+Q01_ungrounded,ungrounded,Q01,1,The specific timeframe for disputing a charge on a Fernhollow credit card is not available in the provided information.,,not_a_claim,,,Says the answer is not available.,course draft
+Q01_ungrounded,ungrounded,Q01,2,Customers are advised to contact customer support directly for assistance with their dispute.,,not_a_claim,,,Referral to support.,course draft
+Q02_ungrounded,ungrounded,Q02,1,Lock your card immediately through the Fernhollow Financial mobile app if you notice unauthorized purchases.,,supported,,KB05-1,KB05-1: lock your card in the app.,course draft
+Q02_ungrounded,ungrounded,Q02,2,Call our customer support line right away to report the fraudulent charges and dispute them.,,unsupported,,KB05-1,"KB05-1 says report in the app or call the 24-hour Fraud Line, not the customer support line.",course draft
+Q02_ungrounded,ungrounded,Q02,3,We will cancel your current card and issue a replacement for you.,,supported,,KB05-2,KB05-2: we close the card and send a new one.,course draft
+Q03_ungrounded,ungrounded,Q03,1,We do not have enough information about your specific fraud claim to determine when your money will be returned.,,not_a_claim,,,Says the answer is not available.,course draft
+Q03_ungrounded,ungrounded,Q03,2,Please contact our customer support team directly for updates on your checking account investigation.,,not_a_claim,,,Referral to support.,course draft
+Q04_ungrounded,ungrounded,Q04,1,Fernhollow Financial cannot refund money sent through QuickSend to a scammer.,,,,,,student
+Q04_ungrounded,ungrounded,Q04,2,Authorized peer-to-peer payments are typically final.,,,,,,student
+Q04_ungrounded,ungrounded,Q04,3,We recommend reporting the incident to local law enforcement immediately.,,,,,,student
+Q05_ungrounded,ungrounded,Q05,1,I do not have the current information regarding your overdraft fee.,,not_a_claim,,,Says the answer is not available.,course draft
+Q05_ungrounded,ungrounded,Q05,2,Please contact our customer support team directly for the most up-to-date fee schedule.,,not_a_claim,,,Referral to support.,course draft
+Q06_ungrounded,ungrounded,Q06,1,I do not have access to your personal account details to review or refund the overdraft fee you were charged last week.,,not_a_claim,,,Says the answer is not available.,course draft
+Q06_ungrounded,ungrounded,Q06,2,Please contact our customer support team directly by phone or secure message so we can assist you with your account.,,not_a_claim,,,Referral to support.,course draft
+Q07_ungrounded,ungrounded,Q07,1,You are likely paying a $12 monthly maintenance fee because your checking account has not met the minimum balance or direct deposit requirements.,,supported,,KB12-1,"KB12-1: $12 fee, waived with a $1,500 balance or $500 direct deposits (the age waiver is not mentioned).",course draft
+Q07_ungrounded,ungrounded,Q07,2,You can stop this fee by maintaining the required minimum daily balance or setting up qualifying direct deposits.,,supported,,KB12-1,KB12-1 waiver rules.,course draft
+Q07_ungrounded,ungrounded,Q07,3,Please check your specific account terms in your online portal or contact our customer support team for exact requirements.,,not_a_claim,,,Referral to account terms and support.,course draft
+Q08_ungrounded,ungrounded,Q08,1,"I am sorry, but I do not have the specific duration for how long your account remains locked after multiple incorrect password attempts.",,not_a_claim,,,Says the answer is not available.,course draft
+Q08_ungrounded,ungrounded,Q08,2,Please contact our customer support team directly for assistance in unlocking your app.,,not_a_claim,,,Referral to support.,course draft
+Q09_ungrounded,ungrounded,Q09,1,I am sorry to hear that your account has been frozen,,not_a_claim,,,Apology.,course draft
+Q09_ungrounded,ungrounded,Q09,2,I do not have enough information to assist with account restrictions,,not_a_claim,,,Says the answer is not available.,course draft
+Q10_ungrounded,ungrounded,Q10,1,"Typically, standard check holds last between two to seven business days.",,contradicted,,KB19-1;KB19-2,"For a standard deposit, KB19-1 makes the first $225 available the next business day and the rest within 2 business days. The 7-day limit in KB19-2 applies only to the listed exceptions (new accounts, large deposits, repeated overdrafts, doubtful checks), so a standard hold of 2 to 7 days contradicts KB19-1.",course draft
+Q11_ungrounded,ungrounded,Q11,1,We are sorry to hear about the error on your credit report.,,not_a_claim,,,Apology.,course draft
+Q11_ungrounded,ungrounded,Q11,2,Please contact our customer support team with your payment confirmation.,,unsupported,,KB22-1,"KB22-1 says use the dispute form in online banking, mail a letter, or dispute with the bureau.",course draft
+Q11_ungrounded,ungrounded,Q11,3,We will investigate the issue and update your credit report if a mistake was made.,,supported,,KB22-2,KB22-2: we investigate and correct wrong information.,course draft
+Q12_ungrounded,ungrounded,Q12,1,The assistant does not have enough information about external debt collection processes or Fernhollow Recovery Services.,,not_a_claim,,,Says the answer is not available.,course draft
+Q12_ungrounded,ungrounded,Q12,2,The customer is advised to contact the customer support team directly to discuss their account.,,not_a_claim,,,Referral to support.,course draft
+Q13_ungrounded,ungrounded,Q13,1,"Once your credit card debt has been sold, you can no longer pay Fernhollow Financial directly.",,supported,,KB26-1,KB26-1: Fernhollow can no longer accept payments.,course draft
+Q13_ungrounded,ungrounded,Q13,2,You must make all future payments directly to the new debt buyer.,,unsupported,,KB26-1;KB26-2,"KB26-1 says Fernhollow cannot accept payments and KB26-2 sends balance questions to the buyer, but no passage says you must pay the buyer; that is an inference.",course draft
+Q13_ungrounded,ungrounded,Q13,3,You can contact customer support for the contact details of the company that purchased your account.,,unsupported,,KB26-1,KB26-1 says Fernhollow sends a letter with the buyer's name and contact details; nothing about asking support.,course draft
+Q14_ungrounded,ungrounded,Q14,1,I do not have access to your specific mortgage account details to explain why your payment increased.,,not_a_claim,,,Says the answer is not available.,course draft
+Q14_ungrounded,ungrounded,Q14,2,Please contact our customer support team directly so we can securely review your account and escrow details.,,not_a_claim,,,Referral to support.,course draft
+Q15_ungrounded,ungrounded,Q15,1,"If your escrow account has an excess balance, you will generally receive the extra money back.",,,,,,student
+Q15_ungrounded,ungrounded,Q15,2,Fernhollow Financial automatically reviews escrow accounts annually.,,,,,,student
+Q15_ungrounded,ungrounded,Q15,3,"If there is a surplus above the required cushion, we will issue a refund check to you.",,,,,,student
+Q15_ungrounded,ungrounded,Q15,4,This process helps ensure your account is not overfunded.,,,,,,student
+Q16_ungrounded,ungrounded,Q16,1,I do not have access to your specific mortgage account details to explain why your escrow was charged for insurance.,,not_a_claim,,,Says the answer is not available.,course draft
+Q16_ungrounded,ungrounded,Q16,2,Please contact our customer support team directly so we can review your homeowners insurance policy and resolve this issue.,,not_a_claim,,,Referral to support.,course draft
+Q17_ungrounded,ungrounded,Q17,1,Contact customer support or visit a branch to close the account and transfer funds.,,unsupported,,,No article covers accounts of a customer who has died; KB18 covers closing your own account.,course draft
+Q17_ungrounded,ungrounded,Q17,2,Provide a certified copy of the death certificate.,,unsupported,,,No passage mentions a death certificate.,course draft
+Q17_ungrounded,ungrounded,Q17,3,Provide official documentation showing you are the authorized executor or administrator of the estate.,,unsupported,,,No passage mentions executors or estates.,course draft
+Q18_ungrounded,ungrounded,Q18,1,"Fernhollow Financial offers checking and savings accounts, debit and credit cards, person-to-person payments, mortgages, and personal loans.",,supported,,KB12-1;KB12-2;KB05-2;KB08-1;KB28-1;KB21-1;KB24-1,"Each listed product appears in the help center: checking and savings (KB12), cards (KB05-2, KB21-1), person-to-person payments (KB08-1), mortgages (KB28-1), personal loans (KB21-1, KB24-1).",course draft
+Q18_ungrounded,ungrounded,Q18,2,I do not have enough information about auto loans to answer your question.,,not_a_claim,,,Says the answer is not available.,course draft
+Q18_ungrounded,ungrounded,Q18,3,Please contact our customer support team directly to discuss payment options.,,not_a_claim,,,Referral to support.,course draft
+Q19_ungrounded,ungrounded,Q19,1,"Once an international wire transfer is sent, it is usually impossible to recall or cancel it.",,unsupported,,,No article covers recalling a wire.,course draft
+Q19_ungrounded,ungrounded,Q19,2,"You can contact customer support immediately, and we will try to contact the receiving bank to request a return of the funds.",,unsupported,,,No article covers recalling a wire; KB08-2 is about QuickSend.,course draft
+Q19_ungrounded,ungrounded,Q19,3,Recovery is not guaranteed and depends on the receiving bank and recipient's consent.,,unsupported,,,No article covers recalling a wire.,course draft
+Q20_ungrounded,ungrounded,Q20,1,"I am sorry, but I do not have the specific timeframe for how long Fernhollow Financial takes to respond to a complaint.",,not_a_claim,,,Says the answer is not available.,course draft
+Q01_k1,k1,Q01,1,You have 120 days from the date the charge posted to your account to dispute a credit card charge.,KB01-2,supported,yes,KB01-2,Stated in the cited passage.,course draft
+Q03_k1,k1,Q03,1,"After you report an unauthorized transaction, we investigate and give you a decision within 10 business days.",KB06-1,supported,yes,KB06-1,Stated in the cited passage.,course draft
+Q03_k1,k1,Q03,2,"If more time is needed, a temporary credit for the amount is added to your account by the 10th business day.",KB06-1,supported,yes,KB06-1,Stated in the cited passage.,course draft
+Q03_k1,k1,Q03,3,The complete investigation may take up to 45 days in total.,KB06-1,supported,yes,KB06-1,Stated in the cited passage.,course draft
+Q06_k1,k1,Q06,1,You can ask for a courtesy refund for an overdraft fee through chat or by phone.,KB13-1,supported,yes,KB13-1,Stated in the cited passage.,course draft
+Q06_k1,k1,Q06,2,We can usually refund one overdraft fee per account in any 12-month period.,KB13-1,supported,yes,KB13-1,Stated in the cited passage.,course draft
+Q07_k1,k1,Q07,1,Everyday Checking has a monthly maintenance fee of $12.,KB12-1,supported,yes,KB12-1,Stated in the cited passage.,course draft
+Q07_k1,k1,Q07,2,"The fee is waived for any month in which you keep a daily balance of at least $1,500.",KB12-1,supported,yes,KB12-1,Stated in the cited passage.,course draft
+Q07_k1,k1,Q07,3,The fee is waived if you receive direct deposits totaling at least $500.,KB12-1,supported,yes,KB12-1,Stated in the cited passage.,course draft
+Q07_k1,k1,Q07,4,The fee is waived if you are under 24 years old.,KB12-1,supported,yes,KB12-1,Stated in the cited passage.,course draft
+Q08_k1,k1,Q08,1,"After 5 failed sign-in attempts, online banking and the app lock your profile for 30 minutes.",KB16-1,supported,yes,KB16-1,Stated in the cited passage.,course draft
+Q08_k1,k1,Q08,2,"After 30 minutes you can try again, or select Forgot password to reset it right away.",KB16-1,supported,yes,KB16-1,Stated in the cited passage.,course draft
+Q10_k1,k1,Q10,1,"For most check deposits, the first $225 is available on the next business day.",KB19-1,supported,yes,KB19-1,Stated in the cited passage.,course draft
+Q10_k1,k1,Q10,2,The rest of the deposited funds is available within 2 business days.,KB19-1,supported,yes,KB19-1,Stated in the cited passage.,course draft
+Q12_k1,k1,Q12,1,"When Fernhollow Recovery Services first contacts you about a debt, we send a validation notice.",KB25-1,supported,yes,KB25-1,Stated in the cited passage.,course draft
+Q12_k1,k1,Q12,2,"The validation notice shows the amount owed, the original account number, the date of charge-off, and an itemized list of interest, fees, payments, and credits since then.",KB25-1,supported,yes,KB25-1,Stated in the cited passage.,course draft
+Q13_k1,k1,Q13,1,"After the sale, Fernhollow can no longer accept payments or settle the account.",KB26-1,supported,yes,KB26-1,Stated in the cited passage.,course draft
+Q14_k1,k1,Q14,1,A shortage happens when taxes or insurance cost more than what was collected.,KB29-1,supported,yes,KB29-1,Stated in the cited passage.,course draft
+Q14_k1,k1,Q14,2,This is the most common reason a mortgage payment goes up.,KB29-1,supported,yes,KB29-1,Stated in the cited passage.,course draft
+Q15_k1,k1,Q15,1,A surplus happens when more money was collected than needed.,KB29-2,supported,yes,KB29-2,Stated in the cited passage.,course draft
+Q15_k1,k1,Q15,2,"If the surplus is $50 or more and your loan is current, a refund check is mailed within 30 days of the escrow analysis.",KB29-2,supported,yes,KB29-2,Stated in the cited passage.,course draft
+Q15_k1,k1,Q15,3,A surplus under $50 is applied to next year's escrow payments.,KB29-2,supported,yes,KB29-2,Stated in the cited passage.,course draft
+Q16_k1,k1,Q16,1,Your mortgage requires homeowners insurance at all times.,KB30-1,supported,yes,KB30-1,Stated in the cited passage.,course draft
+Q16_k1,k1,Q16,2,"If your policy is canceled or expires and we do not receive proof of new coverage, we send two letters, at least 45 days apart.",KB30-1,supported,yes,KB30-1,Stated in the cited passage.,course draft
+Q16_k1,k1,Q16,3,"If we still have no proof, we buy lender-placed insurance and charge its cost to your escrow account.",KB30-1,supported,yes,KB30-1,Stated in the cited passage.,course draft
+Q20_k1,k1,Q20,1,Fernhollow confirms that they received your complaint within 2 business days.,KB34-2,supported,yes,KB34-2,Stated in the cited passage.,course draft
+Q20_k1,k1,Q20,2,Fernhollow sends a full response within 15 business days.,KB34-2,supported,yes,KB34-2,Stated in the cited passage.,course draft
+Q20_k1,k1,Q20,3,"If more time is needed, Fernhollow explains why and provides a new date.",KB34-2,supported,yes,KB34-2,Stated in the cited passage.,course draft
+Q01_k3,k3,Q01,1,You have 120 days from the date the charge posted to your account to dispute a credit card charge.,KB01-2,supported,yes,KB01-2,Stated in the cited passage.,course draft
+Q01_k3,k3,Q01,2,You have 60 days from the transaction date to dispute a credit card charge with Fernhollow.,KB03-1,contradicted,yes,KB01-2,"Matches the cited KB03-1 (2021 Q&A), but the newer current article KB01-2 says 120 days from posting.",course draft
+Q02_k3,k3,Q02,1,You are not responsible for unauthorized transactions on your Fernhollow debit card when reported within 60 days after the statement that first shows them.,KB05-2,supported,yes,KB05-2,Stated in the cited passage.,course draft
+Q02_k3,k3,Q02,2,"When you report fraud, we close the card and send a new one.",KB05-2,supported,yes,KB05-2,Stated in the cited passage.,course draft
+Q02_k3,k3,Q02,3,Replacement cards for fraud are sent by express mail at no cost and usually arrive in 2 business days.,KB05-2,supported,yes,KB05-2,Stated in the cited passage.,course draft
+Q03_k3,k3,Q03,1,"After you report an unauthorized transaction, we investigate and give you a decision within 10 business days.",KB06-1,supported,yes,KB06-1,Stated in the cited passage.,course draft
+Q03_k3,k3,Q03,2,"If we need more time, we add a temporary credit for the amount to your account by the 10th business day, and we may take up to 45 days in total to finish.",KB06-1,supported,yes,KB06-1,Stated in the cited passage.,course draft
+Q04_k3,k3,Q04,1,"If you were scammed, you should contact Fernhollow as soon as possible.",KB07-2,,,,,student
+Q04_k3,k3,Q04,2,"We will try to recover the money from the receiving bank, but we cannot guarantee that any money will be returned.",KB07-2,,,,,student
+Q04_k3,k3,Q04,3,We also recommend reporting the scam to the Federal Trade Commission at ReportFraud.ftc.gov and to local police.,KB07-2,,,,,student
+Q05_k3,k3,Q05,1,"Starting April 1, 2026, the overdraft fee is $25 per item.",KB10-1,supported,yes,KB10-1,Stated in the cited passage.,course draft
+Q06_k3,k3,Q06,1,You can ask for a courtesy refund for an overdraft fee through chat or by phone.,KB13-1,supported,yes,KB13-1,Stated in the cited passage.,course draft
+Q06_k3,k3,Q06,2,We can usually refund one overdraft fee per account in any 12-month period.,KB13-1,supported,yes,KB13-1,Stated in the cited passage.,course draft
+Q07_k3,k3,Q07,1,Everyday Checking has a monthly maintenance fee of $12.,KB12-1,supported,yes,KB12-1,Stated in the cited passage.,course draft
+Q07_k3,k3,Q07,2,"The monthly maintenance fee is waived if you keep a daily balance of at least $1,500.",KB12-1,supported,yes,KB12-1,Stated in the cited passage.,course draft
+Q07_k3,k3,Q07,3,The monthly maintenance fee is waived if you receive direct deposits totaling at least $500.,KB12-1,supported,yes,KB12-1,Stated in the cited passage.,course draft
+Q07_k3,k3,Q07,4,The monthly maintenance fee is waived if you are under 24 years old.,KB12-1,supported,yes,KB12-1,Stated in the cited passage.,course draft
+Q08_k3,k3,Q08,1,"After 5 failed sign-in attempts, your profile is locked for 30 minutes.",KB16-1,supported,yes,KB16-1,Stated in the cited passage.,course draft
+Q08_k3,k3,Q08,2,After 30 minutes you can try again.,KB16-1,supported,yes,KB16-1,Stated in the cited passage.,course draft
+Q09_k3,k3,Q09,1,"Accounts may be frozen when there is potential fraud, a need to verify identity, or upon receiving a legal order.",KB17-1,supported,yes,KB17-1,Stated in the cited passage.,course draft
+Q09_k3,k3,Q09,2,"Customers are informed about the restriction and how to contact support, unless prohibited by law.",KB17-1,supported,yes,KB17-1,Stated in the cited passage.,course draft
+Q10_k3,k3,Q10,1,"For most check deposits, the first $225 is available on the next business day and the rest within 2 business days.",KB19-1,supported,yes,KB19-1,Stated in the cited passage.,course draft
+Q10_k3,k3,Q10,2,"Deposits may be held longer, up to 7 business days, for new accounts, deposits over $5,525, repeatedly overdrawn accounts, or checks with reason to doubt.",KB19-2,supported,yes,KB19-2,Stated in the cited passage.,course draft
+Q10_k3,k3,Q10,3,"If a longer hold is placed, you are told the date the money will be available.",KB19-2,supported,yes,KB19-2,Stated in the cited passage.,course draft
+Q11_k3,k3,Q11,1,You can dispute reported information directly with Fernhollow or with the credit bureau.,KB22-1,supported,yes,KB22-1,Stated in the cited passage.,course draft
+Q11_k3,k3,Q11,2,"To dispute with Fernhollow, use the credit reporting dispute form in online banking or mail a letter to Credit Reporting Disputes.",KB22-1,supported,yes,KB22-1,Stated in the cited passage.,course draft
+Q11_k3,k3,Q11,3,"Your dispute should include your name, account number, the incorrect item, why it is wrong, and proof like a bank statement showing an on-time payment.",KB22-2,supported,yes,KB22-2,Stated in the cited passage.,course draft
+Q11_k3,k3,Q11,4,"Fernhollow investigates within 30 days and corrects wrong information, notifying every bureau they reported it to.",KB22-2,supported,yes,KB22-2,Stated in the cited passage.,course draft
+Q12_k3,k3,Q12,1,"When Fernhollow Recovery Services first contacts you about a debt, they send a validation notice showing the amount owed, original account number, date of charge-off, and an itemized list of interest, fees, payments, and credits since then.",KB25-1,supported,yes,KB25-1,Stated in the cited passage.,course draft
+Q13_k3,k3,Q13,1,"After the sale, Fernhollow can no longer accept payments or settle the account.",KB26-1,supported,yes,KB26-1,Stated in the cited passage.,course draft
+Q13_k3,k3,Q13,2,Questions about the balance after the sale go to the buyer.,KB26-2,supported,yes,KB26-2,Stated in the cited passage.,course draft
+Q14_k3,k3,Q14,1,An escrow shortage is the most common reason a mortgage payment goes up.,KB29-1,supported,yes,KB29-1,Stated in the cited passage.,course draft
+Q14_k3,k3,Q14,2,An escrow shortage happens when your taxes or insurance cost more than we collected.,KB29-1,supported,yes,KB29-1,Stated in the cited passage.,course draft
+Q15_k3,k3,Q15,1,A surplus happens when we collected more than needed.,KB29-2,supported,yes,KB29-2,Stated in the cited passage.,course draft
+Q15_k3,k3,Q15,2,"If the surplus is $50 or more and your loan is current, we mail you a refund check within 30 days of the escrow analysis.",KB29-2,supported,yes,KB29-2,Stated in the cited passage.,course draft
+Q15_k3,k3,Q15,3,A surplus under $50 is applied to next year's escrow payments.,KB29-2,supported,yes,KB29-2,Stated in the cited passage.,course draft
+Q16_k3,k3,Q16,1,We charge your escrow for lender-placed insurance if your policy is canceled or expires and we do not receive proof of new coverage after sending two letters.,KB30-1,supported,yes,KB30-1,Stated in the cited passage.,course draft
+Q16_k3,k3,Q16,2,Lender-placed insurance protects only the lender's interest and usually costs more than a policy you buy yourself.,KB30-2,supported,yes,KB30-2,Stated in the cited passage.,course draft
+Q16_k3,k3,Q16,3,"If you send us proof of your own coverage, we will cancel the lender-placed policy and refund any charge for days when you had your own coverage.",KB30-2,supported,yes,KB30-2,Stated in the cited passage.,course draft
+Q20_k3,k3,Q20,1,We confirm that we received your complaint within 2 business days.,KB34-2,supported,yes,KB34-2,Stated in the cited passage.,course draft
+Q20_k3,k3,Q20,2,We send a full response within 15 business days.,KB34-2,supported,yes,KB34-2,Stated in the cited passage.,course draft
+Q20_k3,k3,Q20,3,"If we need more time, we tell you why and give a new date.",KB34-2,supported,yes,KB34-2,Stated in the cited passage.,course draft
+Q01_k8,k8,Q01,1,You have 120 days from the date the charge posted to your account to dispute a credit card charge.,KB01-2,supported,yes,KB01-2,Stated in the cited passage.,course draft
+Q01_k8,k8,Q01,2,You have 60 days from the transaction date to dispute a credit card charge with Fernhollow.,KB03-1,contradicted,yes,KB01-2,"Matches the cited KB03-1 (2021 Q&A), but the newer current article KB01-2 says 120 days from posting.",course draft
+Q02_k8,k8,Q02,1,"If you did not make the purchase at all, report it as fraud instead.",KB01-1,supported,yes,KB01-1,"The sentence is stated in KB01-1 and is general, but KB01-1 is the credit card dispute article and the question is about a debit card; a reviewer must notice the product mismatch. The debit card article KB05-1 gives the same advice.",course draft
+Q02_k8,k8,Q02,2,You are not responsible for unauthorized transactions on your Fernhollow debit or credit card when you report them within 60 days after the statement that first shows them.,KB05-2,supported,yes,KB05-2,Stated in the cited passage.,course draft
+Q02_k8,k8,Q02,3,"When you report fraud, we close the card and send a new one.",KB05-2,supported,yes,KB05-2,Stated in the cited passage.,course draft
+Q03_k8,k8,Q03,1,"After you report an unauthorized debit card or account transaction, we investigate and give you a decision within 10 business days.",KB06-1,supported,yes,KB06-1,Stated in the cited passage.,course draft
+Q03_k8,k8,Q03,2,"If we need more time, we add a temporary credit for the amount to your account by the 10th business day, and we may take up to 45 days in total to finish.",KB06-1,supported,yes,KB06-1,Stated in the cited passage.,course draft
+Q04_k8,k8,Q04,1,"If you were scammed, contact us as soon as possible.",KB07-2,supported,yes,KB07-2,Stated in the cited passage.,course draft
+Q04_k8,k8,Q04,2,We will try to recover the money from the receiving bank.,KB07-2,supported,yes,KB07-2,Stated in the cited passage.,course draft
+Q04_k8,k8,Q04,3,We cannot guarantee that any money will be returned.,KB07-2,supported,yes,KB07-2,Stated in the cited passage.,course draft
+Q04_k8,k8,Q04,4,We also recommend reporting the scam to the Federal Trade Commission at ReportFraud.ftc.gov and to local police.,KB07-2,supported,yes,KB07-2,Stated in the cited passage.,course draft
+Q05_k8,k8,Q05,1,"Starting April 1, 2026, the overdraft fee is $25 per item that we pay when your checking account does not have enough money.",KB10-1,supported,yes,KB10-1,Stated in the cited passage.,course draft
+Q06_k8,k8,Q06,1,You can ask for a courtesy refund for an overdraft fee through chat or by phone.,KB13-1,supported,yes,KB13-1,Stated in the cited passage.,course draft
+Q06_k8,k8,Q06,2,We can usually refund one overdraft fee and one maintenance fee per account in any 12-month period.,KB13-1,supported,yes,KB13-1,Stated in the cited passage.,course draft
+Q06_k8,k8,Q06,3,Refunds beyond that are reviewed case by case.,KB13-1,supported,yes,KB13-1,Stated in the cited passage.,course draft
+Q07_k8,k8,Q07,1,Everyday Checking has a monthly maintenance fee of $12.,KB12-1,supported,yes,KB12-1,Stated in the cited passage.,course draft
+Q07_k8,k8,Q07,2,"The fee is waived for any month in which you keep a daily balance of at least $1,500, or receive direct deposits totaling at least $500, or are under 24 years old.",KB12-1,supported,yes,KB12-1,Stated in the cited passage.,course draft
+Q08_k8,k8,Q08,1,"After 5 failed sign-in attempts, online banking and the app lock your profile for 30 minutes.",KB16-1,supported,yes,KB16-1,Stated in the cited passage.,course draft
+Q08_k8,k8,Q08,2,"After 30 minutes you can try again, or select Forgot password to reset it right away.",KB16-1,supported,yes,KB16-1,Stated in the cited passage.,course draft
+Q09_k8,k8,Q09,1,"To ask about a restricted account, call the Account Review team.",KB17-2,supported,yes,KB17-2,Stated in the cited passage.,course draft
+Q09_k8,k8,Q09,2,The passages do not provide information on how to pay your rent while your account is frozen.,KB17-2,not_a_claim,,,"A statement about the passages, not a policy fact.",course draft
+Q10_k8,k8,Q10,1,"For most check deposits, the first $225 is available on the next business day and the rest within 2 business days.",KB19-1,supported,yes,KB19-1,Stated in the cited passage.,course draft
+Q10_k8,k8,Q10,2,"We may hold a deposit longer, up to 7 business days, for specific reasons such as new accounts, large deposits, or repeated overdrafts.",KB19-2,supported,yes,KB19-2,Stated in the cited passage.,course draft
+Q10_k8,k8,Q10,3,"If we place a longer hold, we tell you the date the money will be available.",KB19-2,supported,yes,KB19-2,Stated in the cited passage.,course draft
+Q11_k8,k8,Q11,1,"If you think information we reported about your Fernhollow account is wrong, you can dispute it with us directly or with the credit bureau.",KB22-1,supported,yes,KB22-1,Stated in the cited passage.,course draft
+Q11_k8,k8,Q11,2,"To dispute with us, use the credit reporting dispute form in online banking or mail a letter to Credit Reporting Disputes.",KB22-1,supported,yes,KB22-1,Stated in the cited passage.,course draft
+Q11_k8,k8,Q11,3,"Include your name, account number, the item you believe is wrong, why it is wrong, and any proof, such as a bank statement showing an on-time payment.",KB22-2,supported,yes,KB22-2,Stated in the cited passage.,course draft
+Q11_k8,k8,Q11,4,We investigate within 30 days.,KB22-2,supported,yes,KB22-2,Stated in the cited passage.,course draft
+Q11_k8,k8,Q11,5,"If the information is wrong, we correct it and tell every bureau we reported it to.",KB22-2,supported,yes,KB22-2,Stated in the cited passage.,course draft
+Q12_k8,k8,Q12,1,"If you do not recognize a debt, you can send a written dispute within 30 days of receiving the validation notice.",KB25-2,supported,yes,KB25-2,Stated in the cited passage.,course draft
+Q12_k8,k8,Q12,2,Fernhollow stops collection on the disputed amount until they mail you proof of the debt.,KB25-2,supported,yes,KB25-2,Stated in the cited passage.,course draft
+Q12_k8,k8,Q12,3,"Disputes received later are still reviewed, but collection may continue during the review.",KB25-2,supported,yes,KB25-2,Stated in the cited passage.,course draft
+Q13_k8,k8,Q13,1,"After the sale, Fernhollow can no longer accept payments or settle the account.",KB26-1,supported,yes,KB26-1,Stated in the cited passage.,course draft
+Q13_k8,k8,Q13,2,Questions about the balance after the sale go to the buyer.,KB26-2,supported,yes,KB26-2,Stated in the cited passage.,course draft
+Q14_k8,k8,Q14,1,An escrow shortage is the most common reason a mortgage payment goes up.,KB29-1,supported,yes,KB29-1,Stated in the cited passage.,course draft
+Q14_k8,k8,Q14,2,An escrow shortage happens when taxes or insurance cost more than what was collected.,KB29-1,supported,yes,KB29-1,Stated in the cited passage.,course draft
+Q15_k8,k8,Q15,1,"If the escrow surplus is $50 or more and your loan is current, Fernhollow mails you a refund check within 30 days of the escrow analysis.",KB29-2,supported,yes,KB29-2,Stated in the cited passage.,course draft
+Q15_k8,k8,Q15,2,An escrow surplus under $50 is applied to next year's escrow payments.,KB29-2,supported,yes,KB29-2,Stated in the cited passage.,course draft
+Q16_k8,k8,Q16,1,We charge lender-placed insurance to your escrow account if your policy is canceled or expires and we do not receive proof of new coverage after sending two letters at least 45 days apart.,KB30-1,supported,yes,KB30-1,Stated in the cited passage.,course draft
+Q16_k8,k8,Q16,2,Lender-placed insurance protects only the lender's interest and usually costs more than a policy you buy yourself.,KB30-2,supported,yes,KB30-2,Stated in the cited passage.,course draft
+Q16_k8,k8,Q16,3,"If you send us proof of your own coverage, we will cancel the lender-placed policy and refund any charge for days when you had your own coverage.",KB30-2,supported,yes,KB30-2,Stated in the cited passage.,course draft
+Q20_k8,k8,Q20,1,We confirm that we received your complaint within 2 business days.,KB34-2,supported,yes,KB34-2,Stated in the cited passage.,course draft
+Q20_k8,k8,Q20,2,We send a full response within 15 business days.,KB34-2,supported,yes,KB34-2,Stated in the cited passage.,course draft
+Q20_k8,k8,Q20,3,"If we need more time, we tell you why and give a new date.",KB34-2,supported,yes,KB34-2,Stated in the cited passage.,course draft

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Lab 9 Companion - BAN 6403</title><style>
+:root { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.62; }
+* { box-sizing: border-box; }
+body { margin:0; background:#fff; color:#111; }
+a { color:#0645ad; text-decoration-thickness:.12em; }
+a:focus, button:focus, summary:focus, pre:focus, .table-wrap:focus, select:focus, input:focus { outline:3px solid currentColor; outline-offset:3px; }
+.skip-link { position:absolute; left:-9999px; }
+.skip-link:focus { left:1rem; top:1rem; background:#fff; padding:.75rem; z-index:1000; border:2px solid #111; }
+header { border-bottom:2px solid #111; padding:1.5rem max(1rem, calc((100vw - 1060px)/2)); }
+header h1 { margin:0 0 .35rem; }
+.subtitle { margin:.2rem 0 0; font-size:1.08rem; }
+main { max-width:1060px; margin:0 auto; padding:1.5rem 1rem 4rem; }
+h2 { margin-top:2.6rem; padding-top:.55rem; border-top:1px solid #bbb; }
+h3 { margin-top:1.7rem; }
+.accessibility-summary, .toc, .note-box, .result-box, .try-box, .assignment-box, .summary-box, .listen-panel, .solution-box { border:1px solid #555; border-radius:.45rem; padding:1rem 1.1rem; margin:1.15rem 0; }
+.note-box { border-left:6px solid #1f4e79; background:#f4f8fc; position:relative; }
+.note-label { display:inline-block; font-size:.78rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; border:2px solid #1f4e79; border-radius:.25rem; padding:.22rem .45rem; margin:0 0 .55rem; background:#fff; }
+.note-box h3 { margin-top:.15rem; }
+.content-key { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:.8rem; margin:1rem 0; }
+.key-item { border:1px solid #777; border-radius:.4rem; padding:.8rem .9rem; }
+.key-label { font-weight:800; display:block; margin-bottom:.25rem; }
+.try-box { border-left:5px solid #111; }
+.result-box { background:#fafafa; }
+.solution-box summary { cursor:pointer; font-weight:700; }
+.solution-box[open] summary { margin-bottom:.8rem; }
+.controls { display:flex; gap:.6rem; flex-wrap:wrap; margin:1rem 0; }
+button { font:inherit; padding:.55rem .8rem; border:2px solid #111; background:#fff; border-radius:.3rem; cursor:pointer; }
+pre { overflow:auto; border:1px solid #777; padding:1rem; background:#f6f6f6; white-space:pre; }
+code { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.code-step { margin:1rem 0 1.55rem; }
+.code-purpose { margin-bottom:.4rem; }
+.table-wrap { overflow-x:auto; margin:.8rem 0; }
+table { border-collapse:collapse; width:100%; min-width:620px; }
+th, td { border:1px solid #666; padding:.5rem; text-align:left; vertical-align:top; }
+th { font-weight:700; }
+caption { font-weight:700; text-align:left; margin-bottom:.45rem; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.speech-options { display:grid; grid-template-columns:max-content minmax(180px,1fr); gap:.65rem .9rem; align-items:center; max-width:800px; }
+.speech-options select, .speech-options input[type="range"] { width:100%; font:inherit; }
+#speech-status { min-height:1.5em; }
+.section-read-controls { margin:.25rem 0 1rem; display:flex; align-items:center; gap:.5rem; }
+.section-read-controls button { font-size:.9rem; padding:.4rem .7rem; }
+.section-read-controls .read-hint { color:#555; font-size:.88rem; }
+.kicker { font-weight:700; }
+.muted { color:#555; }
+.footer-note { margin-top:3rem; border-top:2px solid #111; padding-top:1rem; }
+.inline-code-list li { margin:.25rem 0; }
+@media (max-width:700px) { table { min-width:760px; } .speech-options { grid-template-columns:1fr; } .section-read-controls { flex-direction:column; align-items:flex-start; } }
+@media print { .controls,.skip-link,.speak-section,.listen-panel,.jump-controls { display:none !important; } main { max-width:none; } a { color:inherit; text-decoration:none; } details { display:block; } details > * { display:block !important; } }
+
+.read-aloud-intro { border:2px solid #111; background:#fbfbfb; }
+.read-aloud-intro h3 { margin-top:.15rem; }
+.speak-section { font-weight:700; }
+.sticky-audio-controls { position:fixed; left:50%; bottom:1rem; transform:translateX(-50%); width:min(960px,calc(100vw - 2rem)); z-index:2000; background:#fff; border:3px solid #111; border-radius:.55rem; padding:.65rem .8rem; box-shadow:0 4px 20px rgba(0,0,0,.18); }
+.sticky-audio-inner { display:flex; align-items:center; gap:.65rem; flex-wrap:wrap; }
+.sticky-audio-label { font-weight:800; margin-right:auto; }
+.sticky-audio-status { flex:1 1 260px; min-width:180px; }
+.sticky-audio-controls button { padding:.42rem .68rem; }
+.sticky-audio-controls[hidden] { display:none !important; }
+@media (max-width:700px) { .sticky-audio-inner { align-items:stretch; } .sticky-audio-label, .sticky-audio-status { flex-basis:100%; } .sticky-audio-controls button { flex:1 1 auto; } }
+@media print { .sticky-audio-controls { display:none !important; } }
+
+.back-to-contents { margin: 1.6rem 0 .6rem; padding-top: .7rem; border-top: 1px dashed #aaa; font-size: .95rem; }
+.back-to-contents a { font-weight: 700; }
+
+/* code-output-tint v1: calm colours that separate code, output and instructor notes */
+.code-step pre { background:#f0f2f4; border:1px solid #a3abb5; border-left:4px solid #6b7785; }
+.result-box { background:#fbf8ef; border:1px solid #b9ae92; border-left:4px solid #8a7a52; }
+.result-box pre { background:#fffdf7; border:1px solid #cfc6ae; }
+.note-box { border:2px solid #1f4e79; border-left:8px solid #1f4e79; background:#e8f1fb; }
+.result-box > h3:first-child { margin-top:.1rem; }
+@media (forced-colors: active) { .code-step pre, .result-box, .result-box pre, .note-box { border-color:CanvasText; } }
+</style><style>/* Added for BAN 6403: let long inline paths wrap on narrow screens. */ p code, li code, td code, th code, summary code { overflow-wrap:anywhere; }</style></head>
+<body><a class="skip-link" href="#main-content">Skip to lab content</a>
+<header><h1>Lab 9 Companion</h1><p class="subtitle"><strong>BAN 6403: Text Analytics for Business</strong></p><p>Module 9: Classification Evaluation</p></header>
+<div aria-label="Active read-aloud controls" class="sticky-audio-controls" hidden="" id="sticky-audio-controls" role="region"><div class="sticky-audio-inner"><span class="sticky-audio-label">Read Aloud</span><span aria-live="polite" class="sticky-audio-status" id="sticky-speech-status">Ready.</span><button id="sticky-pause" type="button">Pause</button><button id="sticky-resume" type="button">Resume</button><button id="sticky-stop" type="button">Stop</button></div></div><main id="main-content">
+<section aria-labelledby="how-to-use" class="accessibility-summary">
+<h2 id="how-to-use">How to use this companion</h2>
+<p>Open the <strong>Module 9 notebook and this companion at the same time</strong>. Work through the companion from top to bottom and run the matching notebook cells as you go. The notebook is the authoritative source for the lab sequence, code and required work. This companion explains what each step means, what to notice in the output and why the step matters.</p><div aria-labelledby="listen-title" class="listen-panel read-aloud-intro">
+<h3 id="listen-title">Read aloud: controls and directions</h3>
+<p><strong>Before you start:</strong> choose a reading mode, speed, and voice below. Select <strong>Read Aloud from Beginning</strong> to hear the full companion, or use <strong>Read Aloud from This Section</strong> beside any major section to continue from that point. While audio is playing, a floating control bar remains visible at the bottom of the page. Use <strong>Pause</strong> to pause temporarily, <strong>Resume</strong> to continue, and <strong>Stop</strong> to end the current reading.</p><p><strong>Study mode</strong> reads explanations, results, tables, and notes while skipping exact Python code. <strong>Full mode</strong> also reads Python code and verbalizes common programming symbols.</p>
+<div aria-label="Read aloud controls" class="controls">
+<button id="speak" type="button">Read Aloud from Beginning</button><button id="pause" type="button">Pause</button><button id="resume" type="button">Resume</button><button id="stop" type="button">Stop</button>
+</div>
+<div class="speech-options">
+<label for="reading-mode"><strong>Reading mode:</strong></label><select id="reading-mode"><option selected="" value="study">Study mode - explanations and results</option><option value="full">Full mode - include Python code</option></select>
+<label for="speech-rate"><strong>Speed:</strong> <span id="rate-value">1.0×</span></label><input aria-describedby="rate-help" id="speech-rate" max="2" min="0.5" step="0.1" type="range" value="1"/><span class="sr-only" id="rate-help">Adjust text-to-speech speed from one half to two times normal speed.</span>
+<label for="voice-select"><strong>Voice:</strong></label><select id="voice-select"><option value="">Browser default</option></select>
+<label for="section-select"><strong>Jump to section:</strong></label><select id="section-select"><option value="">Choose a section</option></select>
+</div>
+<div class="controls jump-controls"><button id="jump-section" type="button">Jump</button><button id="read-section" type="button">Read Aloud from Selected Section</button></div>
+<p aria-live="polite" id="speech-status" role="status"><small>Ready to read.</small></p>
+<p><small>The read-aloud feature uses your browser's speech engine. A screen reader can access the page independently of these controls.</small></p>
+</div>
+<h3>What is in the notebook, and what this companion adds</h3>
+<ul>
+<li><strong>Notebook:</strong> the exact Python code, the written questions, the Practice exercises, the checkpoint and the Submit steps.</li>
+<li><strong>Companion:</strong> plain-language explanations, the results you should expect (taken from real runs of the notebook), common mistakes and how to fix them.</li>
+<li><strong>If anything ever seems inconsistent:</strong> follow the current notebook.</li>
+</ul>
+<div aria-label="Content key" class="content-key">
+<div class="key-item"><span class="key-label">Notebook content</span>Code, official prompts, required tasks and the lab sequence come from the notebook. Each code block shows its notebook cell number.</div>
+<div class="key-item"><span class="key-label">Companion-added instructor note</span>These clearly labeled notes are explanations, cautions or study advice added by this companion. They are not extra required notebook steps unless the note says so.</div>
+</div>
+<p>This companion is designed for keyboard and screen-reader access, but it is <strong>not a separate version for students who need accessibility features</strong>. It is the same learning guide for everyone. You can read it visually, use a screen reader, or use the built-in read-aloud controls while you work in the notebook.</p>
+</section>
+<nav aria-labelledby="toc-title" class="toc"><p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="toc-title" tabindex="-1">Lab contents</h2><ol><li><a href="#how-to-use">How to use this companion</a></li><li><a href="#learning-goals">Module 9 Learning Goals</a></li><li><a href="#setup">Before You Start: Setup</a></li><li><a href="#part-1">Part 1: Thresholds, Costs and a Review Band (Steps 1.1–1.7)</a></li><li><a href="#part-2a">Part 2A: The Urgent Label, the Model and the Split (Steps 2.1–2.4)</a></li><li><a href="#part-2b">Part 2B: Curve, Costs and Errors (Steps 2.5–2.8)</a></li><li><a href="#exercises">Practice Exercises, Freeze and Test</a></li><li><a href="#submit">Submit</a></li><li><a href="#challenge">Part 3 Challenge (Optional)</a></li><li><a href="#problems">Common Problems</a></li><li><a href="#wrap-up">Lab Wrap-Up</a></li><li><a href="#source-note">Notebook and accessibility note</a></li></ol></nav>
+<section aria-labelledby="learning-goals" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="learning-goals">Module 9 Learning Goals</h2>
+<p>In this lab you turn classifier probabilities into a decision policy for an urgent-complaint queue. By the end of the lab you should be able to:</p>
+<ul><li><strong>Compare</strong> a row split with a grouped or time split when deployment requires it.</li><li><strong>Select</strong> a threshold using validation data and an explicit table of error costs.</li><li><strong>Categorize</strong> recurring mistakes and identify one justified improvement.</li><li><strong>Recommend</strong> a decision policy, freeze it, and assess it once on the held-out test data.</li></ul>
+<p>The main idea: <strong>choose on validation, freeze the policy, then test once.</strong></p>
+<p>Plan about 30 minutes for the guided part and 75–90 minutes for Practice. Most Practice steps are run-and-read; Exercise 2 means reading ten complaints. Calibration is in the optional Challenge, so the required work is lighter in this Milestone 2 (MS2) week.</p>
+</section><section aria-labelledby="setup" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="setup">Before You Start: Setup</h2>
+<p>The main route is your own computer:</p>
+<ol><li>Open <strong>GitHub Desktop</strong> and select your course repository (<code>ban6403-</code> plus your GitHub username). Your copy already contains this notebook and the saved Module 8 predictions in <code>data/predictions</code>.</li><li>Open the repository folder in <strong>Visual Studio Code</strong> and open <code>notebooks/M09_Classification_Evaluation.ipynb</code>.</li><li>Click the kernel picker at the top right of the notebook and choose <strong>ban6403</strong>. This lab uses numpy, pandas, scikit-learn and matplotlib, which are all in that environment.</li><li>Run the cells in order from the top. If you restart the kernel, run from the top again. The whole notebook runs in about 50 seconds.</li></ol>
+<p><strong>Optional:</strong> where your network allows it, you can open the repository in GitHub Codespaces instead. Keep the folder structure unchanged so the file paths work.</p>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Do not use Run All for Part 2 before Exercise 3</h3><p>The test split opens only after you write your policy in Exercise 3 and add <code>READY_TO_FREEZE = True</code>. Until then, steps 2.9–2.11 print a message and keep the test split sealed. Once frozen, the policy is stored in <code>outputs/m09/frozen_policy.json</code> and is not changed by later runs. The first test result is saved in <code>outputs/m09/test_result.json</code>; later runs show that saved result and do not open the test split again.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Saved Module 8 predictions</h3><p>The Module 8 predictions are saved in <code>data/predictions</code>. They were made with the same code as Lab 8. You start from these files, so your results do not depend on your own Lab 8 run.</p></aside>
+</section><section aria-labelledby="part-1" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1">Part 1: Thresholds, Costs and a Review Band (Steps 1.1–1.7)</h2>
+<p>You start with the 10 protected customer messages and the Module 8 probability that each needs follow-up. They are made up and small enough to check by hand.</p>
+<h3>1.1 Load the libraries</h3>
+<section aria-label="Import the libraries for this lab" class="code-step" data-cell="1">
+<pre aria-label="Import the libraries for this lab (notebook cell 1)" tabindex="0"><code>from pathlib import Path                  # file and folder paths
+from datetime import datetime, timezone   # time stamps for the frozen policy
+import json                               # writes and reads the frozen policy file
+import numpy as np                        # arrays of numbers
+import pandas as pd                       # tables
+import matplotlib.pyplot as plt           # the precision-recall plot
+from sklearn.feature_extraction.text import TfidfVectorizer  # the Module 4 word features
+from sklearn.linear_model import LogisticRegression          # the classifier
+from sklearn.pipeline import make_pipeline                   # chains TF-IDF and the classifier
+from sklearn.metrics import average_precision_score, f1_score, precision_recall_curve  # the metrics</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>No output. A comment after each import says what the library is for. An error here usually means the kernel is wrong; see Common problems.</p></aside>
+<h3>1.2 Set the data and output folders</h3>
+<section aria-label="Set the data folder and make outputs/m09" class="code-step" data-cell="3">
+<pre aria-label="Set the data folder and make outputs/m09 (notebook cell 3)" tabindex="0"><code># Folder paths, relative to the notebooks folder.
+DATA = Path(&quot;../data&quot;)
+OUTPUT_DIR = Path(&quot;../outputs/m09&quot;)
+# Create the output folder if it does not exist yet.
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>No output. The data is one folder up, in <code>../data</code>. Your own results go to <code>../outputs/m09</code>, including the frozen policy in step 2.9.</p></aside>
+<h3>1.3 Load the saved Module 8 predictions</h3>
+<section aria-label="Load the 10 protected messages, sorted by probability" class="code-step" data-cell="5">
+<pre aria-label="Load the 10 protected messages, sorted by probability (notebook cell 5)" tabindex="0"><code>messages = pd.read_csv(DATA / &quot;predictions/m08_feedback_predictions.csv&quot;)
+# y = 1 for &quot;yes&quot; and 0 for &quot;no&quot;: astype(int) turns True/False into 1/0.
+messages[&quot;y&quot;] = (messages[&quot;follow_up&quot;] == &quot;yes&quot;).astype(int)
+# Sort from the highest probability down, so the table reads like a ranked queue.
+messages = messages.sort_values(&quot;p_yes&quot;, ascending=False).reset_index(drop=True)
+messages[[&quot;feedback_id&quot;, &quot;follow_up&quot;, &quot;p_yes&quot;, &quot;text&quot;]]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Protected messages by p_yes</caption><thead><tr><th scope="col">feedback_id</th><th scope="col">follow_up</th><th scope="col">p_yes</th></tr></thead><tbody><tr><td>FB018</td><td>yes</td><td>0.5612</td></tr><tr><td>FB017</td><td>yes</td><td>0.5358</td></tr><tr><td>FB013</td><td>no</td><td>0.5287</td></tr><tr><td>FB019</td><td>no</td><td>0.5146</td></tr><tr><td>FB023</td><td>yes</td><td>0.4941</td></tr><tr><td>FB014</td><td>yes</td><td>0.4823</td></tr><tr><td>FB024</td><td>no</td><td>0.4758</td></tr><tr><td>FB016</td><td>no</td><td>0.4652</td></tr><tr><td>FB015</td><td>yes</td><td>0.4644</td></tr><tr><td>FB021</td><td>no</td><td>0.3981</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Your output also shows the text.</p><p><strong>Which set plays which role?</strong> The 23 customer messages are too few to keep a test set. The 13 development messages play the <strong>training</strong> role and the 10 protected messages play the <strong>validation</strong> role: in Part 1 you choose a threshold on them. In Part 2 the CFPB data has all three roles: <code>train</code>, <code>valid</code> and a sealed <code>test</code>.</p></aside>
+<h3>1.4 A threshold turns a probability into a decision</h3>
+<p><strong>TP</strong>: flagged and needs follow-up. <strong>FP</strong>: flagged but does not. <strong>FN</strong>: needs follow-up but not flagged. <strong>Precision</strong> = TP / flagged; <strong>recall</strong> = TP / all that need follow-up.</p>
+<section aria-label="Count flagged, TP, FP and FN at three thresholds" class="code-step" data-cell="7">
+<pre aria-label="Count flagged, TP, FP and FN at three thresholds (notebook cell 7)" tabindex="0"><code>def threshold_table(y, p, thresholds):
+    &quot;&quot;&quot;Take true labels (1/0), probabilities and a list of thresholds; return one row of counts per threshold.&quot;&quot;&quot;
+    rows = []
+    for t in thresholds:
+        # True for every message we flag at this threshold.
+        flag = p &gt;= t
+        # &amp; means &quot;and&quot;; ~flag means &quot;not flagged&quot;. Summing True values counts them.
+        tp = int((flag &amp; (y == 1)).sum())
+        fp = int((flag &amp; (y == 0)).sum())
+        fn = int((~flag &amp; (y == 1)).sum())
+        precision = tp / max(tp + fp, 1)  # max(..., 1): no division by zero when nothing is flagged
+        recall = tp / (tp + fn)
+        rows.append({&quot;threshold&quot;: t, &quot;flagged&quot;: tp + fp, &quot;TP&quot;: tp, &quot;FP&quot;: fp, &quot;FN&quot;: fn,
+                     &quot;precision&quot;: round(precision, 3), &quot;recall&quot;: round(recall, 3)})
+    return pd.DataFrame(rows)
+
+message_table = threshold_table(messages[&quot;y&quot;], messages[&quot;p_yes&quot;], [0.45, 0.50, 0.55])
+message_table</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.4" tabindex="0"><code>   threshold  flagged  TP  FP  FN  precision  recall
+0       0.45        9   5   4   0      0.556     1.0
+1       0.50        4   2   2   3      0.500     0.4
+2       0.55        1   1   0   4      1.000     0.2</code></pre></aside>
+<h3>1.5 Add a cost table</h3>
+<p>Made-up costs: a missed follow-up $20, an unnecessary follow-up $5.</p>
+<section aria-label="Add the cost of each threshold" class="code-step" data-cell="9">
+<pre aria-label="Add the cost of each threshold (notebook cell 9)" tabindex="0"><code>MESSAGE_COST_FN = 20  # dollars per missed follow-up
+MESSAGE_COST_FP = 5   # dollars per unnecessary follow-up
+# Total cost at each threshold: number of errors of each kind times their cost.
+message_table[&quot;cost&quot;] = message_table[&quot;FN&quot;] * MESSAGE_COST_FN + message_table[&quot;FP&quot;] * MESSAGE_COST_FP
+message_table</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.5" tabindex="0"><code>   threshold  flagged  TP  FP  FN  precision  recall  cost
+0       0.45        9   5   4   0      0.556     1.0    20
+1       0.50        4   2   2   3      0.500     0.4    70
+2       0.55        1   1   0   4      1.000     0.2    80</code></pre><p>The lowest threshold is cheapest because a miss costs four times as much as a false alarm.</p></aside>
+<h3>1.6 A human-review band</h3>
+<p>To <strong>abstain</strong> means the model does not decide and a person reads the message. A review costs $2 here (a made-up number).</p>
+<section aria-label="Flag above 0.53, review 0.47–0.53, no flag below" class="code-step" data-cell="11">
+<pre aria-label="Flag above 0.53, review 0.47–0.53, no flag below (notebook cell 11)" tabindex="0"><code>MESSAGE_COST_REVIEW = 2  # dollars per human review
+
+# np.select checks the conditions in order: 0.53 or more -&gt; &quot;flag&quot;, else 0.47 or more -&gt; &quot;review&quot;,
+# otherwise &quot;no flag&quot;.
+messages[&quot;action&quot;] = np.select([messages[&quot;p_yes&quot;] &gt;= 0.53, messages[&quot;p_yes&quot;] &gt;= 0.47], [&quot;flag&quot;, &quot;review&quot;], default=&quot;no flag&quot;)
+
+# Reviewed messages are decided correctly, so only &quot;no flag&quot; and &quot;flag&quot; can be wrong.
+fn = ((messages[&quot;action&quot;] == &quot;no flag&quot;) &amp; (messages[&quot;y&quot;] == 1)).sum()
+fp = ((messages[&quot;action&quot;] == &quot;flag&quot;) &amp; (messages[&quot;y&quot;] == 0)).sum()
+n_reviews = (messages[&quot;action&quot;] == &quot;review&quot;).sum()
+cost = fn * MESSAGE_COST_FN + fp * MESSAGE_COST_FP + n_reviews * MESSAGE_COST_REVIEW
+print(&quot;reviews:&quot;, n_reviews, &quot;| FN:&quot;, fn, &quot;| FP:&quot;, fp, &quot;| cost:&quot;, cost)
+messages[[&quot;feedback_id&quot;, &quot;follow_up&quot;, &quot;p_yes&quot;, &quot;action&quot;]]</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.6" tabindex="0"><code>reviews: 5 | FN: 1 | FP: 0 | cost: 30</code></pre><p>FB015 (0.46) falls below the band and is missed. The band costs $30, more than the best single threshold ($20). A band is not always cheaper.</p></aside>
+<h3>1.7 Save your outputs</h3>
+<section aria-label="Write the threshold table and the actions" class="code-step" data-cell="13">
+<pre aria-label="Write the threshold table and the actions (notebook cell 13)" tabindex="0"><code>message_table.to_csv(OUTPUT_DIR / &quot;feedback_thresholds.csv&quot;, index=False)
+messages[[&quot;feedback_id&quot;, &quot;follow_up&quot;, &quot;p_yes&quot;, &quot;action&quot;]].to_csv(OUTPUT_DIR / &quot;feedback_actions.csv&quot;, index=False)
+print(&quot;saved:&quot;, OUTPUT_DIR / &quot;feedback_thresholds.csv&quot;)
+print(&quot;saved:&quot;, OUTPUT_DIR / &quot;feedback_actions.csv&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.7" tabindex="0"><code>saved: ../outputs/m09/feedback_thresholds.csv
+saved: ../outputs/m09/feedback_actions.csv</code></pre></aside>
+<h3>Checkpoint</h3>
+<p>Answer the two checkpoint questions in the notebook (2–3 sentences in total). Use your own numbers from steps 1.5 and 1.6.</p>
+</section><section aria-labelledby="part-2a" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-2a">Part 2A: The Urgent Label, the Model and the Split (Steps 2.1–2.4)</h2>
+<h3>2.1 Load the complaints and make the urgent label</h3>
+<p>The rule uses the issue and sub-issue the consumer chose. These fields only make the label; the model never sees them.</p>
+<section aria-label="Apply the written urgent rule" class="code-step" data-cell="16">
+<pre aria-label="Apply the written urgent rule (notebook cell 16)" tabindex="0"><code>complaints = pd.read_csv(DATA / &quot;course/cfpb_complaints.csv&quot;)
+
+# The written rule: a complaint is urgent if its issue or its sub-issue is in one of these sets.
+URGENT_ISSUES = {&quot;Fraud or scam&quot;,
+                 &quot;Unauthorized transactions or other transaction problem&quot;,
+                 &quot;Problem with fraud alerts or security freezes&quot;}
+URGENT_SUB_ISSUES = {&quot;Transaction was not authorized&quot;,
+                     &quot;Card was charged for something you did not purchase with the card&quot;,
+                     &quot;Account opened without my consent or knowledge&quot;,
+                     &quot;Card opened without my consent or knowledge&quot;,
+                     &quot;Debt was result of identity theft&quot;}
+urgent_issue = complaints[&quot;issue&quot;].isin(URGENT_ISSUES)
+urgent_sub_issue = complaints[&quot;sub_issue&quot;].isin(URGENT_SUB_ISSUES)
+# | means &quot;or&quot;; astype(int) turns True/False into 1/0.
+complaints[&quot;urgent&quot;] = (urgent_issue | urgent_sub_issue).astype(int)
+
+# Look only at train and valid: the test split stays sealed until 2.10.
+open_splits = complaints[complaints[&quot;split&quot;].isin([&quot;train&quot;, &quot;valid&quot;])]
+
+# Per split: number of urgent complaints (sum of the 1s), all complaints (size) and the share (mean).
+by_split = open_splits.groupby(&quot;split&quot;)[&quot;urgent&quot;]
+split_summary = by_split.agg(urgent=&quot;sum&quot;, n=&quot;size&quot;, share=&quot;mean&quot;)
+split_summary.round(3)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.1" tabindex="0"><code>       urgent     n  share
+split
+train     742  6000  0.124
+valid     273  2000  0.136</code></pre><p>The table shows <code>train</code> and <code>valid</code> only, so the test split stays sealed. Its urgent share appears in step 2.10.</p></aside>
+<h3>2.2 Where are the urgent complaints?</h3>
+<section aria-label="Count urgent complaints by product" class="code-step" data-cell="18">
+<pre aria-label="Count urgent complaints by product (notebook cell 18)" tabindex="0"><code># Urgent complaints and all complaints per product (train and valid only), most urgent first.
+by_product = open_splits.groupby(&quot;product&quot;)[&quot;urgent&quot;].agg(urgent=&quot;sum&quot;, n=&quot;size&quot;)
+by_product.sort_values(&quot;urgent&quot;, ascending=False)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Urgent complaints by product</caption><thead><tr><th scope="col">product</th><th scope="col">urgent</th><th scope="col">n</th></tr></thead><tbody><tr><td>Money transfer, virtual currency, or money service</td><td>424</td><td>1000</td></tr><tr><td>Debt collection</td><td>252</td><td>1600</td></tr><tr><td>Checking or savings account</td><td>166</td><td>1200</td></tr><tr><td>Credit card</td><td>161</td><td>1200</td></tr><tr><td>Credit reporting or other personal consumer reports</td><td>12</td><td>2000</td></tr><tr><td>Mortgage</td><td>0</td><td>1000</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Mortgage has no fraud option on its menu, so the rule can never call a mortgage complaint urgent. That is a limit of the label, not a fact about mortgages. The video counted all 10,000 complaints (for example 537 of 1,250 money transfer complaints). Here only <code>train</code> and <code>valid</code> are counted, so the test split stays sealed.</p></aside>
+<h3>2.3 Fit the urgent model and score the validation split</h3>
+<p><strong>Average precision (AP)</strong> summarizes precision and recall over all thresholds. A random ranking gets about the urgent share.</p>
+<section aria-label="Fit TF-IDF + logistic regression on train; score valid" class="code-step" data-cell="20">
+<pre aria-label="Fit TF-IDF + logistic regression on train; score valid (notebook cell 20)" tabindex="0"><code>train = complaints[complaints[&quot;split&quot;].eq(&quot;train&quot;)]
+valid = complaints[complaints[&quot;split&quot;].eq(&quot;valid&quot;)].copy()
+
+def urgent_model():
+    &quot;&quot;&quot;Return a new, unfitted pipeline with the Module 8 settings.&quot;&quot;&quot;
+    return make_pipeline(TfidfVectorizer(ngram_range=(1, 2), min_df=5, stop_words=[&quot;xx&quot;, &quot;xxxx&quot;]),
+                         LogisticRegression(max_iter=1000))
+
+# Fit on train only.
+model = urgent_model()
+model.fit(train[&quot;narrative&quot;], train[&quot;urgent&quot;])
+
+# Column 1 of predict_proba is the probability of class 1 (urgent).
+valid[&quot;p_urgent&quot;] = model.predict_proba(valid[&quot;narrative&quot;])[:, 1]
+print(&quot;urgent share in valid:&quot;, round(valid[&quot;urgent&quot;].mean(), 3))
+print(&quot;average precision on valid:&quot;, round(average_precision_score(valid[&quot;urgent&quot;], valid[&quot;p_urgent&quot;]), 3))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.3" tabindex="0"><code>urgent share in valid: 0.136
+average precision on valid: 0.572</code></pre></aside>
+<h3>2.4 Row split or time split?</h3>
+<p>A <strong>row split</strong> draws complaints at random. A <strong>time split</strong> trains on earlier months and checks on later ones, the way the queue will be used.</p>
+<section aria-label="Compare a random evaluation sample with November–December" class="code-step" data-cell="22">
+<pre aria-label="Compare a random evaluation sample with November–December (notebook cell 22)" tabindex="0"><code># Pool train and valid; the test split stays sealed.
+pool = complaints[complaints[&quot;split&quot;].isin([&quot;train&quot;, &quot;valid&quot;])].reset_index(drop=True)
+
+# Time split: evaluate on complaints received from November 1, 2025 (dates compare as text here).
+late = pool[&quot;date_received&quot;] &gt;= &quot;2025-11-01&quot;
+
+# Row split: evaluate on a random sample of the same size. random_state=6403 fixes the draw for everyone.
+random_sample = pool.sample(n=late.sum(), random_state=6403)
+random_eval = pool.index.isin(random_sample.index)
+
+results = []
+# .to_numpy() turns the pandas True/False column into a plain array, like random_eval.
+for name, is_eval in [(&quot;row split&quot;, random_eval), (&quot;time split&quot;, late.to_numpy())]:
+    # Fit on the rows not used for evaluation (~ means &quot;not&quot;), then score the evaluation rows.
+    split_model = urgent_model()
+    split_model.fit(pool.loc[~is_eval, &quot;narrative&quot;], pool.loc[~is_eval, &quot;urgent&quot;])
+    p_eval = split_model.predict_proba(pool.loc[is_eval, &quot;narrative&quot;])[:, 1]
+    y_eval = pool.loc[is_eval, &quot;urgent&quot;]
+    results.append({
+        &quot;split&quot;: name,
+        &quot;train&quot;: int((~is_eval).sum()),
+        &quot;evaluate&quot;: int(is_eval.sum()),
+        &quot;urgent_share&quot;: round(y_eval.mean(), 3),
+        &quot;average_precision&quot;: round(average_precision_score(y_eval, p_eval), 3),
+    })
+split_table = pd.DataFrame(results)
+split_table[&quot;AP_to_share&quot;] = (split_table[&quot;average_precision&quot;] / split_table[&quot;urgent_share&quot;]).round(1)
+split_table</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.4" tabindex="0"><code>        split  train  evaluate  urgent_share  average_precision  AP_to_share
+0   row split   5634      2366         0.133              0.567          4.3
+1  time split   5634      2366         0.116              0.475          4.1</code></pre><p>The time split is about nine points lower in AP. <code>AP_to_share</code> divides AP by the urgent share, which is what a random ranking gets. So it compares each split with its own random baseline: 4.1 for the time split and 4.3 for the row split. It is not a multiplier of usefulness. This check cannot separate a lower urgent share in November–December from changing fraud language or template overlap. This row split redraws single complaints and does not keep template letters together.</p></aside>
+</section><section aria-labelledby="part-2b" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-2b">Part 2B: Curve, Costs and Errors (Steps 2.5–2.8)</h2>
+<h3>2.5 The precision-recall curve</h3>
+<section aria-label="Plot precision against recall and mark three thresholds" class="code-step" data-cell="24">
+<pre aria-label="Plot precision against recall and mark three thresholds (notebook cell 24)" tabindex="0"><code># One (precision, recall) point for every possible threshold.
+precision, recall, thresholds = precision_recall_curve(valid[&quot;urgent&quot;], valid[&quot;p_urgent&quot;])
+fig, ax = plt.subplots(figsize=(5, 3.5))
+ax.plot(recall, precision)
+
+# Mark the three thresholds on the curve.
+for t in [0.10, 0.20, 0.30]:
+    # np.abs(thresholds - t) is the distance of every threshold from t;
+    # np.argmin gives the position of the smallest distance, so the closest threshold.
+    distance = np.abs(thresholds - t)
+    i = np.argmin(distance)
+    ax.plot(recall[i], precision[i], &quot;o&quot;)
+    ax.annotate(f&quot;{t:.2f}&quot;, (recall[i], precision[i]), textcoords=&quot;offset points&quot;, xytext=(5, 5))
+# The dashed line is the urgent share: the precision of a random ranking.
+ax.axhline(valid[&quot;urgent&quot;].mean(), linestyle=&quot;--&quot;, color=&quot;gray&quot;)
+ax.set_xlabel(&quot;recall (share of urgent complaints found)&quot;)
+ax.set_ylabel(&quot;precision (share of flags that are urgent)&quot;)
+ax.set_title(&quot;Urgent model on the validation split&quot;)
+plt.show()</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>A falling line from precision 1.0 at low recall to about 0.14 at recall 1.0, with a dashed line at the urgent share. The marked points: 0.30 at recall 0.33 and precision 0.63; 0.20 at recall 0.62 and precision 0.55; 0.10 at recall 0.89 and precision 0.33. The video also marks 0.50 (recall 0.12, precision 0.75); the notebook does not. Recall cannot decrease along the curve. Precision often falls overall, but it can rise at individual points.</p></aside>
+<h3>2.6 Three thresholds and a cost table</h3>
+<p>Made-up costs supplied for this exercise: missed urgent complaint $100, false alarm $10, human triage $3.</p>
+<section aria-label="Cost of thresholds 0.10, 0.20 and 0.30" class="code-step" data-cell="26">
+<pre aria-label="Cost of thresholds 0.10, 0.20 and 0.30 (notebook cell 26)" tabindex="0"><code>COST_FN = 100     # dollars per missed urgent complaint
+COST_FP = 10      # dollars per non-urgent complaint in the urgent queue
+COST_REVIEW = 3   # dollars per human triage
+
+# The helper from 1.4, now on the 2,000 validation complaints.
+valid_table = threshold_table(valid[&quot;urgent&quot;], valid[&quot;p_urgent&quot;], [0.10, 0.20, 0.30])
+valid_table[&quot;cost&quot;] = valid_table[&quot;FN&quot;] * COST_FN + valid_table[&quot;FP&quot;] * COST_FP
+valid_table</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.6" tabindex="0"><code>   threshold  flagged   TP   FP   FN  precision  recall   cost
+0        0.1      742  242  500   31      0.326   0.886   8100
+1        0.2      310  169  141  104      0.545   0.619  11810
+2        0.3      145   91   54  182      0.628   0.333  18740</code></pre></aside>
+<h3>2.7 A human-review band</h3>
+<p>The two thresholds must be in order: <code>0 &lt;= review_from &lt;= auto_urgent &lt;= 1</code>. Equal thresholds mean no review band.</p>
+<section aria-label="Urgent at 0.30 or more, triage from 0.10, normal below" class="code-step" data-cell="28">
+<pre aria-label="Urgent at 0.30 or more, triage from 0.10, normal below (notebook cell 28)" tabindex="0"><code>def apply_policy(y, p, review_from, auto_urgent):
+    &quot;&quot;&quot;Take true labels, probabilities and the two thresholds; return the counts, recall and cost.&quot;&quot;&quot;
+    # Each complaint gets one of three actions.
+    auto = p &gt;= auto_urgent                  # urgent queue
+    review = (p &gt;= review_from) &amp; ~auto      # human triage
+    normal = ~(auto | review)                # normal queue: everything else
+    # Urgent complaints in the normal queue are missed (FN); non-urgent ones in the urgent queue are FP.
+    # Triage sorts its complaints correctly, so it adds no errors, only its cost.
+    fn = int((normal &amp; (y == 1)).sum())
+    fp = int((auto &amp; (y == 0)).sum())
+    n_urgent = int((y == 1).sum())
+    found = n_urgent - fn
+    n_reviews = int(review.sum())
+    return {&quot;auto_urgent&quot;: int(auto.sum()), &quot;reviews&quot;: n_reviews, &quot;FN&quot;: fn, &quot;FP&quot;: fp,
+            &quot;urgent_found&quot;: found, &quot;recall&quot;: round(found / n_urgent, 3),
+            &quot;cost&quot;: fn * COST_FN + fp * COST_FP + n_reviews * COST_REVIEW}
+
+# Your policy from Exercise 3. It stays empty until you write it there.
+my_policy = None
+READY_TO_FREEZE = False
+
+band = apply_policy(valid[&quot;urgent&quot;], valid[&quot;p_urgent&quot;], review_from=0.10, auto_urgent=0.30)
+band</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.7" tabindex="0"><code>{&#x27;auto_urgent&#x27;: 145, &#x27;reviews&#x27;: 597, &#x27;FN&#x27;: 31, &#x27;FP&#x27;: 54, &#x27;urgent_found&#x27;: 242, &#x27;recall&#x27;: 0.886, &#x27;cost&#x27;: 5431}</code></pre><p>The band costs $5,431, against $8,100 for the best single threshold. It needs 597 triage cases per 2,000 complaints.</p></aside>
+<h3>2.8 Recurring mistakes</h3>
+<section aria-label="Show ten chosen validation errors" class="code-step" data-cell="30">
+<pre aria-label="Show ten chosen validation errors (notebook cell 30)" tabindex="0"><code>ERROR_IDS = [14980183, 14650359, 17194527, 14949635, 14905757,
+             14876285, 14874590, 14592566, 16372496, 16032208]
+# Look up the ten complaints by ID, in the order of ERROR_IDS.
+errors = valid.set_index(&quot;complaint_id&quot;).loc[ERROR_IDS, [&quot;urgent&quot;, &quot;p_urgent&quot;, &quot;issue&quot;, &quot;sub_issue&quot;, &quot;narrative&quot;]]
+errors[&quot;p_urgent&quot;] = errors[&quot;p_urgent&quot;].round(3)
+print(errors.drop(columns=&quot;narrative&quot;).to_string())
+
+# Print each full narrative. iterrows goes through the table one row at a time.
+for complaint_id, row in errors.iterrows():
+    print()
+    print(f&quot;{complaint_id} | urgent {row[&#x27;urgent&#x27;]} | p_urgent {row[&#x27;p_urgent&#x27;]}&quot;)
+    print(row[&quot;narrative&quot;])</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>The table lists five urgent complaints with probabilities from 0.023 to 0.099 and five non-urgent complaints with probabilities from 0.303 to 0.557. Below it, the cell prints every full narrative. Read the issue, the sub-issue and the whole text before Exercise 2, because a deciding detail can come late.</p></aside>
+</section><section aria-labelledby="exercises" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="exercises">Practice Exercises, Freeze and Test</h2>
+<div class="assignment-box"><h3>Complete independently</h3><p>The exercises are intentionally not solved in this companion. Use the exact instructions in the notebook. Each exercise cell starts with <code># Exercise N: your code here</code>.</p><h3>Exercise 1: choose one threshold under a capacity limit</h3><p>Use <code>threshold_table</code> with thresholds from 0.05 to 0.50, add the cost column, keep the rows with at most 250 flagged complaints, and choose one threshold. Give its cost and recall in a comment.</p><p><strong>What to check:</strong> 10 rows before filtering; the rows for 0.10, 0.20 and 0.30 match step 2.6. Flagged falls as the threshold rises.</p><h3>Exercise 2: an error taxonomy</h3><p>Put each of the ten complaints from step 2.8 into category A, B, C or D, or <code>"unclear"</code> when the full text does not let you decide. Count the categories, and name one improvement the counts justify.</p><p><strong>What to check:</strong> all ten IDs appear once. Decide from the full text and the issue, not from the probability alone. The ten were picked by hand, so describe what you see "among these ten" complaints, not across all errors.</p><h3>Exercise 3: write your policy</h3><p>Make a dictionary <code>my_policy</code> with the keys <code>review_from</code> and <code>auto_urgent</code>. Print its validation result with <code>apply_policy</code> and give your reason. When you are sure, add <code>READY_TO_FREEZE = True</code>.</p><p><strong>What to check:</strong> use exactly these two key names, with <code>0 &lt;= review_from &lt;= auto_urgent &lt;= 1</code>; set them equal for no review band. The 250-flag capacity from Exercise 1 still holds: <code>auto_urgent</code> in the result must be 250 or fewer. Triage is a separate team, so reviews do not count. Choose with validation numbers only.</p></div>
+<h3>2.9 Freeze the policy</h3>
+<p><strong>Freezing</strong> means writing the policy down before you look at the test split. The cell freezes only when <code>my_policy</code> exists and <code>READY_TO_FREEZE = True</code>. If the file already exists, it loads it and changes nothing.</p>
+<section aria-label="Write the policy with a time stamp to outputs/m09/frozen_policy.json" class="code-step" data-cell="38">
+<pre aria-label="Write the policy with a time stamp to outputs/m09/frozen_policy.json (notebook cell 38)" tabindex="0"><code>policy_file = OUTPUT_DIR / &quot;frozen_policy.json&quot;
+
+if policy_file.exists():
+    # Frozen before: load it and leave it unchanged.
+    frozen = json.loads(policy_file.read_text())
+    print(&quot;Policy already frozen at&quot;, frozen[&quot;frozen_at&quot;], &quot;- it is not changed.&quot;)
+# my_policy and READY_TO_FREEZE start empty in 2.7; Exercise 3 sets them.
+elif my_policy is not None and READY_TO_FREEZE:
+    # Write down the thresholds, the model, the costs and the validation result, with a time stamp.
+    frozen = dict(my_policy)  # a copy of your two thresholds
+    frozen[&quot;model&quot;] = &quot;TF-IDF (1-2 words, min_df=5) + logistic regression, fitted on train&quot;
+    frozen[&quot;costs&quot;] = {&quot;FN&quot;: COST_FN, &quot;FP&quot;: COST_FP, &quot;review&quot;: COST_REVIEW}
+    frozen[&quot;costs_note&quot;] = &quot;made-up costs for this exercise, supplied by the course&quot;
+    frozen[&quot;validation_result&quot;] = apply_policy(valid[&quot;urgent&quot;], valid[&quot;p_urgent&quot;],
+                                               my_policy[&quot;review_from&quot;], my_policy[&quot;auto_urgent&quot;])
+    frozen[&quot;frozen_at&quot;] = datetime.now(timezone.utc).isoformat(timespec=&quot;seconds&quot;)  # time now, in UTC
+    policy_file.write_text(json.dumps(frozen, indent=1))
+    print(&quot;Policy frozen now.&quot;)
+else:
+    frozen = None
+    print(&quot;Nothing frozen yet. Finish Exercise 3, set READY_TO_FREEZE = True, then run this cell again.&quot;)
+
+# Show the frozen policy.
+if frozen is not None:
+    print(json.dumps(frozen, indent=1))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.9" tabindex="0"><code>Nothing frozen yet. Finish Exercise 3, set READY_TO_FREEZE = True, then run this cell again.</code></pre><p>This is the output before Exercise 3. After you freeze, the cell prints "Policy frozen now." and your policy, its made-up costs and its validation result. On a later run it prints "Policy already frozen at …".</p></aside>
+<h3>2.10 Open the test split once: the urgent policy</h3>
+<section aria-label="Apply the frozen policy to the test complaints and log the run" class="code-step" data-cell="40">
+<pre aria-label="Apply the frozen policy to the test complaints and log the run (notebook cell 40)" tabindex="0"><code>result_file = OUTPUT_DIR / &quot;test_result.json&quot;
+
+if frozen is None:
+    print(&quot;The test split stays sealed: freeze your policy in 2.9 first.&quot;)
+elif result_file.exists():
+    # Opened before: show the saved result and do not score the test split again.
+    test_record = json.loads(result_file.read_text())
+    print(&quot;Test split opened at&quot;, test_record[&quot;opened_at&quot;], &quot;- showing the saved result.&quot;)
+else:
+    # Score the test complaints with the model fitted in 2.3 and apply the frozen thresholds.
+    test = complaints[complaints[&quot;split&quot;].eq(&quot;test&quot;)].copy()
+    test[&quot;p_urgent&quot;] = model.predict_proba(test[&quot;narrative&quot;])[:, 1]
+    test_record = {
+        &quot;opened_at&quot;: datetime.now(timezone.utc).isoformat(timespec=&quot;seconds&quot;),  # time now, in UTC
+        &quot;urgent_share&quot;: round(test[&quot;urgent&quot;].mean(), 3),
+        &quot;average_precision&quot;: round(average_precision_score(test[&quot;urgent&quot;], test[&quot;p_urgent&quot;]), 3),
+        &quot;result&quot;: apply_policy(test[&quot;urgent&quot;], test[&quot;p_urgent&quot;], frozen[&quot;review_from&quot;], frozen[&quot;auto_urgent&quot;]),
+    }
+    result_file.write_text(json.dumps(test_record, indent=1))
+    print(&quot;Test result saved in&quot;, result_file)
+
+if frozen is not None:
+    print(&quot;urgent share in test:&quot;, test_record[&quot;urgent_share&quot;], &quot;| average precision on test:&quot;,
+          test_record[&quot;average_precision&quot;])
+    # Validation and test side by side; :&gt;13 and :&gt;6 right-align the values so they line up.
+    for key, value in test_record[&quot;result&quot;].items():
+        valid_value = frozen[&quot;validation_result&quot;][key]
+        print(f&quot;{key:&gt;13}: validation {valid_value:&gt;6} | test {value:&gt;6}&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.10" tabindex="0"><code>The test split stays sealed: freeze your policy in 2.9 first.</code></pre><p>This is the output before you freeze. After freezing, the first run prints <code>Test result saved in ../outputs/m09/test_result.json</code>, the test urgent share and AP, and a validation-versus-test table for your policy. Later runs print <code>Test split opened at … - showing the saved result.</code> and the same table, so Run All reuses your recorded test result.</p></aside>
+<h3>2.11 Open the test split once: the Module 8 routers</h3>
+<section aria-label="Score the saved Module 8 test predictions" class="code-step" data-cell="42">
+<pre aria-label="Score the saved Module 8 test predictions (notebook cell 42)" tabindex="0"><code>if frozen is None:
+    print(&quot;The test split stays sealed: freeze your policy in 2.9 first.&quot;)
+else:
+    routes = pd.read_csv(DATA / &quot;predictions/m08_route_predictions.csv&quot;)
+    rows = []
+    for split in [&quot;valid&quot;, &quot;test&quot;]:
+        # All complaints of this split, and the 300 with saved LLM labels.
+        part = routes[routes[&quot;split&quot;].eq(split)]
+        sub = part[part[&quot;in_llm_subset&quot;]]
+        rows.append({
+            &quot;split&quot;: split,
+            &quot;TF-IDF (all)&quot;: f1_score(part[&quot;route&quot;], part[&quot;tfidf_route&quot;], average=&quot;macro&quot;),
+            &quot;embedding (all)&quot;: f1_score(part[&quot;route&quot;], part[&quot;emb_route&quot;], average=&quot;macro&quot;),
+            &quot;TF-IDF (300)&quot;: f1_score(sub[&quot;route&quot;], sub[&quot;tfidf_route&quot;], average=&quot;macro&quot;),
+            &quot;embedding (300)&quot;: f1_score(sub[&quot;route&quot;], sub[&quot;emb_route&quot;], average=&quot;macro&quot;),
+            &quot;LLM (300)&quot;: f1_score(sub[&quot;route&quot;], sub[&quot;llm_route&quot;], average=&quot;macro&quot;),
+        })
+    print(pd.DataFrame(rows).set_index(&quot;split&quot;).round(3).to_string())</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.11" tabindex="0"><code>The test split stays sealed: freeze your policy in 2.9 first.</code></pre><p>After freezing, the cell prints macro F1 on valid and test for the Module 8 routers.</p></aside>
+<details><summary>Expected test outputs: open only after you have run step 2.10</summary><p>For one example policy (triage from 0.10, urgent queue from 0.40), step 2.10 shows on its first run:</p><pre aria-label="Example test result for step 2.10" tabindex="0"><code>Test result saved in ../outputs/m09/test_result.json
+urgent share in test: 0.124 | average precision on test: 0.624
+  auto_urgent: validation     82 | test     77
+      reviews: validation    660 | test    667
+           FN: validation     31 | test     14
+           FP: validation     26 | test     13
+ urgent_found: validation    242 | test    235
+       recall: validation  0.886 | test  0.944
+         cost: validation   5340 | test   3531</code></pre><p>The policy held up on complaints it was not chosen on. Your own policy gives different numbers. Step 2.11 shows (the same for everyone):</p><pre aria-label="Expected output of step 2.11" tabindex="0"><code>       TF-IDF (all)  embedding (all)  TF-IDF (300)  embedding (300)  LLM (300)
+split
+valid         0.803            0.795         0.799            0.791      0.780
+test          0.824            0.806         0.810            0.813      0.848</code></pre><p>On all 2,000 test complaints the order of TF-IDF and embeddings holds. On the 300 test complaints with cached LLM labels, the LLM is now first. Gaps of a few points on 300 complaints move from sample to sample. Do not go back and change your policy now.</p></details>
+<h3>Practice interpretation</h3>
+<p>Write 3–5 sentences that use your own outputs. Answer the three questions in the notebook:</p>
+<ul><li>Using 2.4, how did the time split differ from the row split, and which one matches how the queue will be used?</li><li>Using 2.6, 2.7 and Exercise 1, why is 0.5 a poor default threshold for this model, and which policy did you freeze? Give its validation cost, recall and number of complaints sent straight to the urgent queue.</li><li>Using 2.10 and Exercise 2, did the frozen policy hold up on the test split? Which error category was most common, and what one improvement would you make?</li></ul>
+</section><section aria-labelledby="submit" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="submit">Submit</h2>
+<ol><li>Run the whole notebook from the top (<strong>Restart</strong>, then <strong>Run All</strong>) and confirm there are no errors. Your frozen policy is kept, and Run All reuses your recorded test result from step 2.10, so the test split is not opened again.</li><li>Check that every <strong>Your answer</strong> cell is filled.</li><li>Add the one-line AI-use note in the Submit cell if you used an AI tool.</li><li>Save the notebook, so the outputs are saved in the file.</li><li>In GitHub Desktop, write a short summary such as "Lab 9 complete", click <strong>Commit to main</strong>, then <strong>Push origin</strong>.</li><li>Push before the deadline. You upload nothing to Canvas: the instructor grades the saved notebook, with its outputs, in your repository as it is at the deadline.</li></ol>
+<p>Lab notebook 9 is graded with the course Lab Notebook rubric in Canvas (the same rubric for every lab).</p>
+</section><section aria-labelledby="challenge" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="challenge">Part 3 Challenge (Optional)</h2>
+<p>These cells are optional. Run them after the required work, in order.</p>
+<h3>A. Calibration: does 0.25 mean 25 percent?</h3>
+<p>A model is <strong>calibrated</strong> when its probabilities match the observed shares. Always read the count in each bin.</p>
+<section aria-label="Optional: Build the reliability table" class="code-step" data-cell="46">
+<pre aria-label="Optional: Build the reliability table (notebook cell 46)" tabindex="0"><code># np.linspace(0, 1, 11) gives 11 edges, so 10 bins of width 0.1; pd.cut puts each complaint in one.
+bins = pd.cut(valid[&quot;p_urgent&quot;], bins=np.linspace(0, 1, 11), include_lowest=True)
+# Per bin: number of complaints, mean predicted probability and observed share of urgent complaints.
+# observed=True leaves out empty bins.
+reliability = valid.groupby(bins, observed=True).agg(complaints=(&quot;urgent&quot;, &quot;size&quot;),
+                                                     mean_predicted=(&quot;p_urgent&quot;, &quot;mean&quot;),
+                                                     observed_urgent=(&quot;urgent&quot;, &quot;mean&quot;)).round(3)
+reliability</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step A." tabindex="0"><code>               complaints  mean_predicted  observed_urgent
+p_urgent
+(-0.001, 0.1]        1258           0.054            0.025
+(0.1, 0.2]            432           0.140            0.169
+(0.2, 0.3]            165           0.246            0.473
+(0.3, 0.4]             63           0.339            0.556
+(0.4, 0.5]             38           0.439            0.605
+(0.5, 0.6]             19           0.544            0.526
+(0.6, 0.7]             10           0.638            1.000
+(0.7, 0.8]              5           0.735            0.600
+(0.8, 0.9]             10           0.843            1.000</code></pre><p>In the middle the model says too little: complaints scored about 0.25 are urgent 47% of the time. The top bins hold only 5 to 19 complaints, so they say little. This is one more reason not to read 0.5 as a natural threshold.</p></aside>
+<h3>A, continued: calibration training</h3>
+<section aria-label="Optional: Isotonic calibration with five folds of train" class="code-step" data-cell="48">
+<pre aria-label="Optional: Isotonic calibration with five folds of train (notebook cell 48)" tabindex="0"><code>from sklearn.calibration import CalibratedClassifierCV
+# cv=5: five folds of train; method=&quot;isotonic&quot;: a flexible step-shaped mapping.
+calibrated = CalibratedClassifierCV(urgent_model(), method=&quot;isotonic&quot;, cv=5)
+calibrated.fit(train[&quot;narrative&quot;], train[&quot;urgent&quot;])
+valid[&quot;p_calibrated&quot;] = calibrated.predict_proba(valid[&quot;narrative&quot;])[:, 1]
+
+# The same reliability table for the calibrated probabilities.
+calibrated_bins = pd.cut(valid[&quot;p_calibrated&quot;], bins=np.linspace(0, 1, 11), include_lowest=True)
+valid.groupby(calibrated_bins, observed=True).agg(complaints=(&quot;urgent&quot;, &quot;size&quot;),
+                                                  mean_predicted=(&quot;p_calibrated&quot;, &quot;mean&quot;),
+                                                  observed_urgent=(&quot;urgent&quot;, &quot;mean&quot;)).round(3)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output" tabindex="0"><code>               complaints  mean_predicted  observed_urgent
+p_calibrated
+(-0.001, 0.1]        1369           0.028            0.030
+(0.1, 0.2]            223           0.147            0.157
+(0.2, 0.3]             89           0.248            0.247
+(0.3, 0.4]            115           0.355            0.470
+(0.4, 0.5]            116           0.437            0.526
+...</code></pre><p>The low bins now match closely; the middle bins still run above the predictions. New probabilities would need new thresholds, chosen on validation.</p></aside>
+<h3>B. How much does one random row split vary?</h3>
+<section aria-label="Optional: Three more row splits" class="code-step" data-cell="50">
+<pre aria-label="Optional: Three more row splits (notebook cell 50)" tabindex="0"><code>for seed in [1, 2, 3]:
+    # The same row split as 2.4, with a different random draw.
+    random_sample = pool.sample(n=late.sum(), random_state=seed)
+    is_eval = pool.index.isin(random_sample.index)
+    split_model = urgent_model()
+    split_model.fit(pool.loc[~is_eval, &quot;narrative&quot;], pool.loc[~is_eval, &quot;urgent&quot;])
+    p_eval = split_model.predict_proba(pool.loc[is_eval, &quot;narrative&quot;])[:, 1]
+    print(&quot;seed&quot;, seed, &quot;row split AP:&quot;, round(average_precision_score(pool.loc[is_eval, &quot;urgent&quot;], p_eval), 3))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step B." tabindex="0"><code>seed 1 row split AP: 0.552
+seed 2 row split AP: 0.571
+seed 3 row split AP: 0.545</code></pre><p>All three are well above the time split (0.475).</p></aside>
+<h3>C. SMOTE and class weights</h3>
+<section aria-label="Optional: Logistic regression with balanced class weights" class="code-step" data-cell="52">
+<pre aria-label="Optional: Logistic regression with balanced class weights (notebook cell 52)" tabindex="0"><code># Same pipeline, but class_weight=&quot;balanced&quot; gives the rare urgent class more weight.
+weighted = make_pipeline(TfidfVectorizer(ngram_range=(1, 2), min_df=5, stop_words=[&quot;xx&quot;, &quot;xxxx&quot;]),
+                         LogisticRegression(max_iter=1000, class_weight=&quot;balanced&quot;))
+weighted.fit(train[&quot;narrative&quot;], train[&quot;urgent&quot;])
+p_weighted = weighted.predict_proba(valid[&quot;narrative&quot;])[:, 1]
+print(&quot;balanced class weights: AP&quot;, round(average_precision_score(valid[&quot;urgent&quot;], p_weighted), 3),
+      &quot;| mean probability&quot;, round(p_weighted.mean(), 3), &quot;| urgent share&quot;, round(valid[&quot;urgent&quot;].mean(), 3))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step C." tabindex="0"><code>balanced class weights: AP 0.574 | mean probability 0.297 | urgent share 0.136</code></pre><p>Ranking barely changes, but every probability shifts up: the mean probability is about twice the urgent share.</p></aside>
+</section><section aria-labelledby="problems" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="problems">Common Problems</h2>
+<p>If a cell fails, read the last line of the error message first. Then find it below.</p>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>FileNotFoundError: data/predictions/…</h3><p>This file has been in your repository since Week 1, so it was moved or deleted. Open the notebook from the <code>notebooks</code> folder of your repository. If GitHub Desktop lists the file under <strong>Changes</strong>, right-click it and choose <strong>Discard changes</strong>. Otherwise download it again from the course template on GitHub and put it back in the same folder. You should see two CSV files in <code>data/predictions</code>.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>TypeError: apply_policy() got an unexpected keyword argument</h3><p>Your <code>my_policy</code> uses other key names. Use exactly <code>review_from</code> and <code>auto_urgent</code>, then run Exercise 3 and step 2.10 again.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>The plot does not appear</h3><p>Run step 2.5 again. In VS Code the plot appears below the cell; it does not change any numbers.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>I ran step 2.11 and want to change my policy</h3><p>Do not. The test result is only fair for a policy fixed in advance. Write what you would change, and why, in your interpretation instead.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>My numbers differ from this page</h3><p>Check that you did not change the urgent rule, the TF-IDF settings or the splits. Restart the kernel and run from the top. A different scikit-learn version can change a count by one or two.</p></aside>
+<p>Still stuck? Post the error message and the cell number in the course Q&amp;A discussion. Do not post your full answers.</p>
+</section><section aria-labelledby="wrap-up" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="wrap-up">Lab Wrap-Up</h2>
+<p>In this lab you used one pattern on customer messages and real complaints:</p>
+<ul class="inline-code-list"><li><strong>Split:</strong> evaluate the way the model will be used; a time split can be harder than a random one.</li><li><strong>Threshold:</strong> the precision-recall curve shows the options, the cost table chooses, and capacity limits the choice. The optional reliability table shows whether probabilities can be read as risk.</li><li><strong>Review:</strong> a human-review band trades errors for people's time.</li><li><strong>Freeze, then test once:</strong> write the policy down before you open the test split.</li></ul>
+<p>Module 10 discovers themes in complaints when no labels exist yet.</p>
+</section>
+<section aria-labelledby="source-note" class="footer-note"><p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="source-note">Notebook and accessibility note</h2><p>The current Module 9 notebook is authoritative for Python code, sequence, prompts and required work. This companion adds explanation and accessible presentation without changing those requirements. Expected results come from running the notebook on the current course data.</p><p>The page is designed for keyboard navigation, screen readers, browser text-to-speech and ordinary visual reading. Important instructional information is presented as text rather than depending on a visual demonstration.</p></section>
+</main><script>
+(function() {
+  const synth = window.speechSynthesis;
+  const speakBtn = document.getElementById('speak');
+  const pauseBtn = document.getElementById('pause');
+  const resumeBtn = document.getElementById('resume');
+  const stopBtn = document.getElementById('stop');
+  const rate = document.getElementById('speech-rate');
+  const rateValue = document.getElementById('rate-value');
+  const mode = document.getElementById('reading-mode');
+  const voiceSelect = document.getElementById('voice-select');
+  const sectionSelect = document.getElementById('section-select');
+  const jumpSection = document.getElementById('jump-section');
+  const readSection = document.getElementById('read-section');
+  const status = document.getElementById('speech-status');
+  const stickyControls = document.getElementById('sticky-audio-controls');
+  const stickyPause = document.getElementById('sticky-pause');
+  const stickyResume = document.getElementById('sticky-resume');
+  const stickyStop = document.getElementById('sticky-stop');
+  const stickyStatus = document.getElementById('sticky-speech-status');
+  let chunks = [], index = 0, stopped = true, voices = [];
+  function setStatus(t){ status.innerHTML='<small>'+t+'</small>'; if(stickyStatus) stickyStatus.textContent=t; }
+  function populateVoices(){ if(!synth)return; voices=synth.getVoices(); const cur=voiceSelect.value; voiceSelect.innerHTML='<option value="">Browser default</option>'; voices.forEach((v,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=v.name+' ('+v.lang+')';voiceSelect.appendChild(o);}); if([...voiceSelect.options].some(o=>o.value===cur))voiceSelect.value=cur; }
+  function codeToSpeech(text){ return text
+    .replace(/\\/g,' backslash ').replace(/_/g,' underscore ')
+    .replace(/==/g,' equals equals ').replace(/!=/g,' not equals ').replace(/>=/g,' greater than or equal to ').replace(/<=/g,' less than or equal to ')
+    .replace(/&/g,' and ').replace(/\|/g,' or ').replace(/>/g,' greater than ').replace(/</g,' less than ').replace(/=/g,' equals ')
+    .replace(/\(/g,' open parenthesis ').replace(/\)/g,' close parenthesis ').replace(/\[/g,' open bracket ').replace(/\]/g,' close bracket ').replace(/\{/g,' open brace ').replace(/\}/g,' close brace ')
+    .replace(/\./g,' dot ').replace(/,/g,' comma ').replace(/:/g,' colon ').replace(/;/g,' semicolon ').replace(/\+/g,' plus ').replace(/-/g,' minus ').replace(/\*/g,' star ').replace(/\//g,' slash ').replace(/%/g,' percent ')
+    .replace(/"/g,' quote ').replace(/'/g,' single quote ').replace(/\s+/g,' ').trim(); }
+  function tableToSpeech(table){ const cap=table.querySelector('caption'); const rows=[...table.querySelectorAll('tr')]; const out=[]; if(cap)out.push(cap.innerText.trim()+'.'); rows.forEach((row,r)=>{const cells=[...row.querySelectorAll('th,td')].map(c=>c.innerText.trim()); if(!cells.length)return; if(r===0)out.push('Columns: '+cells.join(', ')+'.'); else out.push('Row '+r+': '+cells.join(', ')+'.');}); return out.join(' '); }
+  function buildChunks(startElement){ const includeCode=mode.value==='full'; const main=document.getElementById('main-content'); const items=[]; let started=!startElement; main.querySelectorAll('h2,h3,h4,p,li,table,pre').forEach(el=>{ if(!started){if(el===startElement)started=true;else return;} if(el.closest('.listen-panel')||el.closest('nav')||el.closest('.controls')||el.closest('.section-read-controls')||el.closest('.back-to-contents'))return; if(el.closest('details:not([open])'))return; if(el.matches('pre')){if(!includeCode)return; const c=el.innerText.trim(); if(c)items.push({text:'Python code. '+codeToSpeech(c),el}); return;} if(el.matches('table')){const t=tableToSpeech(el);if(t)items.push({text:t,el});return;} const t=el.innerText.replace(/\s+/g,' ').trim(); if(t)items.push({text:t,el}); }); return items; }
+  function speakNext(){ if(!synth||stopped)return; if(index>=chunks.length){stopped=true;setStatus('Finished reading the companion.');if(stickyControls) stickyControls.hidden=true;return;} const cur=chunks[index]; const u=new SpeechSynthesisUtterance(cur.text);u.rate=parseFloat(rate.value); if(voiceSelect.value!==''&&voices[Number(voiceSelect.value)])u.voice=voices[Number(voiceSelect.value)];u.onstart=()=>setStatus('Reading item '+(index+1)+' of '+chunks.length+' at '+rate.value+'×.');u.onend=()=>{index++;speakNext();};u.onerror=e=>{if(e.error!=='canceled'&&e.error!=='interrupted'){setStatus('Speech stopped because the browser reported: '+e.error+'.');stopped=true;}}; synth.speak(u); }
+  function startReading(el,label){if(!synth){setStatus('This browser does not provide the Web Speech API.');return;}synth.cancel();chunks=buildChunks(el||null);index=0;stopped=false;if(stickyControls) stickyControls.hidden=false;setStatus(label?'Starting from '+label+'.':'Starting from the beginning.');setTimeout(speakNext,50);}
+  function setupSections(){ const hs=[...document.querySelectorAll('#main-content h2[id]')].filter(h=>!h.closest('.listen-panel')&&!h.closest('nav')); hs.forEach(h=>{const sectionName=h.innerText.trim();const o=document.createElement('option');o.value=h.id;o.textContent=sectionName;sectionSelect.appendChild(o);const d=document.createElement('div');d.className='section-read-controls';d.setAttribute('aria-label','Read-aloud controls for '+sectionName);const b=document.createElement('button');b.type='button';b.className='speak-section';b.textContent='Read Aloud from This Section';b.setAttribute('aria-label','Read aloud from this section: '+sectionName);b.addEventListener('click',()=>startReading(h,sectionName));const hint=document.createElement('span');hint.className='read-hint';hint.textContent='Reads continuously from this section to the end.';d.appendChild(b);d.appendChild(hint);h.insertAdjacentElement('afterend',d);}); }
+  speakBtn.addEventListener('click',()=>startReading(null,'the beginning'));
+  function pauseReading(){if(synth&&synth.speaking&&!synth.paused){synth.pause();setStatus('Paused.');}}
+  function resumeReading(){if(synth&&synth.paused){synth.resume();setStatus('Resumed. Speed changes apply to the next reading item.');}}
+  function stopReading(){stopped=true;if(synth)synth.cancel();setStatus('Stopped.');if(stickyControls) stickyControls.hidden=true;}
+  pauseBtn.addEventListener('click',pauseReading);
+  resumeBtn.addEventListener('click',resumeReading);
+  stopBtn.addEventListener('click',stopReading);
+  if(stickyPause) stickyPause.addEventListener('click',pauseReading);
+  if(stickyResume) stickyResume.addEventListener('click',resumeReading);
+  if(stickyStop) stickyStop.addEventListener('click',stopReading);
+  rate.addEventListener('input',()=>{rateValue.textContent=Number(rate.value).toFixed(1)+'×';if(synth&&synth.speaking)setStatus('Speed set to '+rateValue.textContent+'. It will apply to the next reading item.');});
+  mode.addEventListener('change',()=>setStatus(mode.value==='full'?'Full mode selected. Python code will be read aloud.':'Study mode selected. Exact Python code will be skipped.'));
+  jumpSection.addEventListener('click',()=>{const h=document.getElementById(sectionSelect.value);if(h){h.scrollIntoView({behavior:'smooth',block:'start'});h.setAttribute('tabindex','-1');h.focus();}});
+  readSection.addEventListener('click',()=>{const h=document.getElementById(sectionSelect.value);if(h)startReading(h,h.innerText.trim());});
+  setupSections(); populateVoices(); if(synth&&'onvoiceschanged' in synth)synth.onvoiceschanged=populateVoices;
+})();
+</script></body></html>

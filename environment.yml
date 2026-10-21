@@ -1,0 +1,17 @@
+# BAN 6403 course environment. Create it once from this folder:
+#   conda env create -f environment.yml
+# Update it later with:
+#   conda env update -n ban6403 -f environment.yml --prune
+# GitHub Codespaces installs the same packages with pip (see .devcontainer/).
+name: ban6403
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - numpy
+  - pandas>=3.0,<3.1
+  - scikit-learn>=1.8
+  - scipy
+  - matplotlib
+  - ipykernel
+  - nbconvert

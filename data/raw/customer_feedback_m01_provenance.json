@@ -1,0 +1,16 @@
+{
+  "dataset_id": "ban6403_synthetic_feedback_m01_v1",
+  "file": "customer_feedback_m01.csv",
+  "sha256": "f213ece06f90c6834dd92d1260874b39ee33f57b21b1acbe21f6768818a60050",
+  "rows": 24,
+  "origin": "Original synthetic teaching fixture authored for BAN6403. No real customer records.",
+  "scope": "Inspection and decision framing only; not a representative sample or sufficient classifier training set.",
+  "deliberate_conditions": [
+    "FB022 has missing text",
+    "FB005 and FB020 repeat identical text across channels",
+    "FB012 is ambiguous",
+    "Ratings do not encode action-needed"
+  ],
+  "labels": "No ground-truth action-needed labels. Classroom judgments are provisional policy-based interpretations.",
+  "reuse": "Course teaching and redistribution with this provenance statement; no third-party customer-data license applies."
+}

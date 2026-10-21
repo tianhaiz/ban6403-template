@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Lab 5 Companion - BAN 6403</title><style>
+:root { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.62; }
+* { box-sizing: border-box; }
+body { margin:0; background:#fff; color:#111; }
+a { color:#0645ad; text-decoration-thickness:.12em; }
+a:focus, button:focus, summary:focus, pre:focus, .table-wrap:focus, select:focus, input:focus { outline:3px solid currentColor; outline-offset:3px; }
+.skip-link { position:absolute; left:-9999px; }
+.skip-link:focus { left:1rem; top:1rem; background:#fff; padding:.75rem; z-index:1000; border:2px solid #111; }
+header { border-bottom:2px solid #111; padding:1.5rem max(1rem, calc((100vw - 1060px)/2)); }
+header h1 { margin:0 0 .35rem; }
+.subtitle { margin:.2rem 0 0; font-size:1.08rem; }
+main { max-width:1060px; margin:0 auto; padding:1.5rem 1rem 4rem; }
+h2 { margin-top:2.6rem; padding-top:.55rem; border-top:1px solid #bbb; }
+h3 { margin-top:1.7rem; }
+.accessibility-summary, .toc, .note-box, .result-box, .try-box, .assignment-box, .summary-box, .listen-panel, .solution-box { border:1px solid #555; border-radius:.45rem; padding:1rem 1.1rem; margin:1.15rem 0; }
+.note-box { border-left:6px solid #1f4e79; background:#f4f8fc; position:relative; }
+.note-label { display:inline-block; font-size:.78rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; border:2px solid #1f4e79; border-radius:.25rem; padding:.22rem .45rem; margin:0 0 .55rem; background:#fff; }
+.note-box h3 { margin-top:.15rem; }
+.content-key { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:.8rem; margin:1rem 0; }
+.key-item { border:1px solid #777; border-radius:.4rem; padding:.8rem .9rem; }
+.key-label { font-weight:800; display:block; margin-bottom:.25rem; }
+.try-box { border-left:5px solid #111; }
+.result-box { background:#fafafa; }
+.solution-box summary { cursor:pointer; font-weight:700; }
+.solution-box[open] summary { margin-bottom:.8rem; }
+.controls { display:flex; gap:.6rem; flex-wrap:wrap; margin:1rem 0; }
+button { font:inherit; padding:.55rem .8rem; border:2px solid #111; background:#fff; border-radius:.3rem; cursor:pointer; }
+pre { overflow:auto; border:1px solid #777; padding:1rem; background:#f6f6f6; white-space:pre; }
+code { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.code-step { margin:1rem 0 1.55rem; }
+.code-purpose { margin-bottom:.4rem; }
+.table-wrap { overflow-x:auto; margin:.8rem 0; }
+table { border-collapse:collapse; width:100%; min-width:620px; }
+th, td { border:1px solid #666; padding:.5rem; text-align:left; vertical-align:top; }
+th { font-weight:700; }
+caption { font-weight:700; text-align:left; margin-bottom:.45rem; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.speech-options { display:grid; grid-template-columns:max-content minmax(180px,1fr); gap:.65rem .9rem; align-items:center; max-width:800px; }
+.speech-options select, .speech-options input[type="range"] { width:100%; font:inherit; }
+#speech-status { min-height:1.5em; }
+.section-read-controls { margin:.25rem 0 1rem; display:flex; align-items:center; gap:.5rem; }
+.section-read-controls button { font-size:.9rem; padding:.4rem .7rem; }
+.section-read-controls .read-hint { color:#555; font-size:.88rem; }
+.kicker { font-weight:700; }
+.muted { color:#555; }
+.footer-note { margin-top:3rem; border-top:2px solid #111; padding-top:1rem; }
+.inline-code-list li { margin:.25rem 0; }
+@media (max-width:700px) { table { min-width:760px; } .speech-options { grid-template-columns:1fr; } .section-read-controls { flex-direction:column; align-items:flex-start; } }
+@media print { .controls,.skip-link,.speak-section,.listen-panel,.jump-controls { display:none !important; } main { max-width:none; } a { color:inherit; text-decoration:none; } details { display:block; } details > * { display:block !important; } }
+
+.read-aloud-intro { border:2px solid #111; background:#fbfbfb; }
+.read-aloud-intro h3 { margin-top:.15rem; }
+.speak-section { font-weight:700; }
+.sticky-audio-controls { position:fixed; left:50%; bottom:1rem; transform:translateX(-50%); width:min(960px,calc(100vw - 2rem)); z-index:2000; background:#fff; border:3px solid #111; border-radius:.55rem; padding:.65rem .8rem; box-shadow:0 4px 20px rgba(0,0,0,.18); }
+.sticky-audio-inner { display:flex; align-items:center; gap:.65rem; flex-wrap:wrap; }
+.sticky-audio-label { font-weight:800; margin-right:auto; }
+.sticky-audio-status { flex:1 1 260px; min-width:180px; }
+.sticky-audio-controls button { padding:.42rem .68rem; }
+.sticky-audio-controls[hidden] { display:none !important; }
+@media (max-width:700px) { .sticky-audio-inner { align-items:stretch; } .sticky-audio-label, .sticky-audio-status { flex-basis:100%; } .sticky-audio-controls button { flex:1 1 auto; } }
+@media print { .sticky-audio-controls { display:none !important; } }
+
+.back-to-contents { margin: 1.6rem 0 .6rem; padding-top: .7rem; border-top: 1px dashed #aaa; font-size: .95rem; }
+.back-to-contents a { font-weight: 700; }
+
+/* code-output-tint v1: calm colours that separate code, output and instructor notes */
+.code-step pre { background:#f0f2f4; border:1px solid #a3abb5; border-left:4px solid #6b7785; }
+.result-box { background:#fbf8ef; border:1px solid #b9ae92; border-left:4px solid #8a7a52; }
+.result-box pre { background:#fffdf7; border:1px solid #cfc6ae; }
+.note-box { border:2px solid #1f4e79; border-left:8px solid #1f4e79; background:#e8f1fb; }
+.result-box > h3:first-child { margin-top:.1rem; }
+@media (forced-colors: active) { .code-step pre, .result-box, .result-box pre, .note-box { border-color:CanvasText; } }
+</style><style>/* Added for BAN 6403: let long inline paths wrap on narrow screens. */ p code, li code, td code, th code, summary code { overflow-wrap:anywhere; }</style></head>
+<body><a class="skip-link" href="#main-content">Skip to lab content</a>
+<header><h1>Lab 5 Companion</h1><p class="subtitle"><strong>BAN 6403: Text Analytics for Business</strong></p><p>Module 5: Text Embeddings</p></header>
+<div aria-label="Active read-aloud controls" class="sticky-audio-controls" hidden="" id="sticky-audio-controls" role="region"><div class="sticky-audio-inner"><span class="sticky-audio-label">Read Aloud</span><span aria-live="polite" class="sticky-audio-status" id="sticky-speech-status">Ready.</span><button id="sticky-pause" type="button">Pause</button><button id="sticky-resume" type="button">Resume</button><button id="sticky-stop" type="button">Stop</button></div></div><main id="main-content">
+<section aria-labelledby="how-to-use" class="accessibility-summary">
+<h2 id="how-to-use">How to use this companion</h2>
+<p>Open the <strong>Module 5 notebook and this companion at the same time</strong>. Work through the companion from top to bottom and run the matching notebook cells as you go. The notebook is the authoritative source for the lab sequence, code and required work. This companion explains what each step means, what to notice in the output and why the step matters.</p><div aria-labelledby="listen-title" class="listen-panel read-aloud-intro">
+<h3 id="listen-title">Read aloud: controls and directions</h3>
+<p><strong>Before you start:</strong> choose a reading mode, speed, and voice below. Select <strong>Read Aloud from Beginning</strong> to hear the full companion, or use <strong>Read Aloud from This Section</strong> beside any major section to continue from that point. While audio is playing, a floating control bar remains visible at the bottom of the page. Use <strong>Pause</strong> to pause temporarily, <strong>Resume</strong> to continue, and <strong>Stop</strong> to end the current reading.</p><p><strong>Study mode</strong> reads explanations, results, tables, and notes while skipping exact Python code. <strong>Full mode</strong> also reads Python code and verbalizes common programming symbols.</p>
+<div aria-label="Read aloud controls" class="controls">
+<button id="speak" type="button">Read Aloud from Beginning</button><button id="pause" type="button">Pause</button><button id="resume" type="button">Resume</button><button id="stop" type="button">Stop</button>
+</div>
+<div class="speech-options">
+<label for="reading-mode"><strong>Reading mode:</strong></label><select id="reading-mode"><option selected="" value="study">Study mode - explanations and results</option><option value="full">Full mode - include Python code</option></select>
+<label for="speech-rate"><strong>Speed:</strong> <span id="rate-value">1.0×</span></label><input aria-describedby="rate-help" id="speech-rate" max="2" min="0.5" step="0.1" type="range" value="1"/><span class="sr-only" id="rate-help">Adjust text-to-speech speed from one half to two times normal speed.</span>
+<label for="voice-select"><strong>Voice:</strong></label><select id="voice-select"><option value="">Browser default</option></select>
+<label for="section-select"><strong>Jump to section:</strong></label><select id="section-select"><option value="">Choose a section</option></select>
+</div>
+<div class="controls jump-controls"><button id="jump-section" type="button">Jump</button><button id="read-section" type="button">Read Aloud from Selected Section</button></div>
+<p aria-live="polite" id="speech-status" role="status"><small>Ready to read.</small></p>
+<p><small>The read-aloud feature uses your browser's speech engine. A screen reader can access the page independently of these controls.</small></p>
+</div>
+<h3>What is in the notebook, and what this companion adds</h3>
+<ul>
+<li><strong>Notebook:</strong> the exact Python code, the written questions, the Practice exercises, the checkpoint and the Submit steps.</li>
+<li><strong>Companion:</strong> plain-language explanations, the results you should expect (taken from real runs of the notebook), common mistakes and how to fix them.</li>
+<li><strong>If anything ever seems inconsistent:</strong> follow the current notebook.</li>
+</ul>
+<div aria-label="Content key" class="content-key">
+<div class="key-item"><span class="key-label">Notebook content</span>Code, official prompts, required tasks and the lab sequence come from the notebook. Each code block shows its notebook cell number.</div>
+<div class="key-item"><span class="key-label">Companion-added instructor note</span>These clearly labeled notes are explanations, cautions or study advice added by this companion. They are not extra required notebook steps unless the note says so.</div>
+</div>
+<p>This companion is designed for keyboard and screen-reader access, but it is <strong>not a separate version for students who need accessibility features</strong>. It is the same learning guide for everyone. You can read it visually, use a screen reader, or use the built-in read-aloud controls while you work in the notebook.</p>
+</section>
+<nav aria-labelledby="toc-title" class="toc"><p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="toc-title" tabindex="-1">Lab contents</h2><ol><li><a href="#how-to-use">How to use this companion</a></li><li><a href="#learning-goals">Module 5 Learning Goals</a></li><li><a href="#setup">Before You Start: Setup</a></li><li><a href="#part-1a">Part 1A: The Manifest and the Example Sentences (Steps 1.1–1.5)</a></li><li><a href="#part-1b">Part 1B: Cosine Similarity, Two Ways (Steps 1.6–1.7)</a></li><li><a href="#part-1c">Part 1C: Neighbors in the Customer Messages (Steps 1.8–1.12)</a></li><li><a href="#checkpoint">Checkpoint</a></li><li><a href="#part-2">Part 2: Practice with Real Clothing Reviews (Steps 2.1–2.7)</a></li><li><a href="#exercises">Practice Exercises and Interpretation</a></li><li><a href="#submit">Submit</a></li><li><a href="#challenge">Part 3 Challenge (Optional)</a></li><li><a href="#problems">Common Problems</a></li><li><a href="#wrap-up">Lab Wrap-Up</a></li><li><a href="#source-note">Notebook and accessibility note</a></li></ol></nav>
+<section aria-labelledby="learning-goals" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="learning-goals">Module 5 Learning Goals</h2>
+<p>In this lab you compare two ways to turn text into numbers: the word features from Module 4 and sentence <strong>embeddings</strong>. An embedding is a list of numbers that a pretrained model gives each message. By the end of the lab you should be able to:</p>
+<ul><li><strong>Distinguish</strong> latent vectors built from your own word counts from pretrained embeddings.</li><li><strong>Use</strong> a saved set of vectors (a <strong>cache</strong>) and link every vector to its message ID.</li><li><strong>Interpret</strong> nearest neighbors and cosine scores as rankings, not probabilities.</li><li><strong>Document</strong> which model made the vectors, how the text went in and what the model cannot see.</li></ul>
+<p>The main idea: <strong>check the neighbors before you trust a score.</strong></p>
+</section><section aria-labelledby="setup" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="setup">Before You Start: Setup</h2>
+<p>The main route is your own computer:</p>
+<ol><li>Open <strong>GitHub Desktop</strong> and select your course repository (<code>ban6403-</code> plus your GitHub username). This week's notebook, the example sentences and the embedding files in <code>data/embeddings</code> are already in your repository.</li><li>Open the repository folder in <strong>Visual Studio Code</strong> and open <code>notebooks/M05_Text_Embeddings.ipynb</code>.</li><li>Click the kernel picker at the top right of the notebook and choose <strong>ban6403</strong>. This lab uses numpy, pandas and scikit-learn, which are all in that environment.</li><li>Run the cells in order from the top. If you restart the kernel, run from the top again.</li></ol>
+<p><strong>Optional:</strong> where your network allows it, you can open the repository in GitHub Codespaces instead. Keep the folder structure unchanged so the file paths work.</p>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>You do not run a language model</h3><p>The embedding model <code>sentence-transformers/all-MiniLM-L6-v2</code> was run once and its vectors were saved in <code>data/embeddings</code>. You load those saved vectors. Nothing is downloaded, no GPU is needed, and everyone gets the same numbers.</p></aside>
+</section><section aria-labelledby="part-1a" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1a">Part 1A: The Manifest and the Example Sentences (Steps 1.1–1.5)</h2>
+<p>You start with 11 short sentences we wrote. They are small enough that you can compare every score with your own reading.</p>
+<h3>1.1 Load the libraries</h3>
+<section aria-label="Import the libraries for this lab" class="code-step" data-cell="1">
+<pre aria-label="Import the libraries for this lab (notebook cell 1)" tabindex="0"><code>from pathlib import Path   # file and folder paths
+import json                # reads the manifest files
+import numpy as np         # arrays of numbers: the vectors
+import pandas as pd        # tables
+from sklearn.feature_extraction.text import TfidfVectorizer  # the Module 4 word features</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>No output. A comment after each import says what the library is for. An error here usually means the kernel is wrong; see Common problems.</p></aside>
+<h3>1.2 Set the data and output folders</h3>
+<p>The notebook runs from the <code>notebooks</code> folder, so the data is one folder up, in <code>../data</code>.</p>
+<section aria-label="Set the data, embeddings and output folders" class="code-step" data-cell="3">
+<pre aria-label="Set the data, embeddings and output folders (notebook cell 3)" tabindex="0"><code># Folder paths, relative to the notebooks folder.
+DATA = Path(&quot;../data&quot;)
+EMB = DATA / &quot;embeddings&quot;
+OUTPUT_DIR = Path(&quot;../outputs/m05&quot;)
+# Create the output folder if it does not exist yet.
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>No output. <code>DATA</code>, <code>EMB</code> and <code>OUTPUT_DIR</code> now point to <code>../data</code>, <code>../data/embeddings</code> and <code>../outputs/m05</code>. The cell creates the output folder if it does not exist yet.</p></aside>
+<h3>1.3 Read the manifest first</h3>
+<p>A <strong>manifest</strong> is a small file that says which model made the vectors and how. Read it before you use the numbers.</p>
+<section aria-label="Print the main fields of the manifest" class="code-step" data-cell="5">
+<pre aria-label="Print the main fields of the manifest (notebook cell 5)" tabindex="0"><code># The manifest is a JSON file; json.loads turns its text into a Python dictionary.
+manifest = json.loads((EMB / &quot;m05_sentences_minilm_manifest.json&quot;).read_text())
+
+# Print the fields that describe how the vectors were made, one per line.
+for key in [&quot;model&quot;, &quot;model_revision&quot;, &quot;dimensions&quot;, &quot;max_tokens&quot;, &quot;pooling&quot;, &quot;normalized&quot;, &quot;input&quot;]:
+    print(f&quot;{key}: {manifest[key]}&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.3" tabindex="0"><code>model: sentence-transformers/all-MiniLM-L6-v2
+model_revision: 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+dimensions: 384
+max_tokens: 256
+pooling: mean over tokens, using the attention mask
+normalized: yes, L2 (vectors have length 1)
+input: data/raw/m05_demo_sentences.csv column &#x27;text&#x27;, unchanged (no cleaning)</code></pre></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>What each field tells you</h3><ul><li><strong>model_revision</strong> pins the exact version of the model. A model page can change; the revision cannot.</li><li><strong>max_tokens</strong>: text after 256 tokens is ignored.</li><li><strong>pooling</strong>: the model averages one vector per token into one vector per sentence.</li><li><strong>input</strong>: the text went in unchanged. No cleaning was applied.</li></ul></aside>
+<h3>1.4 Load the example sentences and their vectors</h3>
+<section aria-label="Load the sentences and their vectors" class="code-step" data-cell="7">
+<pre aria-label="Load the sentences and their vectors (notebook cell 7)" tabindex="0"><code>sentences = pd.read_csv(DATA / &quot;raw/m05_demo_sentences.csv&quot;)
+
+# np.load reads a saved numpy array: one row of numbers per sentence.
+sent_vectors = np.load(EMB / &quot;m05_sentences_minilm.npy&quot;).astype(&quot;float32&quot;)
+
+# .shape gives (number of rows, number of columns).
+print(&quot;shape:&quot;, sent_vectors.shape)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.4" tabindex="0"><code>shape: (11, 384)</code></pre><p>11 sentences, 384 numbers each. The vectors are in the same order as the rows of the file: row 1 belongs to S01, row 2 to S02, and so on. <code>.astype("float32")</code> turns the compact 16-bit numbers into ordinary numbers for computing.</p></aside>
+<h3>1.5 Look at one vector</h3>
+<section aria-label="Show part of one vector and the vector lengths" class="code-step" data-cell="9">
+<pre aria-label="Show part of one vector and the vector lengths (notebook cell 9)" tabindex="0"><code># [0, :8] means row 0 (sentence S01), first 8 columns.
+print(&quot;first 8 numbers of S01:&quot;, sent_vectors[0, :8].round(3))
+
+# np.linalg.norm with axis=1 gives the length of each row; [:4] shows the first four.
+print(&quot;vector lengths:&quot;, np.linalg.norm(sent_vectors, axis=1).round(3)[:4])</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.5" tabindex="0"><code>first 8 numbers of S01: [-0.015 -0.084 -0.009 -0.174 -0.01  -0.023 -0.051 -0.003]
+vector lengths: [1. 1. 1. 1.]</code></pre><p>The numbers have no names, so you cannot read one of them like a TF-IDF weight. Every vector has length 1.</p></aside>
+</section><section aria-labelledby="part-1b" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1b">Part 1B: Cosine Similarity, Two Ways (Steps 1.6–1.7)</h2>
+<h3>1.6 Cosine similarity between sentences</h3>
+<p><strong>Cosine similarity</strong> measures whether two vectors point the same way. For vectors of length 1 it is the dot product: multiply the matching numbers and add them up.</p>
+<section aria-label="Score eight sentence pairs with embeddings" class="code-step" data-cell="11">
+<pre aria-label="Score eight sentence pairs with embeddings (notebook cell 11)" tabindex="0"><code># Look up a sentence&#x27;s text or note by its ID, for example sent_text[&quot;S01&quot;].
+sent_text = sentences.set_index(&quot;sentence_id&quot;)[&quot;text&quot;]
+sent_note = sentences.set_index(&quot;sentence_id&quot;)[&quot;note&quot;]
+
+# (11 x 384) @ (384 x 11) gives an 11 x 11 table: the cosine of every sentence with every other one.
+cosines = sent_vectors @ sent_vectors.T
+sent_sim = pd.DataFrame(cosines, index=sentences[&quot;sentence_id&quot;], columns=sentences[&quot;sentence_id&quot;])
+print(&quot;sent_vectors:&quot;, sent_vectors.shape, &quot;| sent_vectors.T:&quot;, sent_vectors.T.shape, &quot;| cosine table:&quot;, sent_sim.shape)
+
+# Each pair is (anchor sentence, a sentence written to go with it).
+pairs = [(&quot;S01&quot;, &quot;S02&quot;), (&quot;S01&quot;, &quot;S03&quot;), (&quot;S01&quot;, &quot;S04&quot;), (&quot;S01&quot;, &quot;S05&quot;),
+         (&quot;S06&quot;, &quot;S07&quot;), (&quot;S06&quot;, &quot;S08&quot;), (&quot;S09&quot;, &quot;S10&quot;), (&quot;S09&quot;, &quot;S11&quot;)]
+
+# Build one table row per pair. sent_sim.loc[row, column] reads one cosine.
+rows = []
+for first_id, second_id in pairs:
+    rows.append({
+        &quot;pair&quot;: first_id + &quot;-&quot; + second_id,
+        &quot;first&quot;: sent_text[first_id],
+        &quot;second&quot;: sent_text[second_id],
+        &quot;note&quot;: sent_note[second_id],
+        &quot;embedding_cosine&quot;: round(float(sent_sim.loc[first_id, second_id]), 2),
+    })
+pair_table = pd.DataFrame(rows)
+pair_table</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Embedding cosine for eight pairs</caption><thead><tr><th scope="col">pair</th><th scope="col">second sentence</th><th scope="col">note</th><th scope="col">embedding_cosine</th></tr></thead><tbody><tr><td>S01-S02</td><td>My tablet won&#x27;t turn on.</td><td>same meaning; few shared words</td><td>0.79</td></tr><tr><td>S01-S03</td><td>The device won&#x27;t power up.</td><td>same meaning; no shared content words</td><td>0.65</td></tr><tr><td>S01-S04</td><td>The tablet will start.</td><td>opposite meaning; most words shared</td><td>0.85</td></tr><tr><td>S01-S05</td><td>The tablet starts now. Thank you.</td><td>problem solved</td><td>0.77</td></tr><tr><td>S06-S07</td><td>I do not owe this money.</td><td>same meaning; no shared content words</td><td>0.70</td></tr><tr><td>S06-S08</td><td>This debt is mine.</td><td>opposite meaning; most words shared</td><td>0.91</td></tr><tr><td>S09-S10</td><td>I see two payments for the same purchase.</td><td>same meaning; no shared content words</td><td>0.49</td></tr><tr><td>S09-S11</td><td>The battery will not charge.</td><td>shares the word charge; different meaning</td><td>0.38</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.6" tabindex="0"><code>sent_vectors: (11, 384) | sent_vectors.T: (384, 11) | cosine table: (11, 11)</code></pre><p>The table in the notebook also shows the first sentence of each pair. S01 is “The tablet will not start.” S06 is “This debt is not mine.” S09 is “I was charged twice for one order.”</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>The surprise in this table</h3><p>S01-S04 (opposite meaning) scores 0.85, higher than S01-S02 (same meaning, 0.79). S06-S08 scores 0.91. The model weighs the topic heavily, and one word like <i>not</i> moves the vector only a little.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Similarity in code: shapes, @, .T, argsort, argmax, .toarray()</h3><p>These pieces of numpy code do most of the work in this lab and in Modules 6 to 8.</p><ul><li><code>A.T</code> swaps rows and columns. <code>sent_vectors</code> is 11 × 384, so <code>sent_vectors.T</code> is 384 × 11.</li><li><code>A @ B</code> is a matrix product. An (n × 384) table <code>@</code> a (384 × m) table gives an n × m table. With length-1 vectors, row i, column j holds the cosine between item i of A and item j of B. Here: 11 × 11.</li><li><code>np.argsort(-scores)</code> lists positions from the highest score to the lowest; <code>[:5]</code> keeps the top five.</li><li><code>table.argmax(axis=1)</code> gives, for each row, the column position of the highest value: each row's top neighbor.</li><li><code>.toarray()</code> turns a sparse TF-IDF result (only non-zero values stored) into an ordinary numpy table. Use it only on results that fit in memory.</li></ul><p>Example from Exercise 3: 1,000 validation vectors <code>@</code> the transpose of 13,581 training vectors gives a 1,000 × 13,581 table, one row per validation review.</p></aside>
+<h3>1.7 The same pairs with TF-IDF</h3>
+<section aria-label="Score the same pairs with TF-IDF" class="code-step" data-cell="13">
+<pre aria-label="Score the same pairs with TF-IDF (notebook cell 13)" tabindex="0"><code># Same TF-IDF setup as Module 4: fit_transform learns the words and returns one row per sentence.
+sent_tfidf = TfidfVectorizer()
+X_sent = sent_tfidf.fit_transform(sentences[&quot;text&quot;])
+
+# TF-IDF rows also have length 1, so X @ X.T gives cosines. .toarray() turns the sparse result into an ordinary table.
+tfidf_sim = pd.DataFrame((X_sent @ X_sent.T).toarray(), index=sentences[&quot;sentence_id&quot;], columns=sentences[&quot;sentence_id&quot;])
+
+# Read the TF-IDF cosine for each pair and add it as a new column.
+tfidf_scores = []
+for first_id, second_id in pairs:
+    tfidf_scores.append(round(float(tfidf_sim.loc[first_id, second_id]), 2))
+pair_table[&quot;tfidf_cosine&quot;] = tfidf_scores
+pair_table[[&quot;pair&quot;, &quot;note&quot;, &quot;tfidf_cosine&quot;, &quot;embedding_cosine&quot;]]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>TF-IDF and embedding cosine for the same pairs</caption><thead><tr><th scope="col">pair</th><th scope="col">note</th><th scope="col">tfidf_cosine</th><th scope="col">embedding_cosine</th></tr></thead><tbody><tr><td>S01-S02</td><td>same meaning; few shared words</td><td>0.14</td><td>0.79</td></tr><tr><td>S01-S03</td><td>same meaning; no shared content words</td><td>0.10</td><td>0.65</td></tr><tr><td>S01-S04</td><td>opposite meaning; most words shared</td><td>0.91</td><td>0.85</td></tr><tr><td>S01-S05</td><td>problem solved</td><td>0.22</td><td>0.77</td></tr><tr><td>S06-S07</td><td>same meaning; no shared content words</td><td>0.28</td><td>0.70</td></tr><tr><td>S06-S08</td><td>opposite meaning; most words shared</td><td>0.93</td><td>0.91</td></tr><tr><td>S09-S10</td><td>same meaning; no shared content words</td><td>0.12</td><td>0.49</td></tr><tr><td>S09-S11</td><td>shares the word charge; different meaning</td><td>0.00</td><td>0.38</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>TF-IDF only rewards shared words. S01-S03 still gets 0.10 because both sentences contain <i>the</i>. S09-S11 gets 0 because <i>charged</i> and <i>charge</i> are different words to TF-IDF.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Neither method understands negation</h3><p>Both methods give the opposite-meaning pairs (S01-S04, S06-S08) high scores. Embeddings add credit for same-meaning pairs with different words. They do not fix negation.</p></aside>
+</section><section aria-labelledby="part-1c" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1c">Part 1C: Neighbors in the Customer Messages (Steps 1.8–1.12)</h2>
+<h3>1.8 Load the customer messages and their vectors</h3>
+<section aria-label="Load the customer messages and their vectors" class="code-step" data-cell="15">
+<pre aria-label="Load the customer messages and their vectors (notebook cell 15)" tabindex="0"><code>feedback = pd.read_csv(DATA / &quot;raw/customer_feedback_m01.csv&quot;)
+
+# Keep the messages that have text, and use the message ID as the row label.
+with_text = feedback.dropna(subset=[&quot;text&quot;]).set_index(&quot;feedback_id&quot;)
+
+# One saved vector per message with text, in the same order.
+fb_vectors = np.load(EMB / &quot;feedback_minilm.npy&quot;).astype(&quot;float32&quot;)
+print(&quot;shape:&quot;, fb_vectors.shape)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.8" tabindex="0"><code>shape: (23, 384)</code></pre><p>23 rows, not 24: FB022 has no text, so it has no vector. <code>dropna</code> keeps the 23 messages with text, in the same order as the vectors.</p></aside>
+<h3>1.9 Nearest neighbors</h3>
+<p>A <strong>nearest neighbor</strong> is the message with the highest cosine to the one you start from. The helper <code>fb_neighbors</code> leaves out the message itself.</p>
+<section aria-label="Find the three nearest neighbors of FB001" class="code-step" data-cell="17">
+<pre aria-label="Find the three nearest neighbors of FB001 (notebook cell 17)" tabindex="0"><code># A 23 x 23 cosine table, with the message IDs as row and column labels.
+fb_sim = pd.DataFrame(fb_vectors @ fb_vectors.T, index=with_text.index, columns=with_text.index)
+
+def fb_neighbors(feedback_id, sim, k=3):
+    &quot;&quot;&quot;Take a message ID and a cosine table; return the k closest other messages with cosine and text.&quot;&quot;&quot;
+    # The message&#x27;s row of cosines, without the message itself.
+    row = sim.loc[feedback_id].drop(feedback_id)
+    # Sort from the highest cosine down and keep the first k.
+    scores = row.sort_values(ascending=False).head(k)
+    return pd.DataFrame({&quot;cosine&quot;: scores.round(2), &quot;text&quot;: with_text.loc[scores.index, &quot;text&quot;]})
+
+print(with_text.loc[&quot;FB001&quot;, &quot;text&quot;])
+fb_neighbors(&quot;FB001&quot;, fb_sim)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Embedding neighbors of FB001 “Love the speaker, but the charger is missing.”</caption><thead><tr><th scope="col">feedback_id</th><th scope="col">cosine</th><th scope="col">text</th></tr></thead><tbody><tr><td>FB018</td><td>0.55</td><td>Great service. Please send the missing charging cable.</td></tr><tr><td>FB015</td><td>0.37</td><td>The left side has no sound. Please send troubleshooting steps.</td></tr><tr><td>FB011</td><td>0.34</td><td>Thank you for the replacement. It works now.</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Your display may cut long text with <code>...</code>.</p></aside>
+<h3>1.10 Compare with TF-IDF neighbors</h3>
+<section aria-label="Find FB001&#x27;s neighbors with TF-IDF" class="code-step" data-cell="19">
+<pre aria-label="Find FB001&#x27;s neighbors with TF-IDF (notebook cell 19)" tabindex="0"><code># Fit TF-IDF on the 23 messages and build the same kind of cosine table.
+fb_tfidf = TfidfVectorizer()
+X_fb = fb_tfidf.fit_transform(with_text[&quot;text&quot;])
+fb_tfidf_sim = pd.DataFrame((X_fb @ X_fb.T).toarray(), index=with_text.index, columns=with_text.index)
+# The same helper works with any cosine table.
+fb_neighbors(&quot;FB001&quot;, fb_tfidf_sim)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>TF-IDF neighbors of FB001</caption><thead><tr><th scope="col">feedback_id</th><th scope="col">cosine</th><th scope="col">text</th></tr></thead><tbody><tr><td>FB018</td><td>0.18</td><td>Great service. Please send the missing charging cable.</td></tr><tr><td>FB004</td><td>0.16</td><td>It is okay.</td></tr><tr><td>FB020</td><td>0.16</td><td>The refund arrived yesterday. No action is required.</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Both methods put FB018 first. TF-IDF finds it through the shared words <i>missing</i> and <i>the</i>; its next neighbors share only common words such as <i>is</i>. The embedding scores FB018 much higher (0.55) because <i>charger</i> and <i>charging cable</i> are close in meaning.</p></aside>
+<h3>1.11 A misleading neighbor</h3>
+<section aria-label="Find the neighbors of FB006" class="code-step" data-cell="21">
+<pre aria-label="Find the neighbors of FB006 (notebook cell 21)" tabindex="0"><code># Print the starting message, then its three closest messages by embedding cosine.
+print(with_text.loc[&quot;FB006&quot;, &quot;text&quot;])
+fb_neighbors(&quot;FB006&quot;, fb_sim)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Embedding neighbors of FB006 “The tablet will not start. Can someone help me?”</caption><thead><tr><th scope="col">feedback_id</th><th scope="col">cosine</th><th scope="col">text</th></tr></thead><tbody><tr><td>FB017</td><td>0.55</td><td>Can I return the tablet after opening the box?</td></tr><tr><td>FB021</td><td>0.49</td><td>I followed the reset steps and it starts now. Thanks.</td></tr><tr><td>FB015</td><td>0.33</td><td>The left side has no sound. Please send troubleshooting steps.</td></tr></tbody></table></div>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Same topic, opposite decision</h3><p>FB006 needs help. FB021 says the problem is solved. They share a topic, so they are close. For a follow-up queue, they need opposite decisions. Embeddings are good at topic and weaker at status: solved or open.</p></aside>
+<h3>1.12 Save your outputs</h3>
+<section aria-label="Save two CSV files" class="code-step" data-cell="23">
+<pre aria-label="Save two CSV files (notebook cell 23)" tabindex="0"><code>pair_table.to_csv(OUTPUT_DIR / &quot;sentence_pairs.csv&quot;, index=False)
+
+# Collect the neighbors of FB001 and FB006 for both methods in one table.
+neighbor_rows = []
+for start in [&quot;FB001&quot;, &quot;FB006&quot;]:
+    for method, sim in [(&quot;embedding&quot;, fb_sim), (&quot;tfidf&quot;, fb_tfidf_sim)]:
+        # reset_index turns the neighbor IDs (the row labels) into a column.
+        found = fb_neighbors(start, sim).reset_index(names=&quot;neighbor_id&quot;)
+        # insert(0, ...) adds a column at the front.
+        found.insert(0, &quot;method&quot;, method)
+        found.insert(0, &quot;start_id&quot;, start)
+        neighbor_rows.append(found)
+pd.concat(neighbor_rows).to_csv(OUTPUT_DIR / &quot;feedback_neighbors.csv&quot;, index=False)
+
+print(&quot;saved:&quot;, OUTPUT_DIR / &quot;sentence_pairs.csv&quot;)
+print(&quot;saved:&quot;, OUTPUT_DIR / &quot;feedback_neighbors.csv&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.12" tabindex="0"><code>saved: ../outputs/m05/sentence_pairs.csv
+saved: ../outputs/m05/feedback_neighbors.csv</code></pre><p>The cell prints the two files it saved in <code>outputs/m05</code>. The data files are not changed.</p></aside>
+</section><section aria-labelledby="checkpoint" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="checkpoint">Checkpoint</h2>
+<div class="assignment-box"><h3>Complete independently</h3><p>Answer the two questions in the notebook in 2–3 sentences in total. This companion does not answer them.</p><ol><li>In 1.6, “The tablet will start.” scores higher with S01 than “My tablet won't turn on.” What does this mean for a queue of messages that need help?</li><li>Name one detail in the manifest that another analyst would need to reproduce or check these vectors.</li></ol><p><strong>What to check:</strong> your first answer uses the two scores and says what could go wrong in the queue. Your second answer names a field from step 1.3 and says why it matters.</p></div>
+</section><section aria-labelledby="part-2" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-2">Part 2: Practice with Real Clothing Reviews (Steps 2.1–2.7)</h2>
+<p>Now you use the saved vectors for the 22,634 clothing reviews, the same reviews you used in Lab 4. The same model made these vectors from the <code>review_text</code> column, without cleaning. The data card <code>data/course/clothing_reviews_README.md</code> describes the columns.</p>
+<h3>2.1 Load the reviews and their vectors</h3>
+<p>The review vectors are in the same row order as <code>clothing_reviews.csv</code>, one vector per review. The manifest describes how they were made. The IDs file also holds the number of tokens in each review, which step 2.2 uses.</p>
+<section aria-label="Load the reviews, the manifest, the IDs file and the vectors" class="code-step" data-cell="26">
+<pre aria-label="Load the reviews, the manifest, the IDs file and the vectors (notebook cell 26)" tabindex="0"><code>reviews = pd.read_csv(DATA / &quot;course/clothing_reviews.csv&quot;)
+
+# The manifest, the IDs file (with token counts) and the vectors for the reviews.
+review_manifest = json.loads((EMB / &quot;clothing_minilm_manifest.json&quot;).read_text())
+review_ids = pd.read_csv(EMB / &quot;clothing_minilm_ids.csv&quot;)
+review_vectors = np.load(EMB / &quot;clothing_minilm.npy&quot;).astype(&quot;float32&quot;)
+print(&quot;shape:&quot;, review_vectors.shape)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.1" tabindex="0"><code>shape: (22634, 384)</code></pre><p>22,634 reviews, 384 numbers each: one vector per row of the review file.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Keep the data files unchanged</h3><p>The vectors match the review file row by row. If you edited or re-saved <code>clothing_reviews.csv</code> (for example in Excel), discard that change in GitHub Desktop. Then run from the top.</p></aside>
+<h3>2.2 Were any reviews cut short?</h3>
+<p>A <strong>token</strong> is a word or a piece of a word. The model reads at most 256 tokens and ignores the rest.</p>
+<section aria-label="Count reviews cut at 256 tokens and describe review lengths" class="code-step" data-cell="28">
+<pre aria-label="Count reviews cut at 256 tokens and describe review lengths (notebook cell 28)" tabindex="0"><code># Copy the token count of each review into the reviews table (same row order).
+reviews[&quot;n_tokens&quot;] = review_ids[&quot;n_tokens&quot;]
+
+# The manifest records how many reviews were longer than the limit.
+print(&quot;reviews cut at 256 tokens:&quot;, review_manifest[&quot;rows_truncated&quot;])
+print(&quot;longest review in tokens:&quot;, reviews[&quot;n_tokens&quot;].max())
+reviews[&quot;n_tokens&quot;].describe().round(1)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.2" tabindex="0"><code>reviews cut at 256 tokens: 0
+longest review in tokens: 162
+count    22634.0
+mean        76.8
+std         35.4
+min          4.0
+25%         47.0
+50%         75.0
+75%        111.0
+max        162.0
+Name: n_tokens, dtype: float64</code></pre><p>No review is cut. The median review has 75 tokens and the longest 162, well under the limit of 256. For each review the vector describes the whole text.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Short texts and long texts</h3><p>The video showed the opposite case: 42% of the CFPB complaints are longer than 256 tokens, so their vectors describe only the start. Always check the token counts for your own text. Module 6 shows how to split long texts into pieces (chunking).</p></aside>
+<h3>2.3 Search only among training reviews</h3>
+<p>You start from a <code>valid</code> review and search among the 13,581 <code>train</code> reviews. This follows the Lab 4 split rule: anything you fit or search uses <code>train</code>; <code>valid</code> reviews only ask the questions. The first line lets tables show up to 120 characters of text.</p>
+<section aria-label="Define the embedding neighbor helper" class="code-step" data-cell="30">
+<pre aria-label="Define the embedding neighbor helper (notebook cell 30)" tabindex="0"><code>pd.set_option(&quot;display.max_colwidth&quot;, 120)  # show up to 120 characters of text in tables
+
+# True for training reviews, False for the others, as a numpy array.
+is_train = reviews[&quot;split&quot;].eq(&quot;train&quot;).to_numpy()
+# The training reviews, numbered 0, 1, 2, ... so that row i matches train_vectors[i].
+train = reviews[is_train].reset_index(drop=True)
+train_vectors = review_vectors[is_train]
+
+# row_of[review_id] gives the row position of a review in `reviews` and `review_vectors`.
+row_of = pd.Series(range(len(reviews)), index=reviews[&quot;review_id&quot;])
+
+def embedding_neighbors(review_id, k=5):
+    &quot;&quot;&quot;Take a review ID; return its k closest training reviews by embedding cosine.&quot;&quot;&quot;
+    query = review_vectors[row_of[review_id]]
+    # One cosine per training review.
+    scores = train_vectors @ query
+    # Positions of the k highest scores, highest first.
+    top = np.argsort(-scores)[:k]
+    # .copy() makes a separate result table, so adding columns does not touch `train`.
+    found = train.loc[top, [&quot;review_id&quot;, &quot;department&quot;, &quot;rating&quot;]].copy()
+    # insert(1, ...) puts the cosine column in position 1, right after review_id.
+    found.insert(1, &quot;cosine&quot;, scores[top].round(2))
+    # .str[:100] keeps the first 100 characters of each text.
+    found[&quot;text_start&quot;] = train.loc[top, &quot;review_text&quot;].str[:100]
+    return found.reset_index(drop=True)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>No output. The function <code>embedding_neighbors</code> is now ready.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Reading the search code</h3><p><code>train_vectors @ query</code> multiplies a 13,581 × 384 table by one vector of 384 numbers. The result is 13,581 cosines, one per training review. <code>np.argsort(-scores)</code> lists positions from the highest score to the lowest, and <code>[:k]</code> keeps the top <code>k</code>. See the code note in step 1.6.</p></aside>
+<h3>2.4 Neighbors for one review</h3>
+<section aria-label="Show the top 5 embedding neighbors of review 1466" class="code-step" data-cell="32">
+<pre aria-label="Show the top 5 embedding neighbors of review 1466 (notebook cell 32)" tabindex="0"><code>start_id = 1466
+# Print the full text of the starting review, then its neighbors.
+print(reviews.loc[row_of[start_id], &quot;review_text&quot;])
+embedding_neighbors(start_id)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Embedding neighbors of review 1466 (text not shown)</caption><thead><tr><th scope="col">review_id</th><th scope="col">cosine</th><th scope="col">department</th><th scope="col">rating</th></tr></thead><tbody><tr><td>14989</td><td>0.67</td><td>Tops</td><td>2</td></tr><tr><td>11729</td><td>0.66</td><td>Tops</td><td>3</td></tr><tr><td>5464</td><td>0.62</td><td>Tops</td><td>5</td></tr><tr><td>3483</td><td>0.62</td><td>Tops</td><td>5</td></tr><tr><td>18332</td><td>0.60</td><td>Jackets</td><td>4</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.4" tabindex="0"><code>Great fit and design but the wool is too itchy and rough. will need a layer underneath</code></pre><p>Read the <code>text_start</code> column in your output. The top neighbor (14989) says the fit was fine but the item “was so itchy”. The second (11729) is about a coat whose wool “is soft and not itchy”: the same topic with the opposite verdict.</p></aside>
+<h3>2.5 The same search with TF-IDF</h3>
+<section aria-label="Fit TF-IDF on training reviews and search" class="code-step" data-cell="34">
+<pre aria-label="Fit TF-IDF on training reviews and search (notebook cell 34)" tabindex="0"><code># Same settings as Lab 4 Practice.
+review_tfidf = TfidfVectorizer(
+    ngram_range=(1, 2),  # words and two-word phrases
+    min_df=5,            # keep terms that appear in at least 5 training reviews
+    stop_words=None,     # do not remove stop words, including &quot;not&quot;
+)
+# fit_transform learns the vocabulary from the training reviews only.
+X_train = review_tfidf.fit_transform(train[&quot;review_text&quot;])
+
+def tfidf_neighbors(review_id, k=5):
+    &quot;&quot;&quot;Take a review ID; return its k closest training reviews by TF-IDF cosine.&quot;&quot;&quot;
+    # transform uses the vocabulary learned above; it does not learn new words.
+    query = review_tfidf.transform([reviews.loc[row_of[review_id], &quot;review_text&quot;]])
+    # One cosine per training review. .ravel() turns the one-column table into a flat list.
+    scores = (X_train @ query.T).toarray().ravel()
+    top = np.argsort(-scores)[:k]
+    found = train.loc[top, [&quot;review_id&quot;, &quot;department&quot;, &quot;rating&quot;]].copy()
+    found.insert(1, &quot;cosine&quot;, scores[top].round(2))
+    found[&quot;text_start&quot;] = train.loc[top, &quot;review_text&quot;].str[:100]
+    return found.reset_index(drop=True)
+
+tfidf_neighbors(start_id)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>TF-IDF neighbors of review 1466 (text not shown)</caption><thead><tr><th scope="col">review_id</th><th scope="col">cosine</th><th scope="col">department</th><th scope="col">rating</th></tr></thead><tbody><tr><td>18481</td><td>0.26</td><td>Tops</td><td>3</td></tr><tr><td>20474</td><td>0.21</td><td>Tops</td><td>3</td></tr><tr><td>11381</td><td>0.19</td><td>Tops</td><td>3</td></tr><tr><td>17283</td><td>0.18</td><td>Intimate</td><td>4</td></tr><tr><td>9174</td><td>0.18</td><td>Dresses</td><td>3</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>None of these five IDs is in the embedding list. The top TF-IDF neighbor is “Cute but too thick and rough”: it shares the word <i>rough</i>. The third (11381) says a vest “is too itchy”. Fitting takes about a second.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Compare scores within a method, not across</h3><p>A TF-IDF cosine of 0.26 and an embedding cosine of 0.67 are on different scales. Compare which reviews each method finds, not the size of the numbers.</p></aside>
+<h3>2.6 Dense vectors from your own word counts</h3>
+<p><strong>Truncated SVD</strong> (also called latent semantic analysis) combines the TF-IDF columns into a smaller number of dense dimensions.</p>
+<section aria-label="Squeeze TF-IDF into 100 SVD dimensions" class="code-step" data-cell="36">
+<pre aria-label="Squeeze TF-IDF into 100 SVD dimensions (notebook cell 36)" tabindex="0"><code>from sklearn.decomposition import TruncatedSVD
+
+# 100 combined dimensions; random_state fixes the seed, so everyone gets the same result.
+svd = TruncatedSVD(n_components=100, random_state=42)
+Z_train = svd.fit_transform(X_train)
+print(&quot;TF-IDF shape:&quot;, X_train.shape)
+print(&quot;SVD shape:&quot;, Z_train.shape)
+# explained_variance_ratio_ holds one share per dimension; their sum is the share kept.
+print(&quot;share of TF-IDF variance kept:&quot;, round(svd.explained_variance_ratio_.sum(), 3))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.6" tabindex="0"><code>TF-IDF shape: (13581, 23828)
+SVD shape: (13581, 100)
+share of TF-IDF variance kept: 0.132</code></pre><p>The last number is the share of the spread (variance) in the TF-IDF table that the 100 latent dimensions keep: about 13%. The SVD keeps the strongest patterns of word use and drops most of the detail. The dimensions were learned only from our training reviews. The pretrained model learned from over a billion sentence pairs before it saw our data.</p></aside>
+<h3>2.7 A cosine score is not a probability</h3>
+<section aria-label="Compare cosine ranges for same-department and different-department pairs" class="code-step" data-cell="38">
+<pre aria-label="Compare cosine ranges for same-department and different-department pairs (notebook cell 38)" tabindex="0"><code># Draw 20,000 random pairs of row positions. Seed 0 gives everyone the same pairs.
+rng = np.random.default_rng(0)
+first = rng.integers(0, len(reviews), 20000)
+second = rng.integers(0, len(reviews), 20000)
+
+# Drop the few pairs where a review was paired with itself.
+keep = first != second
+first = first[keep]
+second = second[keep]
+
+# Multiply two vectors number by number and add up: that is the dot product, so the cosine.
+pair_cos = (review_vectors[first] * review_vectors[second]).sum(axis=1)
+
+# True where both reviews of a pair come from the same department.
+department = reviews[&quot;department&quot;].to_numpy()
+same_department = department[first] == department[second]
+
+# np.quantile gives the 10th percentile, the median and the 90th percentile.
+# ~ means &quot;not&quot;, so pair_cos[~same_department] keeps the pairs from different departments.
+percentiles = [0.1, 0.5, 0.9]
+summary = pd.DataFrame({
+    &quot;same department&quot;: np.quantile(pair_cos[same_department], percentiles),
+    &quot;different department&quot;: np.quantile(pair_cos[~same_department], percentiles),
+}, index=[&quot;10th percentile&quot;, &quot;median&quot;, &quot;90th percentile&quot;])
+summary.round(2)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Cosine for 20,000 random review pairs</caption><thead><tr><th scope="col"></th><th scope="col">same department</th><th scope="col">different department</th></tr></thead><tbody><tr><td>10th percentile</td><td>0.24</td><td>0.21</td></tr><tr><td>median</td><td>0.40</td><td>0.35</td></tr><tr><td>90th percentile</td><td>0.58</td><td>0.49</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Same-department pairs score a little higher on average, but the ranges overlap a lot. No single cutoff separates them. The CFPB complaints in the video showed the same pattern (medians 0.47 and 0.37). Department agreement is only a rough check of topic. It does not show that two reviews describe the same problem; read the texts to judge that.</p></aside>
+</section><section aria-labelledby="exercises" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="exercises">Practice Exercises and Interpretation</h2>
+<div class="assignment-box"><h3>Complete independently</h3><p>The exercises are intentionally not solved in this companion. Use the exact instructions in the notebook. The code cells for Exercises 1–3 start with <code># Exercise N: your code here</code>. Exercise 4 is written, not coded.</p><h3>Exercise 1: compare two neighbor lists</h3><p>Show the top 5 neighbors of review 13907 with <code>embedding_neighbors</code> and with <code>tfidf_neighbors</code>. Count the review IDs that appear in both lists.</p><p><strong>What to check:</strong> two tables of five rows, and a count between 0 and 5. Use <code>set(...) &amp; set(...)</code> on the <code>review_id</code> columns. Read a few <code>text_start</code> values before you interpret the count.</p><h3>Exercise 2: a close neighbor with a very different rating</h3><p>Show the top 10 embedding neighbors of review 15751 (2 stars). Find one neighbor rated 5 stars. Print the full text of both reviews.</p><p><strong>What to check:</strong> use <code>k=10</code>. Filter the neighbor table with <code>near["rating"].eq(5)</code>. Print full text with <code>reviews.loc[row_of[some_id], "review_text"]</code>. Then compare what the two reviews are about with how each customer felt.</p><h3>Exercise 3: how often does the top neighbor share the department?</h3><p>For the first 1,000 <code>valid</code> reviews, find the closest <code>train</code> review with embeddings and with TF-IDF. Report the share whose closest neighbor is from the same department.</p><p><strong>What to check:</strong> two numbers between 0 and 1, rounded to three decimals. Build <code>valid_rows</code> as the hint shows. Compare departments as numpy arrays (<code>.to_numpy()</code>), so they are matched by position and not by row label; the notebook shows this for embeddings, and you repeat it for TF-IDF. Use <code>review_tfidf.transform</code>, not <code>fit_transform</code>, for the validation reviews. The validation-by-train table has 1,000 × 13,581 cells; it fits in memory as a numpy array. Only fit TF-IDF on <code>train</code>. The same department is a rough sign of the same topic, not of the same problem.</p></div>
+<h3>Exercise 4: a model card for the review vectors</h3>
+<p>A <strong>model card</strong> is a short note about a model: which model made the numbers, what went in, and where the model is weak. Another analyst reads it before reusing your vectors. Plan about 10 minutes. Run the cell, then write your card in the <strong>Your model card</strong> cell below it.</p>
+<section aria-label="Print the manifest fields for the review vectors" class="code-step" data-cell="46">
+<pre aria-label="Print the manifest fields for the review vectors (notebook cell 46)" tabindex="0"><code># Print the manifest fields you need for the model card.
+for key in [&quot;model&quot;, &quot;model_revision&quot;, &quot;input&quot;, &quot;max_tokens&quot;, &quot;rows_truncated&quot;, &quot;rows&quot;, &quot;dimensions&quot;]:
+    print(f&quot;{key}: {review_manifest[key]}&quot;)
+print(&quot;longest review in tokens (from the IDs file):&quot;, review_ids[&quot;n_tokens&quot;].max())</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of Exercise 4" tabindex="0"><code>model: sentence-transformers/all-MiniLM-L6-v2
+model_revision: 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+input: data/course/clothing_reviews.csv column &#x27;review_text&#x27;, unchanged (no cleaning)
+max_tokens: 256
+rows_truncated: 0
+rows: 22634
+dimensions: 384
+longest review in tokens (from the IDs file): 162</code></pre><p>These are the facts for your card. The card itself is your own writing.</p></aside>
+<div class="assignment-box"><h3>Complete independently</h3><p>Fill in the five lines of the model card in the notebook: model, input, cut text, output and one limitation for review text. This companion does not write the card for you.</p><p><strong>What to check:</strong> the model line includes the revision, not only the name. The cut-text line gives the token limit, how many reviews were cut, and what would change for longer texts such as complaints. The limitation names a weakness for review text and points to a result from this lab, such as step 1.11, 2.4 or Exercise 2. Keep each line to one sentence.</p></div>
+<h3>Practice interpretation</h3>
+<p>Write 3–5 sentences that use your own outputs. Answer the three questions in the notebook:</p>
+<ul><li>In Exercise 1, how much did the two neighbor lists overlap? What does each method seem to match on?</li><li>In Exercise 2, the two reviews are close but their ratings differ a lot. What does the embedding seem to match on: the topic or the opinion? Quote the text that supports your view.</li><li>Use Exercise 3 and step 2.7: would you trust a cosine of 0.80 to decide that two reviews describe the same problem? What would you check first?</li></ul>
+</section><section aria-labelledby="submit" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="submit">Submit</h2>
+<ol><li>Run the whole notebook from the top (<strong>Restart</strong>, then <strong>Run All</strong>) and confirm there are no errors.</li><li>Check that every <strong>Your answer</strong> cell and the <strong>Your model card</strong> cell are filled.</li><li>Add the one-line AI-use note in the Submit cell if you used an AI tool.</li><li>Save the notebook, so the outputs are saved in the file.</li><li>In GitHub Desktop, write a short summary such as "Lab 5 complete", click <strong>Commit to main</strong>, then <strong>Push origin</strong>.</li><li>Push before the deadline. You upload nothing to Canvas: the instructor grades the saved notebook, with its outputs, in your repository as it is at the deadline.</li></ol>
+<p>Lab notebook 5 is graded with the course Lab Notebook rubric in Canvas (the same rubric for every lab).</p>
+</section><section aria-labelledby="challenge" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="challenge">Part 3 Challenge (Optional)</h2>
+<p>These cells are optional. Run them after the required work, in order.</p>
+<h3>A. Three representations side by side</h3>
+<section aria-label="Optional: Same-department share for SVD vectors" class="code-step" data-cell="51">
+<pre aria-label="Optional: Same-department share for SVD vectors (notebook cell 51)" tabindex="0"><code># np.flatnonzero gives the positions where the condition is True; keep the first 1,000.
+valid_rows = np.flatnonzero(reviews[&quot;split&quot;].eq(&quot;valid&quot;).to_numpy())[:1000]
+valid_departments = reviews[&quot;department&quot;].to_numpy()[valid_rows]
+
+# TF-IDF first, then the SVD learned in 2.6 (transform only, no new fitting).
+X_valid_tfidf = review_tfidf.transform(reviews[&quot;review_text&quot;].iloc[valid_rows])
+Z_valid = svd.transform(X_valid_tfidf)
+
+# Divide each row by its length, so every vector has length 1 and @ gives cosines.
+# keepdims=True keeps the lengths as a column, so each row is divided by its own length.
+Z_train_unit = Z_train / np.linalg.norm(Z_train, axis=1, keepdims=True)
+Z_valid_unit = Z_valid / np.linalg.norm(Z_valid, axis=1, keepdims=True)
+
+# For each validation review, the position of its closest training review.
+top_svd = (Z_valid_unit @ Z_train_unit.T).argmax(axis=1)
+
+# True where the neighbor has the same department; the mean of True/False values is the share of True.
+same_svd = train[&quot;department&quot;].to_numpy()[top_svd] == valid_departments
+print(&quot;SVD: share with the same department:&quot;, round(same_svd.mean(), 3))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step A." tabindex="0"><code>SVD: share with the same department: 0.606</code></pre><p>Compare this with your Exercise 3 numbers for TF-IDF and embeddings. The cell builds its own <code>valid_rows</code>, so it runs even if Exercise 3 is empty.</p></aside>
+<h3>B. Topic or opinion?</h3>
+<section aria-label="Optional: Same rating band for the top embedding neighbor" class="code-step" data-cell="53">
+<pre aria-label="Optional: Same rating band for the top embedding neighbor (notebook cell 53)" tabindex="0"><code>def band(stars):
+    &quot;&quot;&quot;Take an array of star ratings; return &quot;low&quot; (1-2), &quot;middle&quot; (3) or &quot;high&quot; (4-5) for each.&quot;&quot;&quot;
+    # np.select checks the conditions in order and uses &quot;high&quot; when none is true.
+    return np.select([stars &lt;= 2, stars == 3], [&quot;low&quot;, &quot;middle&quot;], &quot;high&quot;)
+
+# The closest training review for each of the 1,000 validation reviews (embeddings).
+top_emb = (review_vectors[valid_rows] @ train_vectors.T).argmax(axis=1)
+
+# The rating band of each validation review and of its top neighbor.
+valid_band = band(reviews[&quot;rating&quot;].to_numpy()[valid_rows])
+neighbor_band = band(train[&quot;rating&quot;].to_numpy()[top_emb])
+print(&quot;embeddings: same rating band:&quot;, round((neighbor_band == valid_band).mean(), 3))
+print(&quot;always &#x27;high&#x27;:&quot;, round((valid_band == &quot;high&quot;).mean(), 3))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step B." tabindex="0"><code>embeddings: same rating band: 0.702
+always &#x27;high&#x27;: 0.771</code></pre><p>The top embedding neighbor is in the same rating band for 70% of these validation reviews. A lazy rule that always says “high” is right 77% of the time, because most reviews are positive.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>What this suggests</h3><p>The embedding finds reviews about the same item and topic (Exercise 3), but it does not group reviews by how the customer felt. To sort reviews by opinion, you need a method trained or checked on ratings or sentiment labels. Module 7 looks at sentiment.</p></aside>
+<h3>C. Encode your own sentences</h3>
+<p>The cell starts with a switch, <code>RUN_ENCODER_CHALLENGE = False</code>, so Run All never downloads a model. To try it, install the package with <code>pip install sentence-transformers</code> in the <code>ban6403</code> environment, then set the switch to <code>True</code>.</p>
+<section aria-label="Optional: Encode a sentence with sentence-transformers if installed" class="code-step" data-cell="55">
+<pre aria-label="Optional: Encode a sentence with sentence-transformers if installed (notebook cell 55)" tabindex="0"><code># Change to True only when you want to run Challenge C (it downloads the model).
+RUN_ENCODER_CHALLENGE = False
+
+if not RUN_ENCODER_CHALLENGE:
+    print(&quot;Challenge C is switched off. This part is optional.&quot;)
+else:
+    # The package is optional, so the cell prints a note instead of failing when it is missing.
+    try:
+        from sentence_transformers import SentenceTransformer
+    except ImportError:
+        print(&quot;sentence-transformers is not installed. This part is optional.&quot;)
+    else:
+        model = SentenceTransformer(manifest[&quot;model&quot;], revision=manifest[&quot;model_revision&quot;])
+        # normalize_embeddings=True scales each vector to length 1, like the saved vectors.
+        # encode returns one row per sentence; [0] takes the first (and only) row.
+        mine = model.encode([&quot;The tablet will not start.&quot;], normalize_embeddings=True)[0]
+        print(&quot;cosine with the saved S01 vector:&quot;, round(float(mine @ sent_vectors[0]), 4))
+        print(model.encode([&quot;Your own sentence here.&quot;], normalize_embeddings=True).shape)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step C." tabindex="0"><code>Challenge C is switched off. This part is optional.</code></pre><p>This is the expected message with the default setting. With the switch on but without the package, the cell prints <code>sentence-transformers is not installed. This part is optional.</code> With the package, the first run downloads the model (about 90 MB). Your vector for S01 should have a cosine very close to 1 with the saved one; small differences come from rounding.</p></aside>
+</section><section aria-labelledby="problems" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="problems">Common Problems</h2>
+<p>If a cell fails, read the last line of the error message first. Then find it below.</p>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>FileNotFoundError: data/embeddings/…</h3><p>This file has been in your repository since Week 1, so it was moved or deleted. Open the notebook from the <code>notebooks</code> folder of your repository. If GitHub Desktop lists the file under <strong>Changes</strong>, right-click it and choose <strong>Discard changes</strong>. Otherwise download it again from the course template on GitHub and put it back in the same folder. The folder <code>data/embeddings</code> should contain files that start with <code>clothing_minilm</code>, <code>feedback_minilm</code> and <code>m05_sentences_minilm</code>.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Shapes or results differ from this page</h3><p>A data file may have been changed. Opening and saving a CSV in Excel can do this. Discard the change in GitHub Desktop (right-click the file, <strong>Discard changes</strong>), then run from the top.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>KeyError with a review ID</h3><p>Type the ID as a number without quotes, for example <code>embedding_neighbors(13907)</code>. The helper looks the ID up in <code>row_of</code>, which uses numbers.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>NameError: name 'X_train' is not defined</h3><p>Run step 2.5 before the exercises. If you restarted the kernel, run the notebook from the top.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>The kernel crashes or runs out of memory</h3><p>Do not call <code>.toarray()</code> on <code>X_train</code> by itself. In Exercise 3, call <code>.toarray()</code> only on the result of <code>X_valid @ X_train.T</code>. Close other notebooks that hold large tables.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>My numbers differ from this page</h3><p>Check that you loaded the vectors with <code>.astype("float32")</code> and did not change any helper. Restart the kernel and run from the top. Differences in the third decimal can come from different library versions.</p></aside>
+<p>Still stuck? Post the error message and the cell number in the course Q&amp;A discussion. Do not post your full answers.</p>
+</section><section aria-labelledby="wrap-up" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="wrap-up">Lab Wrap-Up</h2>
+<p>In this lab you used one pattern on example sentences, customer messages and 22,634 real clothing reviews:</p>
+<ul class="inline-code-list"><li><strong>Check:</strong> read the manifest, then confirm the shapes and the row order of the vectors.</li><li><strong>Compare:</strong> score the same pairs and search for the same reviews with embeddings and TF-IDF.</li><li><strong>Read:</strong> open the text behind a high score. Look for opposite meaning, solved problems and very different ratings.</li><li><strong>Report:</strong> a cosine ranks pairs. It is not a probability or a decision.</li></ul>
+<p>Module 6 uses embeddings like these to search CFPB complaints for evidence and measures how good the results are.</p>
+<p><strong>Project step this week:</strong> choose your dataset option and your question, then run your option's starter notebook (in the <code>project_starters</code> folder) once with your settings. MS1, your project plan, is due in Week 6.</p>
+</section>
+<section aria-labelledby="source-note" class="footer-note"><p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="source-note">Notebook and accessibility note</h2><p>The current Module 5 notebook is authoritative for Python code, sequence, prompts and required work. This companion adds explanation and accessible presentation without changing those requirements. Expected results come from running the notebook on the current course data.</p><p>The page is designed for keyboard navigation, screen readers, browser text-to-speech and ordinary visual reading. Important instructional information is presented as text rather than depending on a visual demonstration.</p></section>
+</main><script>
+(function() {
+  const synth = window.speechSynthesis;
+  const speakBtn = document.getElementById('speak');
+  const pauseBtn = document.getElementById('pause');
+  const resumeBtn = document.getElementById('resume');
+  const stopBtn = document.getElementById('stop');
+  const rate = document.getElementById('speech-rate');
+  const rateValue = document.getElementById('rate-value');
+  const mode = document.getElementById('reading-mode');
+  const voiceSelect = document.getElementById('voice-select');
+  const sectionSelect = document.getElementById('section-select');
+  const jumpSection = document.getElementById('jump-section');
+  const readSection = document.getElementById('read-section');
+  const status = document.getElementById('speech-status');
+  const stickyControls = document.getElementById('sticky-audio-controls');
+  const stickyPause = document.getElementById('sticky-pause');
+  const stickyResume = document.getElementById('sticky-resume');
+  const stickyStop = document.getElementById('sticky-stop');
+  const stickyStatus = document.getElementById('sticky-speech-status');
+  let chunks = [], index = 0, stopped = true, voices = [];
+  function setStatus(t){ status.innerHTML='<small>'+t+'</small>'; if(stickyStatus) stickyStatus.textContent=t; }
+  function populateVoices(){ if(!synth)return; voices=synth.getVoices(); const cur=voiceSelect.value; voiceSelect.innerHTML='<option value="">Browser default</option>'; voices.forEach((v,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=v.name+' ('+v.lang+')';voiceSelect.appendChild(o);}); if([...voiceSelect.options].some(o=>o.value===cur))voiceSelect.value=cur; }
+  function codeToSpeech(text){ return text
+    .replace(/\\/g,' backslash ').replace(/_/g,' underscore ')
+    .replace(/==/g,' equals equals ').replace(/!=/g,' not equals ').replace(/>=/g,' greater than or equal to ').replace(/<=/g,' less than or equal to ')
+    .replace(/&/g,' and ').replace(/\|/g,' or ').replace(/>/g,' greater than ').replace(/</g,' less than ').replace(/=/g,' equals ')
+    .replace(/\(/g,' open parenthesis ').replace(/\)/g,' close parenthesis ').replace(/\[/g,' open bracket ').replace(/\]/g,' close bracket ').replace(/\{/g,' open brace ').replace(/\}/g,' close brace ')
+    .replace(/\./g,' dot ').replace(/,/g,' comma ').replace(/:/g,' colon ').replace(/;/g,' semicolon ').replace(/\+/g,' plus ').replace(/-/g,' minus ').replace(/\*/g,' star ').replace(/\//g,' slash ').replace(/%/g,' percent ')
+    .replace(/"/g,' quote ').replace(/'/g,' single quote ').replace(/\s+/g,' ').trim(); }
+  function tableToSpeech(table){ const cap=table.querySelector('caption'); const rows=[...table.querySelectorAll('tr')]; const out=[]; if(cap)out.push(cap.innerText.trim()+'.'); rows.forEach((row,r)=>{const cells=[...row.querySelectorAll('th,td')].map(c=>c.innerText.trim()); if(!cells.length)return; if(r===0)out.push('Columns: '+cells.join(', ')+'.'); else out.push('Row '+r+': '+cells.join(', ')+'.');}); return out.join(' '); }
+  function buildChunks(startElement){ const includeCode=mode.value==='full'; const main=document.getElementById('main-content'); const items=[]; let started=!startElement; main.querySelectorAll('h2,h3,h4,p,li,table,pre').forEach(el=>{ if(!started){if(el===startElement)started=true;else return;} if(el.closest('.listen-panel')||el.closest('nav')||el.closest('.controls')||el.closest('.section-read-controls')||el.closest('.back-to-contents'))return; if(el.closest('details:not([open])'))return; if(el.matches('pre')){if(!includeCode)return; const c=el.innerText.trim(); if(c)items.push({text:'Python code. '+codeToSpeech(c),el}); return;} if(el.matches('table')){const t=tableToSpeech(el);if(t)items.push({text:t,el});return;} const t=el.innerText.replace(/\s+/g,' ').trim(); if(t)items.push({text:t,el}); }); return items; }
+  function speakNext(){ if(!synth||stopped)return; if(index>=chunks.length){stopped=true;setStatus('Finished reading the companion.');if(stickyControls) stickyControls.hidden=true;return;} const cur=chunks[index]; const u=new SpeechSynthesisUtterance(cur.text);u.rate=parseFloat(rate.value); if(voiceSelect.value!==''&&voices[Number(voiceSelect.value)])u.voice=voices[Number(voiceSelect.value)];u.onstart=()=>setStatus('Reading item '+(index+1)+' of '+chunks.length+' at '+rate.value+'×.');u.onend=()=>{index++;speakNext();};u.onerror=e=>{if(e.error!=='canceled'&&e.error!=='interrupted'){setStatus('Speech stopped because the browser reported: '+e.error+'.');stopped=true;}}; synth.speak(u); }
+  function startReading(el,label){if(!synth){setStatus('This browser does not provide the Web Speech API.');return;}synth.cancel();chunks=buildChunks(el||null);index=0;stopped=false;if(stickyControls) stickyControls.hidden=false;setStatus(label?'Starting from '+label+'.':'Starting from the beginning.');setTimeout(speakNext,50);}
+  function setupSections(){ const hs=[...document.querySelectorAll('#main-content h2[id]')].filter(h=>!h.closest('.listen-panel')&&!h.closest('nav')); hs.forEach(h=>{const sectionName=h.innerText.trim();const o=document.createElement('option');o.value=h.id;o.textContent=sectionName;sectionSelect.appendChild(o);const d=document.createElement('div');d.className='section-read-controls';d.setAttribute('aria-label','Read-aloud controls for '+sectionName);const b=document.createElement('button');b.type='button';b.className='speak-section';b.textContent='Read Aloud from This Section';b.setAttribute('aria-label','Read aloud from this section: '+sectionName);b.addEventListener('click',()=>startReading(h,sectionName));const hint=document.createElement('span');hint.className='read-hint';hint.textContent='Reads continuously from this section to the end.';d.appendChild(b);d.appendChild(hint);h.insertAdjacentElement('afterend',d);}); }
+  speakBtn.addEventListener('click',()=>startReading(null,'the beginning'));
+  function pauseReading(){if(synth&&synth.speaking&&!synth.paused){synth.pause();setStatus('Paused.');}}
+  function resumeReading(){if(synth&&synth.paused){synth.resume();setStatus('Resumed. Speed changes apply to the next reading item.');}}
+  function stopReading(){stopped=true;if(synth)synth.cancel();setStatus('Stopped.');if(stickyControls) stickyControls.hidden=true;}
+  pauseBtn.addEventListener('click',pauseReading);
+  resumeBtn.addEventListener('click',resumeReading);
+  stopBtn.addEventListener('click',stopReading);
+  if(stickyPause) stickyPause.addEventListener('click',pauseReading);
+  if(stickyResume) stickyResume.addEventListener('click',resumeReading);
+  if(stickyStop) stickyStop.addEventListener('click',stopReading);
+  rate.addEventListener('input',()=>{rateValue.textContent=Number(rate.value).toFixed(1)+'×';if(synth&&synth.speaking)setStatus('Speed set to '+rateValue.textContent+'. It will apply to the next reading item.');});
+  mode.addEventListener('change',()=>setStatus(mode.value==='full'?'Full mode selected. Python code will be read aloud.':'Study mode selected. Exact Python code will be skipped.'));
+  jumpSection.addEventListener('click',()=>{const h=document.getElementById(sectionSelect.value);if(h){h.scrollIntoView({behavior:'smooth',block:'start'});h.setAttribute('tabindex','-1');h.focus();}});
+  readSection.addEventListener('click',()=>{const h=document.getElementById(sectionSelect.value);if(h)startReading(h,h.innerText.trim());});
+  setupSections(); populateVoices(); if(synth&&'onvoiceschanged' in synth)synth.onvoiceschanged=populateVoices;
+})();
+</script></body></html>

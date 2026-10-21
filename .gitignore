@@ -1,0 +1,15 @@
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+.env
+.env.*
+!.env.example
+*.key
+.DS_Store
+
+# Module 13 pack from Canvas: students unzip it and copy its files into data/
+m13_heldout_pack.zip
+
+# Raw project downloads (Yelp, Amazon, SEC or your own files): never committed.
+# The sample you draw goes to project/data/sample/ and is committed (each file under 50 MB).
+project/data/private/

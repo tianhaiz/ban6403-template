@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Lab 7 Companion - BAN 6403</title><style>
+:root { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.62; }
+* { box-sizing: border-box; }
+body { margin:0; background:#fff; color:#111; }
+a { color:#0645ad; text-decoration-thickness:.12em; }
+a:focus, button:focus, summary:focus, pre:focus, .table-wrap:focus, select:focus, input:focus { outline:3px solid currentColor; outline-offset:3px; }
+.skip-link { position:absolute; left:-9999px; }
+.skip-link:focus { left:1rem; top:1rem; background:#fff; padding:.75rem; z-index:1000; border:2px solid #111; }
+header { border-bottom:2px solid #111; padding:1.5rem max(1rem, calc((100vw - 1060px)/2)); }
+header h1 { margin:0 0 .35rem; }
+.subtitle { margin:.2rem 0 0; font-size:1.08rem; }
+main { max-width:1060px; margin:0 auto; padding:1.5rem 1rem 4rem; }
+h2 { margin-top:2.6rem; padding-top:.55rem; border-top:1px solid #bbb; }
+h3 { margin-top:1.7rem; }
+.accessibility-summary, .toc, .note-box, .result-box, .try-box, .assignment-box, .summary-box, .listen-panel, .solution-box { border:1px solid #555; border-radius:.45rem; padding:1rem 1.1rem; margin:1.15rem 0; }
+.note-box { border-left:6px solid #1f4e79; background:#f4f8fc; position:relative; }
+.note-label { display:inline-block; font-size:.78rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; border:2px solid #1f4e79; border-radius:.25rem; padding:.22rem .45rem; margin:0 0 .55rem; background:#fff; }
+.note-box h3 { margin-top:.15rem; }
+.content-key { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:.8rem; margin:1rem 0; }
+.key-item { border:1px solid #777; border-radius:.4rem; padding:.8rem .9rem; }
+.key-label { font-weight:800; display:block; margin-bottom:.25rem; }
+.try-box { border-left:5px solid #111; }
+.result-box { background:#fafafa; }
+.solution-box summary { cursor:pointer; font-weight:700; }
+.solution-box[open] summary { margin-bottom:.8rem; }
+.controls { display:flex; gap:.6rem; flex-wrap:wrap; margin:1rem 0; }
+button { font:inherit; padding:.55rem .8rem; border:2px solid #111; background:#fff; border-radius:.3rem; cursor:pointer; }
+pre { overflow:auto; border:1px solid #777; padding:1rem; background:#f6f6f6; white-space:pre; }
+code { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.code-step { margin:1rem 0 1.55rem; }
+.code-purpose { margin-bottom:.4rem; }
+.table-wrap { overflow-x:auto; margin:.8rem 0; }
+table { border-collapse:collapse; width:100%; min-width:620px; }
+th, td { border:1px solid #666; padding:.5rem; text-align:left; vertical-align:top; }
+th { font-weight:700; }
+caption { font-weight:700; text-align:left; margin-bottom:.45rem; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.speech-options { display:grid; grid-template-columns:max-content minmax(180px,1fr); gap:.65rem .9rem; align-items:center; max-width:800px; }
+.speech-options select, .speech-options input[type="range"] { width:100%; font:inherit; }
+#speech-status { min-height:1.5em; }
+.section-read-controls { margin:.25rem 0 1rem; display:flex; align-items:center; gap:.5rem; }
+.section-read-controls button { font-size:.9rem; padding:.4rem .7rem; }
+.section-read-controls .read-hint { color:#555; font-size:.88rem; }
+.kicker { font-weight:700; }
+.muted { color:#555; }
+.footer-note { margin-top:3rem; border-top:2px solid #111; padding-top:1rem; }
+.inline-code-list li { margin:.25rem 0; }
+@media (max-width:700px) { table { min-width:760px; } .speech-options { grid-template-columns:1fr; } .section-read-controls { flex-direction:column; align-items:flex-start; } }
+@media print { .controls,.skip-link,.speak-section,.listen-panel,.jump-controls { display:none !important; } main { max-width:none; } a { color:inherit; text-decoration:none; } details { display:block; } details > * { display:block !important; } }
+
+.read-aloud-intro { border:2px solid #111; background:#fbfbfb; }
+.read-aloud-intro h3 { margin-top:.15rem; }
+.speak-section { font-weight:700; }
+.sticky-audio-controls { position:fixed; left:50%; bottom:1rem; transform:translateX(-50%); width:min(960px,calc(100vw - 2rem)); z-index:2000; background:#fff; border:3px solid #111; border-radius:.55rem; padding:.65rem .8rem; box-shadow:0 4px 20px rgba(0,0,0,.18); }
+.sticky-audio-inner { display:flex; align-items:center; gap:.65rem; flex-wrap:wrap; }
+.sticky-audio-label { font-weight:800; margin-right:auto; }
+.sticky-audio-status { flex:1 1 260px; min-width:180px; }
+.sticky-audio-controls button { padding:.42rem .68rem; }
+.sticky-audio-controls[hidden] { display:none !important; }
+@media (max-width:700px) { .sticky-audio-inner { align-items:stretch; } .sticky-audio-label, .sticky-audio-status { flex-basis:100%; } .sticky-audio-controls button { flex:1 1 auto; } }
+@media print { .sticky-audio-controls { display:none !important; } }
+
+.back-to-contents { margin: 1.6rem 0 .6rem; padding-top: .7rem; border-top: 1px dashed #aaa; font-size: .95rem; }
+.back-to-contents a { font-weight: 700; }
+
+/* code-output-tint v1: calm colours that separate code, output and instructor notes */
+.code-step pre { background:#f0f2f4; border:1px solid #a3abb5; border-left:4px solid #6b7785; }
+.result-box { background:#fbf8ef; border:1px solid #b9ae92; border-left:4px solid #8a7a52; }
+.result-box pre { background:#fffdf7; border:1px solid #cfc6ae; }
+.note-box { border:2px solid #1f4e79; border-left:8px solid #1f4e79; background:#e8f1fb; }
+.result-box > h3:first-child { margin-top:.1rem; }
+@media (forced-colors: active) { .code-step pre, .result-box, .result-box pre, .note-box { border-color:CanvasText; } }
+</style><style>/* Added for BAN 6403: let long inline paths wrap on narrow screens. */ p code, li code, td code, th code, summary code { overflow-wrap:anywhere; }</style></head>
+<body><a class="skip-link" href="#main-content">Skip to lab content</a>
+<header><h1>Lab 7 Companion</h1><p class="subtitle"><strong>BAN 6403: Text Analytics for Business</strong></p><p>Module 7: Customer Feedback Analysis</p></header>
+<div aria-label="Active read-aloud controls" class="sticky-audio-controls" hidden="" id="sticky-audio-controls" role="region"><div class="sticky-audio-inner"><span class="sticky-audio-label">Read Aloud</span><span aria-live="polite" class="sticky-audio-status" id="sticky-speech-status">Ready.</span><button id="sticky-pause" type="button">Pause</button><button id="sticky-resume" type="button">Resume</button><button id="sticky-stop" type="button">Stop</button></div></div><main id="main-content">
+<section aria-labelledby="how-to-use" class="accessibility-summary">
+<h2 id="how-to-use">How to use this companion</h2>
+<p>Open the <strong>Module 7 notebook and this companion at the same time</strong>. Work through the companion from top to bottom and run the matching notebook cells as you go. The notebook is the authoritative source for the lab sequence, code and required work. This companion explains what each step means, what to notice in the output and why the step matters.</p><div aria-labelledby="listen-title" class="listen-panel read-aloud-intro">
+<h3 id="listen-title">Read aloud: controls and directions</h3>
+<p><strong>Before you start:</strong> choose a reading mode, speed, and voice below. Select <strong>Read Aloud from Beginning</strong> to hear the full companion, or use <strong>Read Aloud from This Section</strong> beside any major section to continue from that point. While audio is playing, a floating control bar remains visible at the bottom of the page. Use <strong>Pause</strong> to pause temporarily, <strong>Resume</strong> to continue, and <strong>Stop</strong> to end the current reading.</p><p><strong>Study mode</strong> reads explanations, results, tables, and notes while skipping exact Python code. <strong>Full mode</strong> also reads Python code and verbalizes common programming symbols.</p>
+<div aria-label="Read aloud controls" class="controls">
+<button id="speak" type="button">Read Aloud from Beginning</button><button id="pause" type="button">Pause</button><button id="resume" type="button">Resume</button><button id="stop" type="button">Stop</button>
+</div>
+<div class="speech-options">
+<label for="reading-mode"><strong>Reading mode:</strong></label><select id="reading-mode"><option selected="" value="study">Study mode - explanations and results</option><option value="full">Full mode - include Python code</option></select>
+<label for="speech-rate"><strong>Speed:</strong> <span id="rate-value">1.0×</span></label><input aria-describedby="rate-help" id="speech-rate" max="2" min="0.5" step="0.1" type="range" value="1"/><span class="sr-only" id="rate-help">Adjust text-to-speech speed from one half to two times normal speed.</span>
+<label for="voice-select"><strong>Voice:</strong></label><select id="voice-select"><option value="">Browser default</option></select>
+<label for="section-select"><strong>Jump to section:</strong></label><select id="section-select"><option value="">Choose a section</option></select>
+</div>
+<div class="controls jump-controls"><button id="jump-section" type="button">Jump</button><button id="read-section" type="button">Read Aloud from Selected Section</button></div>
+<p aria-live="polite" id="speech-status" role="status"><small>Ready to read.</small></p>
+<p><small>The read-aloud feature uses your browser's speech engine. A screen reader can access the page independently of these controls.</small></p>
+</div>
+<h3>What is in the notebook, and what this companion adds</h3>
+<ul>
+<li><strong>Notebook:</strong> the exact Python code, the written questions, the Practice exercises, the checkpoint and the Submit steps.</li>
+<li><strong>Companion:</strong> plain-language explanations, the results you should expect (taken from real runs of the notebook), common mistakes and how to fix them.</li>
+<li><strong>If anything ever seems inconsistent:</strong> follow the current notebook.</li>
+</ul>
+<div aria-label="Content key" class="content-key">
+<div class="key-item"><span class="key-label">Notebook content</span>Code, official prompts, required tasks and the lab sequence come from the notebook. Each code block shows its notebook cell number.</div>
+<div class="key-item"><span class="key-label">Companion-added instructor note</span>These clearly labeled notes are explanations, cautions or study advice added by this companion. They are not extra required notebook steps unless the note says so.</div>
+</div>
+<p>This companion is designed for keyboard and screen-reader access, but it is <strong>not a separate version for students who need accessibility features</strong>. It is the same learning guide for everyone. You can read it visually, use a screen reader, or use the built-in read-aloud controls while you work in the notebook.</p>
+</section>
+<nav aria-labelledby="toc-title" class="toc"><p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="toc-title" tabindex="-1">Lab contents</h2><ol><li><a href="#how-to-use">How to use this companion</a></li><li><a href="#learning-goals">Module 7 Learning Goals</a></li><li><a href="#setup">Before You Start: Setup</a></li><li><a href="#part-1a">Part 1A: Lexicon Scores, Stars and the Decision (Steps 1.1–1.7)</a></li><li><a href="#part-1b">Part 1B: Aspects and Evidence Spans (Steps 1.8–1.13)</a></li><li><a href="#checkpoint">Checkpoint</a></li><li><a href="#part-2a">Part 2A: The Reviewed Sample and the Lexicon (Steps 2.1–2.5)</a></li><li><a href="#part-2b">Part 2B: Classifier and LLM Labels (Steps 2.6–2.8)</a></li><li><a href="#exercises">Practice Exercises and Interpretation</a></li><li><a href="#submit">Submit</a></li><li><a href="#challenge">Part 3 Challenge (Optional)</a></li><li><a href="#problems">Common Problems</a></li><li><a href="#wrap-up">Lab Wrap-Up</a></li><li><a href="#source-note">Notebook and accessibility note</a></li></ol></nav>
+<section aria-labelledby="learning-goals" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="learning-goals">Module 7 Learning Goals</h2>
+<p>In this lab you test whether one sentiment score can tell a team what to fix. You score text with a <strong>sentiment lexicon</strong> (a word list with scores), then label <strong>aspects</strong>: the part of the product or service an opinion is about. By the end of the lab you should be able to:</p>
+<ul><li><strong>Distinguish</strong> sentiment, product aspects and star ratings.</li><li><strong>Compare</strong> a lexicon baseline, an embedding classifier and cached LLM labels against a reviewed sample of clothing reviews. Its labels were written against a short codebook.</li><li><strong>Link</strong> an aspect and an exact evidence span to each judgment.</li><li><strong>Report</strong> a pattern with its count and its <strong>denominator</strong> (the number of cases it comes from), and say what limits it.</li></ul>
+<p>The main idea: <strong>find what the opinion is about, and count with a denominator.</strong></p>
+</section><section aria-labelledby="setup" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="setup">Before You Start: Setup</h2>
+<p>The main route is your own computer:</p>
+<ol><li>Open <strong>GitHub Desktop</strong> and select your course repository (<code>ban6403-</code> plus your GitHub username). This week's notebook, the reviewed sample in <code>data/reviewed</code> and the saved LLM labels in <code>data/llm_outputs</code> are already in your repository.</li><li>Open the repository folder in <strong>Visual Studio Code</strong> and open <code>notebooks/M07_Customer_Feedback_Analysis.ipynb</code>.</li><li>Click the kernel picker at the top right of the notebook and choose <strong>ban6403</strong>. This lab uses numpy, pandas and scikit-learn, which are all in that environment.</li><li>Run the cells in order from the top. If you restart the kernel, run from the top again.</li></ol>
+<p><strong>Optional:</strong> where your network allows it, you can open the repository in GitHub Codespaces instead. Keep the folder structure unchanged so the file paths work.</p>
+<h3>You do not call an LLM</h3>
+<p>An <strong>LLM</strong> (large language model) reads a prompt and writes text. Each text was sent to <code>gemini-3.5-flash-lite</code> once, with the <strong>temperature</strong> set to 0. Temperature controls randomness in the reply: 0 asks for the most likely answer. Even so, a rerun today could give some different answers. So every answer was saved, and you read those saved answers, which is called a <strong>cache</strong>. No API key is needed, and everyone evaluates the same labels. Step 1.8 shows what one saved answer contains.</p>
+</section><section aria-labelledby="part-1a" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1a">Part 1A: Lexicon Scores, Stars and the Decision (Steps 1.1–1.7)</h2>
+<p>You start with the 23 customer messages that have text. They are made up and small enough that you can check every score by reading.</p>
+<h3>1.1 Load the libraries</h3>
+<section aria-label="Import the libraries for this lab" class="code-step" data-cell="1">
+<pre aria-label="Import the libraries for this lab (notebook cell 1)" tabindex="0"><code>from pathlib import Path   # file and folder paths
+import json                # reads the saved LLM records
+import re                  # regular expressions: splits text into words
+import numpy as np         # arrays of numbers: the vectors
+import pandas as pd        # tables
+from sklearn.linear_model import LogisticRegression  # the classifier in 2.7</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>No output. A comment after each import says what the library is for. An error here usually means the kernel is wrong; see Common problems.</p></aside>
+<h3>1.2 Set the data and output folders</h3>
+<section aria-label="Set the data and output folders" class="code-step" data-cell="3">
+<pre aria-label="Set the data and output folders (notebook cell 3)" tabindex="0"><code># Folder paths, relative to the notebooks folder.
+DATA = Path(&quot;../data&quot;)
+OUTPUT_DIR = Path(&quot;../outputs/m07&quot;)
+# Create the output folder if it does not exist yet.
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>No output. The data is one folder up, in <code>../data</code>. Your own results go to <code>../outputs/m07</code>.</p></aside>
+<h3>1.3 Load the customer messages and the follow-up decision</h3>
+<p><strong>Follow-up</strong> is the service team's decision: does the message report an open problem or ask for help? Each message was read, and the 11 that need follow-up are listed. This is the decision we care about; stars and sentiment are only possible clues to it.</p>
+<section aria-label="Load 23 messages and mark the ones that need follow-up" class="code-step" data-cell="5">
+<pre aria-label="Load 23 messages and mark the ones that need follow-up (notebook cell 5)" tabindex="0"><code># Keep the 23 messages with text, numbered 0 to 22.
+feedback = pd.read_csv(DATA / &quot;raw/customer_feedback_m01.csv&quot;)
+feedback = feedback.dropna(subset=[&quot;text&quot;]).reset_index(drop=True)
+
+# The messages that need follow-up; isin gives True for these IDs and False for the rest.
+NEEDS_FOLLOW_UP = [&quot;FB001&quot;, &quot;FB003&quot;, &quot;FB006&quot;, &quot;FB008&quot;, &quot;FB009&quot;, &quot;FB012&quot;,
+                   &quot;FB014&quot;, &quot;FB015&quot;, &quot;FB017&quot;, &quot;FB018&quot;, &quot;FB023&quot;]
+feedback[&quot;follow_up&quot;] = feedback[&quot;feedback_id&quot;].isin(NEEDS_FOLLOW_UP)
+print(&quot;messages:&quot;, len(feedback), &quot;| need follow-up:&quot;, feedback[&quot;follow_up&quot;].sum())
+feedback[[&quot;feedback_id&quot;, &quot;stars&quot;, &quot;follow_up&quot;, &quot;text&quot;]].head(8)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>First eight rows</caption><thead><tr><th scope="col">feedback_id</th><th scope="col">stars</th><th scope="col">follow_up</th><th scope="col">text</th></tr></thead><tbody><tr><td>FB001</td><td>5</td><td>True</td><td>Love the speaker, but the charger is missing.</td></tr><tr><td>FB002</td><td>1</td><td>False</td><td>Delivery was late. Support fixed it; no further help needed.</td></tr><tr><td>FB003</td><td>2</td><td>True</td><td>The headset stopped working. Please arrange a refund.</td></tr><tr><td>FB004</td><td>3</td><td>False</td><td>It is okay.</td></tr><tr><td>FB005</td><td>4</td><td>False</td><td>The refund arrived yesterday. No action is required.</td></tr><tr><td>FB006</td><td>3</td><td>True</td><td>The tablet will not start. Can someone help me?</td></tr><tr><td>FB007</td><td>5</td><td>False</td><td>Clear sound and easy setup. Everything arrived as expected.</td></tr><tr><td>FB008</td><td>2</td><td>True</td><td>I was charged twice for one order. Please check the bill.</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.3" tabindex="0"><code>messages: 23 | need follow-up: 11</code></pre><p>FB022 has no text, so 23 messages remain.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>From your Module 2 labels to follow-up</h3><p>In Module 2 you labeled messages <code>review</code>, <code>no_review</code> or <code>unclear</code>. Here, <code>review</code> and <code>unclear</code> become follow-up = yes (an unclear message still needs a reply asking for details), and <code>no_review</code> becomes no. The supplied list covers all 23 messages, including the protected ones you did not label, and replaces your own Module 2 labels, so everyone uses the same target.</p></aside>
+<h3>1.4 Load the sentiment lexicon</h3>
+<p>Each word has a <strong>valence</strong>: an average human rating from about -4 (very negative) to +4 (very positive). The ratings come from the VADER lexicon.</p>
+<section aria-label="Load the lexicon and look up eight words" class="code-step" data-cell="7">
+<pre aria-label="Load the lexicon and look up eight words (notebook cell 7)" tabindex="0"><code># The file is tab-separated (sep=&quot;\t&quot;).
+lexicon = pd.read_csv(DATA / &quot;raw/lexicons/vader_lexicon_course.tsv&quot;, sep=&quot;\t&quot;)
+
+# A dictionary from word to score, for example valence[&quot;love&quot;].
+valence = dict(zip(lexicon[&quot;token&quot;], lexicon[&quot;valence&quot;]))
+print(&quot;words in the lexicon:&quot;, len(valence))
+
+# .get(word) returns None for a word that is not in the dictionary.
+# {word:&gt;8} right-aligns the word in 8 characters, so the scores line up.
+for word in [&quot;love&quot;, &quot;great&quot;, &quot;missing&quot;, &quot;failed&quot;, &quot;help&quot;, &quot;please&quot;, &quot;no&quot;, &quot;huge&quot;]:
+    print(f&quot;{word:&gt;8}: {valence.get(word)}&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.4" tabindex="0"><code>words in the lexicon: 6970
+    love: 3.2
+   great: 3.1
+ missing: -1.2
+  failed: -2.3
+    help: 1.7
+  please: 1.3
+      no: -1.2
+    huge: 1.3</code></pre><p>The file has 6,979 rows, but 9 tokens appear twice, so the dictionary holds 6,970 words. Notice that <i>help</i>, <i>please</i> and <i>huge</i> are positive, and <i>no</i> is negative.</p></aside>
+<h3>1.5 Score a message with the lexicon</h3>
+<p>The helper splits the text into lower-case words and adds the valence of every word it finds. It flips the sign of a word when <i>not</i>, <i>no</i>, <i>never</i>, <i>cannot</i> or a word ending in <i>n't</i> appears in the three words before it. It misses forms without an apostrophe, such as <i>didnt</i> or <i>dont</i>.</p>
+<section aria-label="Define the scoring helper and score FB001" class="code-step" data-cell="9">
+<pre aria-label="Define the scoring helper and score FB001 (notebook cell 9)" tabindex="0"><code>NEGATORS = {&quot;not&quot;, &quot;no&quot;, &quot;never&quot;, &quot;cannot&quot;}
+
+def lexicon_score(text, negation=True):
+    &quot;&quot;&quot;Take a text; return its lexicon score and the matched words with their values.&quot;&quot;&quot;
+    # Lower-case the text and keep each run of letters and apostrophes as one word.
+    words = re.findall(r&quot;[a-z&#x27;]+&quot;, text.lower())
+    total = 0.0
+    matched = []
+    # enumerate gives each word together with its position i.
+    for i, word in enumerate(words):
+        # Words that are not in the lexicon count as 0, so skip them.
+        if word not in valence:
+            continue
+        value = valence[word]
+        if negation:
+            # The (up to) three words before this one.
+            before = words[max(0, i - 3):i]
+            negated = False
+            for previous in before:
+                if previous in NEGATORS or previous.endswith(&quot;n&#x27;t&quot;):
+                    negated = True
+            if negated:
+                value = -value
+        total += value
+        # :+.1f shows the value with its sign and one decimal, for example &quot;help +1.7&quot;.
+        matched.append(f&quot;{word} {value:+.1f}&quot;)
+    return round(total, 1), &quot;, &quot;.join(matched)
+
+print(feedback.loc[0, &quot;text&quot;])
+lexicon_score(feedback.loc[0, &quot;text&quot;])</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.5" tabindex="0"><code>Love the speaker, but the charger is missing.
+(2.0, &#x27;love +3.2, missing -1.2&#x27;)</code></pre><p>The score is +2.0, so the lexicon reads FB001 as positive, although the charger is missing.</p></aside>
+<h3>1.6 Score every message, with and without negation</h3>
+<section aria-label="Score all messages and show where negation changes the score" class="code-step" data-cell="11">
+<pre aria-label="Score all messages and show where negation changes the score (notebook cell 11)" tabindex="0"><code># Score each message twice: with the negation rule and without it.
+scores = []
+matched_words = []
+scores_no_negation = []
+for text in feedback[&quot;text&quot;]:
+    score, matched = lexicon_score(text)
+    scores.append(score)
+    matched_words.append(matched)
+    score_no_negation, _ = lexicon_score(text, negation=False)  # _ means &quot;not needed&quot;
+    scores_no_negation.append(score_no_negation)
+feedback[&quot;lexicon&quot;] = scores
+feedback[&quot;matched&quot;] = matched_words
+feedback[&quot;lexicon_no_negation&quot;] = scores_no_negation
+
+# The messages whose score changed because of the negation rule.
+changed = feedback[feedback[&quot;lexicon&quot;].ne(feedback[&quot;lexicon_no_negation&quot;])]
+changed[[&quot;feedback_id&quot;, &quot;text&quot;, &quot;lexicon_no_negation&quot;, &quot;lexicon&quot;, &quot;matched&quot;]]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Messages whose score changes with the negation rule</caption><thead><tr><th scope="col">feedback_id</th><th scope="col">lexicon_no_negation</th><th scope="col">lexicon</th><th scope="col">matched</th></tr></thead><tbody><tr><td>FB002</td><td>2.2</td><td>-1.2</td><td>support +1.7, no -1.2, help -1.7</td></tr><tr><td>FB015</td><td>0.8</td><td>-1.8</td><td>no -1.2, please -1.3, troubleshooting +0.7</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Your output also shows the text column.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Right words, wrong decision; and a misfire</h3><p>In FB002 (“no further help needed”) the rule correctly flips <i>help</i>. But FB002 is resolved, and now it scores negative. In FB015 (“has no sound. Please send…”) the rule flips <i>please</i>, which is not negated at all. The score becomes more negative, but for the wrong reason.</p></aside>
+<h3>1.7 Lexicon score, stars and the follow-up decision</h3>
+<section aria-label="Cross-tabulate the score&#x27;s sign with follow-up and compare stars" class="code-step" data-cell="13">
+<pre aria-label="Cross-tabulate the score&#x27;s sign with follow-up and compare stars (notebook cell 13)" tabindex="0"><code># np.sign gives 1, 0 or -1; .map turns each into a word.
+feedback[&quot;lexicon_sign&quot;] = np.sign(feedback[&quot;lexicon&quot;]).map({1: &quot;positive&quot;, 0: &quot;zero&quot;, -1: &quot;negative&quot;})
+
+# Count messages by follow-up decision and sign of the score.
+print(pd.crosstab(feedback[&quot;follow_up&quot;], feedback[&quot;lexicon_sign&quot;]))
+print()
+
+# Number of messages and mean stars for each follow-up group.
+print(feedback.groupby(&quot;follow_up&quot;)[&quot;stars&quot;].agg([&quot;count&quot;, &quot;mean&quot;]).round(2))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.7" tabindex="0"><code>lexicon_sign  negative  positive  zero
+follow_up
+False                4         6     2
+True                 1         6     4
+
+           count  mean
+follow_up
+False         12  3.00
+True          11  3.18</code></pre><p>Of the 11 messages that need follow-up, only 1 scores below zero. Their average star rating (3.18) is slightly <i>higher</i> than for the others (3.00). Neither number points to the messages that need help.</p></aside>
+<h3>Read four rows</h3>
+<section aria-label="Show FB002, FB006, FB016 and FB018" class="code-step" data-cell="15">
+<pre aria-label="Show FB002, FB006, FB016 and FB018 (notebook cell 15)" tabindex="0"><code># .loc[rows, columns]: the four messages named here, with the columns we want to compare.
+feedback.loc[feedback[&quot;feedback_id&quot;].isin([&quot;FB002&quot;, &quot;FB006&quot;, &quot;FB016&quot;, &quot;FB018&quot;]),
+             [&quot;feedback_id&quot;, &quot;stars&quot;, &quot;lexicon&quot;, &quot;matched&quot;, &quot;follow_up&quot;, &quot;text&quot;]]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Four messages where score, stars and decision disagree</caption><thead><tr><th scope="col">feedback_id</th><th scope="col">stars</th><th scope="col">lexicon</th><th scope="col">matched</th><th scope="col">follow_up</th></tr></thead><tbody><tr><td>FB002</td><td>1</td><td>-1.2</td><td>support +1.7, no -1.2, help -1.7</td><td>False</td></tr><tr><td>FB006</td><td>3</td><td>1.7</td><td>help +1.7</td><td>True</td></tr><tr><td>FB016</td><td>1</td><td>-1.2</td><td>failed -2.3, well +1.1</td><td>False</td></tr><tr><td>FB018</td><td>5</td><td>3.2</td><td>great +3.1, please +1.3, missing -1.2</td><td>True</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Polite requests (“please”, “help”) look positive. Solved problems with low stars look negative.</p></aside>
+</section><section aria-labelledby="part-1b" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1b">Part 1B: Aspects and Evidence Spans (Steps 1.8–1.13)</h2>
+<h3>1.8 Load the cached aspect labels</h3>
+<p>An <strong>aspect</strong> is what an opinion is about. An <strong>evidence span</strong> is the exact words that support a label. The LLM got definitions but no labeled examples: this is <strong>zero-shot</strong> labeling. The cache is a <strong>JSON Lines</strong> file: one JSON record per line, read with <code>json.loads</code>.</p>
+<section aria-label="Read the JSON Lines cache and print one record" class="code-step" data-cell="17">
+<pre aria-label="Read the JSON Lines cache and print one record (notebook cell 17)" tabindex="0"><code># Read the file line by line; json.loads turns each line into a Python dictionary.
+fb_records = []
+for line in (DATA / &quot;llm_outputs/m07_feedback_aspects_gemini.jsonl&quot;).read_text().splitlines():
+    fb_records.append(json.loads(line))
+
+# Print the main fields of the first record.
+record = fb_records[0]
+for key in [&quot;id&quot;, &quot;model&quot;, &quot;prompt_version&quot;, &quot;temperature&quot;, &quot;created&quot;, &quot;latency_ms&quot;, &quot;input_tokens&quot;, &quot;output_tokens&quot;, &quot;error&quot;]:
+    print(f&quot;{key}: {record[key]}&quot;)
+print(&quot;raw_text (what the model wrote):&quot;)
+print(record[&quot;raw_text&quot;])
+print(&quot;parsed (the reply as Python fields):&quot;, record[&quot;parsed&quot;])</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.8" tabindex="0"><code>id: FB001
+model: gemini-3.5-flash-lite
+prompt_version: m07_feedback_aspects_v1
+temperature: 0.0
+created: 2026-10-14T00:59:10Z
+latency_ms: 823
+input_tokens: 316
+output_tokens: 94
+error: None
+raw_text (what the model wrote):
+{
+  &quot;mentions&quot;: [
+    {
+      &quot;aspect&quot;: &quot;device_performance&quot;,
+      &quot;sentiment&quot;: &quot;positive&quot;,
+      &quot;evidence_span&quot;: &quot;Love the speaker&quot;
+    },
+    {
+      &quot;aspect&quot;: &quot;accessories&quot;,
+      &quot;sentiment&quot;: &quot;negative&quot;,
+      &quot;evidence_span&quot;: &quot;the charger is missing&quot;
+    }
+  ],
+  &quot;overall_sentiment&quot;: &quot;mixed&quot;
+}
+parsed (the reply as Python fields): {&#x27;mentions&#x27;: [{&#x27;aspect&#x27;: &#x27;device_performance&#x27;, &#x27;sentiment&#x27;: &#x27;positive&#x27;, &#x27;evidence_span&#x27;: &#x27;Love the speaker&#x27;}, {&#x27;aspect&#x27;: &#x27;accessories&#x27;, &#x27;sentiment&#x27;: &#x27;negative&#x27;, &#x27;evidence_span&#x27;: &#x27;the charger is missing&#x27;}], &#x27;overall_sentiment&#x27;: &#x27;mixed&#x27;}</code></pre><p>Read the record from top to bottom. <code>model</code>, <code>prompt_version</code> and <code>created</code> say what made the label and when. <code>temperature</code> 0 asks for the most likely answer; a rerun can still differ, which is why the answers are saved. <code>latency_ms</code> is the time for the call (823 ms). <code>raw_text</code> is exactly what the model wrote; <code>parsed</code> is the same reply as Python fields. <code>error</code> is <code>None</code> because the reply could be read.</p></aside>
+<h3>One row per aspect mention</h3>
+<section aria-label="Turn all records into one row per aspect mention" class="code-step" data-cell="19">
+<pre aria-label="Turn all records into one row per aspect mention (notebook cell 19)" tabindex="0"><code>print(&quot;records:&quot;, len(fb_records), &quot;| model:&quot;, fb_records[0][&quot;model&quot;], &quot;| prompt:&quot;, fb_records[0][&quot;prompt_version&quot;])
+# One row per aspect mention: the message ID plus the mention&#x27;s fields (aspect, sentiment, span).
+mention_rows = []
+for fb_record in fb_records:
+    for mention in fb_record[&quot;parsed&quot;][&quot;mentions&quot;]:
+        row = {&quot;feedback_id&quot;: fb_record[&quot;id&quot;]}
+        row.update(mention)  # add the fields of the mention to the row
+        mention_rows.append(row)
+mentions = pd.DataFrame(mention_rows)
+
+# Add the message text to each mention.
+mentions = mentions.merge(feedback[[&quot;feedback_id&quot;, &quot;text&quot;]], on=&quot;feedback_id&quot;)
+print(&quot;aspect mentions:&quot;, len(mentions))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output" tabindex="0"><code>records: 23 | model: gemini-3.5-flash-lite | prompt: m07_feedback_aspects_v1
+aspect mentions: 33</code></pre></aside>
+<h3>1.9 Check every evidence span</h3>
+<section aria-label="Test that each span appears exactly in its message" class="code-step" data-cell="21">
+<pre aria-label="Test that each span appears exactly in its message (notebook cell 21)" tabindex="0"><code># `span in text` is True when the span appears exactly, character for character, in the text.
+span_found = []
+for span, text in zip(mentions[&quot;evidence_span&quot;], mentions[&quot;text&quot;]):
+    span_found.append(span in text)
+mentions[&quot;span_found&quot;] = span_found
+
+# Summing True/False values counts the True ones.
+print(&quot;spans found in the text:&quot;, mentions[&quot;span_found&quot;].sum(), &quot;of&quot;, len(mentions))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.9" tabindex="0"><code>spans found in the text: 33 of 33</code></pre><p><code>span in text</code> is True only if the span appears character for character. Here every span passes.</p></aside>
+<h3>1.10 Mixed opinions: one message, several aspects</h3>
+<p>A <strong>mixed opinion</strong> contains praise and criticism, across different aspects or within one aspect. In the clothing labels of Part 2, <code>mixed</code> means both sentiments toward the same aspect.</p>
+<section aria-label="Show the aspect mentions of four mixed messages" class="code-step" data-cell="23">
+<pre aria-label="Show the aspect mentions of four mixed messages (notebook cell 23)" tabindex="0"><code># The four messages with mixed opinions, one row per aspect mention.
+mixed = [&quot;FB001&quot;, &quot;FB013&quot;, &quot;FB018&quot;, &quot;FB019&quot;]
+mentions.loc[mentions[&quot;feedback_id&quot;].isin(mixed), [&quot;feedback_id&quot;, &quot;aspect&quot;, &quot;sentiment&quot;, &quot;evidence_span&quot;]]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Aspect mentions of FB001, FB013, FB018 and FB019</caption><thead><tr><th scope="col">feedback_id</th><th scope="col">aspect</th><th scope="col">sentiment</th><th scope="col">evidence_span</th></tr></thead><tbody><tr><td>FB001</td><td>device_performance</td><td>positive</td><td>Love the speaker</td></tr><tr><td>FB001</td><td>accessories</td><td>negative</td><td>the charger is missing</td></tr><tr><td>FB013</td><td>device_performance</td><td>positive</td><td>Good screen</td></tr><tr><td>FB013</td><td>device_performance</td><td>negative</td><td>battery lasts only two hours</td></tr><tr><td>FB018</td><td>support_service</td><td>positive</td><td>Great service</td></tr><tr><td>FB018</td><td>accessories</td><td>negative</td><td>missing charging cable</td></tr><tr><td>FB019</td><td>device_performance</td><td>positive</td><td>Comfortable for short calls</td></tr><tr><td>FB019</td><td>device_performance</td><td>negative</td><td>not for a full workday</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Each message has a positive and a negative part. A single score blends them; aspects keep them apart.</p></aside>
+<h3>1.11 An aspect evidence table with denominators</h3>
+<section aria-label="Count mentions by aspect and sentiment" class="code-step" data-cell="25">
+<pre aria-label="Count mentions by aspect and sentiment (notebook cell 25)" tabindex="0"><code># Mentions by aspect and sentiment.
+aspect_table = pd.crosstab(mentions[&quot;aspect&quot;], mentions[&quot;sentiment&quot;])
+# nunique counts distinct messages per aspect; out_of is the denominator.
+aspect_table[&quot;messages&quot;] = mentions.groupby(&quot;aspect&quot;)[&quot;feedback_id&quot;].nunique()
+aspect_table[&quot;out_of&quot;] = len(feedback)
+aspect_table</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Aspect evidence table (23 messages)</caption><thead><tr><th scope="col">aspect</th><th scope="col">negative</th><th scope="col">neutral</th><th scope="col">positive</th><th scope="col">messages</th><th scope="col">out_of</th></tr></thead><tbody><tr><td>accessories</td><td>2</td><td>3</td><td>0</td><td>4</td><td>23</td></tr><tr><td>appearance</td><td>1</td><td>0</td><td>0</td><td>1</td><td>23</td></tr><tr><td>billing_refund</td><td>1</td><td>4</td><td>0</td><td>5</td><td>23</td></tr><tr><td>delivery</td><td>2</td><td>1</td><td>1</td><td>4</td><td>23</td></tr><tr><td>device_performance</td><td>5</td><td>0</td><td>6</td><td>9</td><td>23</td></tr><tr><td>support_service</td><td>0</td><td>3</td><td>4</td><td>7</td><td>23</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>The sentiment columns count mentions; <code>messages</code> counts distinct messages. Device performance has 11 mentions in 9 messages because FB013 and FB019 each mention it twice.</p></aside>
+<h3>1.12 Read the LLM labels critically</h3>
+<section aria-label="Show the labels for FB016 and FB024" class="code-step" data-cell="27">
+<pre aria-label="Show the labels for FB016 and FB024 (notebook cell 27)" tabindex="0"><code># The aspect mentions of FB016 and FB024, next to the message text.
+mentions.loc[mentions[&quot;feedback_id&quot;].isin([&quot;FB016&quot;, &quot;FB024&quot;]), [&quot;feedback_id&quot;, &quot;text&quot;, &quot;aspect&quot;, &quot;sentiment&quot;, &quot;evidence_span&quot;]]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>LLM labels for FB016 and FB024</caption><thead><tr><th scope="col">feedback_id</th><th scope="col">aspect</th><th scope="col">sentiment</th><th scope="col">evidence_span</th></tr></thead><tbody><tr><td>FB016</td><td>device_performance</td><td>positive</td><td>works well</td></tr><tr><td>FB024</td><td>accessories</td><td>neutral</td><td>The cable arrived today</td></tr><tr><td>FB024</td><td>accessories</td><td>neutral</td><td>The case can be closed</td></tr></tbody></table></div>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>What the labels miss</h3><p>FB016 says “The old unit failed.” The labels keep only the positive part. FB024's “The case can be closed” is about the service case, not an accessory. Correct spans do not guarantee correct labels.</p></aside>
+<h3>1.13 Save your outputs</h3>
+<section aria-label="Save two CSV files" class="code-step" data-cell="29">
+<pre aria-label="Save two CSV files (notebook cell 29)" tabindex="0"><code>save_cols = [&quot;feedback_id&quot;, &quot;stars&quot;, &quot;follow_up&quot;, &quot;lexicon&quot;, &quot;lexicon_no_negation&quot;, &quot;matched&quot;, &quot;text&quot;]
+feedback[save_cols].to_csv(OUTPUT_DIR / &quot;feedback_lexicon.csv&quot;, index=False)
+mentions.to_csv(OUTPUT_DIR / &quot;feedback_aspects.csv&quot;, index=False)
+
+print(&quot;saved:&quot;, OUTPUT_DIR / &quot;feedback_lexicon.csv&quot;)
+print(&quot;saved:&quot;, OUTPUT_DIR / &quot;feedback_aspects.csv&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.13" tabindex="0"><code>saved: ../outputs/m07/feedback_lexicon.csv
+saved: ../outputs/m07/feedback_aspects.csv</code></pre><p>Two files in <code>outputs/m07</code>. The data files are not changed. If you ran the lab before, the list may show other files too.</p></aside>
+</section><section aria-labelledby="checkpoint" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="checkpoint">Checkpoint</h2>
+<div class="assignment-box"><h3>Complete independently</h3><p>Answer the two questions in the notebook in 2–3 sentences in total. This companion does not answer them.</p><ol><li>FB018 has 5 stars and a positive lexicon score. Does it need follow-up? What does this show about using one score for the decision?</li><li>Name one message where the negation rule helped and one where it flipped a word for the wrong reason.</li></ol><p><strong>What to check:</strong> your first answer uses FB018's stars, score and text. Your second answer names two message IDs from step 1.6 and the word that was flipped.</p></div>
+</section><section aria-labelledby="part-2a" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-2a">Part 2A: The Reviewed Sample and the Lexicon (Steps 2.1–2.5)</h2>
+<p>Now you use real customer reviews: the Women's E-Commerce Clothing Reviews in <code>data/course/clothing_reviews.csv</code>. Each review has a star rating, a recommend yes/no and a department. The business question: which product aspects go with low ratings and with “not recommended”, in each department? The reviewed sample holds 120 reviews from the <code>valid</code> split, 8 for each department and rating band. Its labels were made by reading each review against the codebook in <code>data/llm_outputs/prompts/m07_review_codebook.md</code>: an overall sentiment and, for each of six aspects, a sentiment and an evidence span. The cached LLM labels were one of three readings, and where the readings differed, the majority decided. The labels are still not ground truth. Because the LLM outputs helped decide the reference labels, comparing the LLM with them is not an independent evaluation. We cannot tell how much this raises its agreement. Read the codebook, including its tie-break rules and edge cases, before step 2.1.</p>
+<h3>2.1 Load the reviews and the reviewed sample</h3>
+<section aria-label="Load both files and join the review text" class="code-step" data-cell="32">
+<pre aria-label="Load both files and join the review text (notebook cell 32)" tabindex="0"><code>reviews = pd.read_csv(DATA / &quot;course/clothing_reviews.csv&quot;)
+# pd.cut puts each rating in a band: (0, 2] = 1-2 stars, (2, 3] = 3 stars, (3, 5] = 4-5 stars.
+reviews[&quot;band&quot;] = pd.cut(reviews[&quot;rating&quot;], [0, 2, 3, 5], labels=[&quot;1-2 stars&quot;, &quot;3 stars&quot;, &quot;4-5 stars&quot;])
+
+# The reviewed labels, with empty cells kept as &quot;&quot; (no opinion).
+reviewed = pd.read_csv(DATA / &quot;reviewed/m07_reviewed_sample.csv&quot;, keep_default_na=False)
+# Add the department, rating, band and text of each reviewed review.
+review_info = reviews[[&quot;review_id&quot;, &quot;department&quot;, &quot;rating&quot;, &quot;band&quot;, &quot;recommended&quot;, &quot;split&quot;, &quot;review_text&quot;]]
+reviewed = reviewed.merge(review_info, on=&quot;review_id&quot;)
+print(&quot;reviews:&quot;, len(reviews), &quot;| reviewed rows:&quot;, len(reviewed), &quot;| splits:&quot;, reviewed[&quot;split&quot;].unique().tolist())
+# The sample design: reviews per department and band.
+pd.crosstab(reviewed[&quot;department&quot;], reviewed[&quot;band&quot;])</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Reviewed sample by department and rating band</caption><thead><tr><th scope="col">department</th><th scope="col">1-2 stars</th><th scope="col">3 stars</th><th scope="col">4-5 stars</th></tr></thead><tbody><tr><td>Bottoms</td><td>8</td><td>8</td><td>8</td></tr><tr><td>Dresses</td><td>8</td><td>8</td><td>8</td></tr><tr><td>Intimate</td><td>8</td><td>8</td><td>8</td></tr><tr><td>Jackets</td><td>8</td><td>8</td><td>8</td></tr><tr><td>Tops</td><td>8</td><td>8</td><td>8</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.1" tabindex="0"><code>reviews: 22634 | reviewed rows: 120 | splits: [&#x27;valid&#x27;]</code></pre><p>Every department and band has the same denominator, 8. Low ratings are over-represented on purpose: in the full data only about 1 review in 10 has 1–2 stars.</p></aside>
+<h3>2.2 The reviewed aspects and their evidence</h3>
+<p><code>melt</code> turns the six aspect columns into rows: one row per review and aspect. Empty cells (no opinion on that aspect) are then dropped.</p>
+<section aria-label="Reshape to one row per aspect mention and check the spans" class="code-step" data-cell="34">
+<pre aria-label="Reshape to one row per aspect mention and check the spans (notebook cell 34)" tabindex="0"><code>ASPECTS = [&quot;fit_size&quot;, &quot;fabric_quality&quot;, &quot;style_look&quot;, &quot;comfort&quot;, &quot;color&quot;, &quot;price_value&quot;]
+# melt: one row per review and aspect. The aspect name goes to &quot;aspect&quot;, its label to &quot;sentiment&quot;.
+reviewed_mentions = reviewed.melt(
+    id_vars=[&quot;review_id&quot;, &quot;department&quot;, &quot;band&quot;, &quot;review_text&quot;],  # columns to keep on every row
+    value_vars=ASPECTS,                                          # columns to turn into rows
+    var_name=&quot;aspect&quot;,
+    value_name=&quot;sentiment&quot;,
+)
+# Keep the rows with an opinion (not empty).
+reviewed_mentions = reviewed_mentions[reviewed_mentions[&quot;sentiment&quot;].ne(&quot;&quot;)].copy()
+
+# Look up each mention&#x27;s evidence span in the column &quot;&lt;aspect&gt;_span&quot; of its review.
+reviewed_by_id = reviewed.set_index(&quot;review_id&quot;)
+spans = []
+for review_id, aspect in zip(reviewed_mentions[&quot;review_id&quot;], reviewed_mentions[&quot;aspect&quot;]):
+    spans.append(reviewed_by_id.loc[review_id, aspect + &quot;_span&quot;])
+reviewed_mentions[&quot;evidence_span&quot;] = spans
+
+# The exact substring test from 1.9.
+found = []
+for span, text in zip(reviewed_mentions[&quot;evidence_span&quot;], reviewed_mentions[&quot;review_text&quot;]):
+    found.append(span in text)
+print(&quot;aspect mentions:&quot;, len(reviewed_mentions), &quot;| spans found:&quot;, sum(found), &quot;of&quot;, len(found))
+
+# How many reviews have each overall sentiment, then mentions by aspect and sentiment.
+print(reviewed[&quot;overall_sentiment&quot;].value_counts().to_string())
+pd.crosstab(reviewed_mentions[&quot;aspect&quot;], reviewed_mentions[&quot;sentiment&quot;])</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Reviewed aspect mentions by sentiment</caption><thead><tr><th scope="col">aspect</th><th scope="col">mixed</th><th scope="col">negative</th><th scope="col">positive</th></tr></thead><tbody><tr><td>color</td><td>2</td><td>11</td><td>14</td></tr><tr><td>comfort</td><td>0</td><td>5</td><td>12</td></tr><tr><td>fabric_quality</td><td>9</td><td>30</td><td>33</td></tr><tr><td>fit_size</td><td>8</td><td>49</td><td>18</td></tr><tr><td>price_value</td><td>0</td><td>11</td><td>3</td></tr><tr><td>style_look</td><td>13</td><td>26</td><td>51</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.2" tabindex="0"><code>aspect mentions: 295 | spans found: 295 of 295
+overall_sentiment
+negative    69
+positive    33
+mixed       18</code></pre><p>Fit has the most negative mentions (49), style the most positive (51). Every reviewed span appears exactly in its review. Review 116 gives no aspect opinion, so it has no rows here.</p></aside>
+<h3>2.3 Lexicon scores for all reviews</h3>
+<section aria-label="Score every review and summarize by star rating" class="code-step" data-cell="36">
+<pre aria-label="Score every review and summarize by star rating (notebook cell 36)" tabindex="0"><code># Score every review with the Part 1 helper (about 22,000 reviews, a few seconds).
+lexicon_scores = []
+for text in reviews[&quot;review_text&quot;]:
+    score, _ = lexicon_score(text)
+    lexicon_scores.append(score)
+reviews[&quot;lexicon&quot;] = lexicon_scores
+
+# For each rating: number of reviews, median score and number of reviews scoring above 0.
+grouped = reviews.groupby(&quot;rating&quot;)[&quot;lexicon&quot;]
+above_zero = reviews[&quot;lexicon&quot;] &gt; 0
+by_rating = pd.DataFrame({
+    &quot;n&quot;: grouped.size(),
+    &quot;median&quot;: grouped.median(),
+    &quot;above_zero&quot;: above_zero.groupby(reviews[&quot;rating&quot;]).sum(),
+})
+by_rating[&quot;share_above&quot;] = (by_rating[&quot;above_zero&quot;] / by_rating[&quot;n&quot;]).round(2)
+
+# True for the 1-2 star reviews.
+low = reviews[&quot;rating&quot;] &lt;= 2
+print(&quot;1-2 star reviews scored above 0:&quot;, (reviews.loc[low, &quot;lexicon&quot;] &gt; 0).sum(), &quot;of&quot;, low.sum())
+by_rating</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Lexicon score by star rating</caption><thead><tr><th scope="col">rating</th><th scope="col">n</th><th scope="col">median</th><th scope="col">above_zero</th><th scope="col">share_above</th></tr></thead><tbody><tr><td>1</td><td>821</td><td>2.1</td><td>566</td><td>0.69</td></tr><tr><td>2</td><td>1548</td><td>3.4</td><td>1245</td><td>0.80</td></tr><tr><td>3</td><td>2823</td><td>4.7</td><td>2523</td><td>0.89</td></tr><tr><td>4</td><td>4908</td><td>7.2</td><td>4732</td><td>0.96</td></tr><tr><td>5</td><td>12534</td><td>9.2</td><td>12380</td><td>0.99</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.3" tabindex="0"><code>1-2 star reviews scored above 0: 1811 of 2369</code></pre><p>The median rises with the stars, so the score carries some signal. But even 69% of 1-star reviews score above zero. This step takes about a second.</p></aside>
+<h3>2.4 Where the lexicon disagrees with the stars</h3>
+<section aria-label="Count low- and high-rated reviews that contain five terms" class="code-step" data-cell="38">
+<pre aria-label="Count low- and high-rated reviews that contain five terms (notebook cell 38)" tabindex="0"><code>lowered = reviews[&quot;review_text&quot;].str.lower()
+high = reviews[&quot;rating&quot;] &gt;= 4
+
+rows = []
+for term in [&quot;love&quot;, &quot;cute&quot;, &quot;huge&quot;, &quot;disappointed&quot;, &quot;wanted to love&quot;]:
+    # \b marks a word boundary, so &quot;love&quot; does not match &quot;lovely&quot;.
+    has = lowered.str.contains(rf&quot;\b{term}\b&quot;)
+    rows.append({
+        &quot;term&quot;: term,
+        &quot;valence&quot;: valence.get(term),
+        &quot;low_rated&quot;: has[low].sum(),
+        &quot;of_low&quot;: low.sum(),
+        &quot;high_rated&quot;: has[high].sum(),
+        &quot;of_high&quot;: high.sum(),
+    })
+print(pd.DataFrame(rows).to_string(index=False))
+
+# Reviews that contain the phrase &quot;wanted to love&quot;, and how many of them score above 0.
+wanted = lowered.str.contains(&quot;wanted to love&quot;)
+print(&quot;&#x27;wanted to love&#x27; reviews:&quot;, wanted.sum(), &quot;| scored above 0:&quot;, (reviews.loc[wanted, &quot;lexicon&quot;] &gt; 0).sum())</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.4" tabindex="0"><code>          term  valence  low_rated  of_low  high_rated  of_high
+          love      3.2        406    2369        6372    17442
+          cute      2.0        278    2369        2117    17442
+          huge      1.3        191    2369         192    17442
+  disappointed     -2.1        251    2369         168    17442
+wanted to love      NaN        123    2369          46    17442
+&#x27;wanted to love&#x27; reviews: 318 | scored above 0: 307</code></pre></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Domain mismatch</h3><p>The lexicon was built for general text. Unhappy shoppers often write what they hoped for (“I wanted to love this”), and <i>love</i> scores +3.2. <i>Huge</i> is positive in the lexicon but in clothing reviews it usually means the size is wrong. Only <i>disappointed</i> behaves as expected. The phrase <i>wanted to love</i> has no valence of its own (NaN).</p></aside>
+<h3>Read two low-rated reviews</h3>
+<section aria-label="Print the two 1–2 star reviews with the highest scores" class="code-step" data-cell="40">
+<pre aria-label="Print the two 1–2 star reviews with the highest scores (notebook cell 40)" tabindex="0"><code># The two 1-2 star reviews with the highest lexicon scores.
+top_low = reviews[low].sort_values(&quot;lexicon&quot;, ascending=False).head(2)
+for review_id, rating, text in zip(top_low[&quot;review_id&quot;], top_low[&quot;rating&quot;], top_low[&quot;review_text&quot;]):
+    score, matched = lexicon_score(text)
+    print(f&quot;review {review_id} | {rating} stars | score {score}&quot;)
+    print(text)
+    print(&quot;matched:&quot;, matched)
+    print()</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output" tabindex="0"><code>review 18608 | 2 stars | score 21.8
+I got this dress in the mail today and really thought i was going to love it. ...
+matched: love +3.2, beautiful +2.9, rich +2.6, nice +1.8, surprise +1.1, love +3.2, good +1.9, perfect +2.7, great +3.1, well +1.1, choking -2.0, loose -1.3, like +1.5
+
+review 7472 | 2 stars | score 21.8
+I feel that for this price, i should love this top (and i wanted to). ...
+matched: love +3.2, top +0.8, top +0.8, improved +2.1, pretty +2.2, true +1.8, nice +1.8, nice +1.8, pretty +2.2, top +0.8, cute +2.0, cleverly +2.3</code></pre><p>Your output shows the full texts (shortened here). Both writers praise many details and then name one flaw that decides the rating: the neck hole in 18608, the price in 7472. Note that <i>top</i> (+0.8) is a garment here.</p></aside>
+<h3>2.5 Does the lexicon score match the reviewed sentiment?</h3>
+<section aria-label="Compare lexicon scores by reviewed overall sentiment" class="code-step" data-cell="42">
+<pre aria-label="Compare lexicon scores by reviewed overall sentiment (notebook cell 42)" tabindex="0"><code># Add the lexicon score to each reviewed review.
+reviewed = reviewed.merge(reviews[[&quot;review_id&quot;, &quot;lexicon&quot;]], on=&quot;review_id&quot;)
+
+# For each reviewed sentiment: number of reviews, median score and number scoring above 0.
+grouped = reviewed.groupby(&quot;overall_sentiment&quot;)[&quot;lexicon&quot;]
+above_zero = reviewed[&quot;lexicon&quot;] &gt; 0
+pd.DataFrame({
+    &quot;count&quot;: grouped.count(),
+    &quot;median&quot;: grouped.median(),
+    &quot;above_zero&quot;: above_zero.groupby(reviewed[&quot;overall_sentiment&quot;]).sum(),
+})</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Lexicon score by reviewed overall sentiment</caption><thead><tr><th scope="col">overall_sentiment</th><th scope="col">count</th><th scope="col">median</th><th scope="col">above_zero</th></tr></thead><tbody><tr><td>mixed</td><td>18</td><td>6.15</td><td>18</td></tr><tr><td>negative</td><td>69</td><td>4.20</td><td>56</td></tr><tr><td>positive</td><td>33</td><td>8.60</td><td>32</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Negative reviews score lower on average, but 56 of the 69 still score above zero.</p></aside>
+</section><section aria-labelledby="part-2b" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-2b">Part 2B: Classifier and LLM Labels (Steps 2.6–2.8)</h2>
+<h3>2.6 Weak labels from the star rating</h3>
+<p>A <strong>weak label</strong> comes from a cheap rule that is often, but not always, right. Here 1–2 stars become <code>negative</code> and 4–5 stars <code>positive</code>; 3-star reviews are left out.</p>
+<section aria-label="Turn stars into weak labels for the training reviews" class="code-step" data-cell="44">
+<pre aria-label="Turn stars into weak labels for the training reviews (notebook cell 44)" tabindex="0"><code># The weak-label rule. .map leaves 3-star reviews empty, because 3 is not in the dictionary.
+STARS_TO_LABEL = {1: &quot;negative&quot;, 2: &quot;negative&quot;, 4: &quot;positive&quot;, 5: &quot;positive&quot;}
+reviews[&quot;weak_label&quot;] = reviews[&quot;rating&quot;].map(STARS_TO_LABEL)
+
+# Training reviews that have a weak label.
+is_train = reviews[&quot;split&quot;].eq(&quot;train&quot;) &amp; reviews[&quot;weak_label&quot;].notna()
+print(&quot;train reviews with a weak label:&quot;, is_train.sum(), &quot;of&quot;, reviews[&quot;split&quot;].eq(&quot;train&quot;).sum())
+reviews.loc[is_train, &quot;weak_label&quot;].value_counts()</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Weak labels in train</caption><thead><tr><th scope="col">weak_label</th><th scope="col">count</th></tr></thead><tbody><tr><td>positive</td><td>10465</td></tr><tr><td>negative</td><td>1422</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.6" tabindex="0"><code>train reviews with a weak label: 11887 of 13581</code></pre><p>Only 12% of the weak labels are negative. A classifier trained on them will lean toward <code>positive</code>, and it can never predict <code>mixed</code>.</p></aside>
+<h3>How good are the weak labels?</h3>
+<section aria-label="Compare weak labels with the reviewed sentiment" class="code-step" data-cell="46">
+<pre aria-label="Compare weak labels with the reviewed sentiment (notebook cell 46)" tabindex="0"><code># The same rule on the reviewed sample; keep the reviews that are not 3-star.
+reviewed[&quot;weak_label&quot;] = reviewed[&quot;rating&quot;].map(STARS_TO_LABEL)
+has_weak = reviewed[&quot;weak_label&quot;].notna()
+with_weak = reviewed[has_weak]
+print(&quot;reviewed reviews with a weak label:&quot;, has_weak.sum(), &quot;of&quot;, len(reviewed))
+
+# How often the weak label equals the reviewed sentiment, then the full comparison.
+print(&quot;weak label equals reviewed sentiment:&quot;, (with_weak[&quot;weak_label&quot;] == with_weak[&quot;overall_sentiment&quot;]).sum())
+pd.crosstab(with_weak[&quot;overall_sentiment&quot;], with_weak[&quot;weak_label&quot;])</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Reviewed sentiment (rows) by weak label (columns)</caption><thead><tr><th scope="col">overall_sentiment</th><th scope="col">negative</th><th scope="col">positive</th></tr></thead><tbody><tr><td>mixed</td><td>4</td><td>4</td></tr><tr><td>negative</td><td>36</td><td>4</td></tr><tr><td>positive</td><td>0</td><td>32</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output" tabindex="0"><code>reviewed reviews with a weak label: 80 of 120
+weak label equals reviewed sentiment: 68</code></pre><p>The 12 misses: 8 mixed reviews, which no weak label can match, and 4 four- or five-star reviews whose text is negative.</p></aside>
+<h3>2.7 Train an embedding classifier on the weak labels</h3>
+<p>The features are cached sentence embeddings of the reviews, made the same way as the Module 5 vectors. <strong>Logistic regression</strong> is a simple, widely used classifier. <code>fit</code> learns one weight per embedding dimension from the labeled <code>train</code> reviews. <code>predict</code> then gives the more likely label for reviews the model has not seen. This is the Module 4 discipline again: learn from <code>train</code> only, apply to <code>valid</code>. Module 8 covers the classifier in detail.</p>
+<section aria-label="Fit logistic regression on cached embeddings and predict valid reviews" class="code-step" data-cell="48">
+<pre aria-label="Fit logistic regression on cached embeddings and predict valid reviews (notebook cell 48)" tabindex="0"><code># One saved vector per review, in the row order of clothing_reviews.csv (as in Lab 5).
+# The file stores compact 16-bit numbers; .astype(&quot;float32&quot;) turns them into ordinary numbers for the classifier.
+vectors = np.load(DATA / &quot;embeddings/clothing_minilm.npy&quot;).astype(&quot;float32&quot;)
+
+# max_iter=1000 allows enough steps for the fit to finish.
+clf = LogisticRegression(max_iter=1000)
+# fit learns from the training rows only: their vectors (X) and their weak labels (y).
+# vectors[is_train.to_numpy()] keeps the rows of the training reviews with a weak label.
+clf.fit(vectors[is_train.to_numpy()], reviews.loc[is_train, &quot;weak_label&quot;])
+
+# predict gives one label per validation review the model has not seen.
+is_valid = reviews[&quot;split&quot;].eq(&quot;valid&quot;) &amp; reviews[&quot;weak_label&quot;].notna()
+valid_pred = clf.predict(vectors[is_valid.to_numpy()])
+valid_weak = reviews.loc[is_valid, &quot;weak_label&quot;]
+print(&quot;valid reviews, prediction equals weak label:&quot;, (valid_pred == valid_weak).sum(), &quot;of&quot;, is_valid.sum())
+print(&quot;majority baseline (always positive):&quot;, valid_weak.eq(&quot;positive&quot;).sum(), &quot;of&quot;, is_valid.sum())
+
+# row_of[review_id] gives a review&#x27;s row position, which is also its row in `vectors`.
+row_of = pd.Series(range(len(reviews)), index=reviews[&quot;review_id&quot;])
+# The row positions of the 120 reviewed reviews; vectors[reviewed_rows] keeps those rows in that order.
+reviewed_rows = row_of[reviewed[&quot;review_id&quot;]].to_numpy()
+reviewed[&quot;clf_label&quot;] = clf.predict(vectors[reviewed_rows])
+print(&quot;reviewed sample, classifier equals reviewed sentiment:&quot;, (reviewed[&quot;clf_label&quot;] == reviewed[&quot;overall_sentiment&quot;]).sum(), &quot;of&quot;, len(reviewed))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.7" tabindex="0"><code>valid reviews, prediction equals weak label: 3622 of 3963
+majority baseline (always positive): 3489 of 3963
+reviewed sample, classifier equals reviewed sentiment: 55 of 120</code></pre><p>On the valid reviews, the classifier beats “always positive” by 133 reviews. On the reviewed sample, which has many more low ratings, it agrees on only 55 of 120. Fitting takes about a second.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Selecting rows of an array</h3><p><code>vectors</code> has one row per review and one column per embedding feature. <code>vectors[is_train.to_numpy()]</code> keeps the rows where the mask is <code>True</code>, and <code>vectors[reviewed_rows]</code> keeps the rows at those positions. <code>.astype("float32")</code> turns the compact saved numbers into ordinary numbers for computing.</p></aside>
+<h3>2.8 Load the cached LLM aspect labels</h3>
+<p>The cache covers 360 reviews: the 120 reviewed ones plus 240 more, 24 per department and rating band. Each record has the fields from step 1.8: model, prompt version, date, temperature, time taken, token counts, raw text, parsed fields and error. It also has two fields that this lab does not use.</p>
+<section aria-label="Read the LLM cache, combine repeated aspects, and join it" class="code-step" data-cell="50">
+<pre aria-label="Read the LLM cache, combine repeated aspects, and join it (notebook cell 50)" tabindex="0"><code># Read the 360 saved records, one JSON record per line, as in 1.8.
+llm_records = []
+for line in (DATA / &quot;llm_outputs/m07_review_aspects_gemini.jsonl&quot;).read_text().splitlines():
+    llm_records.append(json.loads(line))
+
+# Count the records whose reply could not be read, and collect the time each call took.
+n_errors = 0
+latencies = []
+for rec in llm_records:
+    if rec[&quot;error&quot;] is not None:
+        n_errors += 1
+    latencies.append(rec[&quot;latency_ms&quot;])
+first = llm_records[0]
+print(&quot;records:&quot;, len(llm_records), &quot;| errors:&quot;, n_errors)
+print(&quot;model:&quot;, first[&quot;model&quot;], &quot;| prompt:&quot;, first[&quot;prompt_version&quot;], &quot;| temperature:&quot;, first[&quot;temperature&quot;], &quot;| date:&quot;, first[&quot;created&quot;][:10])
+print(&quot;median seconds per review:&quot;, np.median(latencies) / 1000)
+
+# One row per aspect mention, with the review&#x27;s department, band and text.
+mention_rows = []
+for rec in llm_records:
+    for mention in rec[&quot;parsed&quot;][&quot;mentions&quot;]:
+        row = {&quot;review_id&quot;: int(rec[&quot;id&quot;])}
+        row.update(mention)
+        mention_rows.append(row)
+llm_mentions = pd.DataFrame(mention_rows)
+llm_mentions = llm_mentions.merge(reviews[[&quot;review_id&quot;, &quot;department&quot;, &quot;band&quot;, &quot;review_text&quot;]], on=&quot;review_id&quot;)
+
+# duplicated is True for a review-aspect pair that already appeared above.
+n_repeats = llm_mentions.duplicated([&quot;review_id&quot;, &quot;aspect&quot;]).sum()
+print(&quot;LLM aspect mentions:&quot;, len(llm_mentions), &quot;| repeated review-aspect pairs:&quot;, n_repeats)
+
+def combine(sentiments):
+    &quot;&quot;&quot;Take the sentiments one review gave one aspect; return the sentiment, or &quot;mixed&quot; if they differ.&quot;&quot;&quot;
+    if sentiments.nunique() == 1:
+        return sentiments.iloc[0]
+    return &quot;mixed&quot;
+
+# The review IDs in file order.
+record_ids = []
+for rec in llm_records:
+    record_ids.append(int(rec[&quot;id&quot;]))
+
+# One sentiment per review and aspect: agg passes each group&#x27;s sentiment column to combine.
+by_review_aspect = llm_mentions.groupby([&quot;review_id&quot;, &quot;aspect&quot;])[&quot;sentiment&quot;].agg(combine)
+# unstack turns the aspects (the second row label) into columns.
+llm_aspects = by_review_aspect.unstack()
+# reindex gives one row per record and one column per aspect; missing cells become &quot;&quot;.
+llm_aspects = llm_aspects.reindex(index=record_ids, columns=ASPECTS).fillna(&quot;&quot;)
+# .all(axis=1) is True for a row where every cell is &quot;&quot;.
+print(&quot;reviews with no aspect mention:&quot;, (llm_aspects == &quot;&quot;).all(axis=1).sum())
+
+# The LLM&#x27;s overall sentiment for each review ID.
+overall_by_id = {}
+for rec in llm_records:
+    overall_by_id[int(rec[&quot;id&quot;])] = rec[&quot;parsed&quot;][&quot;overall_sentiment&quot;]
+llm_overall = pd.Series(overall_by_id, name=&quot;llm_overall&quot;)
+
+# Add the LLM labels to the reviewed sample; add_prefix renames fit_size to llm_fit_size, and so on.
+reviewed = reviewed.merge(llm_aspects.add_prefix(&quot;llm_&quot;), left_on=&quot;review_id&quot;, right_index=True)
+reviewed[&quot;llm_overall&quot;] = reviewed[&quot;review_id&quot;].map(llm_overall)
+reviewed[[&quot;review_id&quot;, &quot;overall_sentiment&quot;, &quot;llm_overall&quot;, &quot;fit_size&quot;, &quot;llm_fit_size&quot;, &quot;fabric_quality&quot;, &quot;llm_fabric_quality&quot;]].head(5)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>First five rows (some columns)</caption><thead><tr><th scope="col">review_id</th><th scope="col">overall_sentiment</th><th scope="col">llm_overall</th><th scope="col">fit_size</th><th scope="col">llm_fit_size</th></tr></thead><tbody><tr><td>116</td><td>mixed</td><td>mixed</td><td></td><td></td></tr><tr><td>157</td><td>negative</td><td>negative</td><td>negative</td><td>negative</td></tr><tr><td>451</td><td>positive</td><td>positive</td><td>mixed</td><td>mixed</td></tr><tr><td>669</td><td>negative</td><td>negative</td><td>negative</td><td></td></tr><tr><td>903</td><td>negative</td><td>negative</td><td></td><td></td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.8" tabindex="0"><code>records: 360 | errors: 0
+model: gemini-3.5-flash-lite | prompt: m07_review_aspects_v1 | temperature: 0.0 | date: 2026-10-15
+median seconds per review: 1.05
+LLM aspect mentions: 988 | repeated review-aspect pairs: 21
+reviews with no aspect mention: 1</code></pre><p>Your output also shows the two fabric columns. An empty cell means no opinion on that aspect. The prompt asked for each aspect at most once per review; the 21 repeats are combined, and two different sentiments become <code>mixed</code>.</p></aside>
+</section><section aria-labelledby="exercises" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="exercises">Practice Exercises and Interpretation</h2>
+<div class="assignment-box"><h3>Complete independently</h3><p>The exercises are intentionally not solved in this companion. Use the exact instructions in the notebook. Each exercise cell starts with <code># Exercise N: your code here</code>.</p><h3>Exercise 1: compare the three methods on the same reviewed sample</h3><p>a. Overall sentiment: make a lexicon label (<code>negative</code> below 0, else <code>positive</code>). Count how often it, <code>clf_label</code> and <code>llm_overall</code> each equal the reviewed <code>overall_sentiment</code>, out of 120, and show a crosstab for each. b. Aspects (LLM only): for each aspect, count reviewed mentions, LLM mentions, both, and both with the same sentiment.</p><p><strong>What to check:</strong> your classifier count should match step 2.7. For a, also report the most common reviewed sentiment and its count, and say whether each method beats always choosing it. For b, the <code>reviewed</code> column adds up to 295, as in step 2.2, and <code>same_sentiment</code> is never larger than <code>both</code>.</p><h3>Exercise 2: check the LLM evidence and read the disagreements</h3><p>Test every LLM <code>evidence_span</code> with an exact substring check and print the ones that fail. Then list the reviewed reviews where <code>llm_fit_size</code> differs from <code>fit_size</code>, and read two of them in full.</p><p><strong>What to check:</strong> compare spans with the <code>review_text</code> column, not with the reviewed span. Look at what changed in a failing span: dots, capital letters, missing words. Print a full text with <code>reviewed.loc[reviewed["review_id"].eq(ID), "review_text"].iloc[0]</code>.</p><h3>Exercise 3: report one aspect pattern with denominators</h3><p>Use the LLM labels for all 360 reviews. For each department, count the reviews with a <code>negative</code> or <code>mixed</code> <code>fit_size</code> mention. Count them among the 1–2 star reviews and among the 4–5 star reviews. Repeat for <code>fabric_quality</code>, then write one “k of n” sentence.</p><p><strong>What to check:</strong> each department and band has a denominator of 24. Count reviews, not mentions: a review counts once even if the aspect appears twice, for example with <code>groupby([...])["review_id"].nunique()</code>. The denominator is all 24 sampled reviews in the group, with or without the aspect. Your sentence names the department, the count, the denominator and whose labels you used, and does not present a sample share as a share of all reviews.</p></div>
+<h3>Practice interpretation</h3>
+<p>Write 3–5 sentences that use your own outputs. Answer the three questions in the notebook:</p>
+<ul><li>Using 2.3–2.5, can the lexicon score tell you which reviews are negative? Give a number.</li><li>Using 2.6, 2.7 and Exercise 1, which method agreed most often with the reviewed sentiment, and where did each struggle? Why might star-based weak labels limit the classifier?</li><li>Using Exercises 2 and 3, would you give the LLM's aspect counts to a manager as they are? State your pattern with its denominator and one limitation.</li></ul>
+</section><section aria-labelledby="submit" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="submit">Submit</h2>
+<ol><li>Run the whole notebook from the top (<strong>Restart</strong>, then <strong>Run All</strong>) and confirm there are no errors.</li><li>Check that every <strong>Your answer</strong> cell is filled.</li><li>Add the one-line AI-use note in the Submit cell if you used an AI tool.</li><li>Save the notebook, so the outputs are saved in the file.</li><li>In GitHub Desktop, write a short summary such as "Lab 7 complete", click <strong>Commit to main</strong>, then <strong>Push origin</strong>.</li><li>Push before the deadline. You upload nothing to Canvas: the instructor grades the saved notebook, with its outputs, in your repository as it is at the deadline.</li></ol>
+<p>Lab notebook 7 is graded with the course Lab Notebook rubric in Canvas (the same rubric for every lab).</p>
+</section><section aria-labelledby="challenge" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="challenge">Part 3 Challenge (Optional)</h2>
+<p>These cells are optional. Run them after the required work, in order.</p>
+<h3>A. Other cutoffs for the lexicon</h3>
+<section aria-label="Optional: Agreement of the lexicon label with the reviewed sentiment at four cutoffs" class="code-step" data-cell="60">
+<pre aria-label="Optional: Agreement of the lexicon label with the reviewed sentiment at four cutoffs (notebook cell 60)" tabindex="0"><code>for cutoff in [0, 3, 6, 9]:
+    # np.where(condition, a, b) gives a where the condition is True and b elsewhere.
+    lex_label = np.where(reviewed[&quot;lexicon&quot;] &lt; cutoff, &quot;negative&quot;, &quot;positive&quot;)
+    agree = (lex_label == reviewed[&quot;overall_sentiment&quot;]).sum()
+    print(f&quot;negative if score &lt; {cutoff}: agrees with reviewed sentiment on {agree} of {len(reviewed)}&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step A." tabindex="0"><code>negative if score &lt; 0: agrees with reviewed sentiment on 44 of 120
+negative if score &lt; 3: agrees with reviewed sentiment on 58 of 120
+negative if score &lt; 6: agrees with reviewed sentiment on 72 of 120
+negative if score &lt; 9: agrees with reviewed sentiment on 77 of 120</code></pre><p>A higher cutoff helps, because most reviews score above zero. Even the best cutoff here (77 of 120) is far below the LLM (114), and the lexicon still cannot say “mixed”.</p></aside>
+<h3>B. Balance the weak labels</h3>
+<section aria-label="Optional: Refit the classifier with class_weight=&quot;balanced&quot;" class="code-step" data-cell="62">
+<pre aria-label="Optional: Refit the classifier with class_weight=&quot;balanced&quot; (notebook cell 62)" tabindex="0"><code># Same classifier as 2.7, but class_weight=&quot;balanced&quot; gives the rare label more weight.
+balanced = LogisticRegression(max_iter=1000, class_weight=&quot;balanced&quot;)
+balanced.fit(vectors[is_train.to_numpy()], reviews.loc[is_train, &quot;weak_label&quot;])
+reviewed[&quot;balanced_label&quot;] = balanced.predict(vectors[row_of[reviewed[&quot;review_id&quot;]].to_numpy()])
+print(&quot;balanced classifier equals reviewed sentiment:&quot;, (reviewed[&quot;balanced_label&quot;] == reviewed[&quot;overall_sentiment&quot;]).sum(), &quot;of&quot;, len(reviewed))
+pd.crosstab(reviewed[&quot;overall_sentiment&quot;], reviewed[&quot;balanced_label&quot;])</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Reviewed sentiment (rows) by balanced prediction (columns)</caption><thead><tr><th scope="col">overall_sentiment</th><th scope="col">negative</th><th scope="col">positive</th></tr></thead><tbody><tr><td>mixed</td><td>6</td><td>12</td></tr><tr><td>negative</td><td>58</td><td>11</td></tr><tr><td>positive</td><td>3</td><td>30</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step B." tabindex="0"><code>balanced classifier equals reviewed sentiment: 88 of 120</code></pre><p>Balancing raises agreement from 55 to 88 of 120: the classifier now finds 58 of the 69 negative reviews. The imbalance in the weak labels, not only the embeddings, held it back.</p></aside>
+<h3>C. The full VADER rules</h3>
+<section aria-label="Optional: Score five messages with vaderSentiment if installed" class="code-step" data-cell="64">
+<pre aria-label="Optional: Score five messages with vaderSentiment if installed (notebook cell 64)" tabindex="0"><code># The package is optional, so the cell prints a note instead of failing when it is missing.
+try:
+    from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+except ImportError:
+    print(&quot;vaderSentiment is not installed. This part is optional.&quot;)
+else:
+    analyzer = SentimentIntensityAnalyzer()
+    for text in feedback[&quot;text&quot;].head(5):
+        # &quot;compound&quot; is VADER&#x27;s overall score, from -1 (negative) to +1 (positive).
+        print(round(analyzer.polarity_scores(text)[&quot;compound&quot;], 2), text)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step C." tabindex="0"><code>vaderSentiment is not installed. This part is optional.</code></pre><p>This is the expected message in the course environment. If you install the package, compare its scores with your step 1.6 scores.</p></aside>
+</section><section aria-labelledby="problems" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="problems">Common Problems</h2>
+<p>If a cell fails, read the last line of the error message first. Then find it below.</p>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>FileNotFoundError: data/reviewed/… or data/llm_outputs/…</h3><p>This file has been in your repository since Week 1, so it was moved or deleted. Open the notebook from the <code>notebooks</code> folder of your repository. If GitHub Desktop lists the file under <strong>Changes</strong>, right-click it and choose <strong>Discard changes</strong>. Otherwise download it again from the course template on GitHub and put it back in the same folder. You should see <code>data/reviewed/m07_reviewed_sample.csv</code> and two <code>.jsonl</code> files for Module 7 in <code>data/llm_outputs</code>.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Empty aspect cells show as NaN</h3><p>Keep <code>keep_default_na=False</code> when you read the reviewed CSV, as in step 2.1. Otherwise pandas turns empty cells into NaN, and <code>.ne("")</code> counts them as labeled.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>TypeError: 'in &lt;string&gt;' requires string as left operand</h3><p>A span is NaN or a number, not text. Reload the file as in step 2.1.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>KeyError: 'llm_fit_size' or 'llm_overall'</h3><p>Run step 2.8 before the exercises. If you restarted the kernel, run the notebook from the top. Do not run steps 2.5 or 2.8 twice without restarting: a second merge adds columns ending in <code>_x</code> and <code>_y</code>.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>My numbers differ from this page</h3><p>Check that you did not change the lexicon helper or the star mapping. Restart the kernel and run from the top. A different scikit-learn version can change a classifier count by one or two.</p></aside>
+<p>Still stuck? Post the error message and the cell number in the course Q&amp;A discussion. Do not post your full answers.</p>
+</section><section aria-labelledby="wrap-up" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="wrap-up">Lab Wrap-Up</h2>
+<p>In this lab you used one pattern on customer messages and real reviews:</p>
+<ul class="inline-code-list"><li><strong>Separate:</strong> stars, overall sentiment and aspects measure different things.</li><li><strong>Compare:</strong> judge every method against the same reviewed labels, with a simple baseline.</li><li><strong>Check:</strong> test that evidence spans appear exactly in the text, and read the disagreements.</li><li><strong>Report:</strong> give counts as “k of n” and say whose labels produced them.</li></ul>
+<p>Module 8 returns to the CFPB complaints. It trains classifiers for a decision target, routing complaints, and compares them on the same validation set. The test set stays sealed until Module 9.</p>
+</section>
+<section aria-labelledby="source-note" class="footer-note"><p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="source-note">Notebook and accessibility note</h2><p>The current Module 7 notebook is authoritative for Python code, sequence, prompts and required work. This companion adds explanation and accessible presentation without changing those requirements. Expected results come from running the notebook on the current course data.</p><p>The page is designed for keyboard navigation, screen readers, browser text-to-speech and ordinary visual reading. Important instructional information is presented as text rather than depending on a visual demonstration.</p></section>
+</main><script>
+(function() {
+  const synth = window.speechSynthesis;
+  const speakBtn = document.getElementById('speak');
+  const pauseBtn = document.getElementById('pause');
+  const resumeBtn = document.getElementById('resume');
+  const stopBtn = document.getElementById('stop');
+  const rate = document.getElementById('speech-rate');
+  const rateValue = document.getElementById('rate-value');
+  const mode = document.getElementById('reading-mode');
+  const voiceSelect = document.getElementById('voice-select');
+  const sectionSelect = document.getElementById('section-select');
+  const jumpSection = document.getElementById('jump-section');
+  const readSection = document.getElementById('read-section');
+  const status = document.getElementById('speech-status');
+  const stickyControls = document.getElementById('sticky-audio-controls');
+  const stickyPause = document.getElementById('sticky-pause');
+  const stickyResume = document.getElementById('sticky-resume');
+  const stickyStop = document.getElementById('sticky-stop');
+  const stickyStatus = document.getElementById('sticky-speech-status');
+  let chunks = [], index = 0, stopped = true, voices = [];
+  function setStatus(t){ status.innerHTML='<small>'+t+'</small>'; if(stickyStatus) stickyStatus.textContent=t; }
+  function populateVoices(){ if(!synth)return; voices=synth.getVoices(); const cur=voiceSelect.value; voiceSelect.innerHTML='<option value="">Browser default</option>'; voices.forEach((v,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=v.name+' ('+v.lang+')';voiceSelect.appendChild(o);}); if([...voiceSelect.options].some(o=>o.value===cur))voiceSelect.value=cur; }
+  function codeToSpeech(text){ return text
+    .replace(/\\/g,' backslash ').replace(/_/g,' underscore ')
+    .replace(/==/g,' equals equals ').replace(/!=/g,' not equals ').replace(/>=/g,' greater than or equal to ').replace(/<=/g,' less than or equal to ')
+    .replace(/&/g,' and ').replace(/\|/g,' or ').replace(/>/g,' greater than ').replace(/</g,' less than ').replace(/=/g,' equals ')
+    .replace(/\(/g,' open parenthesis ').replace(/\)/g,' close parenthesis ').replace(/\[/g,' open bracket ').replace(/\]/g,' close bracket ').replace(/\{/g,' open brace ').replace(/\}/g,' close brace ')
+    .replace(/\./g,' dot ').replace(/,/g,' comma ').replace(/:/g,' colon ').replace(/;/g,' semicolon ').replace(/\+/g,' plus ').replace(/-/g,' minus ').replace(/\*/g,' star ').replace(/\//g,' slash ').replace(/%/g,' percent ')
+    .replace(/"/g,' quote ').replace(/'/g,' single quote ').replace(/\s+/g,' ').trim(); }
+  function tableToSpeech(table){ const cap=table.querySelector('caption'); const rows=[...table.querySelectorAll('tr')]; const out=[]; if(cap)out.push(cap.innerText.trim()+'.'); rows.forEach((row,r)=>{const cells=[...row.querySelectorAll('th,td')].map(c=>c.innerText.trim()); if(!cells.length)return; if(r===0)out.push('Columns: '+cells.join(', ')+'.'); else out.push('Row '+r+': '+cells.join(', ')+'.');}); return out.join(' '); }
+  function buildChunks(startElement){ const includeCode=mode.value==='full'; const main=document.getElementById('main-content'); const items=[]; let started=!startElement; main.querySelectorAll('h2,h3,h4,p,li,table,pre').forEach(el=>{ if(!started){if(el===startElement)started=true;else return;} if(el.closest('.listen-panel')||el.closest('nav')||el.closest('.controls')||el.closest('.section-read-controls')||el.closest('.back-to-contents'))return; if(el.closest('details:not([open])'))return; if(el.matches('pre')){if(!includeCode)return; const c=el.innerText.trim(); if(c)items.push({text:'Python code. '+codeToSpeech(c),el}); return;} if(el.matches('table')){const t=tableToSpeech(el);if(t)items.push({text:t,el});return;} const t=el.innerText.replace(/\s+/g,' ').trim(); if(t)items.push({text:t,el}); }); return items; }
+  function speakNext(){ if(!synth||stopped)return; if(index>=chunks.length){stopped=true;setStatus('Finished reading the companion.');if(stickyControls) stickyControls.hidden=true;return;} const cur=chunks[index]; const u=new SpeechSynthesisUtterance(cur.text);u.rate=parseFloat(rate.value); if(voiceSelect.value!==''&&voices[Number(voiceSelect.value)])u.voice=voices[Number(voiceSelect.value)];u.onstart=()=>setStatus('Reading item '+(index+1)+' of '+chunks.length+' at '+rate.value+'×.');u.onend=()=>{index++;speakNext();};u.onerror=e=>{if(e.error!=='canceled'&&e.error!=='interrupted'){setStatus('Speech stopped because the browser reported: '+e.error+'.');stopped=true;}}; synth.speak(u); }
+  function startReading(el,label){if(!synth){setStatus('This browser does not provide the Web Speech API.');return;}synth.cancel();chunks=buildChunks(el||null);index=0;stopped=false;if(stickyControls) stickyControls.hidden=false;setStatus(label?'Starting from '+label+'.':'Starting from the beginning.');setTimeout(speakNext,50);}
+  function setupSections(){ const hs=[...document.querySelectorAll('#main-content h2[id]')].filter(h=>!h.closest('.listen-panel')&&!h.closest('nav')); hs.forEach(h=>{const sectionName=h.innerText.trim();const o=document.createElement('option');o.value=h.id;o.textContent=sectionName;sectionSelect.appendChild(o);const d=document.createElement('div');d.className='section-read-controls';d.setAttribute('aria-label','Read-aloud controls for '+sectionName);const b=document.createElement('button');b.type='button';b.className='speak-section';b.textContent='Read Aloud from This Section';b.setAttribute('aria-label','Read aloud from this section: '+sectionName);b.addEventListener('click',()=>startReading(h,sectionName));const hint=document.createElement('span');hint.className='read-hint';hint.textContent='Reads continuously from this section to the end.';d.appendChild(b);d.appendChild(hint);h.insertAdjacentElement('afterend',d);}); }
+  speakBtn.addEventListener('click',()=>startReading(null,'the beginning'));
+  function pauseReading(){if(synth&&synth.speaking&&!synth.paused){synth.pause();setStatus('Paused.');}}
+  function resumeReading(){if(synth&&synth.paused){synth.resume();setStatus('Resumed. Speed changes apply to the next reading item.');}}
+  function stopReading(){stopped=true;if(synth)synth.cancel();setStatus('Stopped.');if(stickyControls) stickyControls.hidden=true;}
+  pauseBtn.addEventListener('click',pauseReading);
+  resumeBtn.addEventListener('click',resumeReading);
+  stopBtn.addEventListener('click',stopReading);
+  if(stickyPause) stickyPause.addEventListener('click',pauseReading);
+  if(stickyResume) stickyResume.addEventListener('click',resumeReading);
+  if(stickyStop) stickyStop.addEventListener('click',stopReading);
+  rate.addEventListener('input',()=>{rateValue.textContent=Number(rate.value).toFixed(1)+'×';if(synth&&synth.speaking)setStatus('Speed set to '+rateValue.textContent+'. It will apply to the next reading item.');});
+  mode.addEventListener('change',()=>setStatus(mode.value==='full'?'Full mode selected. Python code will be read aloud.':'Study mode selected. Exact Python code will be skipped.'));
+  jumpSection.addEventListener('click',()=>{const h=document.getElementById(sectionSelect.value);if(h){h.scrollIntoView({behavior:'smooth',block:'start'});h.setAttribute('tabindex','-1');h.focus();}});
+  readSection.addEventListener('click',()=>{const h=document.getElementById(sectionSelect.value);if(h)startReading(h,h.innerText.trim());});
+  setupSections(); populateVoices(); if(synth&&'onvoiceschanged' in synth)synth.onvoiceschanged=populateVoices;
+})();
+</script></body></html>

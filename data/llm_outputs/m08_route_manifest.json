@@ -1,0 +1,44 @@
+{
+ "name": "m08_route",
+ "description": "Zero-shot product routing labels for Module 8 (valid subset) and the Module 9 final check (test subset).",
+ "model": "gemini-3.5-flash-lite",
+ "prompt_version": "m08_route_v1",
+ "prompt_file": "prompts/m08_route_prompt.md",
+ "schema_file": "prompts/m08_route_schema.json",
+ "temperature": 0.0,
+ "input_fields_sent": [
+  "narrative"
+ ],
+ "selection": "300 valid and 300 test complaints, stratified by product and by the Module 9 urgent rule, proportional allocation, seed 6403",
+ "transport_note": "Transport change only: early calls went through the Gemini API, later calls through Vertex AI. Model, prompt, schema and temperature unchanged. Records with api='vertex' used Vertex AI; records without an api field used the Gemini API. Calls that failed with HTTP 429 were retried and the error rows removed, leaving one row per id.",
+ "files": {
+  "m08_route_valid_gemini.jsonl": {
+   "rows": 300,
+   "parsed": 300,
+   "errors": 0,
+   "created_first": "2026-10-14T02:34:11Z",
+   "created_last": "2026-10-14T04:27:43Z",
+   "transport_counts": {
+    "vertex": 186,
+    "gemini_api": 114
+   },
+   "median_latency_ms": 782.5,
+   "input_tokens": 254159,
+   "output_tokens": 4400
+  },
+  "m08_route_test_gemini.jsonl": {
+   "rows": 300,
+   "parsed": 300,
+   "errors": 0,
+   "created_first": "2026-10-14T02:34:11Z",
+   "created_last": "2026-10-14T04:28:43Z",
+   "transport_counts": {
+    "vertex": 240,
+    "gemini_api": 60
+   },
+   "median_latency_ms": 789.0,
+   "input_tokens": 260878,
+   "output_tokens": 4372
+  }
+ }
+}

@@ -1,0 +1,25 @@
+feedback_id,channel,product,stars,text
+FB001,review,speaker,5,"Love the speaker, but the charger is missing."
+FB002,email,speaker,1,Delivery was late. Support fixed it; no further help needed.
+FB003,email,headset,2,The headset stopped working. Please arrange a refund.
+FB004,review,tablet,3,It is okay.
+FB005,chat,headset,4,The refund arrived yesterday. No action is required.
+FB006,chat,tablet,3,The tablet will not start. Can someone help me?
+FB007,review,speaker,5,Clear sound and easy setup. Everything arrived as expected.
+FB008,email,tablet,2,I was charged twice for one order. Please check the bill.
+FB009,chat,headset,4,Could you explain how to replace the ear cushions?
+FB010,review,speaker,2,The color looked different from the photo.
+FB011,email,headset,4,Thank you for the replacement. It works now.
+FB012,chat,tablet,3,Still waiting.
+FB013,review,tablet,4,"Good screen, but the battery lasts only two hours."
+FB014,email,speaker,2,"My package shows delivered, but I have not received it."
+FB015,chat,headset,3,The left side has no sound. Please send troubleshooting steps.
+FB016,review,speaker,1,The old unit failed. The new unit works well.
+FB017,email,tablet,4,Can I return the tablet after opening the box?
+FB018,chat,speaker,5,Great service. Please send the missing charging cable.
+FB019,review,headset,2,"Comfortable for short calls, but not for a full workday."
+FB020,email,speaker,3,The refund arrived yesterday. No action is required.
+FB021,chat,tablet,3,I followed the reset steps and it starts now. Thanks.
+FB022,review,tablet,3,
+FB023,email,headset,2,I need help with the microphone before a meeting tomorrow.
+FB024,chat,speaker,4,The cable arrived today. The case can be closed.

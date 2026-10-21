@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Lab 8 Companion - BAN 6403</title><style>
+:root { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.62; }
+* { box-sizing: border-box; }
+body { margin:0; background:#fff; color:#111; }
+a { color:#0645ad; text-decoration-thickness:.12em; }
+a:focus, button:focus, summary:focus, pre:focus, .table-wrap:focus, select:focus, input:focus { outline:3px solid currentColor; outline-offset:3px; }
+.skip-link { position:absolute; left:-9999px; }
+.skip-link:focus { left:1rem; top:1rem; background:#fff; padding:.75rem; z-index:1000; border:2px solid #111; }
+header { border-bottom:2px solid #111; padding:1.5rem max(1rem, calc((100vw - 1060px)/2)); }
+header h1 { margin:0 0 .35rem; }
+.subtitle { margin:.2rem 0 0; font-size:1.08rem; }
+main { max-width:1060px; margin:0 auto; padding:1.5rem 1rem 4rem; }
+h2 { margin-top:2.6rem; padding-top:.55rem; border-top:1px solid #bbb; }
+h3 { margin-top:1.7rem; }
+.accessibility-summary, .toc, .note-box, .result-box, .try-box, .assignment-box, .summary-box, .listen-panel, .solution-box { border:1px solid #555; border-radius:.45rem; padding:1rem 1.1rem; margin:1.15rem 0; }
+.note-box { border-left:6px solid #1f4e79; background:#f4f8fc; position:relative; }
+.note-label { display:inline-block; font-size:.78rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; border:2px solid #1f4e79; border-radius:.25rem; padding:.22rem .45rem; margin:0 0 .55rem; background:#fff; }
+.note-box h3 { margin-top:.15rem; }
+.content-key { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:.8rem; margin:1rem 0; }
+.key-item { border:1px solid #777; border-radius:.4rem; padding:.8rem .9rem; }
+.key-label { font-weight:800; display:block; margin-bottom:.25rem; }
+.try-box { border-left:5px solid #111; }
+.result-box { background:#fafafa; }
+.solution-box summary { cursor:pointer; font-weight:700; }
+.solution-box[open] summary { margin-bottom:.8rem; }
+.controls { display:flex; gap:.6rem; flex-wrap:wrap; margin:1rem 0; }
+button { font:inherit; padding:.55rem .8rem; border:2px solid #111; background:#fff; border-radius:.3rem; cursor:pointer; }
+pre { overflow:auto; border:1px solid #777; padding:1rem; background:#f6f6f6; white-space:pre; }
+code { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.code-step { margin:1rem 0 1.55rem; }
+.code-purpose { margin-bottom:.4rem; }
+.table-wrap { overflow-x:auto; margin:.8rem 0; }
+table { border-collapse:collapse; width:100%; min-width:620px; }
+th, td { border:1px solid #666; padding:.5rem; text-align:left; vertical-align:top; }
+th { font-weight:700; }
+caption { font-weight:700; text-align:left; margin-bottom:.45rem; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.speech-options { display:grid; grid-template-columns:max-content minmax(180px,1fr); gap:.65rem .9rem; align-items:center; max-width:800px; }
+.speech-options select, .speech-options input[type="range"] { width:100%; font:inherit; }
+#speech-status { min-height:1.5em; }
+.section-read-controls { margin:.25rem 0 1rem; display:flex; align-items:center; gap:.5rem; }
+.section-read-controls button { font-size:.9rem; padding:.4rem .7rem; }
+.section-read-controls .read-hint { color:#555; font-size:.88rem; }
+.kicker { font-weight:700; }
+.muted { color:#555; }
+.footer-note { margin-top:3rem; border-top:2px solid #111; padding-top:1rem; }
+.inline-code-list li { margin:.25rem 0; }
+@media (max-width:700px) { table { min-width:760px; } .speech-options { grid-template-columns:1fr; } .section-read-controls { flex-direction:column; align-items:flex-start; } }
+@media print { .controls,.skip-link,.speak-section,.listen-panel,.jump-controls { display:none !important; } main { max-width:none; } a { color:inherit; text-decoration:none; } details { display:block; } details > * { display:block !important; } }
+
+.read-aloud-intro { border:2px solid #111; background:#fbfbfb; }
+.read-aloud-intro h3 { margin-top:.15rem; }
+.speak-section { font-weight:700; }
+.sticky-audio-controls { position:fixed; left:50%; bottom:1rem; transform:translateX(-50%); width:min(960px,calc(100vw - 2rem)); z-index:2000; background:#fff; border:3px solid #111; border-radius:.55rem; padding:.65rem .8rem; box-shadow:0 4px 20px rgba(0,0,0,.18); }
+.sticky-audio-inner { display:flex; align-items:center; gap:.65rem; flex-wrap:wrap; }
+.sticky-audio-label { font-weight:800; margin-right:auto; }
+.sticky-audio-status { flex:1 1 260px; min-width:180px; }
+.sticky-audio-controls button { padding:.42rem .68rem; }
+.sticky-audio-controls[hidden] { display:none !important; }
+@media (max-width:700px) { .sticky-audio-inner { align-items:stretch; } .sticky-audio-label, .sticky-audio-status { flex-basis:100%; } .sticky-audio-controls button { flex:1 1 auto; } }
+@media print { .sticky-audio-controls { display:none !important; } }
+
+.back-to-contents { margin: 1.6rem 0 .6rem; padding-top: .7rem; border-top: 1px dashed #aaa; font-size: .95rem; }
+.back-to-contents a { font-weight: 700; }
+
+/* code-output-tint v1: calm colours that separate code, output and instructor notes */
+.code-step pre { background:#f0f2f4; border:1px solid #a3abb5; border-left:4px solid #6b7785; }
+.result-box { background:#fbf8ef; border:1px solid #b9ae92; border-left:4px solid #8a7a52; }
+.result-box pre { background:#fffdf7; border:1px solid #cfc6ae; }
+.note-box { border:2px solid #1f4e79; border-left:8px solid #1f4e79; background:#e8f1fb; }
+.result-box > h3:first-child { margin-top:.1rem; }
+@media (forced-colors: active) { .code-step pre, .result-box, .result-box pre, .note-box { border-color:CanvasText; } }
+</style><style>/* Added for BAN 6403: let long inline paths wrap on narrow screens. */ p code, li code, td code, th code, summary code { overflow-wrap:anywhere; }</style></head>
+<body><a class="skip-link" href="#main-content">Skip to lab content</a>
+<header><h1>Lab 8 Companion</h1><p class="subtitle"><strong>BAN 6403: Text Analytics for Business</strong></p><p>Module 8: Text Classification</p></header>
+<div aria-label="Active read-aloud controls" class="sticky-audio-controls" hidden="" id="sticky-audio-controls" role="region"><div class="sticky-audio-inner"><span class="sticky-audio-label">Read Aloud</span><span aria-live="polite" class="sticky-audio-status" id="sticky-speech-status">Ready.</span><button id="sticky-pause" type="button">Pause</button><button id="sticky-resume" type="button">Resume</button><button id="sticky-stop" type="button">Stop</button></div></div><main id="main-content">
+<section aria-labelledby="how-to-use" class="accessibility-summary">
+<h2 id="how-to-use">How to use this companion</h2>
+<p>Open the <strong>Module 8 notebook and this companion at the same time</strong>. Work through the companion from top to bottom and run the matching notebook cells as you go. The notebook is the authoritative source for the lab sequence, code and required work. This companion explains what each step means, what to notice in the output and why the step matters.</p><div aria-labelledby="listen-title" class="listen-panel read-aloud-intro">
+<h3 id="listen-title">Read aloud: controls and directions</h3>
+<p><strong>Before you start:</strong> choose a reading mode, speed, and voice below. Select <strong>Read Aloud from Beginning</strong> to hear the full companion, or use <strong>Read Aloud from This Section</strong> beside any major section to continue from that point. While audio is playing, a floating control bar remains visible at the bottom of the page. Use <strong>Pause</strong> to pause temporarily, <strong>Resume</strong> to continue, and <strong>Stop</strong> to end the current reading.</p><p><strong>Study mode</strong> reads explanations, results, tables, and notes while skipping exact Python code. <strong>Full mode</strong> also reads Python code and verbalizes common programming symbols.</p>
+<div aria-label="Read aloud controls" class="controls">
+<button id="speak" type="button">Read Aloud from Beginning</button><button id="pause" type="button">Pause</button><button id="resume" type="button">Resume</button><button id="stop" type="button">Stop</button>
+</div>
+<div class="speech-options">
+<label for="reading-mode"><strong>Reading mode:</strong></label><select id="reading-mode"><option selected="" value="study">Study mode - explanations and results</option><option value="full">Full mode - include Python code</option></select>
+<label for="speech-rate"><strong>Speed:</strong> <span id="rate-value">1.0×</span></label><input aria-describedby="rate-help" id="speech-rate" max="2" min="0.5" step="0.1" type="range" value="1"/><span class="sr-only" id="rate-help">Adjust text-to-speech speed from one half to two times normal speed.</span>
+<label for="voice-select"><strong>Voice:</strong></label><select id="voice-select"><option value="">Browser default</option></select>
+<label for="section-select"><strong>Jump to section:</strong></label><select id="section-select"><option value="">Choose a section</option></select>
+</div>
+<div class="controls jump-controls"><button id="jump-section" type="button">Jump</button><button id="read-section" type="button">Read Aloud from Selected Section</button></div>
+<p aria-live="polite" id="speech-status" role="status"><small>Ready to read.</small></p>
+<p><small>The read-aloud feature uses your browser's speech engine. A screen reader can access the page independently of these controls.</small></p>
+</div>
+<h3>What is in the notebook, and what this companion adds</h3>
+<ul>
+<li><strong>Notebook:</strong> the exact Python code, the written questions, the Practice exercises, the checkpoint and the Submit steps.</li>
+<li><strong>Companion:</strong> plain-language explanations, the results you should expect (taken from real runs of the notebook), common mistakes and how to fix them.</li>
+<li><strong>If anything ever seems inconsistent:</strong> follow the current notebook.</li>
+</ul>
+<div aria-label="Content key" class="content-key">
+<div class="key-item"><span class="key-label">Notebook content</span>Code, official prompts, required tasks and the lab sequence come from the notebook. Each code block shows its notebook cell number.</div>
+<div class="key-item"><span class="key-label">Companion-added instructor note</span>These clearly labeled notes are explanations, cautions or study advice added by this companion. They are not extra required notebook steps unless the note says so.</div>
+</div>
+<p>This companion is designed for keyboard and screen-reader access, but it is <strong>not a separate version for students who need accessibility features</strong>. It is the same learning guide for everyone. You can read it visually, use a screen reader, or use the built-in read-aloud controls while you work in the notebook.</p>
+</section>
+<nav aria-labelledby="toc-title" class="toc"><p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="toc-title" tabindex="-1">Lab contents</h2><ol><li><a href="#how-to-use">How to use this companion</a></li><li><a href="#learning-goals">Module 8 Learning Goals</a></li><li><a href="#setup">Before You Start: Setup</a></li><li><a href="#part-1a">Part 1A: Target, Partition and Baseline (Steps 1.1–1.5)</a></li><li><a href="#part-1b">Part 1B: The Pipeline and Its Results (Steps 1.6–1.11)</a></li><li><a href="#part-2a">Part 2A: Target, Leakage and Baseline on Complaints (Steps 2.1–2.4)</a></li><li><a href="#part-2b">Part 2B: TF-IDF Logistic Regression and the LLM Labels (Steps 2.5–2.9)</a></li><li><a href="#exercises">Practice Exercises and Interpretation</a></li><li><a href="#submit">Submit</a></li><li><a href="#challenge">Part 3 Challenge (Optional)</a></li><li><a href="#problems">Common Problems</a></li><li><a href="#wrap-up">Lab Wrap-Up</a></li><li><a href="#source-note">Notebook and accessibility note</a></li></ol></nav>
+<section aria-labelledby="learning-goals" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="learning-goals">Module 8 Learning Goals</h2>
+<p>In this lab you test whether a simple model can route a complaint more reliably than a default guess. By the end of the lab you should be able to:</p>
+<ul><li><strong>Define</strong> the prediction target and the information available at prediction time.</li><li><strong>Build</strong> a majority baseline and a TF-IDF logistic regression in a scikit-learn <strong>Pipeline</strong>, and compare them with an embedding classifier and cached LLM labels on the same complaints.</li><li><strong>Evaluate</strong> validation predictions with a confusion matrix, per-class recall and macro F1.</li><li><strong>Interpret</strong> the words the model relies on and the mistakes that matter to the business.</li></ul>
+<p>The main idea: <strong>beat the baseline, on the same data, with the test set sealed.</strong></p>
+</section><section aria-labelledby="setup" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="setup">Before You Start: Setup</h2>
+<p>The main route is your own computer:</p>
+<ol><li>Open <strong>GitHub Desktop</strong> and select your course repository (<code>ban6403-</code> plus your GitHub username). This week's notebook, the saved LLM labels in <code>data/llm_outputs</code> and the saved predictions in <code>data/predictions</code> are already in your repository.</li><li>Open the repository folder in <strong>Visual Studio Code</strong> and open <code>notebooks/M08_Text_Classification.ipynb</code>.</li><li>Click the kernel picker at the top right of the notebook and choose <strong>ban6403</strong>. This lab uses numpy, pandas and scikit-learn, which are all in that environment.</li><li>Run the cells in order from the top. If you restart the kernel, run from the top again. The whole notebook runs in under a minute.</li></ol>
+<p><strong>Optional:</strong> where your network allows it, you can open the repository in GitHub Codespaces instead. Keep the folder structure unchanged so the file paths work.</p>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>You do not call an LLM</h3><p>300 validation complaints were sent to <code>gemini-3.5-flash-lite</code> once, at temperature 0, and every answer was saved. You read those saved answers, which is called a <strong>cache</strong>. No API key is needed, and everyone evaluates the same labels.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>The test split stays sealed</h3><p>You fit on <code>train</code> and check on <code>valid</code>. You save predictions for <code>test</code>, but you do not score them. Module 9 opens the test split once, after its decision policy is fixed.</p></aside>
+</section><section aria-labelledby="part-1a" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1a">Part 1A: Target, Partition and Baseline (Steps 1.1–1.5)</h2>
+<p>You start with the 23 customer messages that have text. They are made up and small enough that you can check every prediction by reading.</p>
+<h3>1.1 Load the libraries</h3>
+<section aria-label="Import the libraries for this lab" class="code-step" data-cell="1">
+<pre aria-label="Import the libraries for this lab (notebook cell 1)" tabindex="0"><code>from pathlib import Path   # file and folder paths
+import json                # reads the saved LLM records
+import numpy as np         # arrays of numbers
+import pandas as pd        # tables
+from sklearn.dummy import DummyClassifier                    # the majority baseline
+from sklearn.feature_extraction.text import TfidfVectorizer  # the Module 4 word features
+from sklearn.linear_model import LogisticRegression          # the classifier
+from sklearn.pipeline import make_pipeline                   # chains TF-IDF and the classifier
+from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, recall_score  # the metrics</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>No output. A comment after each import says what the library is for. An error here usually means the kernel is wrong; see Common problems.</p></aside>
+<h3>1.2 Set the data and output folders</h3>
+<section aria-label="Set the data and output folders" class="code-step" data-cell="3">
+<pre aria-label="Set the data and output folders (notebook cell 3)" tabindex="0"><code># Folder paths, relative to the notebooks folder.
+DATA = Path(&quot;../data&quot;)
+OUTPUT_DIR = Path(&quot;../outputs/m08&quot;)
+# Create the output folder if it does not exist yet.
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>No output. The data is one folder up, in <code>../data</code>. Your own results go to <code>../outputs/m08</code>.</p></aside>
+<h3>1.3 The target and the partition</h3>
+<p>The <strong>target</strong> is follow-up: does the message report an open problem or ask for help? The model may use only the text, because that is what the team has when a message arrives.</p>
+<section aria-label="Load messages, join the Module 2 partition and mark follow-up" class="code-step" data-cell="5">
+<pre aria-label="Load messages, join the Module 2 partition and mark follow-up (notebook cell 5)" tabindex="0"><code># Add each message&#x27;s Module 2 partition, then keep the 23 messages with text.
+feedback = pd.read_csv(DATA / &quot;raw/customer_feedback_m01.csv&quot;)
+partition = pd.read_csv(DATA / &quot;partitions/m02_partition.csv&quot;)
+feedback = feedback.merge(partition[[&quot;feedback_id&quot;, &quot;partition&quot;]], on=&quot;feedback_id&quot;)
+feedback = feedback.dropna(subset=[&quot;text&quot;]).reset_index(drop=True)
+
+# The target: &quot;yes&quot; for the 11 messages that need follow-up, &quot;no&quot; for the others.
+# np.where(condition, a, b) gives a where the condition is True and b elsewhere.
+NEEDS_FOLLOW_UP = [&quot;FB001&quot;, &quot;FB003&quot;, &quot;FB006&quot;, &quot;FB008&quot;, &quot;FB009&quot;, &quot;FB012&quot;,
+                   &quot;FB014&quot;, &quot;FB015&quot;, &quot;FB017&quot;, &quot;FB018&quot;, &quot;FB023&quot;]
+feedback[&quot;follow_up&quot;] = np.where(feedback[&quot;feedback_id&quot;].isin(NEEDS_FOLLOW_UP), &quot;yes&quot;, &quot;no&quot;)
+
+# Messages by partition and target; margins=True adds the &quot;All&quot; totals.
+pd.crosstab(feedback[&quot;partition&quot;], feedback[&quot;follow_up&quot;], margins=True)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.3" tabindex="0"><code>follow_up    no  yes  All
+partition
+development   7    6   13
+protected     5    5   10
+All          12   11   23</code></pre></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>From your Module 2 labels to follow-up</h3><p>In Module 2 you labeled messages <code>review</code>, <code>no_review</code> or <code>unclear</code>. Here <code>review</code> and <code>unclear</code> become follow-up = yes (an unclear message still needs a reply asking for details), and <code>no_review</code> becomes no. The supplied list covers all 23 messages, including the protected ones, and replaces your own Module 2 labels, so everyone uses the same target.</p></aside>
+<h3>1.4 Separate the two partitions</h3>
+<section aria-label="Make the development and protected tables" class="code-step" data-cell="7">
+<pre aria-label="Make the development and protected tables (notebook cell 7)" tabindex="0"><code># .copy() makes separate tables, so we can add prediction columns to them later.
+dev = feedback[feedback[&quot;partition&quot;].eq(&quot;development&quot;)].copy()
+protected = feedback[feedback[&quot;partition&quot;].eq(&quot;protected&quot;)].copy()
+print(&quot;development:&quot;, len(dev), &quot;| protected:&quot;, len(protected))</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Same jobs, different names</caption><thead><tr><th scope="col">Job</th><th scope="col">Course complaints (split column)</th><th scope="col">Customer messages (Module 2 partition)</th></tr></thead><tbody><tr><td>Fit vocabulary and weights</td><td>train (6,000)</td><td>development (13)</td></tr><tr><td>Check and compare models (validation)</td><td>valid (2,000)</td><td>protected (10)</td></tr><tr><td>Final check, once (test)</td><td>test (2,000), sealed until Module 9</td><td>none</td></tr><tr><td>Fresh check of a frozen workflow</td><td>Module 13 held-out set: 60 test complaints with new labels</td><td>none</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.4" tabindex="0"><code>development: 13 | protected: 10</code></pre><p>Everything the model learns comes from the 13 development messages.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>The protected messages now play the validation role</h3><p>In Module 2 the protected messages were kept apart for checking. In this lab you check and compare models on them, so they are no longer a fresh test. The customer messages have no test set.</p></aside>
+<h3>1.5 The majority baseline</h3>
+<p>The <strong>majority baseline</strong> always predicts the most common development label. It ignores the text.</p>
+<section aria-label="Fit DummyClassifier and score it on the protected messages" class="code-step" data-cell="9">
+<pre aria-label="Fit DummyClassifier and score it on the protected messages (notebook cell 9)" tabindex="0"><code># strategy=&quot;most_frequent&quot;: always predict the most common label in the data it is fitted on.
+baseline = DummyClassifier(strategy=&quot;most_frequent&quot;)
+# fit(X, y): X is the input (here a one-column table of text, which the baseline ignores), y the labels.
+baseline.fit(dev[[&quot;text&quot;]], dev[&quot;follow_up&quot;])
+# predict gives one label per protected message.
+protected[&quot;baseline&quot;] = baseline.predict(protected[[&quot;text&quot;]])
+print(&quot;baseline always predicts:&quot;, protected[&quot;baseline&quot;].unique().tolist())
+
+# Each metric takes the true labels first, then the predictions. average=&quot;macro&quot; gives macro F1.
+print(&quot;accuracy:&quot;, accuracy_score(protected[&quot;follow_up&quot;], protected[&quot;baseline&quot;]),
+      &quot;| macro F1:&quot;, round(f1_score(protected[&quot;follow_up&quot;], protected[&quot;baseline&quot;], average=&quot;macro&quot;), 2))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.5" tabindex="0"><code>baseline always predicts: [&#x27;no&#x27;]
+accuracy: 0.5 | macro F1: 0.33</code></pre><p>Half the protected messages are right, but the baseline never finds a message that needs follow-up.</p></aside>
+</section><section aria-labelledby="part-1b" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1b">Part 1B: The Pipeline and Its Results (Steps 1.6–1.11)</h2>
+<h3>1.6 TF-IDF and logistic regression in one Pipeline</h3>
+<p>A <strong>Pipeline</strong> chains TF-IDF and logistic regression. <code>fit</code> learns the vocabulary and the weights from the development messages only.</p>
+<section aria-label="Fit the Pipeline on the development messages" class="code-step" data-cell="11">
+<pre aria-label="Fit the Pipeline on the development messages (notebook cell 11)" tabindex="0"><code># The two steps, in order: TF-IDF, then logistic regression.
+pipe = make_pipeline(TfidfVectorizer(), LogisticRegression())
+# fit runs fit_transform for TF-IDF, then fits the classifier, on the development messages only.
+pipe.fit(dev[&quot;text&quot;], dev[&quot;follow_up&quot;])
+
+# named_steps gives each step by its name; vocabulary_ holds the words TF-IDF learned.
+vocab = pipe.named_steps[&quot;tfidfvectorizer&quot;].vocabulary_
+print(&quot;words learned from development messages:&quot;, len(vocab))
+print(&quot;is &#x27;package&#x27; (only in FB014) in the vocabulary?&quot;, &quot;package&quot; in vocab)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.6" tabindex="0"><code>words learned from development messages: 69
+is &#x27;package&#x27; (only in FB014) in the vocabulary? False</code></pre><p>A word that appears only in protected messages cannot be used by the model.</p></aside>
+<h3>1.7 Predict the protected messages</h3>
+<section aria-label="Predict labels and probabilities" class="code-step" data-cell="13">
+<pre aria-label="Predict labels and probabilities (notebook cell 13)" tabindex="0"><code>print(&quot;class order:&quot;, pipe.classes_)
+protected[&quot;predicted&quot;] = pipe.predict(protected[&quot;text&quot;])
+
+# predict_proba gives one column per class; [:, 1] takes column 1 (&quot;yes&quot;) for every row.
+protected[&quot;p_yes&quot;] = pipe.predict_proba(protected[&quot;text&quot;])[:, 1]
+
+# Round p_yes to 2 decimals for display only.
+protected[[&quot;feedback_id&quot;, &quot;follow_up&quot;, &quot;predicted&quot;, &quot;p_yes&quot;, &quot;text&quot;]].round({&quot;p_yes&quot;: 2})</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Protected predictions</caption><thead><tr><th scope="col">feedback_id</th><th scope="col">follow_up</th><th scope="col">predicted</th><th scope="col">p_yes</th></tr></thead><tbody><tr><td>FB013</td><td>no</td><td>yes</td><td>0.53</td></tr><tr><td>FB014</td><td>yes</td><td>no</td><td>0.48</td></tr><tr><td>FB015</td><td>yes</td><td>no</td><td>0.46</td></tr><tr><td>FB016</td><td>no</td><td>no</td><td>0.47</td></tr><tr><td>FB017</td><td>yes</td><td>yes</td><td>0.54</td></tr><tr><td>FB018</td><td>yes</td><td>yes</td><td>0.56</td></tr><tr><td>FB019</td><td>no</td><td>yes</td><td>0.51</td></tr><tr><td>FB021</td><td>no</td><td>no</td><td>0.40</td></tr><tr><td>FB023</td><td>yes</td><td>no</td><td>0.49</td></tr><tr><td>FB024</td><td>no</td><td>no</td><td>0.48</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.7" tabindex="0"><code>class order: [&#x27;no&#x27; &#x27;yes&#x27;]</code></pre><p>Your output also shows the text. The display rounds <code>p_yes</code> to 2 decimals; the column itself keeps full precision. All probabilities sit between 0.40 and 0.56: with 13 training messages the model barely leans either way.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>The three scikit-learn calls you need</h3><ul><li><code>fit(X, y)</code> learns from labeled training data (here: the vocabulary and one weight per word).</li><li><code>predict(X)</code> gives one label per new row.</li><li><code>predict_proba(X)</code> gives one probability per class, in the order of <code>classes_</code>.</li></ul><p>A Pipeline has the same three calls and runs every step in order.</p></aside>
+<h3>1.8 Confusion matrix, per-class recall and macro F1</h3>
+<p><strong>Recall</strong> for a class is the share of that class the model found. <strong>Macro F1</strong> averages the F1 score of each class, so every class counts equally.</p>
+<section aria-label="Score the Pipeline and compare with the baseline" class="code-step" data-cell="15">
+<pre aria-label="Score the Pipeline and compare with the baseline (notebook cell 15)" tabindex="0"><code># labels fixes the order of the rows and columns: &quot;no&quot; first, then &quot;yes&quot;.
+labels = [&quot;no&quot;, &quot;yes&quot;]
+cm = confusion_matrix(protected[&quot;follow_up&quot;], protected[&quot;predicted&quot;], labels=labels)
+print(pd.DataFrame(cm, index=[&quot;true no&quot;, &quot;true yes&quot;], columns=[&quot;predicted no&quot;, &quot;predicted yes&quot;]))
+
+# average=None gives one recall per class, in the order of labels. :.2f shows 2 decimals.
+recall = recall_score(protected[&quot;follow_up&quot;], protected[&quot;predicted&quot;], labels=labels, average=None)
+print(f&quot;recall: no {recall[0]:.2f} | yes {recall[1]:.2f}&quot;)
+print(&quot;macro F1: pipeline&quot;, round(f1_score(protected[&quot;follow_up&quot;], protected[&quot;predicted&quot;], average=&quot;macro&quot;), 2),
+      &quot;| baseline&quot;, round(f1_score(protected[&quot;follow_up&quot;], protected[&quot;baseline&quot;], average=&quot;macro&quot;), 2))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.8" tabindex="0"><code>          predicted no  predicted yes
+true no              3              2
+true yes             3              2
+recall: no 0.60 | yes 0.40
+macro F1: pipeline 0.49 | baseline 0.33</code></pre><p>The Pipeline finds 2 of the 5 messages that need follow-up. Accuracy is the same as the baseline (5 of 10), but macro F1 shows the difference.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Check F1 by hand</h3><p><strong>F1 = 2 × precision × recall / (precision + recall).</strong> For “yes”: the Pipeline predicts “yes” 4 times and 2 are right, so precision = 2/4 = 0.5. It finds 2 of the 5 true “yes” messages, so recall = 0.4. F1 = 2 × 0.5 × 0.4 / 0.9 = 0.44. For “no”: precision = 3/6 = 0.5 and recall = 3/5 = 0.6, so F1 = 0.55. Macro F1 = (0.44 + 0.55) / 2 = 0.49.</p></aside>
+<h3>1.9 Which words did the model learn?</h3>
+<section aria-label="List the five most negative and most positive weights" class="code-step" data-cell="17">
+<pre aria-label="List the five most negative and most positive weights (notebook cell 17)" tabindex="0"><code># The words, in the same order as the classifier&#x27;s weights.
+words = pipe.named_steps[&quot;tfidfvectorizer&quot;].get_feature_names_out()
+# coef_[0] holds one weight per word; sort from the most negative to the most positive.
+weights = pd.Series(pipe.named_steps[&quot;logisticregression&quot;].coef_[0], index=words).sort_values()
+
+# Write each word with its weight, for example &quot;please +0.28&quot; (:+.2f shows the sign and 2 decimals).
+toward_no = []
+for word, weight in weights.head(5).items():
+    toward_no.append(f&quot;{word} {weight:+.2f}&quot;)
+toward_yes = []
+for word, weight in weights.tail(5).items():
+    toward_yes.append(f&quot;{word} {weight:+.2f}&quot;)
+print(&quot;toward no: &quot;, &quot;, &quot;.join(toward_no))
+print(&quot;toward yes:&quot;, &quot;, &quot;.join(toward_yes))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.9" tabindex="0"><code>toward no:  it -0.41, arrived -0.33, no -0.33, action -0.26, required -0.26
+toward yes: working +0.18, stopped +0.18, please +0.28, still +0.29, waiting +0.29</code></pre><p>“Still waiting” and “please” make sense. “No” comes mostly from “No action is required”, which appears twice in the development messages. “It” is just a common word.</p></aside>
+<h3>1.10 Read the mistakes</h3>
+<section aria-label="Show the wrong predictions" class="code-step" data-cell="19">
+<pre aria-label="Show the wrong predictions (notebook cell 19)" tabindex="0"><code># Rows where the prediction differs from the true label.
+is_wrong = protected[&quot;predicted&quot;].ne(protected[&quot;follow_up&quot;])
+protected.loc[is_wrong, [&quot;feedback_id&quot;, &quot;follow_up&quot;, &quot;predicted&quot;, &quot;p_yes&quot;, &quot;text&quot;]].round({&quot;p_yes&quot;: 2})</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Wrong predictions</caption><thead><tr><th scope="col">feedback_id</th><th scope="col">follow_up</th><th scope="col">predicted</th><th scope="col">p_yes</th><th scope="col">text</th></tr></thead><tbody><tr><td>FB013</td><td>no</td><td>yes</td><td>0.53</td><td>Good screen, but the battery lasts only two hours.</td></tr><tr><td>FB014</td><td>yes</td><td>no</td><td>0.48</td><td>My package shows delivered, but I have not received it.</td></tr><tr><td>FB015</td><td>yes</td><td>no</td><td>0.46</td><td>The left side has no sound. Please send troubleshooting steps.</td></tr><tr><td>FB019</td><td>no</td><td>yes</td><td>0.51</td><td>Comfortable for short calls, but not for a full workday.</td></tr><tr><td>FB023</td><td>yes</td><td>no</td><td>0.49</td><td>I need help with the microphone before a meeting tomorrow.</td></tr></tbody></table></div>
+<h3>1.11 Save your outputs</h3>
+<section aria-label="Write the protected predictions to outputs/m08" class="code-step" data-cell="21">
+<pre aria-label="Write the protected predictions to outputs/m08 (notebook cell 21)" tabindex="0"><code>save_cols = [&quot;feedback_id&quot;, &quot;follow_up&quot;, &quot;baseline&quot;, &quot;predicted&quot;, &quot;p_yes&quot;, &quot;text&quot;]
+protected[save_cols].to_csv(OUTPUT_DIR / &quot;feedback_predictions.csv&quot;, index=False)
+print(&quot;saved:&quot;, OUTPUT_DIR / &quot;feedback_predictions.csv&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 1.11" tabindex="0"><code>saved: ../outputs/m08/feedback_predictions.csv</code></pre><p>The file keeps <code>p_yes</code> at full precision. The frozen copy in <code>data/predictions</code> that Module 9 reads rounds it to 4 decimals; both give the same Module 9 results.</p></aside>
+<h3>Checkpoint</h3>
+<p>Answer the two checkpoint questions in the notebook (2–3 sentences in total). Use your own numbers from steps 1.5 and 1.8.</p>
+</section><section aria-labelledby="part-2a" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-2a">Part 2A: Target, Leakage and Baseline on Complaints (Steps 2.1–2.4)</h2>
+<h3>2.1 Load the complaints and the splits</h3>
+<section aria-label="Load the complaints, add short route names, make train and valid" class="code-step" data-cell="24">
+<pre aria-label="Load the complaints, add short route names, make train and valid (notebook cell 24)" tabindex="0"><code>complaints = pd.read_csv(DATA / &quot;course/cfpb_complaints.csv&quot;)
+
+# A short route name for each product.
+SHORT = {&quot;Checking or savings account&quot;: &quot;checking&quot;, &quot;Credit card&quot;: &quot;credit_card&quot;,
+         &quot;Credit reporting or other personal consumer reports&quot;: &quot;credit_reporting&quot;,
+         &quot;Debt collection&quot;: &quot;debt_collection&quot;,
+         &quot;Money transfer, virtual currency, or money service&quot;: &quot;money_transfer&quot;, &quot;Mortgage&quot;: &quot;mortgage&quot;}
+complaints[&quot;route&quot;] = complaints[&quot;product&quot;].map(SHORT)
+# The six routes in alphabetical order; we use this order in every table.
+ROUTES = sorted(SHORT.values())
+
+# train and valid keep the row numbers of `complaints` (their index).
+train = complaints[complaints[&quot;split&quot;].eq(&quot;train&quot;)].copy()
+valid = complaints[complaints[&quot;split&quot;].eq(&quot;valid&quot;)].copy()
+
+# Complaints by route and split; margins=True adds the totals.
+pd.crosstab(complaints[&quot;route&quot;], complaints[&quot;split&quot;], margins=True)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.1" tabindex="0"><code>split             test  train  valid    All
+route
+checking           300    900    300   1500
+credit_card        300    900    300   1500
+credit_reporting   500   1500    500   2500
+debt_collection    400   1200    400   2000
+money_transfer     250    750    250   1250
+mortgage           250    750    250   1250
+All               2000   6000   2000  10000</code></pre></aside>
+<h3>2.2 Leakage audit: which columns can the model use?</h3>
+<p><strong>Leakage</strong> means using information that is not available at prediction time, or that already contains the answer.</p>
+<section aria-label="Guess the route from the issue field" class="code-step" data-cell="26">
+<pre aria-label="Guess the route from the issue field (notebook cell 26)" tabindex="0"><code>def most_common(routes):
+    &quot;&quot;&quot;Take a column of routes; return the most common one.&quot;&quot;&quot;
+    # value_counts sorts from the most common down; index[0] is the first route.
+    return routes.value_counts().index[0]
+
+# For each issue, the most common route among the training complaints.
+issue_lookup = train.groupby(&quot;issue&quot;)[&quot;route&quot;].agg(most_common)
+# Guess each validation complaint&#x27;s route from its issue.
+issue_guess = valid[&quot;issue&quot;].map(issue_lookup)
+
+routes_per_issue = complaints.groupby(&quot;issue&quot;)[&quot;route&quot;].nunique()
+print(&quot;issues:&quot;, complaints[&quot;issue&quot;].nunique(), &quot;| issues used by more than one product:&quot;,
+      (routes_per_issue &gt; 1).sum())
+# The mean of True/False values is the share of correct guesses.
+print(&quot;valid accuracy of the issue lookup:&quot;, round((issue_guess == valid[&quot;route&quot;]).mean(), 3))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.2" tabindex="0"><code>issues: 49 | issues used by more than one product: 6
+valid accuracy of the issue lookup: 0.977</code></pre><p>97.7% is not a success. The consumer picks the issue from a menu that depends on the product, so the issue already contains the answer.</p></aside>
+<h3>2.3 The label is the consumer's choice</h3>
+<section aria-label="Count credit-report issues by the product the consumer chose" class="code-step" data-cell="28">
+<pre aria-label="Count credit-report issues by the product the consumer chose (notebook cell 28)" tabindex="0"><code>report_issues = [&quot;Incorrect information on your report&quot;, &quot;Improper use of your report&quot;,
+                 &quot;Problem with a company&#x27;s investigation into an existing problem&quot;,
+                 &quot;Problem with a company&#x27;s investigation into an existing issue&quot;]
+# Complaints with a credit-report issue, counted by the product the consumer chose.
+is_report_issue = complaints[&quot;issue&quot;].isin(report_issues)
+complaints.loc[is_report_issue, &quot;route&quot;].value_counts()</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.3" tabindex="0"><code>route
+credit_reporting    2438
+credit_card          130
+mortgage              77
+checking               6</code></pre><p>213 complaints with a credit-report issue were filed under another product. The label itself is uncertain; this is <strong>label noise</strong>.</p></aside>
+<h3>2.4 Majority baseline on the complaints</h3>
+<section aria-label="Fit the baseline on train and score it on valid" class="code-step" data-cell="30">
+<pre aria-label="Fit the baseline on train and score it on valid (notebook cell 30)" tabindex="0"><code># The same baseline as 1.5, fitted on train.
+route_baseline = DummyClassifier(strategy=&quot;most_frequent&quot;)
+route_baseline.fit(train[[&quot;narrative&quot;]], train[&quot;route&quot;])
+valid[&quot;baseline_route&quot;] = route_baseline.predict(valid[[&quot;narrative&quot;]])
+print(&quot;baseline always predicts:&quot;, valid[&quot;baseline_route&quot;].unique().tolist())
+print(&quot;valid accuracy:&quot;, accuracy_score(valid[&quot;route&quot;], valid[&quot;baseline_route&quot;]),
+      &quot;| macro F1:&quot;, round(f1_score(valid[&quot;route&quot;], valid[&quot;baseline_route&quot;], average=&quot;macro&quot;), 3))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.4" tabindex="0"><code>baseline always predicts: [&#x27;credit_reporting&#x27;]
+valid accuracy: 0.25 | macro F1: 0.067</code></pre><p>Five of the six routes get an F1 of zero.</p></aside>
+</section><section aria-labelledby="part-2b" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-2b">Part 2B: TF-IDF Logistic Regression and the LLM Labels (Steps 2.5–2.9)</h2>
+<h3>2.5 TF-IDF logistic regression on the complaints</h3>
+<p>The TF-IDF settings are words and two-word phrases, <code>min_df=5</code>, and <code>stop_words=["xx", "xxxx"]</code>, which leaves the two most common redaction marks out of the vocabulary. Fitting takes a few seconds.</p>
+<section aria-label="Fit the Pipeline on train and score it on valid" class="code-step" data-cell="32">
+<pre aria-label="Fit the Pipeline on train and score it on valid (notebook cell 32)" tabindex="0"><code>tfidf_pipe = make_pipeline(
+    TfidfVectorizer(
+        ngram_range=(1, 2),         # words and two-word phrases
+        min_df=5,                   # keep terms that appear in at least 5 training complaints
+        stop_words=[&quot;xx&quot;, &quot;xxxx&quot;],  # drop the redaction marks
+    ),
+    LogisticRegression(max_iter=1000),  # max_iter: enough steps for the fit to finish
+)
+# Fit on train only, then predict valid.
+tfidf_pipe.fit(train[&quot;narrative&quot;], train[&quot;route&quot;])
+valid[&quot;tfidf_route&quot;] = tfidf_pipe.predict(valid[&quot;narrative&quot;])
+print(&quot;vocabulary size:&quot;, len(tfidf_pipe.named_steps[&quot;tfidfvectorizer&quot;].vocabulary_))
+print(&quot;valid accuracy:&quot;, round(accuracy_score(valid[&quot;route&quot;], valid[&quot;tfidf_route&quot;]), 3),
+      &quot;| macro F1:&quot;, round(f1_score(valid[&quot;route&quot;], valid[&quot;tfidf_route&quot;], average=&quot;macro&quot;), 3))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.5" tabindex="0"><code>vocabulary size: 33058
+valid accuracy: 0.803 | macro F1: 0.803</code></pre><p>Macro F1 rises from 0.067 to 0.803.</p></aside>
+<h3>2.6 Where does the model go wrong?</h3>
+<section aria-label="Show the validation confusion matrix and recall per route" class="code-step" data-cell="34">
+<pre aria-label="Show the validation confusion matrix and recall per route (notebook cell 34)" tabindex="0"><code># Rows = true routes, columns = predicted routes, both in ROUTES order.
+cm = confusion_matrix(valid[&quot;route&quot;], valid[&quot;tfidf_route&quot;], labels=ROUTES)
+print(pd.DataFrame(cm, index=ROUTES, columns=ROUTES).to_string())
+print()
+
+# One recall per route, in ROUTES order.
+recalls = recall_score(valid[&quot;route&quot;], valid[&quot;tfidf_route&quot;], labels=ROUTES, average=None)
+pd.Series(recalls, index=ROUTES, name=&quot;recall&quot;).round(3)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.6" tabindex="0"><code>                  checking  credit_card  credit_reporting  debt_collection  money_transfer  mortgage
+checking               234           21                 6                5              34         0
+credit_card             33          227                21                8               6         5
+credit_reporting         4           15               431               40               1         9
+debt_collection          9           11                74              303               0         3
+money_transfer          62            7                 0                1             179         1
+mortgage                 1            2                12                2               1       232
+
+checking            0.780
+credit_card         0.757
+credit_reporting    0.862
+debt_collection     0.758
+money_transfer      0.716
+mortgage            0.928</code></pre><p>The largest mistakes sit on product boundaries: 74 debt collection complaints went to credit reporting, and 62 money transfer complaints went to checking.</p></aside>
+<h3>2.7 Words that push toward each route</h3>
+<section aria-label="List the six largest weights per route" class="code-step" data-cell="36">
+<pre aria-label="List the six largest weights per route (notebook cell 36)" tabindex="0"><code>features = tfidf_pipe.named_steps[&quot;tfidfvectorizer&quot;].get_feature_names_out()
+# coef_ has one row of weights per route, in the order of tfidf_pipe.classes_.
+coefs = tfidf_pipe.named_steps[&quot;logisticregression&quot;].coef_
+# zip pairs each route with its row of weights, in order.
+for route, route_weights in zip(tfidf_pipe.classes_, coefs):
+    # argsort returns positions from smallest weight to largest; reversing ([::-1]) and taking six ([:6])
+    # selects the positions of the six largest weights.
+    top_positions = np.argsort(route_weights)[::-1][:6]
+    # features[top_positions] retrieves the words at those positions.
+    top_words = &quot;, &quot;.join(features[top_positions])
+    # {route:&gt;17} right-aligns the route name in 17 characters.
+    print(f&quot;{route:&gt;17}: {top_words}&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.7" tabindex="0"><code>         checking: bank, chime, my account, funds, account, the bank
+      credit_card: card, credit card, credit, citi, interest, capital one
+ credit_reporting: report, experian, credit, equifax, my credit, inquiries
+  debt_collection: debt, collection, the debt, collections, this account, my credit
+   money_transfer: paypal, money, app, transfer, funds, cash app
+         mortgage: mortgage, loan, escrow, insurance, payment, my mortgage</code></pre><p>Most words make business sense. Company names (Chime, Citi, Capital One) work here but are fragile. “My credit” pushes toward both credit reporting and debt collection.</p></aside>
+<h3>2.8 Save validation and test probabilities for Module 9</h3>
+<section aria-label="Write probability tables for valid and test" class="code-step" data-cell="38">
+<pre aria-label="Write probability tables for valid and test (notebook cell 38)" tabindex="0"><code>def probability_table(rows):
+    &quot;&quot;&quot;Take some complaints; return their IDs, true route, predicted route and one probability per route.&quot;&quot;&quot;
+    # One column per route, named p_checking, p_credit_card, ...
+    columns = []
+    for route in tfidf_pipe.classes_:
+        columns.append(&quot;p_&quot; + route)
+    proba = pd.DataFrame(tfidf_pipe.predict_proba(rows[&quot;narrative&quot;]), columns=columns)
+
+    table = rows[[&quot;complaint_id&quot;, &quot;split&quot;, &quot;route&quot;]].reset_index(drop=True)
+    table[&quot;tfidf_route&quot;] = tfidf_pipe.predict(rows[&quot;narrative&quot;])
+    # axis=1 puts the two tables side by side.
+    return pd.concat([table, proba], axis=1)
+
+# Save valid and test predictions; the test predictions are not scored here.
+test = complaints[complaints[&quot;split&quot;].eq(&quot;test&quot;)]
+probability_table(valid).to_csv(OUTPUT_DIR / &quot;route_tfidf_valid.csv&quot;, index=False)
+probability_table(test).to_csv(OUTPUT_DIR / &quot;route_tfidf_test.csv&quot;, index=False)
+print(&quot;saved:&quot;, OUTPUT_DIR / &quot;route_tfidf_valid.csv&quot;)
+print(&quot;saved:&quot;, OUTPUT_DIR / &quot;route_tfidf_test.csv&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.8" tabindex="0"><code>saved: ../outputs/m08/route_tfidf_valid.csv
+saved: ../outputs/m08/route_tfidf_test.csv</code></pre><p>The test predictions are saved but not scored. Your files keep every probability at full precision. The frozen copy in <code>data/predictions</code> rounds them to 4 decimals. Module 9 reads that copy, so its results do not depend on your run.</p></aside>
+<h3>2.9 Load the cached LLM labels</h3>
+<p>The prompt <code>m08_route_v1</code> gives a definition of each product and asks for exactly one label. Only the narrative was sent. The 300 complaints keep each product&#39;s share and the share of Module 9 urgent complaints.</p>
+<section aria-label="Read the LLM cache and join it to the validation complaints" class="code-step" data-cell="40">
+<pre aria-label="Read the LLM cache and join it to the validation complaints (notebook cell 40)" tabindex="0"><code># Read the 300 saved records, one JSON record per line (as in Lab 7).
+llm_records = []
+for line in (DATA / &quot;llm_outputs/m08_route_valid_gemini.jsonl&quot;).read_text().splitlines():
+    llm_records.append(json.loads(line))
+
+# For each record: count errors, and keep the ID and the LLM&#x27;s route.
+n_errors = 0
+complaint_ids = []
+llm_routes = []
+for rec in llm_records:
+    if rec[&quot;error&quot;] is not None:
+        n_errors += 1
+    complaint_ids.append(int(rec[&quot;id&quot;]))
+    llm_routes.append(SHORT[rec[&quot;parsed&quot;][&quot;product&quot;]])
+
+first = llm_records[0]
+print(&quot;records:&quot;, len(llm_records), &quot;| errors:&quot;, n_errors)
+print(&quot;model:&quot;, first[&quot;model_version&quot;], &quot;| prompt:&quot;, first[&quot;prompt_version&quot;], &quot;| temperature:&quot;, first[&quot;temperature&quot;])
+
+# The 300 validation complaints with their LLM route.
+llm = pd.DataFrame({&quot;complaint_id&quot;: complaint_ids, &quot;llm_route&quot;: llm_routes})
+subset = valid.merge(llm, on=&quot;complaint_id&quot;)
+print(&quot;complaints in the LLM subset:&quot;, len(subset))
+subset[&quot;route&quot;].value_counts()</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Complaints per route in the LLM subset</caption><thead><tr><th scope="col">route</th><th scope="col">count</th></tr></thead><tbody><tr><td>credit_reporting</td><td>75</td></tr><tr><td>debt_collection</td><td>60</td></tr><tr><td>credit_card</td><td>45</td></tr><tr><td>checking</td><td>45</td></tr><tr><td>mortgage</td><td>38</td></tr><tr><td>money_transfer</td><td>37</td></tr></tbody></table></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.9" tabindex="0"><code>records: 300 | errors: 0
+model: gemini-3.5-flash-lite | prompt: m08_route_v1 | temperature: 0.0
+complaints in the LLM subset: 300</code></pre><p>Each record stores the model, the prompt version, the date and the time taken. <code>data/llm_outputs/README.md</code> describes every field. You will compare every method on these same 300 validation complaints.</p></aside>
+</section><section aria-labelledby="exercises" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="exercises">Practice Exercises and Interpretation</h2>
+<div class="assignment-box"><h3>Complete independently</h3><p>The exercises are intentionally not solved in this companion. Use the exact instructions in the notebook. Each exercise cell starts with <code># Exercise N: your code here</code>.</p><h3>Exercise 1: an embedding classifier</h3><p>Load the saved sentence embeddings (one vector per complaint, in the row order of the complaint file). Fit logistic regression on the <code>train</code> rows. Predict the <code>valid</code> rows into <code>valid["emb_route"]</code>. Then report accuracy, macro F1 and recall per route.</p><p><strong>What to check:</strong> use <code>.astype("float32")</code>, which turns the compact saved numbers into ordinary numbers for the classifier. Select rows with <code>cfpb_vectors[train.index]</code> and <code>cfpb_vectors[valid.index]</code>. Your macro F1 should be in the same range as step 2.5; a value near 0.067 means the rows and labels do not line up.</p><h3>Exercise 2: compare all four methods on the same complaints</h3><p>Merge the embedding predictions into <code>subset</code> and add the majority guess. Make one table with macro F1 and the recall per route for majority, TF-IDF, embedding and LLM. Then print the macro F1 of the non-LLM methods on all 2,000 validation complaints.</p><p><strong>What to check:</strong> every row uses the same 300 complaints. The majority row has recall 1.0 for credit reporting and 0 elsewhere. Pass <code>labels=ROUTES</code> so the recall columns are in a fixed order. The notebook shows one worked row for TF-IDF: a dictionary with the method name, the macro F1 and one recall per route. <code>zip</code> pairs each route with its recall. Make one such row per method, collect the rows in a list and use <code>pd.DataFrame(rows)</code>.</p><h3>Exercise 3: inspect five consequential errors</h3><p>Sort the TF-IDF errors in <code>subset</code> by the model's confidence. Pick five that would matter to the business. Show all three methods' routes and the start of each narrative. Then write one line per complaint: model error or label question, and the cost of the misroute.</p><p><strong>What to check:</strong> confidence is the largest probability per row, from <code>.max(axis=1)</code>. It ranks how sure the model is; it does not show that a prediction is correct or that its cost is high. A complaint where all three methods agree with each other but not with the label is a good candidate for a label question. Read the text before you decide.</p></div>
+<h3>Practice interpretation</h3>
+<p>Write 3–5 sentences that use your own outputs. Answer the three questions in the notebook:</p>
+<ul><li>Using 2.2 and 2.3, which columns did you exclude, and why is the <code>product</code> label itself uncertain? Give a number.</li><li>Using 2.4–2.6 and Exercise 2, how much better than the majority baseline is each method in macro F1, and which route is hardest? Which method would you use, and why?</li><li>Using Exercise 3, how many of your five errors are label questions rather than model errors? What does that mean for the macro F1 numbers?</li></ul>
+</section><section aria-labelledby="submit" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="submit">Submit</h2>
+<ol><li>Run the whole notebook from the top (<strong>Restart</strong>, then <strong>Run All</strong>) and confirm there are no errors.</li><li>Check that every <strong>Your answer</strong> cell is filled.</li><li>Add the one-line AI-use note in the Submit cell if you used an AI tool.</li><li>Save the notebook, so the outputs are saved in the file.</li><li>In GitHub Desktop, write a short summary such as "Lab 8 complete", click <strong>Commit to main</strong>, then <strong>Push origin</strong>.</li><li>Push before the deadline. You upload nothing to Canvas: the instructor grades the saved notebook, with its outputs, in your repository as it is at the deadline.</li></ol>
+<p>Lab notebook 8 is graded with the course Lab Notebook rubric in Canvas (the same rubric for every lab).</p>
+</section><section aria-labelledby="challenge" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="challenge">Part 3 Challenge (Optional)</h2>
+<p>These cells are optional. Run them after the required work, in order.</p>
+<h3>A. Naive Bayes in the same Pipeline</h3>
+<section aria-label="Optional: Swap in Multinomial Naive Bayes" class="code-step" data-cell="50">
+<pre aria-label="Optional: Swap in Multinomial Naive Bayes (notebook cell 50)" tabindex="0"><code>from sklearn.naive_bayes import MultinomialNB
+
+# Same TF-IDF settings as 2.5; only the classifier changes.
+nb_pipe = make_pipeline(TfidfVectorizer(ngram_range=(1, 2), min_df=5, stop_words=[&quot;xx&quot;, &quot;xxxx&quot;]), MultinomialNB())
+nb_pipe.fit(train[&quot;narrative&quot;], train[&quot;route&quot;])
+nb_pred = nb_pipe.predict(valid[&quot;narrative&quot;])
+print(&quot;Naive Bayes valid macro F1:&quot;, round(f1_score(valid[&quot;route&quot;], nb_pred, average=&quot;macro&quot;), 3))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step A." tabindex="0"><code>Naive Bayes valid macro F1: 0.721</code></pre><p>Faster and simpler, but lower than logistic regression here.</p></aside>
+<h3>B. A regularization path</h3>
+<section aria-label="Optional: Refit logistic regression with four values of C" class="code-step" data-cell="52">
+<pre aria-label="Optional: Refit logistic regression with four values of C (notebook cell 52)" tabindex="0"><code># Fit TF-IDF once on train (fit_transform), and only transform valid.
+vectorizer = TfidfVectorizer(ngram_range=(1, 2), min_df=5, stop_words=[&quot;xx&quot;, &quot;xxxx&quot;])
+X_train = vectorizer.fit_transform(train[&quot;narrative&quot;])
+X_valid = vectorizer.transform(valid[&quot;narrative&quot;])
+
+for C in [0.1, 1, 10, 100]:
+    model = LogisticRegression(C=C, max_iter=1000)
+    model.fit(X_train, train[&quot;route&quot;])
+    macro_f1 = f1_score(valid[&quot;route&quot;], model.predict(X_valid), average=&quot;macro&quot;)
+    # {C:&gt;5} right-aligns C in 5 characters; :.3f shows 3 decimals.
+    print(f&quot;C = {C:&gt;5}: valid macro F1 {macro_f1:.3f}&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step B." tabindex="0"><code>C =   0.1: valid macro F1 0.749
+C =     1: valid macro F1 0.803
+C =    10: valid macro F1 0.801
+C =   100: valid macro F1 0.797</code></pre><p>Strong shrinking (C = 0.1) costs about 5 points. Above the default, the score barely moves. Choosing C on <code>valid</code> is fine; choosing it on <code>test</code> is not.</p></aside>
+<h3>C. Fine-tune a small transformer</h3>
+<p>This part has no code cell. Fine-tuning trains all the weights of a small language model, such as DistilBERT, on your labels. It usually needs a GPU and the <code>transformers</code> and <code>torch</code> packages, which are not in the course environment. The notebook links a guide. If you try it, fit on <code>train</code>, choose settings on <code>valid</code>, and leave <code>test</code> sealed.</p>
+</section><section aria-labelledby="problems" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="problems">Common Problems</h2>
+<p>If a cell fails, read the last line of the error message first. Then find it below.</p>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>FileNotFoundError: data/llm_outputs/m08_route_valid_gemini.jsonl</h3><p>This file has been in your repository since Week 1, so it was moved or deleted. Open the notebook from the <code>notebooks</code> folder of your repository. If GitHub Desktop lists the file under <strong>Changes</strong>, right-click it and choose <strong>Discard changes</strong>. Otherwise download it again from the course template on GitHub and put it back in the same folder.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>KeyError: 'emb_route' in Exercise 2</h3><p>Exercise 1 must store its predictions in <code>valid["emb_route"]</code>. Run Exercise 1 first, then merge into <code>subset</code>.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Merge adds columns ending in _x and _y</h3><p>You ran a merge cell twice. Restart the kernel and run from the top.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>ConvergenceWarning from LogisticRegression</h3><p>Keep <code>max_iter=1000</code> as in the notebook. The warning does not stop the notebook, but your numbers may differ slightly.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>My numbers differ from this page</h3><p>Check that you did not change the TF-IDF settings or the splits. Restart the kernel and run from the top. A different scikit-learn version can change a count by one or two.</p></aside>
+<p>Still stuck? Post the error message and the cell number in the course Q&amp;A discussion. Do not post your full answers.</p>
+</section><section aria-labelledby="wrap-up" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="wrap-up">Lab Wrap-Up</h2>
+<p>In this lab you used one pattern on customer messages and real complaints:</p>
+<ul class="inline-code-list"><li><strong>Define:</strong> name the target, check the label, and use only information available at prediction time.</li><li><strong>Baseline:</strong> a default guess sets the bar; macro F1 shows what accuracy hides.</li><li><strong>Compare:</strong> score every method on the same complaints, and read recall per route.</li><li><strong>Read errors:</strong> decide whether each mistake is the model's or the label's, and what it costs.</li></ul>
+<p>Module 9 turns predicted probabilities into a decision for an urgent-complaint queue and opens the sealed test split once.</p>
+</section>
+<section aria-labelledby="source-note" class="footer-note"><p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="source-note">Notebook and accessibility note</h2><p>The current Module 8 notebook is authoritative for Python code, sequence, prompts and required work. This companion adds explanation and accessible presentation without changing those requirements. Expected results come from running the notebook on the current course data.</p><p>The page is designed for keyboard navigation, screen readers, browser text-to-speech and ordinary visual reading. Important instructional information is presented as text rather than depending on a visual demonstration.</p></section>
+</main><script>
+(function() {
+  const synth = window.speechSynthesis;
+  const speakBtn = document.getElementById('speak');
+  const pauseBtn = document.getElementById('pause');
+  const resumeBtn = document.getElementById('resume');
+  const stopBtn = document.getElementById('stop');
+  const rate = document.getElementById('speech-rate');
+  const rateValue = document.getElementById('rate-value');
+  const mode = document.getElementById('reading-mode');
+  const voiceSelect = document.getElementById('voice-select');
+  const sectionSelect = document.getElementById('section-select');
+  const jumpSection = document.getElementById('jump-section');
+  const readSection = document.getElementById('read-section');
+  const status = document.getElementById('speech-status');
+  const stickyControls = document.getElementById('sticky-audio-controls');
+  const stickyPause = document.getElementById('sticky-pause');
+  const stickyResume = document.getElementById('sticky-resume');
+  const stickyStop = document.getElementById('sticky-stop');
+  const stickyStatus = document.getElementById('sticky-speech-status');
+  let chunks = [], index = 0, stopped = true, voices = [];
+  function setStatus(t){ status.innerHTML='<small>'+t+'</small>'; if(stickyStatus) stickyStatus.textContent=t; }
+  function populateVoices(){ if(!synth)return; voices=synth.getVoices(); const cur=voiceSelect.value; voiceSelect.innerHTML='<option value="">Browser default</option>'; voices.forEach((v,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=v.name+' ('+v.lang+')';voiceSelect.appendChild(o);}); if([...voiceSelect.options].some(o=>o.value===cur))voiceSelect.value=cur; }
+  function codeToSpeech(text){ return text
+    .replace(/\\/g,' backslash ').replace(/_/g,' underscore ')
+    .replace(/==/g,' equals equals ').replace(/!=/g,' not equals ').replace(/>=/g,' greater than or equal to ').replace(/<=/g,' less than or equal to ')
+    .replace(/&/g,' and ').replace(/\|/g,' or ').replace(/>/g,' greater than ').replace(/</g,' less than ').replace(/=/g,' equals ')
+    .replace(/\(/g,' open parenthesis ').replace(/\)/g,' close parenthesis ').replace(/\[/g,' open bracket ').replace(/\]/g,' close bracket ').replace(/\{/g,' open brace ').replace(/\}/g,' close brace ')
+    .replace(/\./g,' dot ').replace(/,/g,' comma ').replace(/:/g,' colon ').replace(/;/g,' semicolon ').replace(/\+/g,' plus ').replace(/-/g,' minus ').replace(/\*/g,' star ').replace(/\//g,' slash ').replace(/%/g,' percent ')
+    .replace(/"/g,' quote ').replace(/'/g,' single quote ').replace(/\s+/g,' ').trim(); }
+  function tableToSpeech(table){ const cap=table.querySelector('caption'); const rows=[...table.querySelectorAll('tr')]; const out=[]; if(cap)out.push(cap.innerText.trim()+'.'); rows.forEach((row,r)=>{const cells=[...row.querySelectorAll('th,td')].map(c=>c.innerText.trim()); if(!cells.length)return; if(r===0)out.push('Columns: '+cells.join(', ')+'.'); else out.push('Row '+r+': '+cells.join(', ')+'.');}); return out.join(' '); }
+  function buildChunks(startElement){ const includeCode=mode.value==='full'; const main=document.getElementById('main-content'); const items=[]; let started=!startElement; main.querySelectorAll('h2,h3,h4,p,li,table,pre').forEach(el=>{ if(!started){if(el===startElement)started=true;else return;} if(el.closest('.listen-panel')||el.closest('nav')||el.closest('.controls')||el.closest('.section-read-controls')||el.closest('.back-to-contents'))return; if(el.closest('details:not([open])'))return; if(el.matches('pre')){if(!includeCode)return; const c=el.innerText.trim(); if(c)items.push({text:'Python code. '+codeToSpeech(c),el}); return;} if(el.matches('table')){const t=tableToSpeech(el);if(t)items.push({text:t,el});return;} const t=el.innerText.replace(/\s+/g,' ').trim(); if(t)items.push({text:t,el}); }); return items; }
+  function speakNext(){ if(!synth||stopped)return; if(index>=chunks.length){stopped=true;setStatus('Finished reading the companion.');if(stickyControls) stickyControls.hidden=true;return;} const cur=chunks[index]; const u=new SpeechSynthesisUtterance(cur.text);u.rate=parseFloat(rate.value); if(voiceSelect.value!==''&&voices[Number(voiceSelect.value)])u.voice=voices[Number(voiceSelect.value)];u.onstart=()=>setStatus('Reading item '+(index+1)+' of '+chunks.length+' at '+rate.value+'×.');u.onend=()=>{index++;speakNext();};u.onerror=e=>{if(e.error!=='canceled'&&e.error!=='interrupted'){setStatus('Speech stopped because the browser reported: '+e.error+'.');stopped=true;}}; synth.speak(u); }
+  function startReading(el,label){if(!synth){setStatus('This browser does not provide the Web Speech API.');return;}synth.cancel();chunks=buildChunks(el||null);index=0;stopped=false;if(stickyControls) stickyControls.hidden=false;setStatus(label?'Starting from '+label+'.':'Starting from the beginning.');setTimeout(speakNext,50);}
+  function setupSections(){ const hs=[...document.querySelectorAll('#main-content h2[id]')].filter(h=>!h.closest('.listen-panel')&&!h.closest('nav')); hs.forEach(h=>{const sectionName=h.innerText.trim();const o=document.createElement('option');o.value=h.id;o.textContent=sectionName;sectionSelect.appendChild(o);const d=document.createElement('div');d.className='section-read-controls';d.setAttribute('aria-label','Read-aloud controls for '+sectionName);const b=document.createElement('button');b.type='button';b.className='speak-section';b.textContent='Read Aloud from This Section';b.setAttribute('aria-label','Read aloud from this section: '+sectionName);b.addEventListener('click',()=>startReading(h,sectionName));const hint=document.createElement('span');hint.className='read-hint';hint.textContent='Reads continuously from this section to the end.';d.appendChild(b);d.appendChild(hint);h.insertAdjacentElement('afterend',d);}); }
+  speakBtn.addEventListener('click',()=>startReading(null,'the beginning'));
+  function pauseReading(){if(synth&&synth.speaking&&!synth.paused){synth.pause();setStatus('Paused.');}}
+  function resumeReading(){if(synth&&synth.paused){synth.resume();setStatus('Resumed. Speed changes apply to the next reading item.');}}
+  function stopReading(){stopped=true;if(synth)synth.cancel();setStatus('Stopped.');if(stickyControls) stickyControls.hidden=true;}
+  pauseBtn.addEventListener('click',pauseReading);
+  resumeBtn.addEventListener('click',resumeReading);
+  stopBtn.addEventListener('click',stopReading);
+  if(stickyPause) stickyPause.addEventListener('click',pauseReading);
+  if(stickyResume) stickyResume.addEventListener('click',resumeReading);
+  if(stickyStop) stickyStop.addEventListener('click',stopReading);
+  rate.addEventListener('input',()=>{rateValue.textContent=Number(rate.value).toFixed(1)+'×';if(synth&&synth.speaking)setStatus('Speed set to '+rateValue.textContent+'. It will apply to the next reading item.');});
+  mode.addEventListener('change',()=>setStatus(mode.value==='full'?'Full mode selected. Python code will be read aloud.':'Study mode selected. Exact Python code will be skipped.'));
+  jumpSection.addEventListener('click',()=>{const h=document.getElementById(sectionSelect.value);if(h){h.scrollIntoView({behavior:'smooth',block:'start'});h.setAttribute('tabindex','-1');h.focus();}});
+  readSection.addEventListener('click',()=>{const h=document.getElementById(sectionSelect.value);if(h)startReading(h,h.innerText.trim());});
+  setupSections(); populateVoices(); if(synth&&'onvoiceschanged' in synth)synth.onvoiceschanged=populateVoices;
+})();
+</script></body></html>

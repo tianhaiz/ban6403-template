@@ -1,0 +1,20 @@
+{
+  "cache": "cfpb_minilm.npy",
+  "ids_file": "cfpb_minilm_ids.csv",
+  "rows": 10000,
+  "dimensions": 384,
+  "dtype": "float16",
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "model_license": "apache-2.0",
+  "runtime": "onnxruntime 1.23.2 (official onnx/model.onnx export), CPU",
+  "pooling": "mean over tokens, using the attention mask",
+  "normalized": "yes, L2 (vectors have length 1)",
+  "max_tokens": 256,
+  "rows_truncated": 4157,
+  "input": "data/course/cfpb_complaints.csv column 'narrative', unchanged (no cleaning)",
+  "source_sha256": "f6a7bfdcae91598b1e218bdb08d018da357b32715e45ba90d87bc9ff738080d7",
+  "cache_sha256": "e58148975682cdad223387418a51058e95effbf79741451a829e13364ace2fba",
+  "built": "2026-10-13",
+  "seconds": 150.3
+}

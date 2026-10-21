@@ -1,0 +1,9 @@
+{
+  "kind": "authored synthetic preparation counterexamples",
+  "source": "Instructor-authored for BAN 6403 M03, October 2026",
+  "observed_customer_data": false,
+  "not_feedback_ids": "TC IDs are test cases, never additional FB records or evaluation examples.",
+  "rows": 6,
+  "sha256": "485f99f01ffd0d1bbd3b8507d160dc225105d2a54d5b87dbc284dd25342bae24",
+  "scope": "Demonstrate transformations and their limits. No model predictions or benchmark results."
+}

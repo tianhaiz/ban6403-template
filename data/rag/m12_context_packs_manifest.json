@@ -1,0 +1,30 @@
+{
+  "built": "2026-10-14",
+  "script": "make_context_packs.py",
+  "script_sha256_16": "ea135c9996f65a79",
+  "retriever": "dense: cosine of all-MiniLM-L6-v2 vectors (passage search_text = title + '. ' + text); ties keep knowledge-base order",
+  "lexical_for_comparison": "TfidfVectorizer(ngram_range=(1, 2)) fitted on search_text of all passages",
+  "pack_format": "blocks '[passage_id] title | effective date | status: s' + newline + text, joined by a blank line, in rank order",
+  "k_values": [
+    1,
+    3,
+    8
+  ],
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "inputs": {
+    "m12_kb_passages.csv": "d9d1bc3ef1e4cbb8",
+    "m12_questions.csv": "078a8a50beea568a"
+  },
+  "caches": {
+    "m12_passages_minilm.npy": "6cf9778cf876084a",
+    "m12_questions_minilm.npy": "2049967d40122973"
+  },
+  "outputs": {
+    "m12_retrieval_results.csv": "957117b030b079a1",
+    "prompts/m12_input_ungrounded.csv": "8f7ee51477a407f9",
+    "prompts/m12_input_grounded_k1.csv": "a88c1257735d0673",
+    "prompts/m12_input_grounded_k3.csv": "befdd36330199eae",
+    "prompts/m12_input_grounded_k8.csv": "4b28c13397158c0f"
+  }
+}

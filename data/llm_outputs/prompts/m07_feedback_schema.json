@@ -1,0 +1,21 @@
+{
+  "type": "OBJECT",
+  "properties": {
+    "mentions": {
+      "type": "ARRAY",
+      "items": {
+        "type": "OBJECT",
+        "properties": {
+          "aspect": {"type": "STRING", "enum": ["device_performance", "accessories", "delivery", "billing_refund", "support_service", "appearance"]},
+          "sentiment": {"type": "STRING", "enum": ["positive", "negative", "neutral"]},
+          "evidence_span": {"type": "STRING"}
+        },
+        "required": ["aspect", "sentiment", "evidence_span"],
+        "propertyOrdering": ["aspect", "sentiment", "evidence_span"]
+      }
+    },
+    "overall_sentiment": {"type": "STRING", "enum": ["positive", "negative", "mixed", "neutral"]}
+  },
+  "required": ["mentions", "overall_sentiment"],
+  "propertyOrdering": ["mentions", "overall_sentiment"]
+}

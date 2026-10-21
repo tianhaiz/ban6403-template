@@ -1,0 +1,21 @@
+{
+  "type": "OBJECT",
+  "properties": {
+    "mentions": {
+      "type": "ARRAY",
+      "items": {
+        "type": "OBJECT",
+        "properties": {
+          "aspect": {"type": "STRING", "enum": ["fit_size", "fabric_quality", "style_look", "comfort", "color", "price_value"]},
+          "sentiment": {"type": "STRING", "enum": ["positive", "negative", "mixed"]},
+          "evidence_span": {"type": "STRING"}
+        },
+        "required": ["aspect", "sentiment", "evidence_span"],
+        "propertyOrdering": ["aspect", "sentiment", "evidence_span"]
+      }
+    },
+    "overall_sentiment": {"type": "STRING", "enum": ["positive", "negative", "mixed"]}
+  },
+  "required": ["mentions", "overall_sentiment"],
+  "propertyOrdering": ["mentions", "overall_sentiment"]
+}

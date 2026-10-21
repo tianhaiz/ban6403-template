@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Lab 2 Companion - BAN 6403</title><style>
+:root { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.62; }
+* { box-sizing: border-box; }
+body { margin:0; background:#fff; color:#111; }
+a { color:#0645ad; text-decoration-thickness:.12em; }
+a:focus, button:focus, summary:focus, pre:focus, .table-wrap:focus, select:focus, input:focus { outline:3px solid currentColor; outline-offset:3px; }
+.skip-link { position:absolute; left:-9999px; }
+.skip-link:focus { left:1rem; top:1rem; background:#fff; padding:.75rem; z-index:1000; border:2px solid #111; }
+header { border-bottom:2px solid #111; padding:1.5rem max(1rem, calc((100vw - 1060px)/2)); }
+header h1 { margin:0 0 .35rem; }
+.subtitle { margin:.2rem 0 0; font-size:1.08rem; }
+main { max-width:1060px; margin:0 auto; padding:1.5rem 1rem 4rem; }
+h2 { margin-top:2.6rem; padding-top:.55rem; border-top:1px solid #bbb; }
+h3 { margin-top:1.7rem; }
+.accessibility-summary, .toc, .note-box, .result-box, .try-box, .assignment-box, .summary-box, .listen-panel, .solution-box { border:1px solid #555; border-radius:.45rem; padding:1rem 1.1rem; margin:1.15rem 0; }
+.note-box { border-left:6px solid #1f4e79; background:#f4f8fc; position:relative; }
+.note-label { display:inline-block; font-size:.78rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; border:2px solid #1f4e79; border-radius:.25rem; padding:.22rem .45rem; margin:0 0 .55rem; background:#fff; }
+.note-box h3 { margin-top:.15rem; }
+.content-key { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:.8rem; margin:1rem 0; }
+.key-item { border:1px solid #777; border-radius:.4rem; padding:.8rem .9rem; }
+.key-label { font-weight:800; display:block; margin-bottom:.25rem; }
+.try-box { border-left:5px solid #111; }
+.result-box { background:#fafafa; }
+.solution-box summary { cursor:pointer; font-weight:700; }
+.solution-box[open] summary { margin-bottom:.8rem; }
+.controls { display:flex; gap:.6rem; flex-wrap:wrap; margin:1rem 0; }
+button { font:inherit; padding:.55rem .8rem; border:2px solid #111; background:#fff; border-radius:.3rem; cursor:pointer; }
+pre { overflow:auto; border:1px solid #777; padding:1rem; background:#f6f6f6; white-space:pre; }
+code { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.code-step { margin:1rem 0 1.55rem; }
+.code-purpose { margin-bottom:.4rem; }
+.table-wrap { overflow-x:auto; margin:.8rem 0; }
+table { border-collapse:collapse; width:100%; min-width:620px; }
+th, td { border:1px solid #666; padding:.5rem; text-align:left; vertical-align:top; }
+th { font-weight:700; }
+caption { font-weight:700; text-align:left; margin-bottom:.45rem; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.speech-options { display:grid; grid-template-columns:max-content minmax(180px,1fr); gap:.65rem .9rem; align-items:center; max-width:800px; }
+.speech-options select, .speech-options input[type="range"] { width:100%; font:inherit; }
+#speech-status { min-height:1.5em; }
+.section-read-controls { margin:.25rem 0 1rem; display:flex; align-items:center; gap:.5rem; }
+.section-read-controls button { font-size:.9rem; padding:.4rem .7rem; }
+.section-read-controls .read-hint { color:#555; font-size:.88rem; }
+.kicker { font-weight:700; }
+.muted { color:#555; }
+.footer-note { margin-top:3rem; border-top:2px solid #111; padding-top:1rem; }
+.inline-code-list li { margin:.25rem 0; }
+@media (max-width:700px) { table { min-width:760px; } .speech-options { grid-template-columns:1fr; } .section-read-controls { flex-direction:column; align-items:flex-start; } }
+@media print { .controls,.skip-link,.speak-section,.listen-panel,.jump-controls { display:none !important; } main { max-width:none; } a { color:inherit; text-decoration:none; } details { display:block; } details > * { display:block !important; } }
+
+.read-aloud-intro { border:2px solid #111; background:#fbfbfb; }
+.read-aloud-intro h3 { margin-top:.15rem; }
+.speak-section { font-weight:700; }
+.sticky-audio-controls { position:fixed; left:50%; bottom:1rem; transform:translateX(-50%); width:min(960px,calc(100vw - 2rem)); z-index:2000; background:#fff; border:3px solid #111; border-radius:.55rem; padding:.65rem .8rem; box-shadow:0 4px 20px rgba(0,0,0,.18); }
+.sticky-audio-inner { display:flex; align-items:center; gap:.65rem; flex-wrap:wrap; }
+.sticky-audio-label { font-weight:800; margin-right:auto; }
+.sticky-audio-status { flex:1 1 260px; min-width:180px; }
+.sticky-audio-controls button { padding:.42rem .68rem; }
+.sticky-audio-controls[hidden] { display:none !important; }
+@media (max-width:700px) { .sticky-audio-inner { align-items:stretch; } .sticky-audio-label, .sticky-audio-status { flex-basis:100%; } .sticky-audio-controls button { flex:1 1 auto; } }
+@media print { .sticky-audio-controls { display:none !important; } }
+
+.back-to-contents { margin: 1.6rem 0 .6rem; padding-top: .7rem; border-top: 1px dashed #aaa; font-size: .95rem; }
+.back-to-contents a { font-weight: 700; }
+
+/* code-output-tint v1: calm colours that separate code, output and instructor notes */
+.code-step pre { background:#f0f2f4; border:1px solid #a3abb5; border-left:4px solid #6b7785; }
+.result-box { background:#fbf8ef; border:1px solid #b9ae92; border-left:4px solid #8a7a52; }
+.result-box pre { background:#fffdf7; border:1px solid #cfc6ae; }
+.note-box { border:2px solid #1f4e79; border-left:8px solid #1f4e79; background:#e8f1fb; }
+.result-box > h3:first-child { margin-top:.1rem; }
+@media (forced-colors: active) { .code-step pre, .result-box, .result-box pre, .note-box { border-color:CanvasText; } }
+</style><style>/* Added for BAN 6403: let long inline paths wrap on narrow screens. */ p code, li code, td code, th code, summary code { overflow-wrap:anywhere; }</style></head>
+<body><a class="skip-link" href="#main-content">Skip to lab content</a>
+<header><h1>Lab 2 Companion</h1><p class="subtitle"><strong>BAN 6403: Text Analytics for Business</strong></p><p>Module 2: Business Text Data</p></header>
+<div aria-label="Active read-aloud controls" class="sticky-audio-controls" hidden="" id="sticky-audio-controls" role="region"><div class="sticky-audio-inner"><span class="sticky-audio-label">Read Aloud</span><span aria-live="polite" class="sticky-audio-status" id="sticky-speech-status">Ready.</span><button id="sticky-pause" type="button">Pause</button><button id="sticky-resume" type="button">Resume</button><button id="sticky-stop" type="button">Stop</button></div></div><main id="main-content">
+<section aria-labelledby="how-to-use" class="accessibility-summary">
+<h2 id="how-to-use">How to use this companion</h2>
+<p>Open the <strong>Module 2 notebook and this companion at the same time</strong>. Work through the companion from top to bottom and run the matching notebook cells as you go. The notebook is the authoritative source for the lab sequence, code and required work. This companion explains what each step means, what to notice in the output and why the step matters.</p><div aria-labelledby="listen-title" class="listen-panel read-aloud-intro">
+<h3 id="listen-title">Read aloud: controls and directions</h3>
+<p><strong>Before you start:</strong> choose a reading mode, speed, and voice below. Select <strong>Read Aloud from Beginning</strong> to hear the full companion, or use <strong>Read Aloud from This Section</strong> beside any major section to continue from that point. While audio is playing, a floating control bar remains visible at the bottom of the page. Use <strong>Pause</strong> to pause temporarily, <strong>Resume</strong> to continue, and <strong>Stop</strong> to end the current reading.</p><p><strong>Study mode</strong> reads explanations, results, tables, and notes while skipping exact Python code. <strong>Full mode</strong> also reads Python code and verbalizes common programming symbols.</p>
+<div aria-label="Read aloud controls" class="controls">
+<button id="speak" type="button">Read Aloud from Beginning</button><button id="pause" type="button">Pause</button><button id="resume" type="button">Resume</button><button id="stop" type="button">Stop</button>
+</div>
+<div class="speech-options">
+<label for="reading-mode"><strong>Reading mode:</strong></label><select id="reading-mode"><option selected="" value="study">Study mode - explanations and results</option><option value="full">Full mode - include Python code</option></select>
+<label for="speech-rate"><strong>Speed:</strong> <span id="rate-value">1.0×</span></label><input aria-describedby="rate-help" id="speech-rate" max="2" min="0.5" step="0.1" type="range" value="1"/><span class="sr-only" id="rate-help">Adjust text-to-speech speed from one half to two times normal speed.</span>
+<label for="voice-select"><strong>Voice:</strong></label><select id="voice-select"><option value="">Browser default</option></select>
+<label for="section-select"><strong>Jump to section:</strong></label><select id="section-select"><option value="">Choose a section</option></select>
+</div>
+<div class="controls jump-controls"><button id="jump-section" type="button">Jump</button><button id="read-section" type="button">Read Aloud from Selected Section</button></div>
+<p aria-live="polite" id="speech-status" role="status"><small>Ready to read.</small></p>
+<p><small>The read-aloud feature uses your browser's speech engine. A screen reader can access the page independently of these controls.</small></p>
+</div>
+<h3>What is in the notebook, and what this companion adds</h3>
+<ul>
+<li><strong>Notebook:</strong> the exact Python code, the written questions, the Practice exercises, the checkpoint and the Submit steps.</li>
+<li><strong>Companion:</strong> plain-language explanations, the results you should expect (taken from real runs of the notebook), common mistakes and how to fix them.</li>
+<li><strong>If anything ever seems inconsistent:</strong> follow the current notebook.</li>
+</ul>
+<div aria-label="Content key" class="content-key">
+<div class="key-item"><span class="key-label">Notebook content</span>Code, official prompts, required tasks and the lab sequence come from the notebook. Each code block shows its notebook cell number.</div>
+<div class="key-item"><span class="key-label">Companion-added instructor note</span>These clearly labeled notes are explanations, cautions or study advice added by this companion. They are not extra required notebook steps unless the note says so.</div>
+</div>
+<p>This companion is designed for keyboard and screen-reader access, but it is <strong>not a separate version for students who need accessibility features</strong>. It is the same learning guide for everyone. You can read it visually, use a screen reader, or use the built-in read-aloud controls while you work in the notebook.</p>
+</section>
+<nav aria-labelledby="toc-title" class="toc"><p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="toc-title" tabindex="-1">Lab contents</h2><ol><li><a href="#how-to-use">How to use this companion</a></li><li><a href="#learning-goals">Module 2 Learning Goals</a></li><li><a href="#setup">Before You Start: Setup</a></li><li><a href="#part-1a">Part 1A: Check the Customer Messages (Steps 1.1–1.6)</a></li><li><a href="#part-1b">Part 1B: Label 12 Messages (Steps 1.7–1.10)</a></li><li><a href="#part-1c">Part 1C: Adjudication, Split and Corpus Card (Steps 1.11–1.16)</a></li><li><a href="#checkpoint">Checkpoint</a></li><li><a href="#part-2-audit">Part 2: Practice Data Audit on Real Complaints (Steps 2.1–2.9)</a></li><li><a href="#part-2-label">Part 2: A Label Policy for Real Complaints (Step 2.10)</a></li><li><a href="#exercises">Practice Exercises and Interpretation</a></li><li><a href="#submit">Submit</a></li><li><a href="#challenge">Part 3 Challenge (Optional)</a></li><li><a href="#problems">Common Problems</a></li><li><a href="#wrap-up">Lab Wrap-Up</a></li><li><a href="#source-note">Notebook and accessibility note</a></li></ol></nav>
+<section aria-labelledby="learning-goals" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="learning-goals">Module 2 Learning Goals</h2>
+<p>By the end of this lab you should be able to:</p><ul><li>describe a text dataset so another analyst can check it;</li><li>find missing and repeated text;</li><li>apply a written label policy with a quoted evidence phrase;</li><li>explain why some records are kept apart for a fair test later.</li></ul>
+<p>The main idea: <strong>checking the data and defining a correct label are part of the analysis.</strong> They come before any method. One row in Part 1 is one feedback message, not one customer.</p>
+</section><section aria-labelledby="setup" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="setup">Before You Start: Setup</h2>
+<p>The main route is your own computer:</p>
+<ol>
+<li>Open <strong>GitHub Desktop</strong> and select your course repository (<code>ban6403-</code> plus your GitHub username). Your repository has held this week's notebook and data since Week 1, so there is nothing to download.</li>
+<li>Open the repository folder in <strong>Visual Studio Code</strong> and open <code>notebooks/M02_Business_Text_Data.ipynb</code>.</li>
+<li>Click the kernel picker at the top right of the notebook and choose <strong>ban6403</strong> (the Anaconda environment from Module 0).</li>
+<li>Also open <code>docs/m02_annotation_guide.md</code>. It is the review policy you will apply.</li>
+<li>Run the cells in order from the top. If you restart the kernel, run from the top again.</li>
+</ol>
+<p><strong>Optional:</strong> Online students may open their copy of the repository in GitHub Codespaces instead (see <code>.devcontainer/README.md</code>; not reachable on the UTSA campus network). The notebook and this companion are the same in both places. Keep the folder structure unchanged so the file paths work.</p>
+</section><section aria-labelledby="part-1a" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1a">Part 1A: Check the Customer Messages (Steps 1.1–1.6)</h2>
+<p>You check the 24 messages from Module 1 before you label anything. Each check has a short code cell, followed by a short written answer in the notebook.</p>
+<h3>1.1 Load the tools</h3>
+<section aria-label="Import pandas and print its version" class="code-step" data-cell="1">
+<pre aria-label="Import pandas and print its version (notebook cell 1)" tabindex="0"><code># Path builds file paths; pandas reads and inspects tables.
+from pathlib import Path
+import pandas as pd</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>No output. A comment says what each tool is for. An error here usually means the kernel is wrong; see Common problems.</p></aside>
+
+<h3>1.2 Point to the data folder</h3>
+<section aria-label="Point to the data folder" class="code-step" data-cell="3">
+<pre aria-label="Point to the data folder (notebook cell 3)" tabindex="0"><code># &quot;..&quot; means one folder up: the data folder next to notebooks/.
+DATA = Path(&quot;../data&quot;)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>No output. As in Lab 1, the notebook runs from the <code>notebooks</code> folder, so the data folder is one level up. <code>DATA</code> now holds that path.</p></aside>
+
+<h3>1.3 Read the customer messages</h3>
+<p><code>keep_default_na=False</code> keeps an empty message as an empty string, so step 1.5 can find it.</p>
+<section aria-label="Read the customer messages" class="code-step" data-cell="5">
+<pre aria-label="Read the customer messages (notebook cell 5)" tabindex="0"><code># keep_default_na=False keeps an empty message as &quot;&quot; instead of NaN.
+feedback = pd.read_csv(DATA / &quot;raw/customer_feedback_m01.csv&quot;, keep_default_na=False)
+feedback.head(3)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>First three customer messages</caption><thead><tr><th scope="col">feedback_id</th><th scope="col">channel</th><th scope="col">product</th><th scope="col">stars</th><th scope="col">text</th></tr></thead><tbody><tr><td>FB001</td><td>review</td><td>speaker</td><td>5</td><td>Love the speaker, but the charger is missing.</td></tr><tr><td>FB002</td><td>email</td><td>speaker</td><td>1</td><td>Delivery was late. Support fixed it; no further help needed.</td></tr><tr><td>FB003</td><td>email</td><td>headset</td><td>2</td><td>The headset stopped working. Please arrange a refund.</td></tr></tbody></table></div>
+
+<h3>1.4 Count messages by channel</h3>
+<p>The <strong>unit of analysis</strong> is what one row stands for. Here it is one feedback message. A message ID is not a customer ID, so a row count is not a count of customers.</p>
+<section aria-label="Count messages by channel" class="code-step" data-cell="7">
+<pre aria-label="Count messages by channel (notebook cell 7)" tabindex="0"><code># Count the messages in each channel.
+feedback[&quot;channel&quot;].value_counts()</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Messages per channel</caption><thead><tr><th scope="col">channel</th><th scope="col">count</th></tr></thead><tbody><tr><td>review</td><td>8</td></tr><tr><td>email</td><td>8</td></tr><tr><td>chat</td><td>8</td></tr></tbody></table></div>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Equal counts were chosen</h3><p>We chose 8 messages per channel for the course. Your written answer should name the real information you would need, such as dates, real channel volumes or who the customers are, before claiming anything about the business.</p></aside>
+
+<h3>1.5 Find missing text</h3>
+<section aria-label="Find messages with empty text" class="code-step" data-cell="10">
+<pre aria-label="Find messages with empty text (notebook cell 10)" tabindex="0"><code># .eq(&quot;&quot;) compares each value with the empty string: True for each message that is empty after removing outer spaces.
+blank_text = feedback[&quot;text&quot;].str.strip().eq(&quot;&quot;)
+# .loc[rows] keeps the rows where the condition is True.
+feedback.loc[blank_text]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Message with empty text</caption><thead><tr><th scope="col">feedback_id</th><th scope="col">channel</th><th scope="col">product</th><th scope="col">stars</th><th scope="col">text</th></tr></thead><tbody><tr><td>FB022</td><td>review</td><td>tablet</td><td>3</td><td>(empty)</td></tr></tbody></table></div>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Do not guess</h3><p>The row is valid, but it has no words to label. Do not guess what a 3-star customer might have said. Keep the row and its ID, and leave it out of the labeling task.</p></aside>
+
+<h3>1.6 Find repeated text</h3>
+<section aria-label="Find repeated non-empty text" class="code-step" data-cell="13">
+<pre aria-label="Find repeated non-empty text (notebook cell 13)" tabindex="0"><code># True for every row whose text also appears in another row.
+same_text = feedback[&quot;text&quot;].duplicated(keep=False)
+
+# &amp; means &quot;and&quot;, ~ means &quot;not&quot;: repeated text that is not the empty message.
+repeated_text = same_text &amp; ~blank_text
+# .loc[rows, columns]: the rows where repeated_text is True, and three columns.
+feedback.loc[repeated_text, [&quot;feedback_id&quot;, &quot;channel&quot;, &quot;text&quot;]]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Messages with the same text</caption><thead><tr><th scope="col">feedback_id</th><th scope="col">channel</th><th scope="col">text</th></tr></thead><tbody><tr><td>FB005</td><td>chat</td><td>The refund arrived yesterday. No action is required.</td></tr><tr><td>FB020</td><td>email</td><td>The refund arrived yesterday. No action is required.</td></tr></tbody></table></div>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Same text is not the same customer</h3><p>The two messages have different IDs and channels. We have no customer or conversation IDs, so we cannot tell whether one customer wrote both. Deleting FB020 would drop the email count from 8 to 7.</p></aside>
+</section><section aria-labelledby="part-1b" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1b">Part 1B: Label 12 Messages (Steps 1.7–1.10)</h2>
+<h3>1.7 Read the policy and make the worksheet</h3>
+<p>Policy version 1 (v1) has three labels:</p>
+<ul>
+<li><code>review</code>: an open problem or a clear request for help. A question that asks how to do something counts as a request for help.</li>
+<li><code>no_review</code>: the problem is clearly solved, or the customer gives an opinion and needs no help.</li>
+<li><code>unclear</code>: too little context to decide. Staff would ask the customer for more details.</li>
+</ul>
+<p>A label says whether staff should look at a message. It does not approve a refund or any other action. A star rating alone does not decide the label.</p>
+<section aria-label="Make the 12-row worksheet" class="code-step" data-cell="16">
+<pre aria-label="Make the 12-row worksheet (notebook cell 16)" tabindex="0"><code># Use the message IDs as row labels, so we can pick rows by ID.
+messages = feedback.set_index(&quot;feedback_id&quot;)
+
+# &quot;FB001&quot;:&quot;FB012&quot; selects every row from FB001 to FB012, both included.
+# .copy() makes a separate table, so adding columns does not touch messages.
+labels = messages.loc[&quot;FB001&quot;:&quot;FB012&quot;, [&quot;text&quot;]].copy()
+
+# Both columns start empty. You fill them in step 1.8.
+labels[&quot;label&quot;] = &quot;&quot;
+labels[&quot;evidence&quot;] = &quot;&quot;</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>No output. That is normal. The worksheet has 12 rows (FB001–FB012) with empty <code>label</code> and <code>evidence</code> columns.</p></aside>
+
+<h3>1.8 Label 12 messages</h3>
+<p>Each labeling cell prints one message and stores your label and evidence. Type inside the two empty quotes, then rerun the cell. Here is the FB001 cell as it appears in the notebook:</p>
+<section aria-label="Labeling cell for FB001" class="code-step" data-cell="18">
+<pre aria-label="Labeling cell for FB001 (notebook cell 18)" tabindex="0"><code>print(messages.loc[&quot;FB001&quot;, &quot;text&quot;])
+# TODO: enter your label and evidence inside the quotes, then rerun this cell.
+labels.loc[&quot;FB001&quot;, [&quot;label&quot;, &quot;evidence&quot;]] = [&quot;&quot;, &quot;&quot;]</code></pre>
+</section>
+<p>FB003 is filled in as an example:</p>
+<section aria-label="Example labeling cell for FB003" class="code-step" data-cell="22">
+<pre aria-label="Example labeling cell for FB003 (notebook cell 22)" tabindex="0"><code>print(messages.loc[&quot;FB003&quot;, &quot;text&quot;])
+# Example: a clear request for help needs staff review.
+labels.loc[&quot;FB003&quot;, [&quot;label&quot;, &quot;evidence&quot;]] = [&#x27;review&#x27;, &#x27;Please arrange a refund&#x27;]</code></pre>
+</section>
+<p>The cells for FB002 and FB004–FB012 (notebook cells 20, 24, 26, 28, 30, 32, 34, 36, 38, 40) follow the same pattern as FB001. Each starts with the line <code># TODO: enter your label and evidence inside the quotes, then rerun this cell.</code></p>
+<div class="try-box"><h3>Try first</h3><ul>
+<li>Use lower case: <code>review</code>, <code>no_review</code> or <code>unclear</code>.</li>
+<li>Copy the evidence exactly from the message. Do not paraphrase.</li>
+<li>Read the whole message before you decide.</li>
+<li>Label on your own first. Compare with a partner afterwards, in step 1.11.</li>
+</ul></div>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Each cell prints its message, for example <code>Still waiting.</code> for FB012. There is no other output.</p></aside>
+
+<h3>1.9 Review your worksheet</h3>
+<section aria-label="Show the worksheet" class="code-step" data-cell="42">
+<pre aria-label="Show the worksheet (notebook cell 42)" tabindex="0"><code># Show the whole worksheet.
+labels</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>A 12-row table with columns <code>text</code>, <code>label</code> and <code>evidence</code>. Before you label anything, only FB003 has entries: <code>review</code> and "Please arrange a refund".</p></aside>
+
+<h3>1.10 Find unfinished labels</h3>
+<section aria-label="Count unfinished rows" class="code-step" data-cell="44">
+<pre aria-label="Count unfinished rows (notebook cell 44)" tabindex="0"><code># True when the label is empty, or (|) when the evidence is empty.
+no_label = labels[&quot;label&quot;].str.strip().eq(&quot;&quot;)
+no_evidence = labels[&quot;evidence&quot;].str.strip().eq(&quot;&quot;)
+unfinished = no_label | no_evidence
+
+# sum() counts the True values; labels.index holds the message IDs.
+print(&quot;Messages still to label:&quot;, unfinished.sum(), &quot;of&quot;, len(labels))
+print(&quot;IDs still to label:&quot;, list(labels.index[unfinished]))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Before you label anything:</p><pre aria-label="Output before labeling" tabindex="0"><code>Messages still to label: 11 of 12
+IDs still to label: ['FB001', 'FB002', 'FB004', 'FB005', 'FB006', 'FB007', 'FB008', 'FB009', 'FB010', 'FB011', 'FB012']</code></pre>
+<p>When you have finished: <code>Messages still to label: 0 of 12</code> and an empty list.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Zero is not the same as correct</h3><p>Zero means every row has an entry. It does not check that your labels follow the policy. Your evidence phrases show that.</p></aside>
+</section><section aria-labelledby="part-1c" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-1c">Part 1C: Adjudication, Split and Corpus Card (Steps 1.11–1.16)</h2>
+<h3>1.11 Decide one disagreement</h3>
+<p>Deciding a disagreement and writing down why is called <strong>adjudication</strong>. Pick one hard message (FB010 works well). Write both first labels, the final label and the reason. In class, compare with a partner. Online, write your own label and one other label a reasonable person might choose. If your final label changes, also update that message's cell in 1.8. If you adopt revised policy wording, give it a new version number and recheck all 12 development messages under that version. If the wording is only a proposal, keep your submitted labels under v1.</p>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>FB010 under policy v1</h3><p>FB010 says "The color looked different from the photo." Policy v1 gives <code>no_review</code>: an opinion with no request for help. A rule that reviews every product mismatch is possible, but it changes the task. It needs a new version number and must apply to every similar message.</p></aside>
+
+<h3>1.12 Read the supplied partition</h3>
+<p>A <strong>partition</strong> is a set of records with a fixed role. You build on development and keep the protected set for a fair test later.</p>
+<section aria-label="Count records per partition" class="code-step" data-cell="48">
+<pre aria-label="Count records per partition (notebook cell 48)" tabindex="0"><code># Read the partition file and count the records in each partition.
+partition = pd.read_csv(DATA / &quot;partitions/m02_partition.csv&quot;)
+partition[&quot;partition&quot;].value_counts()</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Records per partition</caption><thead><tr><th scope="col">partition</th><th scope="col">count</th></tr></thead><tbody><tr><td>development</td><td>13</td></tr><tr><td>protected</td><td>10</td></tr><tr><td>excluded</td><td>1</td></tr></tbody></table></div>
+
+<h3>1.13 List the protected IDs</h3>
+<section aria-label="List the protected IDs" class="code-step" data-cell="50">
+<pre aria-label="List the protected IDs (notebook cell 50)" tabindex="0"><code># Keep the rows of the protected partition, and only the ID column.
+is_protected = partition[&quot;partition&quot;] == &quot;protected&quot;
+protected_ids = partition.loc[is_protected, [&quot;feedback_id&quot;]]
+protected_ids</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Ten IDs: FB013, FB014, FB015, FB016, FB017, FB018, FB019, FB021, FB023, FB024. Do not label these messages or use them to adjust your policy. To <strong>tune</strong> means to adjust a method until it scores better; tuning on test records makes the test unfair.</p></aside>
+
+<h3>1.14 Check the repeated-text group</h3>
+<section aria-label="Show the repeated-text group" class="code-step" data-cell="52">
+<pre aria-label="Show the repeated-text group (notebook cell 52)" tabindex="0"><code># The rows of the partition file that belong to the repeated-text group.
+partition.loc[partition[&quot;group_id&quot;] == &quot;exact_refund_text&quot;]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>The exact-text group</caption><thead><tr><th scope="col">feedback_id</th><th scope="col">group_id</th><th scope="col">partition</th><th scope="col">reason</th></tr></thead><tbody><tr><td>FB005</td><td>exact_refund_text</td><td>development</td><td>exact-text group kept together</td></tr><tr><td>FB020</td><td>exact_refund_text</td><td>development</td><td>exact-text group kept together</td></tr></tbody></table></div>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Why the pair stays together</h3><p>If FB005 were in development and FB020 in the test set, the same wording would sit on both sides of the test. Keeping them together prevents that. It does not prove that one customer wrote both. Ten made-up protected messages are far too few to measure accuracy.</p></aside>
+
+<h3>1.15 Write a short corpus card</h3>
+<p>A <strong>corpus</strong> is a collection of text records chosen for one purpose. Write one line per item, using what you found. A good line is specific, for example: "Unit, source and size: one feedback message; made-up messages written for this course; 24 IDs, 8 per channel."</p>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>What this data does not have</h3><p>Dates, customer or case IDs, and business outcomes such as resolution time. Name at least one and say what it stops you from claiming.</p></aside>
+
+<h3>1.16 Save your outputs</h3>
+<section aria-label="Create the output folder" class="code-step" data-cell="57">
+<pre aria-label="Create the output folder (notebook cell 57)" tabindex="0"><code>OUTPUT_DIR = Path(&quot;../outputs/m02&quot;)
+# parents=True also creates outputs/ if needed; exist_ok=True accepts an existing folder.
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)</code></pre>
+</section>
+<section aria-label="Save the labels" class="code-step" data-cell="58">
+<pre aria-label="Save the labels (notebook cell 58)" tabindex="0"><code># The row labels are the message IDs; index_label names that column in the file.
+labels.to_csv(OUTPUT_DIR / &quot;review_labels.csv&quot;, index_label=&quot;feedback_id&quot;)</code></pre>
+</section>
+<section aria-label="Save the protected IDs and print the folder" class="code-step" data-cell="59">
+<pre aria-label="Save the protected IDs and print the folder (notebook cell 59)" tabindex="0"><code># index=False leaves out pandas&#x27; row numbers; the file keeps only the ID column.
+protected_ids.to_csv(OUTPUT_DIR / &quot;protected_ids.csv&quot;, index=False)
+print(OUTPUT_DIR)</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>The folder path, ending in <code>outputs/m02</code>, and no error. <code>review_labels.csv</code> has 12 rows (ID, text, label, evidence). Any message you have not labeled shows two empty fields, for example <code>FB012,Still waiting.,,</code>. <code>protected_ids.csv</code> has the 10 IDs.</p></aside>
+</section><section aria-labelledby="checkpoint" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="checkpoint">Checkpoint</h2>
+<div class="assignment-box"><h3>Complete independently</h3><p>Answer the two questions in the notebook in 2–3 sentences in total. This companion does not answer them.</p>
+<ol><li>For FB002 or FB010: quote your evidence phrase and explain why the star rating does not decide the label.</li>
+<li>Explain why the 10 protected messages stay unlabeled while you write and adjust the policy.</li></ol>
+<p><strong>What to check:</strong> your answer quotes the message exactly and uses the word "protected" correctly. You do not need to claim anything about accuracy; we have not measured it.</p></div>
+</section><section aria-labelledby="part-2-audit" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-2-audit">Part 2: Practice Data Audit on Real Complaints (Steps 2.1–2.9)</h2>
+<p>The course extract holds 10,000 real complaints sent to the U.S. Consumer Financial Protection Bureau (CFPB) from July to December 2025, with fixed <code>train</code>, <code>valid</code> and <code>test</code> splits. Use <code>train</code> to build methods, <code>valid</code> to compare development choices, and <code>test</code> for final evaluation. In this lab, read and label only <code>train</code> narratives. CFPB stopped publishing new complaint narratives in August 2026; this extract comes from CFPB's official narrative archive. Recording where data came from like this is called <strong>provenance</strong>.</p>
+<h3>2.1 Load the complaint extract</h3>
+<section aria-label="Load the complaint extract" class="code-step" data-cell="63">
+<pre aria-label="Load the complaint extract (notebook cell 63)" tabindex="0"><code># Read the complaints; shape gives (rows, columns).
+complaints = pd.read_csv(DATA / &quot;course/cfpb_complaints.csv&quot;)
+complaints.shape</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p><code>(10000, 13)</code>: 10,000 rows and 13 columns.</p></aside>
+
+<h3>2.2 Check the unit of analysis</h3>
+<section aria-label="Check IDs and dates" class="code-step" data-cell="65">
+<pre aria-label="Check IDs and dates (notebook cell 65)" tabindex="0"><code># is_unique is True when no complaint_id appears twice.
+print(&quot;each complaint_id is unique:&quot;, complaints[&quot;complaint_id&quot;].is_unique)
+# The dates are written as YYYY-MM-DD, so min and max give the first and last day.
+print(&quot;first date:&quot;, complaints[&quot;date_received&quot;].min())
+print(&quot;last date:&quot;, complaints[&quot;date_received&quot;].max())</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.2" tabindex="0"><code>each complaint_id is unique: True
+first date: 2025-07-01
+last date: 2025-12-31</code></pre>
+</aside>
+
+<h3>2.3 Count rows per product and split</h3>
+<section aria-label="Count rows per product and split" class="code-step" data-cell="67">
+<pre aria-label="Count rows per product and split (notebook cell 67)" tabindex="0"><code># Rows: products. Columns: splits. margins=True adds an &quot;All&quot; row and column.
+pd.crosstab(complaints[&quot;product&quot;], complaints[&quot;split&quot;], margins=True)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Complaints per product and split</caption><thead><tr><th scope="col">product</th><th scope="col">test</th><th scope="col">train</th><th scope="col">valid</th><th scope="col">All</th></tr></thead><tbody><tr><td>Checking or savings account</td><td>300</td><td>900</td><td>300</td><td>1,500</td></tr><tr><td>Credit card</td><td>300</td><td>900</td><td>300</td><td>1,500</td></tr><tr><td>Credit reporting or other personal consumer reports</td><td>500</td><td>1,500</td><td>500</td><td>2,500</td></tr><tr><td>Debt collection</td><td>400</td><td>1,200</td><td>400</td><td>2,000</td></tr><tr><td>Money transfer, virtual currency, or money service</td><td>250</td><td>750</td><td>250</td><td>1,250</td></tr><tr><td>Mortgage</td><td>250</td><td>750</td><td>250</td><td>1,250</td></tr><tr><td>All</td><td>2,000</td><td>6,000</td><td>2,000</td><td>10,000</td></tr></tbody></table></div>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Counts set by design</h3><p>Every product is split 60/20/20. The course data has a fixed number of complaints per product, like our 8 messages per channel. These counts do not show how common each problem is.</p></aside>
+
+<h3>2.4 Count missing values in each column</h3>
+<section aria-label="Count missing values per column" class="code-step" data-cell="69">
+<pre aria-label="Count missing values per column (notebook cell 69)" tabindex="0"><code># Number of missing values (NaN) in each column.
+complaints.isna().sum()</code></pre>
+</section>
+<section aria-label="Count narratives with only spaces" class="code-step" data-cell="70">
+<pre aria-label="Count narratives with only spaces (notebook cell 70)" tabindex="0"><code># Narratives that are present but contain only spaces.
+complaints[&quot;narrative&quot;].str.strip().eq(&quot;&quot;).sum()</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>Only two columns have gaps: <code>sub_issue</code> 1,269 and <code>state</code> 95. Every other column, including <code>narrative</code>, shows 0. The second cell also shows 0.</p><p>In Part 1 an empty message stayed an empty string. Here pandas reads empty cells as <code>NaN</code> (missing), so you check both ways.</p></aside>
+
+<h3>2.5 Summarize narrative length by product</h3>
+<section aria-label="Word counts by product" class="code-step" data-cell="72">
+<pre aria-label="Word counts by product (notebook cell 72)" tabindex="0"><code># split() turns each narrative into a list of words; str.len() counts them.
+complaints[&quot;n_words&quot;] = complaints[&quot;narrative&quot;].str.split().str.len()
+
+# One row per product, with four summaries of the word counts.
+length_summary = complaints.groupby(&quot;product&quot;)[&quot;n_words&quot;].agg([&quot;min&quot;, &quot;median&quot;, &quot;mean&quot;, &quot;max&quot;])
+length_summary.round(1)</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Narrative length in words, by product</caption><thead><tr><th scope="col">product</th><th scope="col">min</th><th scope="col">median</th><th scope="col">mean</th><th scope="col">max</th></tr></thead><tbody><tr><td>Checking or savings account</td><td>30</td><td>163.0</td><td>191.8</td><td>600</td></tr><tr><td>Credit card</td><td>30</td><td>184.5</td><td>209.6</td><td>596</td></tr><tr><td>Credit reporting or other personal consumer reports</td><td>30</td><td>150.0</td><td>185.4</td><td>600</td></tr><tr><td>Debt collection</td><td>30</td><td>154.0</td><td>180.2</td><td>595</td></tr><tr><td>Money transfer, virtual currency, or money service</td><td>30</td><td>165.0</td><td>189.5</td><td>599</td></tr><tr><td>Mortgage</td><td>30</td><td>201.0</td><td>226.4</td><td>600</td></tr></tbody></table></div>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>A coverage choice</h3><p>The README says the extract keeps only narratives of 30 to 600 words, so very short and very long complaints are not covered. Means are above medians because a few long narratives pull the mean up.</p></aside>
+
+<h3>2.6 Look for repeated text</h3>
+<section aria-label="Count exact repeats after simple normalization" class="code-step" data-cell="74">
+<pre aria-label="Count exact repeats after simple normalization (notebook cell 74)" tabindex="0"><code># Lower case, then split on any whitespace and join with single spaces.
+lowered = complaints[&quot;narrative&quot;].str.lower()
+complaints[&quot;narrative_norm&quot;] = lowered.str.split().str.join(&quot; &quot;)
+
+# Count narratives whose normalized text also appears in another row.
+complaints[&quot;narrative_norm&quot;].duplicated(keep=False).sum()</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p><code>0</code>. No two narratives in the extract are exactly the same. Some letters still share an opening, as step 2.7 shows.</p></aside>
+
+<h3>2.7 Look for near-repeats</h3>
+<p>Each complaint's <strong>opening</strong> uses the same rule as the split: lower case, every run of non-letters turned into one space, then the first 100 characters.</p>
+<section aria-label="Build openings and count shared ones" class="code-step" data-cell="76">
+<pre aria-label="Build openings and count shared ones (notebook cell 76)" tabindex="0"><code># Build the opening of each narrative in four small steps.
+lowered = complaints[&quot;narrative&quot;].str.lower()
+# Replace every run of non-letters with one space.
+letters_only = lowered.str.replace(r&quot;[^a-z]+&quot;, &quot; &quot;, regex=True)
+# Remove the spaces at both ends, then keep the first 100 characters.
+complaints[&quot;opening&quot;] = letters_only.str.strip().str[:100]
+
+# True for every complaint whose opening also appears in another complaint.
+shared = complaints[&quot;opening&quot;].duplicated(keep=False)
+print(&quot;complaints that share an opening:&quot;, shared.sum())
+print(&quot;number of shared openings:&quot;, complaints.loc[shared, &quot;opening&quot;].nunique())</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.7" tabindex="0"><code>complaints that share an opening: 247
+number of shared openings: 73</code></pre>
+<p>These are mostly template letters, such as credit report dispute letters, that differ only later in the text.</p></aside>
+
+<h3>2.8 Check that the split keeps similar letters together</h3>
+<p>If a letter is in <code>train</code> and a near-copy is in <code>test</code>, a model can score well by remembering the template. The test then looks better than the model's work on new complaints. This is <strong>leakage</strong>, the same risk as FB005/FB020. The course split gives complaints with the same product and the same opening the same split. This is one grouping rule: it flags possible template matches, but it can miss related complaints and group unrelated ones. You check that the split follows it.</p>
+<section aria-label="Count splits per product-and-opening group" class="code-step" data-cell="78">
+<pre aria-label="Count splits per product-and-opening group (notebook cell 78)" tabindex="0"><code># For each product-and-opening group, count how many different splits it uses.
+shared_complaints = complaints.loc[shared]
+splits_per_group = shared_complaints.groupby([&quot;product&quot;, &quot;opening&quot;])[&quot;split&quot;].nunique()
+
+# How many groups use 1 split, 2 splits, and so on.
+splits_per_group.value_counts()</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>All 79 product-and-opening groups use 1 split. No group within a product crosses splits.</p></aside>
+<section aria-label="List openings that use more than one split" class="code-step" data-cell="80">
+<pre aria-label="List openings that use more than one split (notebook cell 80)" tabindex="0"><code># One row per opening. Each new column is written as name=(column, function):
+# &quot;size&quot; counts the complaints; &quot;nunique&quot; counts the distinct splits and the distinct products.
+opening_table = shared_complaints.groupby(&quot;opening&quot;).agg(
+    complaints=(&quot;split&quot;, &quot;size&quot;),
+    splits=(&quot;split&quot;, &quot;nunique&quot;),
+    products=(&quot;product&quot;, &quot;nunique&quot;),
+)
+
+# Keep the openings that use more than one split.
+opening_table.loc[opening_table[&quot;splits&quot;] &gt; 1]</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Openings that use two splits when product is ignored</caption><thead><tr><th scope="col">opening starts</th><th scope="col">complaints</th><th scope="col">splits</th><th scope="col">products</th></tr></thead><tbody><tr><td>complaint filed by xxxx xxxx xxxx xxxx as authorized representative…</td><td>14</td><td>2</td><td>3</td></tr><tr><td>xxxx is falsely reporting on my credit i have never had any accounts…</td><td>3</td><td>2</td><td>2</td></tr><tr><td>xxxx xxxx xxxx … (only redaction marks)</td><td>6</td><td>2</td><td>2</td></tr></tbody></table></div>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Why three openings cross splits</h3><p>The split was balanced within each product, so the groups were formed inside each product. The same letter filed under two products can therefore sit in two splits. Three shared openings cross splits, involving 23 complaints overall. This is a remaining leakage risk. These counts alone do not tell us how much it affects evaluation scores. The <code>splits</code> column counts the distinct splits per opening. The data README lists this as a known limit.</p></aside>
+<section aria-label="Count the largest group by product and split" class="code-step" data-cell="82">
+<pre aria-label="Count the largest group by product and split (notebook cell 82)" tabindex="0"><code># value_counts() sorts from most to least common, so index[0] is the largest group.
+largest = complaints.loc[shared, &quot;opening&quot;].value_counts().index[0]
+print(largest)
+
+# Keep the complaints with that opening and count them by product and split.
+largest_group = complaints[complaints[&quot;opening&quot;].eq(largest)]
+pd.crosstab(largest_group[&quot;product&quot;], largest_group[&quot;split&quot;])</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>The largest group starts "i am writing to formally request the blocking and deletion of all accounts associated with my person…". All 40 of its complaints are Credit reporting complaints in <code>test</code>.</p></aside>
+<h3>Read two complaints that share an opening</h3>
+<p>Counting is not enough: read the texts too. These two <code>train</code> complaints share an opening. The opening rule flags possible template matches. It can miss related complaints and group unrelated ones.</p>
+<section aria-label="Print two train complaints with the same opening" class="code-step" data-cell="84">
+<pre aria-label="Print two train complaints with the same opening (notebook cell 84)" tabindex="0"><code># Two train complaints with the same opening, chosen by ID.
+pair_ids = [16024833, 16026131]
+
+# Use complaint_id as the row label, so we can look rows up by ID.
+complaints_by_id = complaints.set_index(&quot;complaint_id&quot;)
+
+# Print the ID, the split and the full narrative of each complaint.
+for complaint_id in pair_ids:
+    print(complaint_id, &quot;|&quot;, complaints_by_id.loc[complaint_id, &quot;split&quot;])
+    print(complaints_by_id.loc[complaint_id, &quot;narrative&quot;])
+    print()</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of the reading step" tabindex="0"><code>16024833 | train
+Dear TransUnion I am writing to formally dispute the accuracy of certain information reported on my credit report under Section 605B of the Fair Credit Reporting Act. 
+The specific information I am disputing is as follows : FRAUDULENT INQUIRIES : XXXX XXXX XXXX XXXX XXXX XXXX XXXX
+
+16026131 | train
+Dear TransUnion I am writing to formally dispute the accuracy of certain information reported on my credit report under Section 605B of the Fair Credit Reporting Act. 
+The specific information I am disputing is as follows : FRAUDULENT ACCOUNTS : XXXXXXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX</code></pre><p>Both are TransUnion dispute letters from the same template, and both are in <code>train</code>. One disputes fraudulent inquiries, the other fraudulent accounts. Reading them shows what the count cannot: whether a shared opening means the same problem. Answer the question below the cell in the notebook.</p></aside>
+
+<h3>2.9 Count redaction marks</h3>
+<p>CFPB replaces names and other personal details with <code>XXXX</code>. Dates are hidden as <code>XX/XX/XXXX</code> or as <code>XX/XX/year&gt;</code>. Money amounts stay, written in braces such as <code>{$450.00}</code>.</p>
+<section aria-label="Share of narratives with redaction marks" class="code-step" data-cell="87">
+<pre aria-label="Share of narratives with redaction marks (notebook cell 87)" tabindex="0"><code># True for each narrative that contains the exact characters.
+has_xxxx = complaints[&quot;narrative&quot;].str.contains(&quot;XXXX&quot;, regex=False)
+has_amount = complaints[&quot;narrative&quot;].str.contains(&quot;{$&quot;, regex=False)
+
+# The mean of True/False values is a share (True counts as 1).
+print(&quot;share with XXXX:&quot;, round(has_xxxx.mean(), 3))
+print(&quot;share with an amount {$:&quot;, round(has_amount.mean(), 3))</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of step 2.9" tabindex="0"><code>share with XXXX: 0.838
+share with an amount {$: 0.398</code></pre>
+<p>About 84% of narratives have at least one redaction, and about 40% mention a money amount.</p></aside>
+</section><section aria-labelledby="part-2-label" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="part-2-label">Part 2: A Label Policy for Real Complaints (Step 2.10)</h2>
+<p>Every row is a complaint, so almost every one would need review. The notebook uses a different business label, <code>asks_for_money</code>:</p>
+<ul>
+<li><code>yes</code>: the consumer clearly wants money returned or credited (refund, reimbursement, a reversed charge, a waived fee or released funds).</li>
+<li><code>no</code>: the consumer wants something else (fix a report, stop calls, an explanation), and no money is sought.</li>
+<li><code>unclear</code>: money is mentioned or lost, but the text does not show what the consumer wants.</li>
+</ul>
+<p>As in Part 1, keep the ID and quote a short evidence phrase. Label only <code>train</code> complaints, so <code>valid</code> and <code>test</code> stay untouched.</p>
+<section aria-label="Read the three example complaints" class="code-step" data-cell="89">
+<pre aria-label="Read the three example complaints (notebook cell 89)" tabindex="0"><code># The training complaints only; read and label only these.
+train = complaints[complaints[&quot;split&quot;].eq(&quot;train&quot;)]
+
+example_ids = [16417628, 14384643, 14597922]
+
+# Use complaint_id as the row label, then look up the three narratives by ID.
+complaints_by_id = complaints.set_index(&quot;complaint_id&quot;)
+example_texts = complaints_by_id.loc[example_ids, &quot;narrative&quot;]
+
+# tolist() prints each narrative in full instead of cutting it short.
+example_texts.tolist()</code></pre>
+</section>
+<section aria-label="Labels for the three examples" class="code-step" data-cell="91">
+<pre aria-label="Labels for the three examples (notebook cell 91)" tabindex="0"><code># One dictionary per labeled complaint; each key becomes a column.
+practice_labels = pd.DataFrame([
+    {&quot;complaint_id&quot;: 16417628, &quot;asks_for_money&quot;: &quot;yes&quot;, &quot;evidence&quot;: &quot;I am requesting a refund&quot;},
+    {&quot;complaint_id&quot;: 14384643, &quot;asks_for_money&quot;: &quot;no&quot;, &quot;evidence&quot;: &quot;Please remove this account from my report&quot;},
+    {&quot;complaint_id&quot;: 14597922, &quot;asks_for_money&quot;: &quot;unclear&quot;, &quot;evidence&quot;: &quot;missing from my account&quot;},
+])
+practice_labels</code></pre>
+</section>
+<div class="table-wrap" tabindex="0"><table><caption>Example labels</caption><thead><tr><th scope="col">complaint_id</th><th scope="col">asks_for_money</th><th scope="col">evidence</th></tr></thead><tbody><tr><td>16417628</td><td>yes</td><td>I am requesting a refund</td></tr><tr><td>14384643</td><td>no</td><td>Please remove this account from my report</td></tr><tr><td>14597922</td><td>unclear</td><td>missing from my account</td></tr></tbody></table></div>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Why the third example is unclear</h3><p>Complaint 14597922 says money is missing but does not say what the consumer wants, so it is <code>unclear</code>.</p></aside>
+</section><section aria-labelledby="exercises" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="exercises">Practice Exercises and Interpretation</h2>
+<div class="assignment-box"><h3>Complete independently</h3><p>The exercises are intentionally not solved in this companion. Use the exact instructions in the notebook. Each exercise cell starts with <code># Exercise N: your code here</code>.</p>
+<h3>Exercise 1: monetary relief by product</h3>
+<p>Compute the share of complaints with <code>company_response</code> equal to <code>"Closed with monetary relief"</code> for each product, sorted from highest to lowest.</p>
+<p><strong>What to check:</strong> six shares between 0 and 1. They differ a lot: the highest is above 0.15 and the lowest is below 0.01. Think about whether <code>company_response</code> is a label, a rating or an outcome.</p>
+<h3>Exercise 2: short narratives</h3>
+<p>Find the complaints with fewer than 40 words, count them in total and per product, then show the ID and full text of two short <code>train</code> complaints and read them.</p>
+<p><strong>What to check:</strong> 405 complaints under 40 words. A table cuts long text short, so use <code>.tolist()</code> or <code>print()</code> to read the full text.</p>
+<h3>Exercise 3: label five complaints</h3>
+<p>Choose five <code>train</code> complaints that are not the three examples. Build a table named <code>my_labels</code> with the columns <code>complaint_id</code>, <code>asks_for_money</code> and <code>evidence</code>. Then show it next to each complaint's <code>product</code>, <code>split</code> and <code>company_response</code>. A <strong>merge</strong> joins two tables: <code>on="complaint_id"</code> matches each row of <code>my_labels</code> to the complaint with the same ID. The notebook gives the two lines, and the starter cell has them as comments. If a search word finds no complaints, choose another word.</p>
+<p><strong>What to check:</strong> each <code>complaint_id</code> is a number without quotes; each evidence phrase is copied exactly; all five rows show <code>train</code>. Try to include at least one <code>unclear</code> case.</p>
+</div>
+<h3>Practice interpretation</h3>
+<p>Write 3–5 sentences that use your own outputs. Cover four points. First, one claim the product counts cannot support. Second, what kind of field <code>company_response</code> is. Third, what short narratives mean for labeling, and why near-repeat letters must stay in one split. Fourth, which of your labels was hardest.</p>
+</section><section aria-labelledby="submit" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="submit">Submit</h2>
+<ol>
+<li>Run the whole notebook from the top (<strong>Restart</strong>, then <strong>Run All</strong>) and confirm there are no errors.</li>
+<li>Check that step 1.10 says <code>0 of 12</code> and that every <strong>Your answer</strong> cell is filled.</li>
+<li>Add the one-line AI-use note in the Submit cell if you used an AI tool.</li>
+<li>Save the notebook, so the outputs are saved in the file.</li>
+<li>In GitHub Desktop, write a short summary such as "Lab 2 complete", click <strong>Commit to main</strong>, then <strong>Push origin</strong>.</li>
+<li>Push before the deadline. You upload nothing to Canvas: the instructor grades the saved notebook, with its outputs, in your repository as it is at the deadline.</li>
+</ol>
+<p>Lab notebook 2 is graded with the course Lab Notebook rubric in Canvas (the same rubric for every lab).</p>
+</section><section aria-labelledby="challenge" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="challenge">Part 3 Challenge (Optional)</h2>
+<p>These cells are optional. Run them after the required work.</p>
+<h3>A. Check labels and evidence for typos</h3>
+<section aria-label="Optional: rows with a label outside the policy or empty evidence" class="code-step" data-cell="101">
+<pre aria-label="Optional: rows with a label outside the policy or empty evidence (notebook cell 101)" tabindex="0"><code>allowed = [&quot;review&quot;, &quot;no_review&quot;, &quot;unclear&quot;]
+# isin(allowed) is True for an allowed label; ~ turns it into &quot;not allowed&quot;.
+bad_label = ~labels[&quot;label&quot;].isin(allowed)
+no_evidence = labels[&quot;evidence&quot;].str.strip().eq(&quot;&quot;)
+
+# Rows with a bad label or (|) empty evidence.
+labels.loc[bad_label | no_evidence]</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p>When your worksheet is finished, an empty table. Before you label anything, it lists the 11 unfinished rows.</p></aside>
+
+<h3>B. Check that each evidence phrase is really in the message</h3>
+<section aria-label="Optional: check that evidence appears in the message" class="code-step" data-cell="103">
+<pre aria-label="Optional: check that evidence appears in the message (notebook cell 103)" tabindex="0"><code># Check each worksheet row: is its evidence phrase inside its message?
+found = []
+for text, evidence in zip(labels[&quot;text&quot;], labels[&quot;evidence&quot;]):
+    phrase = evidence.strip()
+    # Empty evidence counts as not found. Compare in lower case.
+    found.append(phrase != &quot;&quot; and phrase.lower() in text.lower())
+
+labels[&quot;evidence_found&quot;] = found
+labels[[&quot;label&quot;, &quot;evidence&quot;, &quot;evidence_found&quot;]]</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p><code>evidence_found</code> is <code>True</code> for every finished row. Rows with empty evidence show <code>False</code>.</p></aside>
+
+<h3>C. Check the group boundary</h3>
+<section aria-label="Optional: each group stays in one partition" class="code-step" data-cell="105">
+<pre aria-label="Optional: each group stays in one partition (notebook cell 105)" tabindex="0"><code># For each group, count how many different partitions its messages use.
+partitions_per_group = partition.groupby(&quot;group_id&quot;)[&quot;partition&quot;].nunique()
+
+# How many groups use 1 partition, 2 partitions, and so on.
+partitions_per_group.value_counts()</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><pre aria-label="Output of Challenge C" tabindex="0"><code>partition
+1    23
+Name: count, dtype: int64</code></pre><p>All 23 groups use 1 partition. A 2 would mean an edit put FB005 and FB020 in different partitions. The check cannot find links between customers or conversations that the file does not record.</p></aside>
+
+<h3>D. How much does the opening length matter?</h3>
+<section aria-label="Optional: complaints that would change split" class="code-step" data-cell="107">
+<pre aria-label="Optional: complaints that would change split (notebook cell 107)" tabindex="0"><code># The same opening rule as in 2.7. Change 100 to 60 to try shorter openings.
+lowered = complaints[&quot;narrative&quot;].str.lower()
+letters_only = lowered.str.replace(r&quot;[^a-z]+&quot;, &quot; &quot;, regex=True)
+opening_check = letters_only.str.strip().str[:100]
+
+# For every complaint, look up the split of the first complaint in its group.
+# transform(&quot;first&quot;) gives one value per complaint, not one per group.
+group_split = complaints.groupby([&quot;product&quot;, opening_check])[&quot;split&quot;].transform(&quot;first&quot;)
+
+# ne() is True where the two splits differ.
+print(&quot;complaints that would change split:&quot;, complaints[&quot;split&quot;].ne(group_split).sum())</code></pre>
+</section>
+<aside aria-label="Result" class="result-box"><h3>Result</h3><p><code>complaints that would change split: 0</code> with 100 characters. Change <code>100</code> to <code>60</code> and run again: 122 complaints would change split.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>What the 60-character result means</h3><p>Shorter openings join more letters. Read a few of them: are they really the same letter, or just a common first sentence?</p></aside>
+</section><section aria-labelledby="problems" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="problems">Common Problems</h2>
+<p>If a cell fails, read the last line of the error message first. Then find it below.</p>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>ModuleNotFoundError: No module named 'pandas'</h3><p>The notebook is using the wrong kernel. Click the kernel picker at the top right, choose <strong>ban6403</strong>, then run from the top. If <strong>ban6403</strong> is not listed, repeat the environment setup in Module 0.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>FileNotFoundError for a CSV file</h3><p>Open the notebook from inside the repository folder (<code>ban6403-</code> plus your GitHub username), not a copy elsewhere. If the error names <code>data/course/cfpb_complaints.csv</code>, the file was moved or deleted. Restore it in GitHub Desktop: on the <strong>Changes</strong> tab, right-click the file and choose <strong>Discard changes</strong>.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>My worksheet is empty again</h3><p>Rerunning step 1.7 creates a fresh, empty worksheet. Your labels are still saved in the 1.8 cells. Run the 1.8 cells again, or use <strong>Run All</strong>.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Step 1.10 still lists a message I labeled</h3><p>You typed the answer but did not rerun that message's cell, or one of the two quotes is still empty. Rerun the cell, then rerun 1.10. Challenge step A also catches labels such as <code>Review</code> or <code>no review</code>.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>SyntaxError in a labeling cell</h3><p>Check the quotes. If your evidence contains a double quote, wrap it in single quotes instead, for example <code>'He said "fine"'</code>. Keep the square brackets and the comma between the two strings.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>Exercise 3 merge returns no rows</h3><p>The <code>complaint_id</code> values must be numbers, not text. Write <code>16417628</code>, not <code>"16417628"</code>.</p></aside>
+<aside aria-label="Companion-added instructor note" class="note-box"><div class="note-label">Companion-added instructor note</div><h3>The narrative is cut off with "..."</h3><p>Tables shorten long text. Use <code>.tolist()</code> or <code>print()</code> on the narrative to read it in full.</p></aside>
+<p>Still stuck? Post the error message and the cell number in the course Q&amp;A discussion. Do not post your full answers.</p>
+</section><section aria-labelledby="wrap-up" class="major-section">
+<p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="wrap-up">Lab Wrap-Up</h2>
+<p>In this lab you used one pattern twice, first on 24 customer messages and then on 10,000 real complaints:</p>
+<ul class="inline-code-list">
+<li><strong>Describe:</strong> what one row stands for, where the data came from, and what it covers.</li>
+<li><strong>Check:</strong> count missing and repeated text, then read the rows behind the count.</li>
+<li><strong>Label:</strong> apply a written policy and quote the evidence, keeping the ID.</li>
+<li><strong>Protect:</strong> keep related records in one split, and keep test records untouched.</li>
+</ul>
+<p>Module 3 prepares the text for analysis while keeping the raw text, the IDs and this data plan.</p>
+</section>
+<section aria-labelledby="source-note" class="footer-note"><p class="back-to-contents"><a aria-label="Back to Lab Contents" href="#toc-title">↑ Back to Lab Contents</a></p><h2 id="source-note">Notebook and accessibility note</h2><p>The current Module 2 notebook is authoritative for Python code, sequence, prompts and required work. This companion adds explanation and accessible presentation without changing those requirements. Expected results come from running the notebook on the current course data.</p><p>The page is designed for keyboard navigation, screen readers, browser text-to-speech and ordinary visual reading. Important instructional information is presented as text rather than depending on a visual demonstration.</p></section>
+</main><script>
+(function() {
+  const synth = window.speechSynthesis;
+  const speakBtn = document.getElementById('speak');
+  const pauseBtn = document.getElementById('pause');
+  const resumeBtn = document.getElementById('resume');
+  const stopBtn = document.getElementById('stop');
+  const rate = document.getElementById('speech-rate');
+  const rateValue = document.getElementById('rate-value');
+  const mode = document.getElementById('reading-mode');
+  const voiceSelect = document.getElementById('voice-select');
+  const sectionSelect = document.getElementById('section-select');
+  const jumpSection = document.getElementById('jump-section');
+  const readSection = document.getElementById('read-section');
+  const status = document.getElementById('speech-status');
+  const stickyControls = document.getElementById('sticky-audio-controls');
+  const stickyPause = document.getElementById('sticky-pause');
+  const stickyResume = document.getElementById('sticky-resume');
+  const stickyStop = document.getElementById('sticky-stop');
+  const stickyStatus = document.getElementById('sticky-speech-status');
+  let chunks = [], index = 0, stopped = true, voices = [];
+  function setStatus(t){ status.innerHTML='<small>'+t+'</small>'; if(stickyStatus) stickyStatus.textContent=t; }
+  function populateVoices(){ if(!synth)return; voices=synth.getVoices(); const cur=voiceSelect.value; voiceSelect.innerHTML='<option value="">Browser default</option>'; voices.forEach((v,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=v.name+' ('+v.lang+')';voiceSelect.appendChild(o);}); if([...voiceSelect.options].some(o=>o.value===cur))voiceSelect.value=cur; }
+  function codeToSpeech(text){ return text
+    .replace(/\\/g,' backslash ').replace(/_/g,' underscore ')
+    .replace(/==/g,' equals equals ').replace(/!=/g,' not equals ').replace(/>=/g,' greater than or equal to ').replace(/<=/g,' less than or equal to ')
+    .replace(/&/g,' and ').replace(/\|/g,' or ').replace(/>/g,' greater than ').replace(/</g,' less than ').replace(/=/g,' equals ')
+    .replace(/\(/g,' open parenthesis ').replace(/\)/g,' close parenthesis ').replace(/\[/g,' open bracket ').replace(/\]/g,' close bracket ').replace(/\{/g,' open brace ').replace(/\}/g,' close brace ')
+    .replace(/\./g,' dot ').replace(/,/g,' comma ').replace(/:/g,' colon ').replace(/;/g,' semicolon ').replace(/\+/g,' plus ').replace(/-/g,' minus ').replace(/\*/g,' star ').replace(/\//g,' slash ').replace(/%/g,' percent ')
+    .replace(/"/g,' quote ').replace(/'/g,' single quote ').replace(/\s+/g,' ').trim(); }
+  function tableToSpeech(table){ const cap=table.querySelector('caption'); const rows=[...table.querySelectorAll('tr')]; const out=[]; if(cap)out.push(cap.innerText.trim()+'.'); rows.forEach((row,r)=>{const cells=[...row.querySelectorAll('th,td')].map(c=>c.innerText.trim()); if(!cells.length)return; if(r===0)out.push('Columns: '+cells.join(', ')+'.'); else out.push('Row '+r+': '+cells.join(', ')+'.');}); return out.join(' '); }
+  function buildChunks(startElement){ const includeCode=mode.value==='full'; const main=document.getElementById('main-content'); const items=[]; let started=!startElement; main.querySelectorAll('h2,h3,h4,p,li,table,pre').forEach(el=>{ if(!started){if(el===startElement)started=true;else return;} if(el.closest('.listen-panel')||el.closest('nav')||el.closest('.controls')||el.closest('.section-read-controls')||el.closest('.back-to-contents'))return; if(el.closest('details:not([open])'))return; if(el.matches('pre')){if(!includeCode)return; const c=el.innerText.trim(); if(c)items.push({text:'Python code. '+codeToSpeech(c),el}); return;} if(el.matches('table')){const t=tableToSpeech(el);if(t)items.push({text:t,el});return;} const t=el.innerText.replace(/\s+/g,' ').trim(); if(t)items.push({text:t,el}); }); return items; }
+  function speakNext(){ if(!synth||stopped)return; if(index>=chunks.length){stopped=true;setStatus('Finished reading the companion.');if(stickyControls) stickyControls.hidden=true;return;} const cur=chunks[index]; const u=new SpeechSynthesisUtterance(cur.text);u.rate=parseFloat(rate.value); if(voiceSelect.value!==''&&voices[Number(voiceSelect.value)])u.voice=voices[Number(voiceSelect.value)];u.onstart=()=>setStatus('Reading item '+(index+1)+' of '+chunks.length+' at '+rate.value+'×.');u.onend=()=>{index++;speakNext();};u.onerror=e=>{if(e.error!=='canceled'&&e.error!=='interrupted'){setStatus('Speech stopped because the browser reported: '+e.error+'.');stopped=true;}}; synth.speak(u); }
+  function startReading(el,label){if(!synth){setStatus('This browser does not provide the Web Speech API.');return;}synth.cancel();chunks=buildChunks(el||null);index=0;stopped=false;if(stickyControls) stickyControls.hidden=false;setStatus(label?'Starting from '+label+'.':'Starting from the beginning.');setTimeout(speakNext,50);}
+  function setupSections(){ const hs=[...document.querySelectorAll('#main-content h2[id]')].filter(h=>!h.closest('.listen-panel')&&!h.closest('nav')); hs.forEach(h=>{const sectionName=h.innerText.trim();const o=document.createElement('option');o.value=h.id;o.textContent=sectionName;sectionSelect.appendChild(o);const d=document.createElement('div');d.className='section-read-controls';d.setAttribute('aria-label','Read-aloud controls for '+sectionName);const b=document.createElement('button');b.type='button';b.className='speak-section';b.textContent='Read Aloud from This Section';b.setAttribute('aria-label','Read aloud from this section: '+sectionName);b.addEventListener('click',()=>startReading(h,sectionName));const hint=document.createElement('span');hint.className='read-hint';hint.textContent='Reads continuously from this section to the end.';d.appendChild(b);d.appendChild(hint);h.insertAdjacentElement('afterend',d);}); }
+  speakBtn.addEventListener('click',()=>startReading(null,'the beginning'));
+  function pauseReading(){if(synth&&synth.speaking&&!synth.paused){synth.pause();setStatus('Paused.');}}
+  function resumeReading(){if(synth&&synth.paused){synth.resume();setStatus('Resumed. Speed changes apply to the next reading item.');}}
+  function stopReading(){stopped=true;if(synth)synth.cancel();setStatus('Stopped.');if(stickyControls) stickyControls.hidden=true;}
+  pauseBtn.addEventListener('click',pauseReading);
+  resumeBtn.addEventListener('click',resumeReading);
+  stopBtn.addEventListener('click',stopReading);
+  if(stickyPause) stickyPause.addEventListener('click',pauseReading);
+  if(stickyResume) stickyResume.addEventListener('click',resumeReading);
+  if(stickyStop) stickyStop.addEventListener('click',stopReading);
+  rate.addEventListener('input',()=>{rateValue.textContent=Number(rate.value).toFixed(1)+'×';if(synth&&synth.speaking)setStatus('Speed set to '+rateValue.textContent+'. It will apply to the next reading item.');});
+  mode.addEventListener('change',()=>setStatus(mode.value==='full'?'Full mode selected. Python code will be read aloud.':'Study mode selected. Exact Python code will be skipped.'));
+  jumpSection.addEventListener('click',()=>{const h=document.getElementById(sectionSelect.value);if(h){h.scrollIntoView({behavior:'smooth',block:'start'});h.setAttribute('tabindex','-1');h.focus();}});
+  readSection.addEventListener('click',()=>{const h=document.getElementById(sectionSelect.value);if(h)startReading(h,h.innerText.trim());});
+  setupSections(); populateVoices(); if(synth&&'onvoiceschanged' in synth)synth.onvoiceschanged=populateVoices;
+})();
+</script></body></html>

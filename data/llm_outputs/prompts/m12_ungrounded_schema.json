@@ -1,0 +1,17 @@
+{
+  "type": "OBJECT",
+  "properties": {
+    "status": {"type": "STRING", "enum": ["answered", "partly_answered", "not_enough_information"]},
+    "answer": {"type": "STRING"},
+    "claims": {
+      "type": "ARRAY",
+      "items": {
+        "type": "OBJECT",
+        "properties": {"claim": {"type": "STRING"}},
+        "required": ["claim"]
+      }
+    }
+  },
+  "required": ["status", "answer", "claims"],
+  "propertyOrdering": ["status", "answer", "claims"]
+}

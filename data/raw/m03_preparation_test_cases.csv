@@ -1,0 +1,8 @@
+test_id,text,purpose
+TC01,  No   action is required.  ,Repeated whitespace and negation
+TC02,Refund	$49.99 for AB-12.,"Tab, amount and product code"
+TC03,Café cable,Decomposed accent
+TC04,Code ＡＢ１２ failed.,Compatibility normalization choice
+TC05,SKU Ab-12 differs from AB-12.,Case-sensitive identifier counterexample
+TC06,"Line one.
+Line two.",Line-break boundary counterexample

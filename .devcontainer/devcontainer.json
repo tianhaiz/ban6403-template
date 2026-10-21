@@ -12,7 +12,11 @@
         "ms-toolsai.jupyter"
       ],
       "settings": {
-        "python.defaultInterpreterPath": "/usr/local/bin/python"
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "jupyter.kernels.excludePythonEnvironments": [
+          "/usr/bin/python3",
+          "/usr/bin/python"
+        ]
       }
     }
   }

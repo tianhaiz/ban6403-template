@@ -6,11 +6,11 @@ Codespaces is not reachable on the UTSA campus network. Flex students therefore 
 
 ## What this folder does
 
-`devcontainer.json` tells Codespaces how to build your workspace. It uses Python 3.13 and installs the same packages as `environment.yml`: numpy, pandas 3.0, scikit-learn, scipy, matplotlib, ipykernel and nbconvert. It also adds the VS Code Python and Jupyter extensions. Do not change this file.
+`devcontainer.json` tells Codespaces how to build your workspace. It uses Python 3.13 and installs the same packages as `environment.yml`: numpy, pandas 3.0, scikit-learn, scipy, matplotlib, ipykernel and nbconvert. It also adds the VS Code Python and Jupyter extensions, and it hides the system Python from the kernel list, so only one Python 3.13 entry is shown. Do not change this file.
 
 ## Create your codespace (once)
 
-1. Sign in to GitHub and open **your own repository** in the course organization, not the course template. If you have not created it yet, follow part 2 of the main `README.md` (**Use this template**).
+1. Sign in to GitHub and open **your own repository**, `https://github.com/[course-org]/ban6403-<your-username>`. The instructor created it for you. If you cannot open it, accept the email invitation first (part 2 of the main `README.md`).
 2. Click the green **Code** button, open the **Codespaces** tab and click **Create codespace on main**.
 3. Wait while the codespace is built. The first time takes a few minutes, because the packages are installed.
 4. VS Code opens in your browser with the repository folder already open.
@@ -18,7 +18,7 @@ Codespaces is not reachable on the UTSA campus network. Flex students therefore 
 ## Run a notebook
 
 1. Open the notebook in `notebooks/`, for example `M00_Technology_Readiness.ipynb`.
-2. Click **Select Kernel** at the top right. Choose **Python Environments**, then the Python 3.13 entry (`/usr/local/bin/python`).
+2. Click **Select Kernel** at the top right. Choose **Python Environments**, then choose the only Python 3.13 entry (`/usr/local/bin/python`).
 3. Run the notebook from the top. In the Module 0 readiness notebook, the kernel check shows `PASS | notebook kernel: GitHub Codespaces`.
 4. Open the Lab Companion from `companions/` in a new browser tab: right-click the file and choose **Download**, then open the downloaded file. Or open it from Canvas.
 

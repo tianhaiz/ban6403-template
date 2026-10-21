@@ -10,21 +10,19 @@ Module 0 in Canvas walks you through the setup. You used the same tools in BAN 6
 
 Check that **Anaconda**, **GitHub Desktop** and **VS Code** (with the Python and Jupyter extensions) still work, or install them.
 
-### 2. Join the course organization and create your repository
+### 2. Accept the invitation to your repository
 
-Your repository lives in the **course organization** on GitHub, which the instructor owns. Only you and the instructor can see it; classmates cannot.
+The instructor creates your private repository for you. You do not create it yourself. Only you and the instructor can see it; classmates cannot.
 
-1. Give your GitHub username to the instructor as Module 0 asks. You then get an email invitation to the course organization. Accept it (or open the organization's page on GitHub while signed in and accept it there).
-2. Open the course template repository. The Start Here page in Canvas has the link.
-3. Click **Use this template**, then **Create a new repository**.
-4. As the **Owner**, choose the **course organization**, not your own account. Name the repository `ban6403-` followed by your GitHub username, for example `ban6403-jdoe`.
-5. Choose **Private**, then click **Create repository**.
+1. Give your GitHub username in the Module 0 Canvas item **Your GitHub username**.
+2. Within a few days, GitHub emails you an invitation to your own repository, `[course-org]/ban6403-<your-username>`. Accept it. You can also accept it at `https://github.com/[course-org]/ban6403-<your-username>/invitations` while signed in. The invitation expires after 7 days; if it does, tell the instructor.
+3. Open your repository on GitHub. It is already private and already holds every course file.
 
-Your repository's address is your **repository link**, for example `https://github.com/[course-org]/ban6403-jdoe`. In Module 0, paste it into the Canvas item **Your repository link**. You give it once; every lab and project step is graded from this repository.
+Your repository's address is your **repository link**, for example `https://github.com/[course-org]/ban6403-jdoe`. In Module 0, paste it into the Canvas item **Your repository link**. This confirms that you can open it. You give it once; every lab and project step is graded from this repository.
 
 ### 3. Clone it and set up the environment
 
-1. Clone your repository with GitHub Desktop (**File > Clone Repository**). Keep it in a normal folder such as `Documents/GitHub`, not in OneDrive or iCloud.
+1. Clone your repository with GitHub Desktop. On your repository's GitHub page, click the green **Code** button, then **Open with GitHub Desktop**. Or use **File > Clone Repository** in GitHub Desktop. Keep it in a normal folder such as `Documents/GitHub`, not in OneDrive or iCloud.
 2. In Anaconda Prompt (Windows) or Terminal (macOS), go to the repository folder and create the course environment:
 
    ```text
@@ -37,14 +35,14 @@ Your repository's address is your **repository link**, for example `https://gith
 
 The course environment uses Python 3.13, pandas 3.0 and scikit-learn 1.8 or newer. If you created `ban6403` for an earlier course, update it with `conda env update -n ban6403 -f environment.yml --prune`.
 
-**Online students: GitHub Codespaces.** Instead of the local setup in parts 1 and 3, you may run your repository in your browser with GitHub Codespaces. You still create your own repository (part 2). See `.devcontainer/README.md`. Codespaces use your own free monthly hours, not the instructor's. Codespaces is not reachable on the UTSA campus network, so Flex students use the Anaconda setup in class.
+**Online students: GitHub Codespaces.** Instead of the local setup in parts 1 and 3, you may run your repository in your browser with GitHub Codespaces. You still accept the invitation first (part 2). Then click **Code > Codespaces > Create codespace on main** on your repository's page. See `.devcontainer/README.md`. Codespaces use your own free monthly hours, not the instructor's. Codespaces is not reachable on the UTSA campus network, so Flex students use the Anaconda setup in class.
 
 ## Each week
 
 Your repository already contains every notebook, Lab Companion and data file for the course. The only exception is the Module 13 held-out files. In Week 13 you download them as `m13_heldout_pack.zip` from the Module 13 page in Canvas. Unzip it and copy the files into the matching folders of your repository; the start of the Lab 13 notebook lists where each file goes.
 
 1. Open this repository folder in VS Code and open the week's notebook in `notebooks/`.
-2. Choose the **ban6403** kernel (in Codespaces, the Python 3.13 kernel).
+2. Choose the **ban6403** kernel (in Codespaces, the only Python 3.13 entry).
 3. Open the week's Lab Companion from `companions/` in your browser and follow it beside the notebook.
 4. Run the notebook from the top and save it, so the outputs are saved in the file.
 5. Commit and push your work in GitHub Desktop before the deadline.

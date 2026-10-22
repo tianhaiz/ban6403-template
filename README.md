@@ -1,6 +1,6 @@
 # BAN 6403 Labs
 
-Lab notebooks, data and Lab Companions for BAN 6403 Text Analytics for Business (Fall 2027).
+Lab notebooks and data for BAN 6403 Text Analytics for Business (Fall 2027).
 
 ## Start here (Module 0)
 
@@ -30,7 +30,7 @@ Your repository's address is your **repository link**, for example `https://gith
    ```
 
 3. In VS Code, choose **File > Open Folder** and open this repository folder. Open `notebooks/M00_Technology_Readiness.ipynb` and choose the **ban6403** kernel.
-4. Open `companions/M00_lab_companion.html` in your browser. Run the notebook until the last cell prints `READY`.
+4. Run the notebook until the last cell prints `READY`. A check that needs your attention prints `FIX` and says what to do.
 5. In GitHub Desktop, commit your work with the summary `Module 0 readiness check`, then click **Push origin**.
 
 The course environment uses Python 3.13, pandas 3.0 and scikit-learn 1.8 or newer. If you created `ban6403` for an earlier course, update it with `conda env update -n ban6403 -f environment.yml --prune`.
@@ -39,13 +39,12 @@ The course environment uses Python 3.13, pandas 3.0 and scikit-learn 1.8 or newe
 
 ## Each week
 
-Your repository already contains every notebook, Lab Companion and data file for the course. The only exception is the Module 13 held-out files. In Week 13 you download them as `m13_heldout_pack.zip` from the Module 13 page in Canvas. Unzip it and copy the files into the matching folders of your repository; the start of the Lab 13 notebook lists where each file goes.
+Your repository already contains every notebook and data file for the course. The only exception is the Module 13 held-out files. In Week 13 you download them as `m13_heldout_pack.zip` from the Module 13 page in Canvas. Unzip it and copy the files into the matching folders of your repository; the start of the Lab 13 notebook lists where each file goes.
 
 1. Open this repository folder in VS Code and open the week's notebook in `notebooks/`.
 2. Choose the **ban6403** kernel (in Codespaces, the only Python 3.13 entry).
-3. Open the week's Lab Companion from `companions/` in your browser and follow it beside the notebook.
-4. Run the notebook from the top and save it, so the outputs are saved in the file.
-5. Commit and push your work in GitHub Desktop before the deadline.
+3. Run the notebook from the top and save it, so the outputs are saved in the file.
+4. Commit and push your work in GitHub Desktop before the deadline.
 
 Your repository is your own copy, so it does not receive course updates through **Fetch origin** or **Pull**. If a course file changes during the term, the instructor posts the new file in Canvas.
 
@@ -77,7 +76,6 @@ The project uses its own data: see the project overview in Canvas and `project_s
 | Folder | Contents |
 |---|---|
 | `notebooks/` | One lab notebook per module, starting with the Module 0 readiness check |
-| `companions/` | Step-by-step Lab Companion pages; open them in any browser |
 | `data/raw/` | The 24 made-up example messages used in most guided parts, plus small example files for single labs |
 | `data/course/` | Two course datasets, each with a fixed train/valid/test split: 10,000 CFPB consumer complaints and 22,634 clothing reviews (lab data). Read `README.md` and `clothing_reviews_README.md`. |
 | `data/partitions/` | The fixed development/protected split of the example messages (Module 2) |

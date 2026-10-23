@@ -1,8 +1,6 @@
 # Support Inbox Data (practice data)
 
-`support_messages.csv` holds 154 short customer messages sent to the support team of **Fernhollow Financial**, a made-up bank. It is practice data that goes with the bank's made-up help center from Module 12 (`data/rag/`). It is not a project data option.
-
-**Everything here was written for this course.** The bank, the messages, the products and the policies are made up. No message comes from a real customer, and nothing describes a real bank. Amounts and dates are invented.
+`support_messages.csv` holds 154 short customer messages sent to the support team of **Fernhollow Financial**, the bank behind the Module 12 help center (`data/rag/`). The bank, its policies and all the messages were written for this course. It is practice data, not a project data option.
 
 ## Columns
 

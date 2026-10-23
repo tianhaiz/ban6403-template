@@ -1,8 +1,6 @@
 # RAG Files (Module 12)
 
-These files support Lab 12. They hold a small help center for a **made-up** company, the support questions used in the lab, the retrieval results behind each context pack, and claim verdicts.
-
-**Everything in the help center is made up for this course.** Fernhollow Financial is a fictional company. Its fees, deadlines and policies were invented for this course. They are not legal advice and do not describe any real bank.
+These files support Lab 12. For this course we wrote a small help center for a bank called Fernhollow Financial, with its fees, deadlines and policies. We also wrote the 20 support questions used in the lab. The folder also holds the retrieval results behind each context pack and the claim verdicts.
 
 | File | Rows | What it is |
 |---|---:|---|
@@ -21,7 +19,7 @@ The passage and question vectors are in `data/embeddings/m12_passages_minilm.npy
 - **search_text** is the article title, a period and the passage text. Both search methods use it, so a short passage keeps its topic.
 - **Status.** `current` means the policy is in force. `archived` means it was replaced and is kept for history (KB11, replaced by KB10). One older Q&A article (KB03, effective 2021) was never updated; it disagrees with the current article KB01 on purpose.
 - **Gaps on purpose.** Some topics have no article, for example the account of a customer who has died, auto loans, and recalling a wire. Questions about them cannot be answered from this help center.
-- **Questions** were written for this course. Some follow common themes in the course complaint data; `complaint_theme` names the matching CFPB issue label. None quotes a real complaint.
+- **Questions.** Some follow common themes in the course complaint data, without quoting any complaint; `complaint_theme` names the matching CFPB issue label.
   - `question_type` is answerable (13), partial (2), unanswerable (3), conflict (1: two sources disagree) or outdated (1: an archived source exists).
   - `expected_source_ids` lists the passages that answer the question; `related_source_ids` lists passages that are on topic but not needed, or that conflict. Both were drafted for this course before any search was run; `reference_note` gives the reason.
 - **Context packs.** For each question, the top k passages from dense search (cosine of MiniLM vectors) are joined in rank order. Each block starts with `[passage_id] title | effective date | status`. Packs for k = 1, 3 and 8 are the inputs of the saved answers.

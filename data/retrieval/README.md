@@ -17,7 +17,7 @@ The query vectors are in `data/embeddings/m06_queries_minilm.npy`, with an `_ids
   - A result is relevant when its main point matches the need.
   - Sharing a topic or a word is not enough.
   - Judge the content of the message or complaint against the information need. The product filter of a query is a search setting, not part of the need, so a complaint from another product can be relevant.
-  - A solved problem does not count only when the need asks for an open problem (TQ03 "not yet fixed", TQ04 "has not reached them yet"). A need that asks whether the customer reports something (TQ01, TQ02) is met by a report of a past, solved case.
+  - A solved problem counts as not relevant only when the need asks for an open problem (TQ03 "not yet fixed", TQ04 "has not reached them yet"). A need that asks whether the customer reports something (TQ01, TQ02) is met by a report of a past, solved case.
   - When the text does not say enough, the result is judged not relevant.
   - In the `judged_by` column, `course draft` marks these judgments and `student` marks the pairs left for you.
   - A second reading checked every judgment, and a third reading checked the harder ones. Disagreements were settled by majority or by the rules above.
@@ -31,4 +31,4 @@ The query vectors are in `data/embeddings/m06_queries_minilm.npy`, with an `_ids
   - For the TQ queries, all 23 messages were scored.
   - Scores are raw model outputs: higher means more relevant. They are not probabilities.
 
-Judgments are human decisions. Another careful reader may disagree on a few borderline cases; the `note` column gives each reason. Do not edit these files; enter your own judgments in the notebook.
+Relevance is a judgment call, so another careful reader may disagree on a few borderline cases. The `note` column gives the reason for each judgment. Do not edit these files; enter your own judgments in the notebook.

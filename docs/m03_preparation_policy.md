@@ -10,6 +10,6 @@
 
 **Not part of light_v1:** stopword removal, stemming, HTML stripping, spell correction, deleting redaction marks (`XXXX`). If you add a rule, put it in a new column and check what it changes.
 
-**Test cases:** `data/raw/m03_preparation_test_cases.csv` holds six examples written for this lab (TC01–TC06). They show risks such as full-width characters (TC04), case (TC05) and line breaks (TC06). They are not customer data.
+**Test cases:** `data/raw/m03_preparation_test_cases.csv` holds six examples written for this lab (TC01–TC06). They show risks such as full-width characters (TC04), case (TC05) and line breaks (TC06).
 
 **What the lab saves:** a development audit (13 rows), the excluded-record list (1 row) and the test-case comparison (6 rows) in `outputs/m03`.

@@ -25,4 +25,4 @@
 
 ## Limits
 
-The groups and the partition are made-up example data. They do not link real customers, and they are not a benchmark for measuring accuracy. This lab needs no agreement score, API, web scraping or labeling platform.
+The groups and the partition are example data. They are not a benchmark for measuring accuracy. This lab needs no agreement score, API, web scraping or labeling platform.

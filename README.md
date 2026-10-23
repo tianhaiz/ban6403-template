@@ -62,11 +62,13 @@ You upload nothing to Canvas for labs, milestones or the final project. The inst
 
 | Data | Where | Used in |
 |---|---|---|
-| 24 made-up example messages | `data/raw/customer_feedback_m01.csv` | Part 1 (guided core) of Labs 1–8, 10 and 11; Lab 9 Part 1 uses saved predictions for them |
+| 24 example messages (23 with text; FB022 is empty) | `data/raw/customer_feedback_m01.csv` | Part 1 (guided core) of Labs 1–8, 10 and 11; Lab 9 Part 1 uses saved predictions for them |
 | CFPB consumer complaints (10,000) | `data/course/cfpb_complaints.csv` | Practice of Labs 1–3, 6 and 8–11; Lab 13 (held-out complaints, Week 13) and Lab 14 Part 1. Lab 12 uses them only to count complaint themes. |
 | Women's clothing reviews (22,634) | `data/course/clothing_reviews.csv` | Practice of Labs 4, 5 and 7 |
-| Made-up help center and support questions | `data/rag/` | Lab 12 (both parts) and the Lab 13 Practice (a prompt-injection case) |
-| Made-up support inbox (154 messages) | `data/support/` | Extra practice beside Lab 12; no lab requires it |
+| Help center and support questions | `data/rag/` | Lab 12 (both parts) and the Lab 13 Practice (a prompt-injection case) |
+| Support inbox (154 messages) | `data/support/` | Extra practice beside Lab 12; no lab requires it |
+
+The example messages, the help center and the support inbox were written for the course. The complaints and the clothing reviews are real public data.
 
 The project uses its own data: see the project overview in Canvas and `project_starters/`.
 
@@ -76,7 +78,7 @@ The project uses its own data: see the project overview in Canvas and `project_s
 | Folder | Contents |
 |---|---|
 | `notebooks/` | One lab notebook per module, starting with the Module 0 readiness check |
-| `data/raw/` | The 24 made-up example messages used in most guided parts, plus small example files for single labs |
+| `data/raw/` | The 24 example messages used in most guided parts, plus small example files for single labs |
 | `data/course/` | Two course datasets, each with a fixed train/valid/test split: 10,000 CFPB consumer complaints and 22,634 clothing reviews (lab data). Read `README.md` and `clothing_reviews_README.md`. |
 | `data/partitions/` | The fixed development/protected split of the example messages (Module 2) |
 | `data/processed/` | Prepared versions of the course data, such as complaint chunks for retrieval |
@@ -84,7 +86,7 @@ The project uses its own data: see the project overview in Canvas and `project_s
 | `data/llm_outputs/` | Saved LLM outputs used in graded evaluation, with the prompts that produced them |
 | `data/retrieval/`, `data/reviewed/`, `data/rag/`, `data/predictions/` | Queries, relevance judgments, reviewed samples and other files for single labs |
 | `data/heldout/` | Held-out complaints for the Module 13 evaluation. Added in Week 13 from `m13_heldout_pack.zip` in Canvas |
-| `data/support/` | A small made-up customer-support inbox that goes with the Module 12 help center (practice data) |
+| `data/support/` | A small customer-support inbox that goes with the Module 12 help center (practice data) |
 | `project_starters/` | Starter notebooks for the five project data options, and the scripts `yelp_sample.py` and `amazon_sample.py` that draw a fixed sample from data you download |
 | `docs/` | Data guides and policies used in the labs |
 | `project/` | Your individual project, once you start it (see the project overview in Canvas). Raw downloads go to `project/data/private/`, which Git ignores; the sample you draw goes to `project/data/sample/` and is committed. |

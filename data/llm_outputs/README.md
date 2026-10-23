@@ -45,7 +45,7 @@ For Module 11, `prompts/` also holds `m11_extraction_schema.md` (the field defin
 ## Module 11 saved extractions
 
 - Two prompt versions on the same 60 complaints, with the same model and the same JSON schema. Both follow `m11_extraction_schema.md` (version 1.2), the schema of the reviewed labels. Version 1 gives only the field names and label lists. Version 2 adds the full task specification from the schema, a rule to copy evidence exactly, and three example answers.
-- **The three example answers in the v2 prompt were written by hand for the prompt.** They are made-up complaints, not model outputs, and they are not in the saved output files.
+- **The three example answers in the v2 prompt were written by hand for the prompt.** They are not taken from the complaint data or from the model, and they are not in the saved output files.
 - Model: `gemini-3.5-flash-lite` (as reported in every record's `model_version`) through Vertex AI (`api` = `vertex` in every record), temperature 0, one call per complaint.
 - Date: October 22, 2026 (UTC; see `created`).
 - Results: 60 of 60 answers parsed for each version, with no errors. Median time per call about 1.07 seconds (v1) and 1.03 seconds (v2). Input tokens in total: 36,878 (v1) and 151,658 (v2), because the v2 prompt is about four times longer. Output tokens: 7,722 (v1) and 6,148 (v2).
@@ -54,12 +54,12 @@ For Module 11, `prompts/` also holds `m11_extraction_schema.md` (the field defin
 
 ## Module 12 support answers
 
-- One made-up help center (`data/rag/`), 20 made-up support questions, and four conditions. **Ungrounded**: the question only. **Grounded**: the question plus a context pack of the top 1, 3 or 8 passages from dense search. The grounded prompt says to use only the passages and to cite source IDs for every claim. It says to answer "not enough information" when the passages do not answer.
+- The Module 12 help center (`data/rag/`), its 20 support questions, and four conditions. **Ungrounded**: the question only. **Grounded**: the question plus a context pack of the top 1, 3 or 8 passages from dense search. The grounded prompt says to use only the passages and to cite source IDs for every claim. It says to answer "not enough information" when the passages do not answer.
 - The exact prompts are `prompts/m12_ungrounded_v1_prompt.md` and `prompts/m12_grounded_v1_prompt.md`, with the JSON schemas `m12_ungrounded_schema.json` and `m12_grounded_schema.json`. The filled inputs are `prompts/m12_input_ungrounded.csv` and `prompts/m12_input_grounded_k1.csv`, `_k3.csv` and `_k8.csv`. The `run_id` in these files (for example `Q12_k3`) is the `id` in the saved answer file.
 - Model: `gemini-3.5-flash-lite` through Vertex AI (`api` = `vertex` in every record), temperature 0, one call per question and condition.
 - Date: October 14, 2026 (UTC; see `created`).
 - Results: 80 of 80 answers parsed, with no errors. Median time per call about 1.0 to 1.2 seconds. Input tokens in total: 6,173 (ungrounded), 10,359 (k = 1), 13,813 (k = 3) and 22,496 (k = 8).
-- `m12_provenance_manifest.json` is the provenance record for the Module 12 files: the help center (written for this course), the embeddings, the context packs, the prompts, the four saved answer files and the drafted claim verdicts.
+- `m12_provenance_manifest.json` is the provenance record for the Module 12 files: the help center, the embeddings, the context packs, the prompts, the four saved answer files and the drafted claim verdicts.
 
 ## Module 13 saved held-out and injection answers
 
@@ -73,7 +73,7 @@ For Module 11, `prompts/` also holds `m11_extraction_schema.md` (the field defin
 - **Token counts depend on the provider.** The three Gemini models report the same input count for the same filled prompt. The Claude records count about 1,000 more input tokens per complaint, because each provider splits text into tokens in its own way. Compare token counts within one provider.
 - **Time.** `latency_ms` is the time the instructor's computer waited for each answer. It includes thinking time and any waiting at the service, and it depends on the day and the load. Median about 1.1 seconds (`gemini-3.5-flash-lite`), 15.7 seconds (`gemini-3.8-flash`), 16.0 seconds (`gemini-3.1-pro-preview`) and 4.0 seconds (`claude-opus-5-5`).
 - **Prices are not included.** Cost is tokens times price, and prices change. Look up a price on the provider's price page and record the date if you need one.
-- **Injection test.** `m13_injection_grounded_gemini.jsonl` holds three answers from the Module 12 grounded prompt `m12_grounded_v1` (`gemini-3.5-flash-lite`, Vertex AI, temperature 0, October 14, 2026). For questions Q05, Q06 and Q07, a made-up forum post, `FORUM-01` (status `unverified`), replaced one passage in the k = 3 context pack. The post contains an instruction aimed at the assistant. It was written for this test; it is not a real post. The filled inputs are in `prompts/m13_injection_input.csv`.
+- **Injection test.** `m13_injection_grounded_gemini.jsonl` holds three answers from the Module 12 grounded prompt `m12_grounded_v1` (`gemini-3.5-flash-lite`, Vertex AI, temperature 0, October 14, 2026). For questions Q05, Q06 and Q07, a forum post written for this test, `FORUM-01` (status `unverified`), replaced one passage in the k = 3 context pack. The post contains an instruction aimed at the assistant. The filled inputs are in `prompts/m13_injection_input.csv`.
 - `m13_provenance_manifest.json` is the provenance record for the Module 13 files: the held-out labels, the five saved answer files, and the prompt and schema fingerprints.
 
 ## What each line holds
@@ -94,4 +94,4 @@ records = [json.loads(line) for line in path.read_text().splitlines()]
   - Lab 8: the CFPB product labels in `data/course/cfpb_complaints.csv`;
   - Lab 12: the drafted claim verdicts in `data/rag/m12_claim_audit_draft.csv`;
   - Lab 13: the held-out labels in `data/heldout/`.
-- Only public course data, the made-up Module 12 help center and the made-up `FORUM-01` post were sent to the models. Do not edit these files; save your own outputs in `outputs/`.
+- Only public course data, the Module 12 help center and the `FORUM-01` post were sent to the models; the last two were written for this course. Do not edit these files; save your own outputs in `outputs/`.

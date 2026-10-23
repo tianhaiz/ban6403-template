@@ -1,6 +1,6 @@
 # Reviewed extraction sample (M11)
 
-`m11_reviewed_dev.csv` holds 60 complaints from the `valid` split of `data/course/cfpb_complaints.csv`. Draft field labels were written with AI assistance and reviewed by the instructor. They were made by reading each complaint against the M11 extraction schema, version 1.2 (`data/llm_outputs/prompts/m11_extraction_schema.md`). Use them to check a rule baseline and saved LLM extractions field by field.
+`m11_reviewed_dev.csv` holds 60 complaints from the `valid` split of `data/course/cfpb_complaints.csv`. Draft field labels were written with AI assistance and reviewed by the instructor. They were made by reading each complaint against the M11 extraction schema (`data/llm_outputs/prompts/m11_extraction_schema.md`), the same schema both saved prompts follow. Use them to check a rule baseline and saved LLM extractions field by field.
 
 ## How the sample was chosen
 
@@ -31,8 +31,7 @@ An empty cell is a missing value: `null` for `disputed_amount` and `time_referen
 
 ## Limits
 
-- How the labels were checked: a second reading covered every complaint and a third reading covered the harder ones. Disagreements were settled by majority or by a written rule, and the rules were added to the schema as version 1.2.
+- How the labels were checked: a second reading covered every complaint and a third reading covered the harder ones. Disagreements were settled by majority or by a written rule, and the rules were written into the schema.
 - Label summary: `disputed_amount` filled for 26 of 60, `time_reference` for 40 of 60; `requested_remedy` not_stated 20, correct_report 14, refund 12, account_action 7, stop_or_validate_debt 4, review_or_explain 3; `contacted_company` yes 37, not_stated 23. `review_note` is filled for 39 rows.
 - The schema's rules decide most hard cases, but another careful reader could still choose differently. `review_note` flags the cases where this is most likely.
-- Prompt `m11_extract_v2` was written from schema version 1, before the version 1.1 and 1.2 rules. Some of its disagreements with these labels come from those later rules.
 - Every evidence span was checked by code: it appears exactly in the narrative.

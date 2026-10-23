@@ -4,7 +4,7 @@ These files support Lab 6. They let every student search with the same queries a
 
 | File | Rows | What it is |
 |---|---:|---|
-| `m06_queries.csv` | 9 | The approved query set: TQ01–TQ04 for the 23 example messages, CQ01–CQ05 for the training complaints. Columns: query_id, query_set, query, information_need, filter_product, lab_use |
+| `m06_queries.csv` | 9 | The fixed set of test queries: TQ01–TQ04 for the 23 example messages, CQ01–CQ05 for the training complaints. Columns: query_id, query_set, query, information_need, filter_product, lab_use |
 | `m06_relevance_judgments.csv` | 213 | Relevance judgments. Columns: query_id, doc_id, relevant, judged_by, note. relevant is 1, 0 or empty (for you to judge) |
 | `m06_rerank_scores.csv` | 349 | Cross-encoder scores for query–text pairs: query_id, query, doc_id (feedback ID or chunk ID), text, query_set, complaint_id, chunk_no, lexical_rank, dense_rank, rerank_score, model, model_revision |
 

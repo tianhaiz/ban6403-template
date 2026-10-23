@@ -17,6 +17,7 @@ These files hold answers that the instructor got from a large language model (LL
 | `m13_heldout_extract_v2_gemini.jsonl` | 60 | The 60 held-out complaints in `data/heldout/m13_heldout_input.csv` | `m11_extract_v2` | Lab 13 (the frozen workflow) |
 | `m13_heldout_extract_v2_gemini38flash.jsonl` | 60 | The same 60 complaints, model `gemini-3.8-flash` | `m11_extract_v2` | Lab 13 (model tiers) |
 | `m13_heldout_extract_v2_gemini31pro.jsonl` | 60 | The same 60 complaints, model `gemini-3.1-pro-preview` | `m11_extract_v2` | Lab 13 (model tiers) |
+| `m13_heldout_extract_v2_claude_opus55.jsonl` | 60 | The same 60 complaints, model `claude-opus-5-5` (Anthropic API) | `m11_extract_v2` | Lab 13 (model tiers) |
 | `m13_injection_grounded_gemini.jsonl` | 3 | Three Module 12 questions with an injected forum post in the context (`prompts/m13_injection_input.csv`) | `m12_grounded_v1` | Lab 13 Practice |
 
 The `m13_` files and `prompts/m13_injection_input.csv` are not in your repository from Week 1. They come in `m13_heldout_pack.zip` on the Module 13 page in Canvas. Unzip it and copy the files into the matching folders of your repository; the start of the Lab 13 notebook lists where each file goes.
@@ -43,13 +44,12 @@ For Module 11, `prompts/` also holds `m11_extraction_schema.md` (the field defin
 
 ## Module 11 saved extractions
 
-- Two prompt versions on the same 60 complaints, with the same model and the same JSON schema. Version 1 gives only the field names and label lists. Version 2 adds the full task specification from `m11_extraction_schema.md`, a rule to copy evidence exactly, and three example answers.
+- Two prompt versions on the same 60 complaints, with the same model and the same JSON schema. Both follow `m11_extraction_schema.md` (version 1.2), the schema of the reviewed labels. Version 1 gives only the field names and label lists. Version 2 adds the full task specification from the schema, a rule to copy evidence exactly, and three example answers.
 - **The three example answers in the v2 prompt were written by hand for the prompt.** They are made-up complaints, not model outputs, and they are not in the saved output files.
-- Model: `gemini-3.5-flash-lite` (as reported in every record's `model_version`), temperature 0, one call per complaint.
-- Date: October 14, 2026 (UTC; see `created`).
-- Results: 60 of 60 answers parsed for each version, with no errors. Median time per call about 0.95 seconds (v1) and 0.96 seconds (v2). Input tokens in total: 20,798 (v1) and 108,938 (v2), because the v2 prompt is about five times longer. Output tokens: 7,642 (v1) and 5,935 (v2).
+- Model: `gemini-3.5-flash-lite` (as reported in every record's `model_version`) through Vertex AI (`api` = `vertex` in every record), temperature 0, one call per complaint.
+- Date: October 22, 2026 (UTC; see `created`).
+- Results: 60 of 60 answers parsed for each version, with no errors. Median time per call about 1.07 seconds (v1) and 1.03 seconds (v2). Input tokens in total: 36,878 (v1) and 151,658 (v2), because the v2 prompt is about four times longer. Output tokens: 7,722 (v1) and 6,148 (v2).
 - Parsed as JSON does not mean correct. Lab 11 checks every answer against the schema's validation rules and against the reviewed labels.
-- `m11_extraction_schema.md` is version 1.2. Version 1.1 added one sentence: a request addressed to the CFPB counts only when it names a specific outcome for the consumer. Version 1.2 added seven clarifications from the final label review, for example that a dispute, appeal or application the consumer reports making earlier counts as a request. The saved answers were made with prompt `m11_extract_v2`, which was written from version 1 and has none of these additions.
 - `m11_provenance_manifest.json` is the provenance record for the Module 11 files. For each file it gives the kind of output (real model output, examples written by hand, reviewed labels or rule output). For the saved outputs it also gives the prompt version, model version, dates, row counts and token counts. Lab 11 asks you to build a smaller record of your own.
 
 ## Module 12 support answers
@@ -63,21 +63,22 @@ For Module 11, `prompts/` also holds `m11_extraction_schema.md` (the field defin
 
 ## Module 13 saved held-out and injection answers
 
-- **Held-out extraction.** The frozen Module 11 prompt `m11_extract_v2`, with the same JSON schema and temperature 0, on 60 held-out complaints that were not used in Module 11 (`data/heldout/`). The same prompt was sent to three models:
-  - `gemini-3.5-flash-lite` (the Module 11 workflow) through the Gemini API;
-  - `gemini-3.8-flash`, a larger model: 54 calls through Vertex AI and 6 through the Gemini API (the records without an `api` field);
-  - `gemini-3.1-pro-preview`, a large model that Google labels **preview** (it may change or be withdrawn), all 60 through Vertex AI.
-- Date: October 14, 2026 (UTC; see `created`). 60 of 60 answers parsed for every model, with no errors.
-- **Thinking tokens.** The two larger models think before they answer. Their records have a `thoughts_tokens` field: all 60 records for `gemini-3.1-pro-preview`, but only 41 of 60 for `gemini-3.8-flash`, because an earlier version of the script that saved the answers did not record it. A missing value is not zero. The `gemini-3.5-flash-lite` records have no thinking field.
-- **Token counts depend on the service.** For the same filled prompt, Vertex AI reported 268 more input tokens than the Gemini API in every record. Compare token counts within one service.
-- **Time.** `latency_ms` is the time the instructor's computer waited for each answer. It includes thinking time and any waiting at the service, and it depends on the day and the load. Median about 1.0 second (`gemini-3.5-flash-lite`), 10.6 seconds (`gemini-3.8-flash`) and 14.0 seconds (`gemini-3.1-pro-preview`).
+- **Held-out extraction.** The frozen Module 11 prompt `m11_extract_v2`, with the same JSON schema, on 60 held-out complaints that were not used in Module 11 (`data/heldout/`). The prompt and the held-out labels follow the same schema (`m11_extraction_schema.md`, version 1.2). The same prompt was sent to three Gemini models through Vertex AI, at temperature 0:
+  - `gemini-3.5-flash-lite` (the Module 11 workflow);
+  - `gemini-3.8-flash`, a larger model;
+  - `gemini-3.1-pro-preview`, a large model that Google labels **preview** (it may change or be withdrawn).
+- **One model from another provider.** `claude-opus-5-5` (`m13_heldout_extract_v2_claude_opus55.jsonl`) received the same prompt through the Anthropic API, with the same JSON schema as structured output. This model does not accept a temperature setting, so it ran at its default (`temperature` is `null` in its records).
+- Dates: October 22–23, 2026 (UTC; see `created`). 60 of 60 answers parsed for every model, with no errors.
+- **Thinking tokens.** The two larger Gemini models think before they answer; all their records have a `thoughts_tokens` count. The `gemini-3.5-flash-lite` and `claude-opus-5-5` records report none (`null`). A missing value is not zero.
+- **Token counts depend on the provider.** The three Gemini models report the same input count for the same filled prompt. The Claude records count about 1,000 more input tokens per complaint, because each provider splits text into tokens in its own way. Compare token counts within one provider.
+- **Time.** `latency_ms` is the time the instructor's computer waited for each answer. It includes thinking time and any waiting at the service, and it depends on the day and the load. Median about 1.1 seconds (`gemini-3.5-flash-lite`), 15.7 seconds (`gemini-3.8-flash`), 16.0 seconds (`gemini-3.1-pro-preview`) and 4.0 seconds (`claude-opus-5-5`).
 - **Prices are not included.** Cost is tokens times price, and prices change. Look up a price on the provider's price page and record the date if you need one.
 - **Injection test.** `m13_injection_grounded_gemini.jsonl` holds three answers from the Module 12 grounded prompt `m12_grounded_v1` (`gemini-3.5-flash-lite`, Vertex AI, temperature 0, October 14, 2026). For questions Q05, Q06 and Q07, a made-up forum post, `FORUM-01` (status `unverified`), replaced one passage in the k = 3 context pack. The post contains an instruction aimed at the assistant. It was written for this test; it is not a real post. The filled inputs are in `prompts/m13_injection_input.csv`.
-- `m13_provenance_manifest.json` is the provenance record for the Module 13 files: the held-out labels, the four saved answer files, and the prompt and schema fingerprints.
+- `m13_provenance_manifest.json` is the provenance record for the Module 13 files: the held-out labels, the five saved answer files, and the prompt and schema fingerprints.
 
 ## What each line holds
 
-Each line is one JSON record. It holds `id` (complaint_id, review_id, feedback_id or run_id, as text), `prompt_version`, `model`, `model_version`, `temperature` and `created`. It also holds `latency_ms`, `input_tokens` and `output_tokens`. Records sent through Vertex AI also hold `api` (`vertex`); records without it were sent through the Gemini API. Module 13 records of the larger models may hold `thoughts_tokens`, the number of thinking tokens. Finally, `raw_text` is the model's answer as text, `parsed` is the answer as JSON, and `error` is empty when the call worked.
+Each line is one JSON record. It holds `id` (complaint_id, review_id, feedback_id or run_id, as text), `prompt_version`, `model`, `model_version`, `temperature` and `created`. It also holds `latency_ms`, `input_tokens` and `output_tokens`. Records sent through Vertex AI also hold `api` (`vertex`); records without it were sent through the Gemini API. Newer records also hold `thoughts_tokens`, the number of thinking tokens (`null` when the model reports none). Records sent through the Anthropic API have `api` = `anthropic`. Finally, `raw_text` is the model's answer as text, `parsed` is the answer as JSON, and `error` is empty when the call worked.
 
 Read a file in Python with:
 

@@ -147,9 +147,10 @@ def sample_reviews(path, n, seed, start_date="", end_date="", min_words=0):
     return [entry[2] for entry in heap], n_lines, n_match, n_short, n_repeat, hasher.hexdigest()
 
 
-def product_titles(meta_path, wanted):
+def product_titles(meta_path, wanted, hasher=None):
+    """Return {parent_asin: title} for the wanted products; update hasher with the file bytes if given."""
     titles = {}
-    for line in read_lines(meta_path):
+    for line in read_lines(meta_path, hasher):
         m = json.loads(line)
         if m.get("parent_asin") in wanted:
             titles[m["parent_asin"]] = m.get("title") or ""
@@ -199,8 +200,9 @@ def make_sample(reviews_path, out, meta_path="", n=DEFAULTS["n"], seed=DEFAULTS[
     if meta_path:
         meta_path = Path(meta_path)
         say(f"Reading product names: {meta_path.name}")
-        titles = product_titles(meta_path, {r.get("parent_asin") for r in chosen})
-        meta_record = {"file": meta_path.name, "bytes": meta_path.stat().st_size}
+        meta_hasher = hashlib.sha256()
+        titles = product_titles(meta_path, {r.get("parent_asin") for r in chosen}, meta_hasher)
+        meta_record = {"file": meta_path.name, "bytes": meta_path.stat().st_size, "sha256": meta_hasher.hexdigest()}
     for r in chosen:
         r["parent_asin"] = r.get("parent_asin") or r.get("asin", "")
     split_of = assign_splits(chosen, seed)
